@@ -24,16 +24,24 @@
                     <h1>Nonlinear optics</h1>
                 </div>
             </div>
+            {% if 1 == 0 %}
             <div class="item">
                 <div class="fill" style="background-image:url('img/qo.svg');"></div>
                 <div class="carousel-caption">
                     <h1>Quantum optics</h1>
                 </div>
             </div>
+            {% endif %}
+            <div class="item">
+                <div class="fill" style="background-image:url('img/education.svg');"></div>
+                <div class="carousel-caption">
+                    <h1>Teaching (Ensino)</h1>
+                </div>
+            </div>
             <div class="item">
                 <div class="fill" style="background-image:url('img/scosape.svg');"></div>
                 <div class="carousel-caption">
-                    <h1>OSA Student Chapter Recife</h1>
+                    <h1><a href="http://blogs.df.ufpe.br/~xsimposiodelasers/">OSA Student Chapter Recife</a></h1>
                 </div>
             </div>
         </div>
@@ -54,15 +62,15 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4">
                     <h3><i class="fa fa-flask pull-left"></i> Scientific interests</h3>
-                    <p>How does one may adjust the interactions between light and matter? Tuning such interactions at distinct light intensity regimes can proportionate novel applications for light and also give informations of materials.</p>
+                    <p>How does light interacts with matter? The understanding and tuning of such interactions at distinct regimes can proportionate novel applications for light and also give valuable informations for chemists and materials scientists.</p>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <h3><i class="fa fa-gears"></i> Technical skills</h3>
                     <p>Development of software for data acquisition and processing in various languages (Python, C, C++, Labview). Familiar to embedded electronics (ARM-M4 TIVA Series, Arduino).</p>
                 </div>
                 <div class="col-lg-4 col-md-4">
-                    <h3><i class="fa fa-globe"></i> Community engagement</h3>
-                    <p>Interested in promoting science and technology for local communities, with no success until now.</p>
+                    <h3><i class="fa fa-book"></i> Teaching (Ensino)</h3>
+                    <p><a href="teaching.html">Clique aqui</a> para visualizar as atividades de ensino recentes.</p>
                 </div>
             </div>
             <!-- /.row -->
@@ -78,7 +86,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Recent works</h2>
+                    <h2>Recent papers</h2>
                 </div>
             </div>
             <!-- /.row -->
@@ -95,11 +103,16 @@
                 <a href="{{ item.href }}"><img class="img-responsive" src="{{ item.img }}"></a>
             </div>
             <div class="col-lg-8 col-md-8">
-                <h4>{{ item.title }}</h4>
-                <p>{{ item.abstract }}</p>
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ loop.index }}">
+                    <h4>{{ item.title }}</h4>
+                </a>
+                <div id="collapse{{ loop.index }}" class="collapse">
+                    <p>{{ item.abstract }}</p>
+                </div>
+                {{ item.author }}.<br>{{ item.journal }} <b>{{ item.volume }}</b>, {{ item.pages }} ({{ item.year }}).
             </div>
             <div class="col-lg-3 col-md-3">
-                <a class="btn btn-lg btn-primary pull-right" href="{{ item.href }}">Details</a>
+                <a class="btn btn-md btn-primary pull-right" href="{{ item.href }}">Read from publisher</a>
             </div>
         </div>
         <!-- /.row -->

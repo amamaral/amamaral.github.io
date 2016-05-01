@@ -1,8 +1,11 @@
 from jinja2 import Environment, FileSystemLoader
+import bibtexparser
+from bibtexparser.bparser import BibTexParser
+from bibtexparser.customization import convert_to_unicode
 
 env = Environment(loader=FileSystemLoader('jinja-templates'))
 
-# Add tags!
+# Bibliographic management
 
 
 class Works():
@@ -11,13 +14,117 @@ class Works():
         self.img = 'http://placehold.it/100x100'
         self.abstract = 'Short abstract'
         self.href = '#work_link'
+        self.tags = ['']
+        self.authors = ''
+        self.journal = ''
+        self.volume = ''
+        self.pages = ''
+        self.month = ''
+        self.year = -1
+
+with open('papers//bibtex_list.bib') as bibtex_file:
+    parser = BibTexParser()
+    parser.customization = convert_to_unicode
+    bib_database = bibtexparser.load(bibtex_file, parser=parser)
+    
+    works = [Works() for i in range(len(bib_database.entries))]
+    
+    for index, entry in enumerate(bib_database.entries):
+        works[index].title = entry['title']
+        if 'file' in entry.keys():
+            filename = entry['file'][1:-8]
+            works[index].img = 'papers//thumbnails/' + filename + '.jpg'
+
+        if 'abstract' in entry.keys():
+            works[index].abstract = entry['abstract']
+
+        if 'doi' in entry.keys():
+            works[index].href = 'http:////dx.doi.org/'+entry['doi']
+        elif 'url' in entry.keys():
+            works[index].href = entry['url']
+            
+        if 'month' in entry.keys():
+            works[index].month = entry['month']
+        
+        if 'year' in entry.keys():
+            works[index].year = entry['year']
+        
+        if 'journal' in entry.keys():
+            works[index].journal = entry['journal']
+            
+        if 'volume' in entry.keys():
+            works[index].volume = entry['volume']
+
+        if 'author' in entry.keys():
+            works[index].author = entry['author']
+            
+        if 'pages' in entry.keys():
+            works[index].pages = entry['pages']
+    
+    works = sorted(works, key=lambda w: -int(w.year))
+    
+
+class Conferences():
+    def __init__(self):
+        self.title = 'Title'
+        self.img = 'http://placehold.it/100x100'
+        self.abstract = 'Short abstract'
+        self.href = '#work_link'
+        self.tags = ['']
+        self.authors = ''
+        self.journal = ''
+        self.volume = ''
+        self.pages = ''
+        self.month = ''
+        self.year = -1
+
+with open('conferences//bibtex_list.bib') as bibtex_file:
+    parser = BibTexParser()
+    parser.customization = convert_to_unicode
+    bib_database = bibtexparser.load(bibtex_file, parser=parser)
+    
+    conference_papers = [Conferences() for i in range(len(bib_database.entries))]
+    
+    for index, entry in enumerate(bib_database.entries):
+        conference_papers[index].title = entry['title']
+        if 'file' in entry.keys():
+            filename = entry['file'][1:-8]
+            conference_papers[index].img = r'conferences/thumbnails/' + filename + '.jpg'
+
+        if 'abstract' in entry.keys():
+            conference_papers[index].abstract = entry['abstract']
+
+        if 'doi' in entry.keys():
+            conference_papers[index].href = 'http:////dx.doi.org/'+entry['doi']
+        elif 'url' in entry.keys():
+            conference_papers[index].href = entry['url']
+            
+        if 'month' in entry.keys():
+            conference_papers[index].month = entry['month']
+        
+        if 'year' in entry.keys():
+            conference_papers[index].year = entry['year']
+        
+        if 'journal' in entry.keys():
+            conference_papers[index].journal = entry['journal']
+            
+        if 'volume' in entry.keys():
+            conference_papers[index].volume = entry['volume']
+
+        if 'author' in entry.keys():
+            conference_papers[index].author = entry['author']
+            
+        if 'pages' in entry.keys():
+            conference_papers[index].pages = entry['pages']
+    
+    works = sorted(works, key=lambda w: -int(w.year))
 
 ##############
 # INDEX.HTML #
 ##############
 
 index = env.get_template('index_template.html')
-featured_works = [Works() for i in range(3)]
+featured_works = works[0:4]
 index_html = index.render(featured=featured_works)
 with open("index.html", "w") as fh:
     fh.write(index_html)
@@ -31,7 +138,8 @@ class CV_personal_info:
     def __init__(self, name='My name', sub_text='some description',
                  address='My address', phone='(555) 5555-5555',
                  email='my_mail@server.com', facebook='',
-                 linkedin='', twitter='', googlescholar='', researchgate=''):
+                 linkedin='', twitter='', googlescholar='', researchgate='', 
+                 orcid=''):
         self.name = name
         self.sub_text = sub_text
         self.address = address
@@ -42,6 +150,7 @@ class CV_personal_info:
         self.twitter = twitter
         self.googlescholar = googlescholar
         self.researchgate = researchgate
+        self.orcid = orcid
 
 
 class CV_entry():
@@ -54,16 +163,18 @@ class CV_entry():
 personal = CV_personal_info('Anderson Monteiro Amaral',
                             """For a short CV,
                             <a href="http://lattes.cnpq.br">click here</a>.<br>
-                            For a full CV, <a href="http://lattes.cnpq.br/1832322110328811">
+                            For a full scientific CV, <a href="http://lattes.cnpq.br/1832322110328811">
                             click here</a>.""",
                             """R. Prof. Moraes Rego, 1235 <br>50670-901, Cidade
                             universitária <br>Recife - PE - Brazil""",
                             '+55 (81) 2126-2258; +55 (81) 2126-2204',
-                            'anderson.amaral@outlook.com',
+                            'anderson.amaral(at)outlook(dot)com',
                             'http://www.facebook.com/andersonmonteiroamaral',
-                            '#linkedin',
+                            '', #linkedin
                             'http://twitter.com/amaral_am',
-                            '#google-plus')
+                            'https://scholar.google.com.br/citations?hl=pt-BR&user=eEP-tGAAAAAJ',
+                            'https://www.researchgate.net/profile/Anderson_Amaral',
+                            'http://www.orcid.org/0000-0001-5706-9744')
 
 academic = []
 academic.append(CV_entry("2012 - 2016", "Ph.D. in physics",
@@ -157,3 +268,24 @@ useful = env.get_template('useful_template.html')
 useful_html = useful.render()
 with open("useful.html", "w") as fh:
     fh.write(useful_html)
+
+###############
+# PAPERS.HTML #
+###############
+
+papers = env.get_template('papers_template.html')
+papers_html = papers.render(papers=works)
+with open("science_papers.html", "w") as fh:
+    fh.write(papers_html)
+
+###############
+# CONFERENCE_PAPERS.HTML #
+###############
+
+cpapers = env.get_template('conference_papers_template.html')
+cpapers_html = cpapers.render(papers=conference_papers)
+with open("conference_papers.html", "w") as fh:
+    fh.write(cpapers_html)
+
+
+print('website generation finished!')

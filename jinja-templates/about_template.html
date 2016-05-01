@@ -40,10 +40,19 @@
                     <li class="tooltip-social twitter-link"><a href="{{ personal_info.twitter }}" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter-square fa-2x"></i></a>
                     </li>
                     {% endif %}
-                    {% if personal_info.googleplus != '' %}
-                    <li class="tooltip-social google-plus-link"><a href="{{ personal_info.googleplus }}" data-toggle="tooltip" data-placement="top" title="Google+"><i class="fa fa-google-plus-square fa-2x"></i></a>
+                    {% if personal_info.googlescholar != '' %}
+                    <li class="tooltip-social google-scholar-link"><a href="{{ personal_info.googlescholar }}" data-toggle="tooltip" data-placement="top" title="Google Scholar"><i class="ai ai-google-scholar-square ai-2x"></i></a>
                     </li>
                     {% endif %}
+                    {% if personal_info.researchgate != '' %}
+                    <li class="tooltip-social research-gate-link"><a href="{{ personal_info.researchgate }}" data-toggle="tooltip" data-placement="top" title="Research Gate"><i class="ai ai-researchgate-square ai-2x"></i></a>
+                    </li>
+                    {% endif %}
+                    {% if personal_info.orcid != '' %}
+                    <li class="tooltip-social orcid-link"><a href="{{ personal_info.orcid }}" data-toggle="tooltip" data-placement="top" title="Orcid"><i class="ai ai-orcid-square ai-2x"></i></a>
+                    </li>
+                    {% endif %}
+
                 </ul>
             </div>
         </div>

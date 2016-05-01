@@ -14,7 +14,7 @@
    height="1080"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="scosape.svg"
    inkscape:export-filename="C:\Users\Anderson\Dropbox\website\img\img1.png"
    inkscape:export-xdpi="90"
@@ -705,16 +705,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.24748737"
-     inkscape:cx="1871.2875"
-     inkscape:cy="279.6776"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="626.65175"
+     inkscape:cy="534.3388"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g7210"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="1301"
+     inkscape:window-height="744"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -733,12 +733,19 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,27.63782)">
+    <rect
+       style="opacity:1;fill:#801500;fill-opacity:1;stroke:#e6e6e6;stroke-width:3.54330707;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect2987"
+       width="1896.4567"
+       height="1076.4567"
+       x="1.7716675"
+       y="-25.866152" />
     <g
        id="g7210"
-       transform="matrix(3.4620145,0,0,-3.4620145,1935.7246,8385.8268)"
+       transform="matrix(2.0337775,0,0,-2.0337775,1690.8464,5248.2795)"
        style="fill:#000000;fill-opacity:1;stroke:none">
       <g
-         transform="translate(-2184.974,-12.506239)"
+         transform="matrix(1.6978483,0,0,1.6978483,-3591.1251,-1549.6638)"
          id="g4179"
          style="fill:#000000;fill-opacity:1;stroke:none">
         <g
@@ -760,397 +767,18 @@
           </g>
         </g>
       </g>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-887.65033"
-         x="2143.0527"
-         transform="matrix(0.22074309,0.97533199,0.97533198,-0.22074309,0,0)"
-         id="text4695">
-        <tspan
-           style="font-size:41.99995422px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="2143.0527"
-           y="-887.65033"
-           id="tspan4697">s</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1256.4861"
-         x="1970.0896"
-         transform="matrix(0.3899216,0.92084806,0.92084805,-0.3899216,0,0)"
-         id="text4699">
-        <tspan
-           style="font-size:41.99998093px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="1970.0896"
-           y="-1256.4861"
-           id="tspan4701">t</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1634.8717"
-         x="1693.8223"
-         transform="matrix(0.56880964,0.82246921,0.8224692,-0.56880965,0,0)"
-         id="text4703">
-        <tspan
-           style="font-size:41.99999237px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="1693.8223"
-           y="-1634.8717"
-           id="tspan4705">u</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1968.8463"
-         x="1322.1641"
-         transform="matrix(0.73373534,0.67943538,0.67943538,-0.73373535,0,0)"
-         id="text4707">
-        <tspan
-           style="font-size:42.00001907px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="1322.1641"
-           y="-1968.8463"
-           id="tspan4709">d</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-2201.0891"
-         x="918.48566"
-         transform="matrix(0.85637894,0.51634784,0.51634785,-0.85637895,0,0)"
-         id="text4711">
-        <tspan
-           style="font-size:41.99998093px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="918.48566"
-           y="-2201.0891"
-           id="tspan4713">e</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-2348.9387"
-         x="459.43793"
-         transform="matrix(0.94524001,0.32637604,0.32637604,-0.94524002,0,0)"
-         id="text4715">
-        <tspan
-           style="font-size:42.00001907px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="459.43793"
-           y="-2348.9387"
-           id="tspan4717">n</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-2398.2249"
-         x="-13.94287"
-         transform="matrix(0.99241143,0.12296184,0.12296184,-0.99241136,0,0)"
-         id="text4719">
-        <tspan
-           style="font-size:42.00002289px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-13.94287"
-           y="-2398.2249"
-           id="tspan4721">t</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-2320.1033"
-         x="-604.41357"
-         transform="matrix(0.99057008,-0.13700728,-0.13700728,-0.99057001,0,0)"
-         id="text4723">
-        <tspan
-           style="font-size:41.99995804px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-604.41357"
-           y="-2320.1033"
-           id="tspan4725">c</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-2139.8052"
-         x="-1070.1149"
-         transform="matrix(0.93758293,-0.34776175,-0.34776175,-0.93758294,0,0)"
-         id="text4727">
-        <tspan
-           style="font-size:42.00002289px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-1070.1149"
-           y="-2139.8052"
-           id="tspan4729">h</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1867.5256"
-         x="-1477.2021"
-         transform="matrix(0.84177927,-0.53982188,-0.53982188,-0.84177927,0,0)"
-         id="text4731">
-        <tspan
-           style="font-size:41.99996567px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-1477.2021"
-           y="-1867.5256"
-           id="tspan4733">a</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1562.7313"
-         x="-1778.9498"
-         transform="matrix(0.7261144,-0.68757391,-0.68757392,-0.72611439,0,0)"
-         id="text4735">
-        <tspan
-           style="font-size:41.99999237px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-1778.9498"
-           y="-1562.7313"
-           id="tspan4737">p</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1208.3369"
-         x="-2018.911"
-         transform="matrix(0.58551863,-0.81065896,-0.81065895,-0.58551862,0,0)"
-         id="text4739">
-        <tspan
-           style="font-size:42.00003052px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-2018.911"
-           y="-1208.3369"
-           id="tspan4741">t</tspan>
-      </text>
-      <text
-         style="font-size:11.99998665px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-809.75494"
-         x="-2190.4888"
-         transform="matrix(0.42206445,-0.90656463,-0.90656703,-0.42206444,0,0)"
-         id="text4743">
-        <tspan
-           style="font-size:41.99998474px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-2190.4888"
-           y="-809.75494"
-           id="tspan4745">e</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-378.1806"
-         x="-2284.7725"
-         transform="matrix(0.24012367,-0.97074231,-0.9707423,-0.24012367,0,0)"
-         id="text4747">
-        <tspan
-           style="font-size:42.00002289px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-2284.7725"
-           y="-378.1806"
-           id="tspan4749">r</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-559.95862"
-         x="-2193.4688"
-         transform="matrix(0.41647824,-0.90914569,-0.90914568,-0.41647824,0,0)"
-         id="text4751">
-        <tspan
-           style="font-size:28.00002098px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-2193.4688"
-           y="-559.95862"
-           id="tspan4753">U</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-878.80914"
-         x="-2064.2739"
-         transform="matrix(0.54774962,-0.83664231,-0.83664231,-0.54774962,0,0)"
-         id="text4755">
-        <tspan
-           style="font-size:28.00001907px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-2064.2739"
-           y="-878.80914"
-           id="tspan4757">F</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1146.225"
-         x="-1910.4011"
-         transform="matrix(0.65528521,-0.75538156,-0.75538156,-0.6552852,0,0)"
-         id="text4759">
-        <tspan
-           style="font-size:28.00002098px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-1910.4011"
-           y="-1146.225"
-           id="tspan4761">P</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1394.0402"
-         x="-1718.6346"
-         transform="matrix(0.75228459,-0.65883829,-0.6588383,-0.75228459,0,0)"
-         id="text4763">
-        <tspan
-           style="font-size:28.00004196px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-1718.6346"
-           y="-1394.0402"
-           id="tspan4765">E</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1636.0063"
-         x="-1464.199"
-         transform="matrix(0.84355455,-0.53704349,-0.53704349,-0.84355456,0,0)"
-         id="text4767">
-        <tspan
-           style="font-size:27.99996567px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-1464.199"
-           y="-1636.0063"
-           id="tspan4769">-</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1843.0156"
-         x="-1173.9041"
-         transform="matrix(0.91730144,-0.39819349,-0.39819349,-0.91730145,0,0)"
-         id="text4771">
-        <tspan
-           style="font-size:27.99995804px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-1173.9041"
-           y="-1843.0156"
-           id="tspan4773">R</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1989.6029"
-         x="-879.38171"
-         transform="matrix(0.96486874,-0.26273238,-0.26273239,-0.96486875,0,0)"
-         id="text4775">
-        <tspan
-           style="font-size:27.9999733px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-879.38171"
-           y="-1989.6029"
-           id="tspan4777">E</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-2090.2627"
-         x="-576.43878"
-         transform="matrix(0.99204109,-0.12591452,-0.12591452,-0.9920411,0,0)"
-         id="text4779">
-        <tspan
-           style="font-size:27.9999485px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-576.43878"
-           y="-2090.2627"
-           id="tspan4781">C</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-2138.5513"
-         x="-330.75015"
-         transform="matrix(0.99983064,-0.01840354,-0.01840354,-0.99983065,0,0)"
-         id="text4783">
-        <tspan
-           style="font-size:28.00004196px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-330.75015"
-           y="-2138.5513"
-           id="tspan4785">I</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-2160.1467"
-         x="-97.170555"
-         transform="matrix(0.99635408,0.08531433,0.08531433,-0.99635409,0,0)"
-         id="text4787">
-        <tspan
-           style="font-size:27.99998474px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="-97.170555"
-           y="-2160.1467"
-           id="tspan4789">F</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-2151.0637"
-         x="214.36336"
-         transform="matrix(0.97550558,0.21997465,0.21997465,-0.97550559,0,0)"
-         id="text4791">
-        <tspan
-           style="font-size:28.00004196px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="214.36336"
-           y="-2151.0637"
-           id="tspan4793">E</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-2089.8821"
-         x="565.19147"
-         transform="matrix(0.93014504,0.36719231,0.36719231,-0.93014505,0,0)"
-         id="text4795">
-        <tspan
-           style="font-size:28.00004196px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="565.19147"
-           y="-2089.8821"
-           id="tspan4797">-</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1973.7406"
-         x="900.38409"
-         transform="matrix(0.86139287,0.50793928,0.50793929,-0.86139288,0,0)"
-         id="text4799">
-        <tspan
-           style="font-size:28px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="900.38409"
-           y="-1973.7406"
-           id="tspan4801">B</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1819.9103"
-         x="1195.184"
-         transform="matrix(0.77871751,0.62737472,0.62737472,-0.77871751,0,0)"
-         id="text4803">
-        <tspan
-           style="font-size:28.00001144px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="1195.184"
-           y="-1819.9103"
-           id="tspan4805">R</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1619.2172"
-         x="1471.1133"
-         transform="matrix(0.6767456,0.73621694,0.73621695,-0.6767456,0,0)"
-         id="text4807">
-        <tspan
-           style="font-size:28.00003433px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="1471.1133"
-           y="-1619.2172"
-           id="tspan4809">A</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1395.9963"
-         x="1701.5724"
-         transform="matrix(0.56758573,0.82331431,0.8233143,-0.56758572,0,0)"
-         id="text4811">
-        <tspan
-           style="font-size:28px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="1701.5724"
-           y="-1395.9963"
-           id="tspan4813">S</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1211.7529"
-         x="1852.4308"
-         transform="matrix(0.47971419,0.87742482,0.87742481,-0.47971418,0,0)"
-         id="text4815">
-        <tspan
-           style="font-size:28.00000572px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="1852.4308"
-           y="-1211.7529"
-           id="tspan4817">I</tspan>
-      </text>
-      <text
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-         y="-1015.2049"
-         x="1976.6442"
-         transform="matrix(0.38764247,0.92180977,0.92180984,-0.38764247,0,0)"
-         id="text4819">
-        <tspan
-           style="font-size:28.0000267px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Copperplate Becker Med Cond;-inkscape-font-specification:Copperplate Becker Med Cond"
-           x="1976.6442"
-           y="-1015.2049"
-           id="tspan4821">L</tspan>
-      </text>
     </g>
-    <rect
-       style="opacity:0.50000000000000000;fill:#008000;fill-opacity:1;stroke:#e6e6e6;stroke-width:3.54330707000000000;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect2987"
-       width="1896.4567"
-       height="1076.4567"
-       x="1.7716535"
-       y="-25.866167" />
+    <circle
+       style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path3570"
+       cx="-1467.2377"
+       cy="-787.04449"
+       r="177.14285"
+       transform="matrix(-0.8660254,-0.5,0.5,-0.8660254,0,0)" />
+    <path
+       transform="matrix(-0.97652443,-0.21540667,0.21540667,-0.97652443,0,0)"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m -820.34674,-301.10492 a 219.33856,221.22342 0 0 1 -219.33856,221.22342 219.33856,221.22342 0 0 1 -219.3386,-221.22342 219.33856,221.22342 0 0 1 219.3386,-221.22342 219.33856,221.22342 0 0 1 219.33856,221.22342 z"
+       id="path3585" />
   </g>
 </svg>

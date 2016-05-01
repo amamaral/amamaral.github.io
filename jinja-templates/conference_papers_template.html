@@ -1,0 +1,49 @@
+{% extends "default.html" %}
+{% block title %}Conference papers{% endblock %}
+{% block contents %}
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h1 class="page-header">Conference papers
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li>Science
+                    </li>
+                    <li class="active">Conference papers</li>
+                </ol>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+        {% for item in papers %}
+        <div class="row well">
+            <div class="col-lg-2 col-md-2">
+                <a href="{{ item.href }}"><img class="img-responsive" src="{{ item.img }}"></a>
+            </div>
+            <div class="col-lg-7 col-md-7">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ loop.index }}">
+                    <h4><b>{{ loop.index }}.</b> {{ item.title }}</h4>
+                </a>
+                <div id="collapse{{ loop.index }}" class="collapse">
+                    <p>{{ item.abstract }}</p>
+                </div>
+                {{ item.author }}.<br>{{ item.journal }}, {{ item.pages }} ({{ item.year }}).
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <a class="btn btn-md btn-primary pull-right" href="{{ item.href }}">Read from publisher</a>
+            </div>
+        </div>
+        <!-- /.row -->
+        {% endfor %}
+    </div>
+    <!-- /.container -->
+{% endblock %}
