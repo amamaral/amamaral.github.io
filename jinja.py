@@ -270,6 +270,15 @@ with open("useful.html", "w") as fh:
     fh.write(useful_html)
 
 ###############
+# 404.HTML #
+###############
+
+error404 = env.get_template('404_template.html')
+error404_html = error404.render()
+with open("404.html", "w") as fh:
+    fh.write(error404_html)
+
+###############
 # PAPERS.HTML #
 ###############
 
