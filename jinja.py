@@ -279,6 +279,15 @@ with open("404.html", "w") as fh:
     fh.write(error404_html)
 
 ###############
+# under_construction.HTML #
+###############
+
+underConstruction = env.get_template('under_construction_template.html')
+underConstruction_html = underConstruction.render()
+with open("under_construction.html", "w") as fh:
+    fh.write(underConstruction_html)
+
+###############
 # PAPERS.HTML #
 ###############
 
