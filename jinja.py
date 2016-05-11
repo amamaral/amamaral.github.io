@@ -269,18 +269,18 @@ useful_html = useful.render()
 with open("useful.html", "w") as fh:
     fh.write(useful_html)
 
-###############
+############
 # 404.HTML #
-###############
+############
 
 error404 = env.get_template('404_template.html')
 error404_html = error404.render()
 with open("404.html", "w") as fh:
     fh.write(error404_html)
 
-###############
+###########################
 # under_construction.HTML #
-###############
+###########################
 
 underConstruction = env.get_template('under_construction_template.html')
 underConstruction_html = underConstruction.render()
@@ -296,14 +296,23 @@ papers_html = papers.render(papers=works)
 with open("science_papers.html", "w") as fh:
     fh.write(papers_html)
 
-###############
+##########################
 # CONFERENCE_PAPERS.HTML #
-###############
+##########################
 
 cpapers = env.get_template('conference_papers_template.html')
 cpapers_html = cpapers.render(papers=conference_papers)
 with open("conference_papers.html", "w") as fh:
     fh.write(cpapers_html)
+
+#################
+# TEACHING.HTML #
+#################
+
+teaching = env.get_template('teaching_template.html')
+teaching_html = teaching.render()
+with open("teaching.html", "w") as fh:
+    fh.write(teaching_html)
 
 
 print('website generation finished!')

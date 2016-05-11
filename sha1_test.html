@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Error 404</title>
+    <title>Ensino</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -80,35 +80,39 @@
     
     <div class="container">
 
-        <div class="row">
+        <!-- Contents -->
 
-            <div class="col-lg-12">
-                <h1 class="page-header">404
-                    <small>Page Not Found</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
-                    </li>
-                    <li class="active">404</li>
-                </ol>
+        <div class="col-md-8">
+            <div class="well">
+                <!-- Search form -->
+                <h4>Encryption test</h4>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="sha1Hash">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" onclick="hash()"><i class="fa fa-play fa-fw fa-fh"></i></button>
+                    </span>
+                </div>
+                <!-- /.input-group -->
             </div>
 
+            <div class="well" id="hashResult">
+            </div>
         </div>
 
-        <div class="row">
-
-            <div class="col-lg-12">
-                <img class="img-responsive" src="img/404.svg">
+        <div class="col-md-4">
+            <div class="well">
+                <!-- Search form -->
+                <h4>Resultados de avaliações</h4>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="cpfID" placeholder="Insira seu CPF">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" onclick="listVerify()"><i class="fa fa-search fa-fw fa-fh"></i></button>
+                    </span>
+                </div>
+                <!-- /.input-group -->
             </div>
 
-        </div>
-        <!-- /.row -->
-
-
-        <div class="row">
-
-            <div class="col-lg-12">
-                <p class="lead">The page you're looking for could not be found.</p>
+            <div class="well" id="listVerifyResult">
             </div>
 
         </div>
@@ -136,6 +140,11 @@
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/modern-business.js"></script>
+
+    <script src="js/jquery.maskedinput.min.js"/></script>
+    <script src="js/sha1.js"/></script>
+    <script src="js/listVerify.js"/></script>
+    <script src="exc2db.json"/></script>
 
 </body>
 
