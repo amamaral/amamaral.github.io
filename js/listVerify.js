@@ -15,36 +15,33 @@ function listVerify() {
     for (i = 0; i < len; i++) {
         if (sha1(ID) == sList[i].ID){
             found = true;
-            break;
+            out += '<table class="table">\
+                    <thead><tr>\
+                    <th class="text-center">EE</th>\
+                    <th class="text-center">Q1</th>\
+                    <th class="text-center">Q2</th>\
+                    <th class="text-center">Q3</th>\
+                    <th class="text-center">Q4</th>\
+                    <th class="text-center">Nota total</th>\
+                    </tr></thead>\
+                    <tbody>';
+            out += "<tr>";
+            out += '<td class="text-center">' + sList[i].EE + "</td>";
+            out += '<td class="text-center">' + sList[i].std.P1 + "</td>";
+            out += '<td class="text-center">' + sList[i].std.P2 + "</td>";
+            out += '<td class="text-center">' + sList[i].std.P3 + "</td>";
+            out += '<td class="text-center">' + sList[i].std.P4 + "</td>";
+            if (sList[i].std.Total >= 7){
+                out += '<td class="text-center text-info">' + sList[i].std.Total + "</td>";
+            } else {
+                out += '<td class="text-center text-danger">' + sList[i].std.Total + "</td>";
+            }
+            
+            out += "</tr></p>";
+            out += '</tbody></table>';
         }
     }
 
-    if (found){
-        out += '<table class="table">\
-                <thead><tr>\
-                <th class="text-center">EE</th>\
-                <th class="text-center">Q1</th>\
-                <th class="text-center">Q2</th>\
-                <th class="text-center">Q3</th>\
-                <th class="text-center">Q4</th>\
-                <th class="text-center">Nota total</th>\
-                </tr></thead>\
-                <tbody>';
-        out += "<tr>";
-        out += '<td class="text-center">1o. EE</td>';
-        out += '<td class="text-center">' + sList[i].std.P1 + "</td>";
-        out += '<td class="text-center">' + sList[i].std.P2 + "</td>";
-        out += '<td class="text-center">' + sList[i].std.P3 + "</td>";
-        out += '<td class="text-center">' + sList[i].std.P4 + "</td>";
-        if (sList[i].std.Total >= 7){
-            out += '<td class="text-center text-info">' + sList[i].std.Total + "</td>";
-        } else {
-            out += '<td class="text-center text-danger">' + sList[i].std.Total + "</td>";
-        }
-        
-        out += "</tr></p>";
-        out += '</tbody></table>';
-    }
     if (!found) out += "CPF não encontrado!";
     
     document.getElementById("listVerifyResult").innerHTML = out;
