@@ -1,4 +1,4 @@
-{% extends "default.html" %}
+﻿{% extends "default.html" %}
 {% block title %}Ensino{% endblock %}
 {% block contents %}
     <div class="container">
@@ -6,9 +6,10 @@
         <!-- Contents -->
 
         <div class="col-md-8">
-            <h2> Em construção </h2>
-            <p>Para verificar as notas nos exercícios escolares, favor utilizar a ferramenta de busca nesta página.</p>
+            {{ page_body|safe }}
         </div>
+
+        <!-- /.contents -->
 
         <div class="col-md-4">
             <div class="well">

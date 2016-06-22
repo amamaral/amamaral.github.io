@@ -2,8 +2,10 @@ from jinja2 import Environment, FileSystemLoader
 import bibtexparser
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.customization import convert_to_unicode
+import markdown
 
 env = Environment(loader=FileSystemLoader('jinja-templates'))
+md = markdown.Markdown()
 
 # Bibliographic management
 
@@ -309,8 +311,12 @@ with open("conference_papers.html", "w") as fh:
 # TEACHING.HTML #
 #################
 
+main_page_body=''
+with open('teaching//main.md', "r") as fh:
+    main_page_body = md.convert(fh.read())
+
 teaching = env.get_template('teaching_template.html')
-teaching_html = teaching.render()
+teaching_html = teaching.render(page_body=main_page_body)
 with open("teaching.html", "w") as fh:
     fh.write(teaching_html)
 
