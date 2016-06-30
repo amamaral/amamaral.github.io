@@ -5,6 +5,8 @@ Para verificar as notas nos exercícios escolares, favor utilizar a ferramenta d
 
 ### Cálculo 1 - Turmas E1 e E4
 
+[Gabaritos 1EE, 2EE e 3EE](https://www.dropbox.com/sh/ju5qcdxwuz8nivq/AAA4laosfFzECjY149tI8dAca?dl=0)
+
 **Revisão de provas 1EE**
 
 As notas de todos os estudantes que pediram a revisão de prova do 1EE já estão atualizadas no SIGA.
@@ -12,12 +14,16 @@ Caso haja algum problema, me contactar por email.
 
 **Revisão de provas, 2EE e 3EE**
 
-As datas para revisão serão anunciadas nesta próxima semana,
- provavelmente ocorrendo entre os dias 04 e 08 de julho.
+As datas para revisão serão anunciadas nesta semana,
+e provavelmente ocorrerão entre os dias 04 e 08 de julho.
 
 ### Cálculo 2 - Turmas S3 e S8
 
 [Listas de exercícios](https://www.dropbox.com/sh/juqrsd47xf63qz0/AACCnX-PtEYlWg1SrsuxZIL9a?dl=0)
+
+**2EE**
+
+A questão 3 já foi corrigida e as notas do 2EE já estão no SIGA.
 
 **Entrega da lista**
 
@@ -32,5 +38,5 @@ digital, e vale a pena salientar que **a responsabilidade de entrega da lista é
 
 **Revisão de provas, 2EE e 3EE**
 
-As datas para revisão serão anunciadas nesta próxima semana,
- provavelmente ocorrendo entre os dias 04 e 08 de julho.
+As datas para revisão serão anunciadas nesta semana,
+e provavelmente ocorrerão entre os dias 04 e 08 de julho.
