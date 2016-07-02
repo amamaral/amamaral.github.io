@@ -21,6 +21,11 @@ e provavelmente ocorrerão entre os dias 04 e 08 de julho.
 
 [Listas de exercícios](https://www.dropbox.com/sh/juqrsd47xf63qz0/AACCnX-PtEYlWg1SrsuxZIL9a?dl=0)
 
+**3EE**
+
+As provas já foram corrigidas, e as notas já estão no SIGA. Caso deseje ver a nota por cada questão, ver aqui no site.
+**As notas do 1EE e 3EE ainda não possuem a pontuação das listas**. Farei as correções neste final de semana. Sobre a revisão, ver novas informações abaixo.
+
 **2EE**
 
 A questão 3 já foi corrigida e as notas do 2EE já estão no SIGA.
@@ -38,5 +43,4 @@ digital, e vale a pena salientar que **a responsabilidade de entrega da lista é
 
 **Revisão de provas, 2EE e 3EE**
 
-As datas para revisão serão anunciadas nesta semana,
-e provavelmente ocorrerão entre os dias 04 e 08 de julho.
+Marcarei a revisão de prova para **quinta (07/07) ou sexta (08/07)**, dependendo da disponibilidade de salas.
