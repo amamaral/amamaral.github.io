@@ -19,18 +19,13 @@ na *quinta-feira 07/09 das 13:00 as 15:00 na sala 09 da área II*.
 
 [Listas de exercícios](https://www.dropbox.com/sh/juqrsd47xf63qz0/AACCnX-PtEYlWg1SrsuxZIL9a?dl=0)
 
+**Lista 1**
+
+A nota da lista 1 já foi adicionada no SIGA.
+
 **Revisão de provas, 2EE e 3EE**
 
 A revisão de prova está marcada para **sexta-feira (08/07) das 14:00 as 16:00 na sala 09 da área II**.
-
-**3EE**
-
-As provas já foram corrigidas, e as notas já estão no SIGA. Caso deseje ver a nota por cada questão, ver aqui no site.
-**As notas do 1EE e 3EE ainda não possuem a pontuação das listas**. Farei as correções neste final de semana.
-
-**2EE**
-
-A questão 3 já foi corrigida e as notas do 2EE já estão no SIGA.
 
 **Entrega da lista**
 
