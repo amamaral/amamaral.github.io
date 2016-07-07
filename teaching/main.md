@@ -7,6 +7,11 @@ Para verificar as notas nos exercícios escolares, favor utilizar a ferramenta d
 
 [Gabaritos 1EE, 2EE e 3EE](https://www.dropbox.com/sh/ju5qcdxwuz8nivq/AAA4laosfFzECjY149tI8dAca?dl=0)
 
+**Segunda chamada e notas revisadas**
+
+As notas da segunda chamada e as notas revisadas das turmas E1 e E4 já se encontram no SIGA.
+Qualquer dúvida ou possível lançamento incorreto favor me contactar por email.
+
 **Revisão de provas, 2EE e 3EE**
 
 As notas do 3EE já constam no SIGA.
