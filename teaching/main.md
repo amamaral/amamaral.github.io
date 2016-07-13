@@ -7,8 +7,7 @@
 
 **Revisão do exame final**
 
-A revisão do exame final das turmas E1 e E4 ocorrerá **provavelmente na quinta-feira (14/07)** , em horário a designar, na área II.
-Devo anunciar o horário até amanhã.
+A revisão do exame final das turmas E1 e E4 ocorrerá **quinta-feira (14/07) de 10h-12h na área II, sala 5**.
 
 ### Cálculo 2 - Turmas S3 e S8
 
@@ -16,5 +15,4 @@ Devo anunciar o horário até amanhã.
 
 **Revisão do exame final**
 
-A revisão do exame final das turmas S3 e S8 ocorrerá **provavelmente na quinta-feira (14/07)** , em horário a designar, na área II.
-Devo anunciar o horário até amanhã.
+A revisão do exame final das turmas S3 e S8 ocorrerá **sexta-feira (15/07)** de 14h-15h na Área II. Caso prefiram, há a possibilidade de revisar a prova final também durante a revisão de Cálculo 1 (ver acima).
