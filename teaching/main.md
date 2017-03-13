@@ -1,18 +1,32 @@
 ﻿Avisos
 ======
 
-### Cálculo 1 - Turmas E1 e E4
 
-[Gabaritos 1EE, 2EE e 3EE e **Final**](https://www.dropbox.com/sh/ju5qcdxwuz8nivq/AAA4laosfFzECjY149tI8dAca?dl=0)
+## Física Geral 1 - Notas de Aula - 2017.1
 
-**Revisão do exame final**
+Sejam bem vindos às notas de aula de Física Geral 1 (2017.1). Inicialmente gostaria de informar 
+a todos que estas notas serão disponibilizadas ao longo do curso, de forma que neste período
+ *as notas só estarão disponíveis próximo das realização das respectivas aulas*, e não será possível
+antecipar o conteúdo ministrado. **É bastante salutar que o estudante veja o assunto antes da aula**,
+para que o tempo em sala de aula seja aproveitado para tirar dúvidas e esclarecer conceitos. Caso
+você queira avançar nos estudos tendo notas de aula como guia, recomendo fortemente que acessem as notas de aula
+dos profs. Mauro Copelli e Leonardo Cabral. **Em especial, as notas de aula do Mauro Copelli são ricamente complementadas por video-aulas e outros materiais multimídia.**
 
-A revisão do exame final das turmas E1 e E4 ocorrerá **quinta-feira (14/07) de 10h-12h na área II, sala 5**.
+- [Notas Mauro Copelli](https://sites.google.com/site/fisica1maurocopelli/)
+- [Notas Leonardo Cabral](https://sites.google.com/site/fisica120152dfufpe/)
 
-### Cálculo 2 - Turmas S3 e S8
+Recomenda-se também que todos os estudantes estejam cadastrados no portal [edmodo](edmodo.com),
+onde instruções relativas ao curso, avisos gerais e os testinhos serão repassados. Para se cadastrar no edmodo, basta
+seguir as instruções repassadas no informe inicial da disciplina: [http://bit.ly/fisica120171](http://bit.ly/fisica120171).
 
-[Listas de exercícios + Gabaritos dos EEs e **Final**](https://www.dropbox.com/sh/juqrsd47xf63qz0/AACCnX-PtEYlWg1SrsuxZIL9a?dl=0)
+### Slides da unidade 1
 
-**Revisão do exame final**
+- [1 - Medições](teaching/Fisica_1/C1 - Medicoes.slides.html)
+- [2 - Cinemática. Movimento Retilíneo.](teaching/Fisica_1/C2 - Cinematica-MRU.slides.html)
 
-A revisão do exame final das turmas S3 e S8 ocorrerá **sexta-feira (15/07)** de 14h-15h na Área II. Caso prefiram, há a possibilidade de revisar a prova final também durante a revisão de Cálculo 1 (ver acima).
+<!--
+- [3 - Vetores]()
+- [4 - Cinemática em duas e três dimensões]()
+- [5 - Dinâmica - Leis de Newton]()
+- [6 - Dinâmica - Atrito]()
+-->
