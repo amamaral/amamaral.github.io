@@ -15,7 +15,7 @@ dos profs. Mauro Copelli e Leonardo Cabral. **Em especial, as notas de aula do M
 - [Notas Mauro Copelli](https://sites.google.com/site/fisica1maurocopelli/)
 - [Notas Leonardo Cabral](https://sites.google.com/site/fisica120152dfufpe/)
 
-Recomenda-se também que todos os estudantes estejam cadastrados no portal [edmodo](edmodo.com),
+Recomenda-se também que todos os estudantes estejam cadastrados no portal [edmodo](http://www.edmodo.com),
 onde instruções relativas ao curso, avisos gerais e os testinhos serão repassados. Para se cadastrar no edmodo, basta
 seguir as instruções repassadas no informe inicial da disciplina: [http://bit.ly/fisica120171](http://bit.ly/fisica120171).
 
