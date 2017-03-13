@@ -21,12 +21,10 @@ seguir as instruções repassadas no informe inicial da disciplina: [http://bit.
 
 ### Slides da unidade 1
 
-<!--
-
 - [1 - Medições](teaching/Fisica_1/C1 - Medicoes.slides.html)
 - [2 - Cinemática. Movimento Retilíneo.](teaching/Fisica_1/C2 - Cinematica-MRU.slides.html)
 
-
+<!--
 - [3 - Vetores]()
 - [4 - Cinemática em duas e três dimensões]()
 - [5 - Dinâmica - Leis de Newton]()
