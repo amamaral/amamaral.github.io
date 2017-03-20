@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>C4 - Movimento em 2D e 3D</title>
+<title>C5 - Leis de Newton</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11926,7 +11926,7 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="T&#243;pico-4---Movimento-em-duas-e-tr&#234;s-dimens&#245;es">T&#243;pico 4 - Movimento em duas e tr&#234;s dimens&#245;es<a class="anchor-link" href="#T&#243;pico-4---Movimento-em-duas-e-tr&#234;s-dimens&#245;es">&#182;</a></h1><h2 id="Anderson-M-Amaral---amamaral.github.io/teaching">Anderson M Amaral - <a href="https://amamaral.github.io/teaching">amamaral.github.io/teaching</a><a class="anchor-link" href="#Anderson-M-Amaral---amamaral.github.io/teaching">&#182;</a></h2><div class="image_block">
+<h1 id="T&#243;pico-5---Leis-de-Newton">T&#243;pico 5 - Leis de Newton<a class="anchor-link" href="#T&#243;pico-5---Leis-de-Newton">&#182;</a></h1><h2 id="Anderson-M-Amaral---amamaral.github.io/teaching">Anderson M Amaral - <a href="https://amamaral.github.io/teaching">amamaral.github.io/teaching</a><a class="anchor-link" href="#Anderson-M-Amaral---amamaral.github.io/teaching">&#182;</a></h2><div class="image_block">
  <div class="inner_image_block">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Walton_with_Leicester_-_Peterborough_East_train_geograph-2791492-by-Ben-Brooksbank.jpg/800px-Walton_with_Leicester_-_Peterborough_East_train_geograph-2791492-by-Ben-Brooksbank.jpg">
  </div><div class="inner_image_block">
@@ -11943,9 +11943,9 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Movimento-em-2D-e-3D">Movimento em 2D e 3D<a class="anchor-link" href="#Movimento-em-2D-e-3D">&#182;</a></h1><h3 id="Fundamentos-da-F&#237;sica,-Cap&#237;tulo-4">Fundamentos da F&#237;sica, Cap&#237;tulo 4<a class="anchor-link" href="#Fundamentos-da-F&#237;sica,-Cap&#237;tulo-4">&#182;</a></h3><h3 id="Leituras-complementares:">Leituras complementares:<a class="anchor-link" href="#Leituras-complementares:">&#182;</a></h3><ul>
-<li>Nussenzveig - Capítulo 3</li>
-<li>Feynman, Leighton, Sands - Capítulo 11</li>
+<h1 id="Leis-de-Newton">Leis de Newton<a class="anchor-link" href="#Leis-de-Newton">&#182;</a></h1><h3 id="Fundamentos-da-F&#237;sica,-Cap&#237;tulo-5">Fundamentos da F&#237;sica, Cap&#237;tulo 5<a class="anchor-link" href="#Fundamentos-da-F&#237;sica,-Cap&#237;tulo-5">&#182;</a></h3><h3 id="Leituras-complementares:">Leituras complementares:<a class="anchor-link" href="#Leituras-complementares:">&#182;</a></h3><ul>
+<li>Nussenzveig - Capítulo 4</li>
+<li>Feynman, Leighton, Sands - Capítulo 9</li>
 </ul>
 
 </div>
@@ -11956,12 +11956,11 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Posi&#231;&#227;o-em-mais-dimens&#245;es">Posi&#231;&#227;o em mais dimens&#245;es<a class="anchor-link" href="#Posi&#231;&#227;o-em-mais-dimens&#245;es">&#182;</a></h2><ul>
-<li>Posição no espaço ao longo de uma reta (1D): $x$.</li>
-<li><div class="fragment"> Posição no espaço 2D ou 3D: $\vec{r}$ </div></li>
-<li><div class="fragment"> $\vec{r}$: Vetor posição, ou deslocamento em rel. à origem </div>
-<div class="fragment"> $$\vec{r} = x\hat{i}+y\hat{j}+z\hat{k}$$ </div>
-<div class="fragment"> $x$, $y$ e $z$ são as coordenadas associadas à $\vec{r}$</div></li>
+<h2 id="Resumo">Resumo<a class="anchor-link" href="#Resumo">&#182;</a></h2><ul>
+<li>Cinemática: descrição das características do movimento. Observação.</li>
+<li><div class="fragment">Qual a causa dos movimentos?</div></li>
+<li><div class="fragment">Leis de Newton. Formulação de leis e teorias.</div></li>
+<li><div class="fragment">Domínio de validade? Objetos macroscópicos e com velocidades pequenas.</div></li>
 </ul>
 
 </div>
@@ -11972,1253 +11971,105 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Movimento-em-mais-dimens&#245;es">Movimento em mais dimens&#245;es<a class="anchor-link" href="#Movimento-em-mais-dimens&#245;es">&#182;</a></h2><ul>
-<li>Consideramos a posição variando no tempo:<div class="fragment"> $$\vec{r}(t) = x(t)\hat{i}+y(t)\hat{j}+z(t)\hat{k}$$</div></li>
+<h2 id="In&#233;rcia">In&#233;rcia<a class="anchor-link" href="#In&#233;rcia">&#182;</a></h2><ul>
+<li><div class="fragment">Como é o movimento de um corpo livre da ação de forças e quaisquer impedimentos? Ex.: Um objeto se deslocando em um plano horizontal sem atrito.</div></li>
+<li><div class="fragment">R.: O corpo se mantém parado, ou com velocidade constante. (Galileu. Ver Nussenzveig)</div></li>
 </ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Grandezas-do-movimento">Grandezas do movimento<a class="anchor-link" href="#Grandezas-do-movimento">&#182;</a></h2><ul>
-<li><span class="fragment">Vetor</span> deslocamento: <span class="fragment">$\Delta\vec{r}=\vec{r}_2-\vec{r}_1$</span></li>
-<li><div class="fragment"><span class="fragment">Vetor</span> velocidade média: <span class="fragment">$\bar{\vec{v}}=\frac{\Delta\vec{r}}{\Delta t}=\frac{\vec{r}_2-\vec{r}_1}{t_2-t_1}$</span></div></li>
-<li><div class="fragment">Vetor velocidade instantânea: $\vec{v}=\lim_{\Delta t \rightarrow 0}\frac{\Delta\vec{r}}{\Delta t}$</div></li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="C&#225;lculo-de-$\vec{v}$">C&#225;lculo de $\vec{v}$<a class="anchor-link" href="#C&#225;lculo-de-$\vec{v}$">&#182;</a></h2><p>Em termos de vetores unitários,</p>
-<div>
-\begin{align}
-\Delta\vec{r} &= \vec{r}_2-\vec{r}_1\\
- &= (x_2\hat{i}+y_2\hat{j}+z_2\hat{k}) - (x_1\hat{i}+y_1\hat{j}+z_1\hat{k}),\\
- &= (\Delta x\hat{i}+\Delta y\hat{j}+\Delta z\hat{k}).
-\end{align}
-</div>
-<div class="fragment">
-\begin{align}
-\frac{\Delta\vec{r}}{\Delta t} &= \frac{\Delta x}{\Delta t}\hat{i}+\frac{\Delta y}{\Delta t}\hat{j}+\frac{\Delta z}{\Delta t}\hat{k},
-\end{align}
-</div>
-<div class="fragment">
-\begin{align}
-\frac{d\vec{r}}{dt}&=\frac{dx}{dt}\hat{i}+\frac{dy}{dt}\hat{j}+\frac{dz}{dt}\hat{k},\\
-&= v_x\hat{i}+v_y\hat{j}+v_z\hat{k}.
-\end{align}
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Acelera&#231;&#227;o-$\vec{a}$">Acelera&#231;&#227;o $\vec{a}$<a class="anchor-link" href="#Acelera&#231;&#227;o-$\vec{a}$">&#182;</a></h2><ul>
-<li>Definição similar à de $\vec{v}$.</li>
-<li><div class="fragment">Aceleração média: <span class="fragment">$\bar{\vec{a}}=\frac{\Delta\vec{v}}{\Delta t}$,</span></div></li>
-<li><div class="fragment">Aceleração instantânea: <span class="fragment">$\vec{a}=\frac{d\vec{v}}{dt}$.</span></div></li>
-</ul>
-<div class="fragment">
-\begin{align}
-\frac{d\vec{v}}{dt}&=\frac{dv_x}{dt}\hat{i}+\frac{dv_y}{dt}\hat{j}+\frac{dv_z}{dt}\hat{k},\\
-\vec{a} &= a_x\hat{i}+a_y\hat{j}+a_z\hat{k}.
-\end{align}
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Intui&#231;&#227;o-sobre-a-acelera&#231;&#227;o">Intui&#231;&#227;o sobre a acelera&#231;&#227;o<a class="anchor-link" href="#Intui&#231;&#227;o-sobre-a-acelera&#231;&#227;o">&#182;</a></h2>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Exemplo:-movimento-com-$\vec{v}=$-constante">Exemplo: movimento com $\vec{v}=$ constante<a class="anchor-link" href="#Exemplo:-movimento-com-$\vec{v}=$-constante">&#182;</a></h4><p>Sejam $\begin{cases}
-x(t)=1+2t,\\
-y(t)=2+3t,
-\end{cases}$, com $x$ e $y$ em m, e $t$ em s.
-Representar $x(t)$, $y(t)$ e o movimento no plano $x y$</p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>Este caso admite representar $y$ como função de $x$: $$y=y(x)=2 + 3 \left(\frac{x-1}{2}\right)=\frac{1}{2}+\frac{3}{2}x$$</p>
+<blockquote><div class="fragment"><b>1ª Lei de Newton</b>: na ausência de uma força resultante, a velocidade de um corpo permanecerá constante.</div>
 </blockquote>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Exemplo:-movimento-com-$\vec{a}=\vec{\text{cte}}$">Exemplo: movimento com $\vec{a}=\vec{\text{cte}}$<a class="anchor-link" href="#Exemplo:-movimento-com-$\vec{a}=\vec{\text{cte}}$">&#182;</a></h4><p>Sejam $\begin{cases}
-x(t)=-1+10t-2t^2,\\
-y(t)=2-3t+t^2,
-\end{cases}$, com $x$ e $y$ em m, e $t$ em s.</p>
-<p>Representar $x(t)$, $y(t)$ e o movimento no plano $x y$</p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>Este caso não admite representar $y$ como função de $x$! A parametrização (representação em termos de $t$) é importante!</p>
-</blockquote>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Movimento-sob-acelera&#231;&#227;o-constante-($\vec{a}=\vec{\text{cte}}$-)">Movimento sob acelera&#231;&#227;o constante ($\vec{a}=\vec{\text{cte}}$ )<a class="anchor-link" href="#Movimento-sob-acelera&#231;&#227;o-constante-($\vec{a}=\vec{\text{cte}}$-)">&#182;</a></h2><p>Se $\vec{a}=\vec{\text{cte}}$, então $\begin{cases}a_x=\text{cte}\\a_y=\text{cte}\\a_z=\text{cte}\end{cases}$. Velocidades $\rightarrow$ <span class="fragment">$\begin{cases}v_x=v_{0x}+a_x t,\\v_y=v_{0y}+a_y t,\\v_z=v_{0z}+a_z t.\end{cases}$</span></p>
-<p>Coordenadas $\rightarrow$ <span class="fragment">$\begin{cases}x=x_0+v_{0x}t+a_x \frac{t^2}{2},\\y=y_0+v_{0y}t+a_y \frac{t^2}{2},\\z=z_0+v_{0z}t+a_z \frac{t^2}{2}.\end{cases}$</span></p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Representa&#231;&#227;o-em-termos-de-vetores:">Representa&#231;&#227;o em termos de vetores:<a class="anchor-link" href="#Representa&#231;&#227;o-em-termos-de-vetores:">&#182;</a></h4>\begin{align}
-\vec{v} &= v_x\hat{i}+v_y\hat{j}+v_z\hat{k},\\
-        &= v_{0x}\hat{i}+v_{0y}\hat{j}+v_{0z}\hat{k} + a_x t\hat{i}+a_y t\hat{j}+a_z t\hat{k},\\
-        &= \vec{v}_0+\vec{a} t.\\
-\end{align}<div class="fragment">De forma similar, $$ \vec{r}(t) = \vec{r}_0 + \vec{v}_0 t+ \vec{a} \frac{t^2}{2}.$$</div>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Exemplo:-&#233;-poss&#237;vel-eliminar-o-tempo?">Exemplo: &#233; poss&#237;vel eliminar o tempo?<a class="anchor-link" href="#Exemplo:-&#233;-poss&#237;vel-eliminar-o-tempo?">&#182;</a></h4><ul>
-<li><div class="fragment">Atenção! Não é possível fazer como em 1D, onde $t=\frac{v-v_0}{a}$. Não existe "divisão" entre vetores.</div></li>
-<li><div class="fragment">Eq. de Torricelli envolve quadrados das velocidades... Produto $\vec{v}\cdot\vec{v}$?</div></li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="fragment">
-$\vec{v}\cdot\vec{v} = (\vec{v}_0+\vec{a} t)\cdot(\vec{v}_0+\vec{a} t) =$<span class="fragment">$ \vec{v}_0\cdot\vec{v}_0 + 2 \vec{v}_0\cdot \vec{a} t + \vec{a}\cdot\vec{a} t^2$</span>
-</div><div class="fragment">
-$\vec{v}\cdot\vec{v} = \vec{v}_0\cdot\vec{v}_0 + 2 \vec{a}\cdot (\vec{v}_0\cdot t + \vec{a} \frac{t^2}{2})$
-</div><div class="fragment">
-Mas $\vec{r}-\vec{r}_0 = \vec{v}_0 t+ \vec{a} \frac{t^2}{2}$,
-</div><div class="fragment">
-$$\vec{v}\cdot\vec{v} = \vec{v}_0\cdot\vec{v}_0 + 2 \vec{a}\cdot (\vec{r}-\vec{r}_0)$$
-</div><div class="fragment">
-Note que ambos os lados da igualdade acima são escalares.
-</div>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Movimento-bal&#237;stico">Movimento bal&#237;stico<a class="anchor-link" href="#Movimento-bal&#237;stico">&#182;</a></h2><ul>
-<li>Objeto lançado com $\vec{v}_0$ conhecido. Dados iniciais: $\begin{cases}v_0=\text{vel. do projétil,}\\\theta_0=\text{ângulo do lançamento.}\end{cases}$</li>
-<li><div class="fragment">Sujeito à aceleração constante. Ex.: gravidade, $\vec{a}=-g\hat{j}$</div></li>
-<li><div class="fragment">Como representar este movimento? Dados $v_0$ e $\theta_0$, qual o movimento do projétil?</div></li>
-<li><div class="fragment"><font color="red">Assumimos</font> que o movimento é independente em direções ortogonais.<span class="fragment"> Nem sempre verdade. Ex.: Resistência do ar *acopla* $v_x$ e $v_y$.</span></div></li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Movimento-horizontal">Movimento horizontal<a class="anchor-link" href="#Movimento-horizontal">&#182;</a></h3><ul>
-<li>Dados iniciais: $v_0$, $\theta_0$ e $\vec{a}=-g\hat{j}$.</li>
-<li><div class="fragment">Movimento uniforme.</div></li>
-<li><div class="fragment">$v_x=v_0\cos\theta_0$, $x(t)=x_0+v_0\cos\theta_0 t$.</div></li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Movimento-vertical">Movimento vertical<a class="anchor-link" href="#Movimento-vertical">&#182;</a></h3><ul>
-<li>Dados iniciais: $v_0$, $\theta_0$ e $\vec{a}=-g\hat{j}$.</li>
-<li><div class="fragment">Movimento uniformemente acelerado.</div></li>
-<li><div class="fragment">$v_y(t)=v_{0y}+a_y t$, $y(t)=y_0+v_{0y} t + a_y \frac{t^2}{2}$.</div></li>
-<li><div class="fragment">$a_y=-g$, $v_{0y}=v_0\sin\theta_0$</div></li>
-<li><div class="fragment">$v_y(t)=v_0\sin\theta_0-g t$, $y(t)=y_0+v_0\sin\theta_0 t -g \frac{t^2}{2}$.</div></li>
-<li><div class="fragment">Altura máxima quando $v_y=0$, ou $t^*=\frac{v_0}{g}\sin\theta_0$.</div></li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Equa&#231;&#227;o-da-trajet&#243;ria">Equa&#231;&#227;o da trajet&#243;ria<a class="anchor-link" href="#Equa&#231;&#227;o-da-trajet&#243;ria">&#182;</a></h3><ul>
-<li>É possível escrever $y=y(x)$? I.e., "eliminar" o tempo?</li>
-<li><div class="fragment">Note que $x-x_0=v_0\cos\theta_0 t$, ou $$t=\frac{x-x_0}{v_0\cos\theta_0},$$</div>
-<div class="fragment">
-$y(t)=y_0+v_0\sin\theta_0 t -g \frac{t^2}{2}$
-$ = y_0+v_0\sin\theta_0 \left(\frac{x-x_0}{v_0\cos\theta_0}\right) - \frac{g}{2}\left(\frac{x-x_0}{v_0\cos\theta_0}\right)^2$
-</div><div class="fragment">
-$=y_0+\tan\theta_0 \left(x-x_0\right) - \frac{g}{2v_0^2\cos^2\theta_0}\left(x-x_0\right)^2.$
-</div><div class="fragment">
-Trajetória parabólica! (Galileu) Quem é $\vec{v}(t)$? e $\theta(t)=\arctan{\frac{v_y}{v_x}}$?
-</div></li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Alcance">Alcance<a class="anchor-link" href="#Alcance">&#182;</a></h2><ul>
-<li>Definido como o deslocamento em $x$ tal que $y$ retorna ao valor inicial $y_0$ $(y-y_0=0)$</li>
-<li><div class="fragment">Seja o deslocamento na dir. x, $x-x_0=R$ (*range*),
-\begin{align}
-0 &= \tan\theta_0 R - \frac{g}{2v_0^2\cos^2\theta_0}R^2\\
-&= R \left(\tan\theta_0 - \frac{g}{2v_0^2\cos^2\theta_0}R\right)
-\end{align}</div></li>
-<li><div class="fragment">Soluções: $R=0$ (trivial), ou $\tan\theta_0 - \frac{g}{2v_0^2\cos^2\theta_0}R=0$,
-$$ R = \frac{v_0^2}{g} 2\sin\theta_0\cos\theta_0 = \frac{v_0^2}{g} \sin2\theta_0$$.</div></li>
-<li><div class="fragment">Atenção! Se a altura final do projétil não for igual a inicial, a distância percorrida ao longo da horizontal será diferente de $R$!</div></li>
-<li><div class="fragment">Quando o alcance é máximo? R.: $\sin2\theta_0=1$, ou $2\theta_0=90^o$, $$\theta_0=45^o.$$</div></li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Altura-m&#225;xima">Altura m&#225;xima<a class="anchor-link" href="#Altura-m&#225;xima">&#182;</a></h3><ul>
-<li><div class="fragment">Simplificações: $x_0 = y_0 = 0$.</div></li>
-<li><div class="fragment">$y=\tan\theta_0 x - \frac{g}{2v_0^2\cos^2\theta_0}x^2$. Para que valor $x=x^*$, $y(x)$ é máximo?</div></li>
-<li><div class="fragment">$\frac{dy}{dx}=0$, ou $\tan\theta_0 - \frac{g}{v_0^2\cos^2\theta_0}x^*=0$,
-$$x^*=\frac{v_0^2}{g}\sin\theta_0\cos\theta_0.$$</div></li>
-<li><div class="fragment">$y(x^*)=y_{max}\tan\theta_0\left(\frac{v_0^2}{g}\sin\theta_0\cos\theta_0\right) - \frac{g}{2v_0^2\cos^2\theta_0}\left(\frac{v_0^2}{g}\sin\theta_0\cos\theta_0\right)^2$, e
-$$y_{max}=\frac{v_0^2}{2g}\sin^2\theta_0.$$</div></li>
-<li><div class="fragment">Outra forma de calcular: encontrar $t^*$ tal que $v_y(t^*)=0$.</div></li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Movimento-circular-uniforme-(MCU)">Movimento circular uniforme (MCU)<a class="anchor-link" href="#Movimento-circular-uniforme-(MCU)">&#182;</a></h2><ul>
-<li>Importante para vários tipos de sistemas. Ex.: Carrossel, motores, engrenagens, rodas, satélites...</li>
-<li>Movimento de projéteis: $\begin{cases}\vec{a}=\vec{\text{cte}}\text{ em módulo e direção,}\\\vec{v}\text{ varia em módulo e direção.}\end{cases}$</li>
-<li>MCU: $\begin{cases}|\vec{a}|\text{ e } |\vec{v}|\text{ são ctes,}\\\text{direção de }\vec{v}\text{ e }\vec{a}\text{ variam.}\end{cases}$</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Descri&#231;&#227;o-do-movimento">Descri&#231;&#227;o do movimento<a class="anchor-link" href="#Descri&#231;&#227;o-do-movimento">&#182;</a></h3><ul>
-<li>$|\vec{v}_1|=|\vec{v}_2|=v=$cte.</li>
-<li>Espaço percorrido: $L=R\Delta \theta=v\Delta t$. ($\Delta \theta$ em radianos!)</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<script>
-$(document).ready(function(){
-    $("#input_259").hide();               <!-- Code is hidden by default -->
-    $("#button_259").click(function(){
-        $("#input_259").toggle();
-    });
-});
-</script>
-<div class="input" id="input_259">
-<div class="prompt input_prompt"></div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
-
-<span class="c1"># Círculo</span>
-<span class="n">theta</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">radius</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
-
-<span class="c1"># Arco de círculo</span>
-<span class="n">dtheta</span> <span class="o">=</span> <span class="mf">0.4</span>
-<span class="n">DeltaTheta</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">dtheta</span><span class="p">,</span> <span class="n">dtheta</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">DeltaTheta</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">DeltaTheta</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">)</span>
-<span class="n">text</span><span class="p">(</span><span class="mf">0.85</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">)</span>
-
-<span class="c1"># Pontos indicando o início e o fim da trajetória</span>
-<span class="n">xi</span><span class="p">,</span> <span class="n">yi</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>  <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
-<span class="n">xf</span><span class="p">,</span> <span class="n">yf</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">plot</span><span class="p">([</span><span class="n">xi</span><span class="p">,</span> <span class="n">xf</span><span class="p">],</span> <span class="p">[</span><span class="n">yi</span><span class="p">,</span> <span class="n">yf</span><span class="p">],</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
-
-<span class="c1"># Vetores velocidade</span>
-<span class="n">vi</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">[</span><span class="n">xi</span><span class="p">,</span><span class="n">yi</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{v}</span><span class="s1">_i$&#39;</span><span class="p">,</span> <span class="n">mpl_options</span><span class="o">=</span><span class="n">uvector_style</span><span class="p">)</span>
-<span class="n">vi</span><span class="o">.</span><span class="n">polar</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="n">dtheta</span><span class="o">+</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">vi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">vi</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">)</span>
-
-<span class="n">vf</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">[</span><span class="n">xf</span><span class="p">,</span><span class="n">yf</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{v}</span><span class="s1">_f$&#39;</span><span class="p">,</span> <span class="n">mpl_options</span><span class="o">=</span><span class="n">uvector_style</span><span class="p">)</span>
-<span class="n">vf</span><span class="o">.</span><span class="n">polar</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">dtheta</span><span class="o">+</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">vf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">vf</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">)</span>
-
-<span class="c1"># Vetores posição</span>
-<span class="n">ri</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">dxdy</span><span class="o">=</span><span class="p">[</span><span class="n">xi</span><span class="p">,</span><span class="n">yi</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$R$&#39;</span><span class="p">)</span>
-<span class="n">ri</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">ri</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">)</span>
-
-<span class="n">rf</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">dxdy</span><span class="o">=</span><span class="p">[</span><span class="n">xf</span><span class="p">,</span><span class="n">yf</span><span class="p">])</span>
-<span class="n">rf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">rf</span><span class="o">.</span><span class="n">plot_angle</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">init_angle</span><span class="o">=</span><span class="n">ri</span><span class="o">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta$&#39;</span><span class="p">)</span>
-
-<span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"><button class="code-btn" id="button_259"><i class="fa fa-code" style="font-size:1em; color:black"></i></button></div>
-
-
-<div class="output_svg output_subarea ">
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Created with matplotlib (http://matplotlib.org/) -->
-<svg height="257pt" version="1.1" viewBox="0 0 291 257" width="291pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style type="text/css">
-*{stroke-linecap:butt;stroke-linejoin:round;}
-  </style>
- </defs>
- <g id="figure_1">
-  <g id="patch_1">
-   <path d="M 0 257.825 
-L 291.025336 257.825 
-L 291.025336 0 
-L 0 0 
-z
-" style="fill:none;"/>
-  </g>
-  <g id="axes_1">
-   <g id="patch_2">
-    <path clip-path="url(#p834d514e84)" d="M 272.026481 112.390648 
-L 270.453271 122.457565 
-L 268.22265 121.514473 
-L 252.734189 157.894291 
-L 268.131604 121.47598 
-L 265.900982 120.532888 
-z
-" style="fill:#0000ff;stroke:#0000ff;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_3">
-    <path clip-path="url(#p834d514e84)" d="M 233.532942 35.403572 
-L 239.658441 43.545812 
-L 237.427819 44.488903 
-L 252.734189 80.945709 
-L 237.336773 44.527397 
-L 235.106152 45.470489 
-z
-" style="fill:#0000ff;stroke:#0000ff;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_4">
-    <path clip-path="url(#p834d514e84)" d="M 252.779712 157.913538 
-L 242.712795 156.340329 
-L 243.655887 154.109707 
-L 161.753179 119.374477 
-L 243.69438 154.018661 
-L 244.637472 151.78804 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_5">
-    <path clip-path="url(#p834d514e84)" d="M 252.779712 80.926462 
-L 244.637472 87.05196 
-L 243.69438 84.821339 
-L 161.714685 119.374477 
-L 243.655887 84.730293 
-L 242.712795 82.499671 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_6">
-    <path clip-path="url(#p834d514e84)" d="M 207.256822 138.666769 
-C 209.831581 132.57689 211.158335 126.031808 211.158335 119.42 
-C 211.158335 112.808192 209.831581 106.26311 207.256822 100.173231 
-" style="fill:none;stroke:#000000;stroke-dasharray:5.6,2.4;stroke-dashoffset:0;stroke-linejoin:miter;"/>
-   </g>
-   <g id="line2d_1">
-    <path clip-path="url(#p834d514e84)" d="M 260.582738 119.42 
-L 260.383723 113.150621 
-L 259.787481 106.906487 
-L 258.796411 100.71274 
-L 257.414505 94.594321 
-L 255.647328 88.575866 
-L 253.501994 82.68161 
-L 250.987142 76.935286 
-L 248.1129 71.360033 
-L 244.890839 65.978301 
-L 241.333936 60.811759 
-L 237.456511 55.881212 
-L 233.274178 51.206514 
-L 228.803777 46.806487 
-L 224.06331 42.698849 
-L 219.071865 38.90014 
-L 213.84954 35.425656 
-L 208.417364 32.289388 
-L 202.79721 29.503963 
-L 197.011709 27.080599 
-L 191.084157 25.029054 
-L 185.038421 23.357587 
-L 178.898847 22.07293 
-L 172.690156 21.180254 
-L 166.437348 20.683156 
-L 160.1656 20.583636 
-L 153.900168 20.882096 
-L 147.66628 21.577332 
-L 141.489037 22.666547 
-L 135.393314 24.145353 
-L 129.403654 26.007797 
-L 123.544178 28.246379 
-L 117.838478 30.852085 
-L 112.309529 33.814423 
-L 106.979595 37.121464 
-L 101.870138 40.759892 
-L 97.00173 44.715057 
-L 92.393977 48.971032 
-L 88.065431 53.51068 
-L 84.033522 58.315722 
-L 80.314485 63.36681 
-L 76.923296 68.643603 
-L 73.873609 74.124855 
-L 71.177705 79.788495 
-L 68.846439 85.611717 
-L 66.889197 91.571073 
-L 65.313862 97.642567 
-L 64.126777 103.801751 
-L 63.332721 110.023824 
-L 62.934892 116.283732 
-L 62.934892 122.556268 
-L 63.332721 128.816176 
-L 64.126777 135.038249 
-L 65.313862 141.197433 
-L 66.889197 147.268927 
-L 68.846439 153.228283 
-L 71.177705 159.051505 
-L 73.873609 164.715145 
-L 76.923296 170.196397 
-L 80.314485 175.47319 
-L 84.033522 180.524278 
-L 88.065431 185.32932 
-L 92.393977 189.868968 
-L 97.00173 194.124943 
-L 101.870138 198.080108 
-L 106.979595 201.718536 
-L 112.309529 205.025577 
-L 117.838478 207.987915 
-L 123.544178 210.593621 
-L 129.403654 212.832203 
-L 135.393314 214.694647 
-L 141.489037 216.173453 
-L 147.66628 217.262668 
-L 153.900168 217.957904 
-L 160.1656 218.256364 
-L 166.437348 218.156844 
-L 172.690156 217.659746 
-L 178.898847 216.76707 
-L 185.038421 215.482413 
-L 191.084157 213.810946 
-L 197.011709 211.759401 
-L 202.79721 209.336037 
-L 208.417364 206.550612 
-L 213.84954 203.414344 
-L 219.071865 199.93986 
-L 224.06331 196.141151 
-L 228.803777 192.033513 
-L 233.274178 187.633486 
-L 237.456511 182.958788 
-L 241.333936 178.028241 
-L 244.890839 172.861699 
-L 248.1129 167.479967 
-L 250.987142 161.904714 
-L 253.501994 156.15839 
-L 255.647328 150.264134 
-L 257.414505 144.245679 
-L 258.796411 138.12726 
-L 259.787481 131.933513 
-L 260.383723 125.689379 
-L 260.582738 119.42 
-" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-width:1.5;"/>
-   </g>
-   <g id="line2d_2">
-    <path clip-path="url(#p834d514e84)" d="M 252.779712 157.913538 
-L 254.31932 154.047048 
-L 255.694812 150.119177 
-L 256.90375 146.13689 
-L 257.943991 142.107245 
-L 258.81369 138.037384 
-L 259.511307 133.934523 
-L 260.035605 129.805933 
-L 260.385654 125.658933 
-L 260.560833 121.500874 
-L 260.560833 117.339126 
-L 260.385654 113.181067 
-L 260.035605 109.034067 
-L 259.511307 104.905477 
-L 258.81369 100.802616 
-L 257.943991 96.732755 
-L 256.90375 92.70311 
-L 255.694812 88.720823 
-L 254.31932 84.792952 
-L 252.779712 80.926462 
-" style="fill:none;stroke:#bf00bf;stroke-linecap:square;stroke-width:1.5;"/>
-   </g>
-   <g id="line2d_3">
-    <defs>
-     <path d="M 0 3 
-C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
-C 2.683901 1.55874 3 0.795609 3 0 
-C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
-C 1.55874 -2.683901 0.795609 -3 0 -3 
-C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
-C -2.683901 -1.55874 -3 -0.795609 -3 0 
-C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
-C -1.55874 2.683901 -0.795609 3 0 3 
-z
-" id="m7eec6ea1cd" style="stroke:#ff0000;"/>
-    </defs>
-    <g clip-path="url(#p834d514e84)">
-     <use style="fill:#ff0000;stroke:#ff0000;" x="252.779712" xlink:href="#m7eec6ea1cd" y="157.913538"/>
-     <use style="fill:#ff0000;stroke:#ff0000;" x="252.779712" xlink:href="#m7eec6ea1cd" y="80.926462"/>
-    </g>
-   </g>
-   <g id="text_1">
-    <!-- L -->
-    <defs>
-     <path d="M 9.8125 72.90625 
-L 19.671875 72.90625 
-L 19.671875 8.296875 
-L 55.171875 8.296875 
-L 55.171875 0 
-L 9.8125 0 
-z
-" id="DejaVuSans-4c"/>
-    </defs>
-    <g transform="translate(245.755417 119.42)scale(0.16 -0.16)">
-     <use xlink:href="#DejaVuSans-4c"/>
-    </g>
-   </g>
-   <g id="text_2">
-    <!-- $\vec{v}_i$ -->
-    <defs>
-     <path d="M -47.015625 63.53125 
-L -47.015625 68.40625 
-L -10.84375 68.40625 
-L -17.28125 75.984375 
-L -11.140625 75.984375 
-L -2.59375 65.96875 
-L -11.140625 55.953125 
-L -17.28125 55.953125 
-L -10.84375 63.53125 
-z
-" id="DejaVuSans-20d7"/>
-     <path d="M 7.171875 54.6875 
-L 16.703125 54.6875 
-L 24.703125 8.203125 
-L 50.875 54.6875 
-L 60.40625 54.6875 
-L 29.296875 0 
-L 17.1875 0 
-z
-" id="DejaVuSans-Oblique-76"/>
-     <path d="M 18.3125 75.984375 
-L 27.296875 75.984375 
-L 25.09375 64.59375 
-L 16.109375 64.59375 
-z
-M 14.203125 54.6875 
-L 23.1875 54.6875 
-L 12.5 0 
-L 3.515625 0 
-z
-" id="DejaVuSans-Oblique-69"/>
-    </defs>
-    <g transform="translate(270.545336 141.277592)scale(0.16 -0.16)">
-     <use transform="translate(61.810547 12.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-Oblique-76"/>
-     <use transform="translate(60.136719 -15.625)scale(0.7)" xlink:href="#DejaVuSans-Oblique-69"/>
-    </g>
-   </g>
-   <g id="text_3">
-    <!-- $\vec{v}_f$ -->
-    <defs>
-     <path d="M 47.796875 75.984375 
-L 46.390625 68.5 
-L 37.796875 68.5 
-Q 32.90625 68.5 30.6875 66.578125 
-Q 28.46875 64.65625 27.390625 59.515625 
-L 26.421875 54.6875 
-L 41.21875 54.6875 
-L 39.890625 47.703125 
-L 25.09375 47.703125 
-L 15.828125 0 
-L 6.78125 0 
-L 16.109375 47.703125 
-L 7.515625 47.703125 
-L 8.796875 54.6875 
-L 17.390625 54.6875 
-L 18.109375 58.5 
-Q 19.96875 68.171875 24.625 72.078125 
-Q 29.296875 75.984375 39.3125 75.984375 
-z
-" id="DejaVuSans-Oblique-66"/>
-    </defs>
-    <g transform="translate(253.223243 56.591808)scale(0.16 -0.16)">
-     <use transform="translate(61.810547 12.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-Oblique-76"/>
-     <use transform="translate(60.136719 -15.625)scale(0.7)" xlink:href="#DejaVuSans-Oblique-66"/>
-    </g>
-   </g>
-   <g id="text_4">
-    <!-- $R$ -->
-    <defs>
-     <path d="M 25.203125 64.796875 
-L 20.21875 38.921875 
-L 32.90625 38.921875 
-Q 40.375 38.921875 44.984375 43.046875 
-Q 49.609375 47.171875 49.609375 53.8125 
-Q 49.609375 59.125 46.5 61.953125 
-Q 43.40625 64.796875 37.59375 64.796875 
-z
-M 43.3125 35.015625 
-Q 46.4375 34.28125 48.515625 31.390625 
-Q 50.59375 28.515625 53.328125 19.921875 
-L 59.515625 0 
-L 49.125 0 
-L 43.40625 18.703125 
-Q 41.21875 25.921875 38.328125 28.359375 
-Q 35.453125 30.8125 29.5 30.8125 
-L 18.609375 30.8125 
-L 12.59375 0 
-L 2.6875 0 
-L 16.890625 72.90625 
-L 39.109375 72.90625 
-Q 49.21875 72.90625 54.609375 68.328125 
-Q 60.015625 63.765625 60.015625 55.171875 
-Q 60.015625 47.5625 55.421875 41.984375 
-Q 50.828125 36.421875 43.3125 35.015625 
-" id="DejaVuSans-Oblique-52"/>
-    </defs>
-    <g transform="translate(195.005825 154.951248)scale(0.16 -0.16)">
-     <use transform="translate(0 0.09375)" xlink:href="#DejaVuSans-Oblique-52"/>
-    </g>
-   </g>
-   <g id="text_5">
-    <!-- $\theta$ -->
-    <defs>
-     <path d="M 45.515625 34.671875 
-L 14.453125 34.671875 
-Q 12.359375 20.0625 14.5 13.875 
-Q 17.1875 6.25 24.46875 6.25 
-Q 31.78125 6.25 37.359375 13.921875 
-Q 42.234375 20.65625 45.515625 34.671875 
-M 47.015625 42.96875 
-Q 48.34375 56.84375 46.625 61.71875 
-Q 43.953125 69.4375 36.765625 69.4375 
-Q 29.296875 69.4375 23.828125 61.8125 
-Q 19.53125 55.671875 16.15625 42.96875 
-z
-M 38.1875 76.765625 
-Q 49.90625 76.765625 54.59375 66.40625 
-Q 59.28125 56.109375 55.71875 37.84375 
-Q 52.203125 19.625 43.453125 9.28125 
-Q 34.765625 -1.125 23.046875 -1.125 
-Q 11.28125 -1.125 6.640625 9.28125 
-Q 2 19.625 5.515625 37.84375 
-Q 9.078125 56.109375 17.71875 66.40625 
-Q 26.421875 76.765625 38.1875 76.765625 
-" id="DejaVuSans-Oblique-3b8"/>
-    </defs>
-    <g transform="translate(216.100775 119.42)scale(0.16 -0.16)">
-     <use transform="translate(0 0.234375)" xlink:href="#DejaVuSans-Oblique-3b8"/>
-    </g>
-   </g>
-  </g>
- </g>
- <defs>
-  <clipPath id="p834d514e84">
-   <rect height="217.44" width="217.41263" x="53.0525" y="10.7"/>
-  </clipPath>
- </defs>
-</svg>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><div class="fragment">Semelhança de triângulos: $\frac{\Delta r}{r}=\frac{\Delta v}{v}$</div></li>
-<li><div class="fragment">Quando $\Delta t \rightarrow 0$, $L \rightarrow \Delta r$</div></li>
-<li><div class="fragment">$\frac{L}{r}\left(\frac{1}{\Delta t}\right)=\frac{\Delta v}{v}\left(\frac{1}{\Delta t}\right)$,
-$$ a=\frac{v^2}{r}$$</div></li>
-<li><div class="fragment">Direção de $\Delta \vec{v}$ indica direção de $\vec{a}$. (Por que?)</div></li>
+<li><div class="fragment">Nota: pode haver forças atuando sobre a partícula. O importante é que a soma de todas as forças, $$\vec{F}_R=\sum_i \vec{F_i}=\vec{0}.$$</div></li>
+<li><div class="fragment">Nota 2: quando $\sum_i \vec{F_i}=\vec{0}$, tem-se que a partícula se move com velocidade constante. Pode-se considerar esta partícula como um referencial inercial, onde valem as leis de Newton.</div></li>
+<li><div class="fragment">Nota 3: as leis de Newton definem os referenciais inerciais. (Tautologia)</div></li>
 </ul>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<script>
-$(document).ready(function(){
-    $("#input_260").hide();               <!-- Code is hidden by default -->
-    $("#button_260").click(function(){
-        $("#input_260").toggle();
-    });
-});
-</script>
-<div class="input" id="input_260">
-<div class="prompt input_prompt"></div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
-
-<span class="c1"># Círculo</span>
-<span class="n">theta</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">radius</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;k:&#39;</span><span class="p">)</span>
-
-<span class="c1"># Vetores velocidade</span>
-<span class="n">vi</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">[</span><span class="n">xi</span><span class="p">,</span><span class="n">yi</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{v}</span><span class="s1">_i$&#39;</span><span class="p">,</span> <span class="n">mpl_options</span><span class="o">=</span><span class="n">uvector_style</span><span class="p">)</span>
-<span class="n">vi</span><span class="o">.</span><span class="n">polar</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="n">dtheta</span><span class="o">+</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">vi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">vi</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">)</span>
-
-<span class="n">vf</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">[</span><span class="n">xi</span><span class="p">,</span><span class="n">yi</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{v}</span><span class="s1">_f$&#39;</span><span class="p">,</span> <span class="n">mpl_options</span><span class="o">=</span><span class="n">uvector_style</span><span class="p">)</span>
-<span class="n">vf</span><span class="o">.</span><span class="n">polar</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">dtheta</span><span class="o">+</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">vf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">vf</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="n">vf</span><span class="o">.</span><span class="n">plot_angle</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">init_angle</span><span class="o">=</span><span class="n">vi</span><span class="o">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta$&#39;</span><span class="p">)</span>
-
-<span class="n">dv</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">vi</span><span class="o">.</span><span class="n">tip</span><span class="p">,</span> <span class="n">dxdy</span><span class="o">=</span><span class="n">vf</span><span class="o">.</span><span class="n">dxdy</span><span class="o">-</span><span class="n">vi</span><span class="o">.</span><span class="n">dxdy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\Delta\vec</span><span class="si">{v}</span><span class="s1">$&#39;</span><span class="p">)</span>
-<span class="n">dv</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">dv</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">)</span>
-
-<span class="c1"># Vetores posição</span>
-<span class="n">ri</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">dxdy</span><span class="o">=</span><span class="p">[</span><span class="n">xi</span><span class="p">,</span><span class="n">yi</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{r}</span><span class="s1">_1$&#39;</span><span class="p">)</span>
-<span class="n">ri</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">ri</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">)</span>
-
-<span class="n">rf</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">dxdy</span><span class="o">=</span><span class="p">[</span><span class="n">xf</span><span class="p">,</span><span class="n">yf</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{r}</span><span class="s1">_2$&#39;</span><span class="p">)</span>
-<span class="n">rf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">rf</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">rf</span><span class="o">.</span><span class="n">plot_angle</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">init_angle</span><span class="o">=</span><span class="n">ri</span><span class="o">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta$&#39;</span><span class="p">)</span>
-
-<span class="n">dr</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">ri</span><span class="o">.</span><span class="n">tip</span><span class="p">,</span> <span class="n">dxdy</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">dxdy</span><span class="o">-</span><span class="n">ri</span><span class="o">.</span><span class="n">dxdy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\Delta\vec</span><span class="si">{r}</span><span class="s1">$&#39;</span><span class="p">)</span>
-<span class="n">dr</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">dr</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">)</span>
-
-<span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
-<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
-<span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"><button class="code-btn" id="button_260"><i class="fa fa-code" style="font-size:1em; color:black"></i></button></div>
-
-
-<div class="output_svg output_subarea ">
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Created with matplotlib (http://matplotlib.org/) -->
-<svg height="257pt" version="1.1" viewBox="0 0 291 257" width="291pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style type="text/css">
-*{stroke-linecap:butt;stroke-linejoin:round;}
-  </style>
- </defs>
- <g id="figure_1">
-  <g id="patch_1">
-   <path d="M 0 257.825 
-L 291.050207 257.825 
-L 291.050207 0 
-L 0 0 
-z
-" style="fill:none;"/>
-  </g>
-  <g id="axes_1">
-   <g id="patch_2">
-    <path clip-path="url(#pfe1c0e7b95)" d="M 272.051166 112.391533 
-L 270.478154 122.457182 
-L 268.247814 121.514209 
-L 252.761302 157.889449 
-L 268.156779 121.475721 
-L 265.926439 120.532748 
-z
-" style="fill:#0000ff;stroke:#0000ff;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_3">
-    <path clip-path="url(#pfe1c0e7b95)" d="M 233.562473 112.391533 
-L 239.6872 120.532748 
-L 237.456859 121.475721 
-L 252.761302 157.927937 
-L 237.365825 121.514209 
-L 235.135484 122.457182 
-z
-" style="fill:#0000ff;stroke:#0000ff;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_4">
-    <path clip-path="url(#pfe1c0e7b95)" d="M 258.580123 144.253545 
-C 256.75339 143.481214 254.790112 143.083238 252.806819 143.083238 
-C 250.823527 143.083238 248.860249 143.481214 247.033515 144.253545 
-" style="fill:none;stroke:#000000;stroke-dasharray:5.6,2.4;stroke-dashoffset:0;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_5">
-    <path clip-path="url(#pfe1c0e7b95)" d="M 233.562473 112.391533 
-L 243.446109 109.920624 
-L 243.446109 112.342115 
-L 272.051166 112.440951 
-L 243.446109 112.440951 
-L 243.446109 114.862442 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_6">
-    <path clip-path="url(#pfe1c0e7b95)" d="M 153.970456 157.908693 
-L 143.904806 156.335682 
-L 144.847779 154.105341 
-L 62.955381 119.374483 
-L 144.886268 154.014306 
-L 145.829241 151.783966 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_7">
-    <path clip-path="url(#pfe1c0e7b95)" d="M 153.970456 80.931307 
-L 145.829241 87.056034 
-L 144.886268 84.825694 
-L 62.916892 119.374483 
-L 144.847779 84.734659 
-L 143.904806 82.504318 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_8">
-    <path clip-path="url(#pfe1c0e7b95)" d="M 108.453296 138.664346 
-C 111.027731 132.575234 112.354318 126.030976 112.354318 119.42 
-C 112.354318 112.809024 111.027731 106.264766 108.453296 100.175654 
-" style="fill:none;stroke:#000000;stroke-dasharray:5.6,2.4;stroke-dashoffset:0;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_9">
-    <path clip-path="url(#pfe1c0e7b95)" d="M 153.970456 80.931307 
-L 156.441365 90.814943 
-L 154.019874 90.814943 
-L 153.921038 157.908693 
-L 153.921038 90.814943 
-L 151.499547 90.814943 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="line2d_1">
-    <path clip-path="url(#pfe1c0e7b95)" d="M 161.7725 119.42 
-L 161.57351 113.15141 
-L 160.977343 106.908062 
-L 159.986398 100.715095 
-L 158.604666 94.597446 
-L 156.837711 88.579749 
-L 154.692647 82.686234 
-L 152.178112 76.940634 
-L 149.304231 71.366083 
-L 146.082576 65.985028 
-L 142.52612 60.819136 
-L 138.649184 55.88921 
-L 134.467377 51.2151 
-L 129.997539 46.815627 
-L 125.257669 42.708506 
-L 120.266852 38.910275 
-L 115.045184 35.436228 
-L 109.613692 32.300355 
-L 103.994246 29.515281 
-L 98.209473 27.092222 
-L 92.282667 25.040935 
-L 86.237692 23.369678 
-L 80.098891 22.085183 
-L 73.890981 21.19262 
-L 67.63896 20.695584 
-L 61.368002 20.596077 
-L 55.103359 20.894499 
-L 48.870255 21.589648 
-L 42.69379 22.678725 
-L 36.598834 24.157346 
-L 30.609928 26.019555 
-L 24.751189 28.257856 
-L 19.046207 30.863234 
-L 13.517955 33.825198 
-L 8.188692 37.131823 
-L 3.079877 40.769793 
-L -1 44.084345 
-M -1 194.755655 
-L 3.079877 198.070207 
-L 8.188692 201.708177 
-L 13.517955 205.014802 
-L 19.046207 207.976766 
-L 24.751189 210.582144 
-L 30.609928 212.820445 
-L 36.598834 214.682654 
-L 42.69379 216.161275 
-L 48.870255 217.250352 
-L 55.103359 217.945501 
-L 61.368002 218.243923 
-L 67.63896 218.144416 
-L 73.890981 217.64738 
-L 80.098891 216.754817 
-L 86.237692 215.470322 
-L 92.282667 213.799065 
-L 98.209473 211.747778 
-L 103.994246 209.324719 
-L 109.613692 206.539645 
-L 115.045184 203.403772 
-L 120.266852 199.929725 
-L 125.257669 196.131494 
-L 129.997539 192.024373 
-L 134.467377 187.6249 
-L 138.649184 182.95079 
-L 142.52612 178.020864 
-L 146.082576 172.854972 
-L 149.304231 167.473917 
-L 152.178112 161.899366 
-L 154.692647 156.153766 
-L 156.837711 150.260251 
-L 158.604666 144.242554 
-L 159.986398 138.124905 
-L 160.977343 131.931938 
-L 161.57351 125.68859 
-L 161.7725 119.42 
-" style="fill:none;stroke:#000000;stroke-dasharray:2.2,2.2;stroke-dashoffset:0;stroke-width:1.5;"/>
-   </g>
-   <g id="text_1">
-    <!-- $\vec{v}_i$ -->
-    <defs>
-     <path d="M -47.015625 63.53125 
-L -47.015625 68.40625 
-L -10.84375 68.40625 
-L -17.28125 75.984375 
-L -11.140625 75.984375 
-L -2.59375 65.96875 
-L -11.140625 55.953125 
-L -17.28125 55.953125 
-L -10.84375 63.53125 
-z
-" id="DejaVuSans-20d7"/>
-     <path d="M 7.171875 54.6875 
-L 16.703125 54.6875 
-L 24.703125 8.203125 
-L 50.875 54.6875 
-L 60.40625 54.6875 
-L 29.296875 0 
-L 17.1875 0 
-z
-" id="DejaVuSans-Oblique-76"/>
-     <path d="M 18.3125 75.984375 
-L 27.296875 75.984375 
-L 25.09375 64.59375 
-L 16.109375 64.59375 
-z
-M 14.203125 54.6875 
-L 23.1875 54.6875 
-L 12.5 0 
-L 3.515625 0 
-z
-" id="DejaVuSans-Oblique-69"/>
-    </defs>
-    <g transform="translate(270.570207 141.27484)scale(0.16 -0.16)">
-     <use transform="translate(61.810547 12.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-Oblique-76"/>
-     <use transform="translate(60.136719 -15.625)scale(0.7)" xlink:href="#DejaVuSans-Oblique-69"/>
-    </g>
-   </g>
-   <g id="text_2">
-    <!-- $\vec{v}_f$ -->
-    <defs>
-     <path d="M 47.796875 75.984375 
-L 46.390625 68.5 
-L 37.796875 68.5 
-Q 32.90625 68.5 30.6875 66.578125 
-Q 28.46875 64.65625 27.390625 59.515625 
-L 26.421875 54.6875 
-L 41.21875 54.6875 
-L 39.890625 47.703125 
-L 25.09375 47.703125 
-L 15.828125 0 
-L 6.78125 0 
-L 16.109375 47.703125 
-L 7.515625 47.703125 
-L 8.796875 54.6875 
-L 17.390625 54.6875 
-L 18.109375 58.5 
-Q 19.96875 68.171875 24.625 72.078125 
-Q 29.296875 75.984375 39.3125 75.984375 
-z
-" id="DejaVuSans-Oblique-66"/>
-    </defs>
-    <g transform="translate(225.94 145.12371)scale(0.16 -0.16)">
-     <use transform="translate(61.810547 12.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-Oblique-76"/>
-     <use transform="translate(60.136719 -15.625)scale(0.7)" xlink:href="#DejaVuSans-Oblique-66"/>
-    </g>
-   </g>
-   <g id="text_3">
-    <!-- $\theta$ -->
-    <defs>
-     <path d="M 45.515625 34.671875 
-L 14.453125 34.671875 
-Q 12.359375 20.0625 14.5 13.875 
-Q 17.1875 6.25 24.46875 6.25 
-Q 31.78125 6.25 37.359375 13.921875 
-Q 42.234375 20.65625 45.515625 34.671875 
-M 47.015625 42.96875 
-Q 48.34375 56.84375 46.625 61.71875 
-Q 43.953125 69.4375 36.765625 69.4375 
-Q 29.296875 69.4375 23.828125 61.8125 
-Q 19.53125 55.671875 16.15625 42.96875 
-z
-M 38.1875 76.765625 
-Q 49.90625 76.765625 54.59375 66.40625 
-Q 59.28125 56.109375 55.71875 37.84375 
-Q 52.203125 19.625 43.453125 9.28125 
-Q 34.765625 -1.125 23.046875 -1.125 
-Q 11.28125 -1.125 6.640625 9.28125 
-Q 2 19.625 5.515625 37.84375 
-Q 9.078125 56.109375 17.71875 66.40625 
-Q 26.421875 76.765625 38.1875 76.765625 
-" id="DejaVuSans-Oblique-3b8"/>
-    </defs>
-    <g transform="translate(252.806819 138.14142)scale(0.16 -0.16)">
-     <use transform="translate(0 0.234375)" xlink:href="#DejaVuSans-Oblique-3b8"/>
-    </g>
-   </g>
-   <g id="text_4">
-    <!-- $\Delta\vec{v}$ -->
-    <defs>
-     <path d="M 34.1875 63.1875 
-L 14.15625 8.203125 
-L 54.25 8.203125 
-z
-M 0.78125 0 
-L 28.609375 72.90625 
-L 39.796875 72.90625 
-L 67.578125 0 
-z
-" id="DejaVuSans-394"/>
-    </defs>
-    <g transform="translate(254.731254 102.507897)scale(0.16 -0.16)">
-     <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-394"/>
-     <use transform="translate(130.21875 12.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(68.408203 0.78125)" xlink:href="#DejaVuSans-Oblique-76"/>
-    </g>
-   </g>
-   <g id="text_5">
-    <!-- $\vec{r}_1$ -->
-    <defs>
-     <path d="M 44.578125 46.390625 
-Q 43.21875 47.125 41.453125 47.515625 
-Q 39.703125 47.90625 37.703125 47.90625 
-Q 30.515625 47.90625 25.140625 42.453125 
-Q 19.78125 37.015625 18.015625 27.875 
-L 12.5 0 
-L 3.515625 0 
-L 14.203125 54.6875 
-L 23.1875 54.6875 
-L 21.484375 46.1875 
-Q 25.046875 50.921875 30 53.453125 
-Q 34.96875 56 40.578125 56 
-Q 42.046875 56 43.453125 55.828125 
-Q 44.875 55.671875 46.296875 55.28125 
-z
-" id="DejaVuSans-Oblique-72"/>
-     <path d="M 12.40625 8.296875 
-L 28.515625 8.296875 
-L 28.515625 63.921875 
-L 10.984375 60.40625 
-L 10.984375 69.390625 
-L 28.421875 72.90625 
-L 38.28125 72.90625 
-L 38.28125 8.296875 
-L 54.390625 8.296875 
-L 54.390625 0 
-L 12.40625 0 
-z
-" id="DejaVuSans-31"/>
-    </defs>
-    <g transform="translate(96.203841 154.946776)scale(0.16 -0.16)">
-     <use transform="translate(50.293945 13.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.46875)" xlink:href="#DejaVuSans-Oblique-72"/>
-     <use transform="translate(42.070312 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-31"/>
-    </g>
-   </g>
-   <g id="text_6">
-    <!-- $\vec{r}_2$ -->
-    <defs>
-     <path d="M 19.1875 8.296875 
-L 53.609375 8.296875 
-L 53.609375 0 
-L 7.328125 0 
-L 7.328125 8.296875 
-Q 12.9375 14.109375 22.625 23.890625 
-Q 32.328125 33.6875 34.8125 36.53125 
-Q 39.546875 41.84375 41.421875 45.53125 
-Q 43.3125 49.21875 43.3125 52.78125 
-Q 43.3125 58.59375 39.234375 62.25 
-Q 35.15625 65.921875 28.609375 65.921875 
-Q 23.96875 65.921875 18.8125 64.3125 
-Q 13.671875 62.703125 7.8125 59.421875 
-L 7.8125 69.390625 
-Q 13.765625 71.78125 18.9375 73 
-Q 24.125 74.21875 28.421875 74.21875 
-Q 39.75 74.21875 46.484375 68.546875 
-Q 53.21875 62.890625 53.21875 53.421875 
-Q 53.21875 48.921875 51.53125 44.890625 
-Q 49.859375 40.875 45.40625 35.40625 
-Q 44.1875 33.984375 37.640625 27.21875 
-Q 31.109375 20.453125 19.1875 8.296875 
-" id="DejaVuSans-32"/>
-    </defs>
-    <g transform="translate(100.052711 92.996656)scale(0.16 -0.16)">
-     <use transform="translate(50.293945 13.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.46875)" xlink:href="#DejaVuSans-Oblique-72"/>
-     <use transform="translate(42.070312 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-32"/>
-    </g>
-   </g>
-   <g id="text_7">
-    <!-- $\theta$ -->
-    <g transform="translate(117.296136 119.42)scale(0.16 -0.16)">
-     <use transform="translate(0 0.234375)" xlink:href="#DejaVuSans-Oblique-3b8"/>
-    </g>
-   </g>
-   <g id="text_8">
-    <!-- $\Delta\vec{r}$ -->
-    <g transform="translate(163.854092 123.268869)scale(0.16 -0.16)">
-     <use transform="translate(0 0.46875)" xlink:href="#DejaVuSans-394"/>
-     <use transform="translate(118.702148 13.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(68.408203 0.46875)" xlink:href="#DejaVuSans-Oblique-72"/>
-    </g>
-   </g>
-  </g>
- </g>
- <defs>
-  <clipPath id="pfe1c0e7b95">
-   <rect height="217.44" width="217.44" x="53.0525" y="10.7"/>
-  </clipPath>
- </defs>
-</svg>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="MCU-analiticamente">MCU analiticamente<a class="anchor-link" href="#MCU-analiticamente">&#182;</a></h2><ul>
-<li><div class="fragment">$\vec{r} = x\hat{i} + y \hat{j} = r\cos\theta\hat{i} + r\sin\theta \hat{j}$.
-$$\vec{r} = r(\cos\theta\hat{i} + \sin\theta \hat{j})\text{, (ou ainda }\vec{r} = r\hat{r})$$</div></li>
-<li><div class="fragment">Num círculo, $r=$cte, enquanto $\theta$ varia entre $[0,2\pi)$.</div></li>
-<li><div class="fragment">No MCU, $\theta(t) = \theta_0 + \omega t$ ($\omega$ = velocidade angular)</div></li>
-<li><div class="fragment">Note que $\frac{d\theta}{dt} = \omega = $ cte</div></li>
-<li><div class="fragment">Então, $$\vec{r} = r[\cos\theta(t)\hat{i} + \sin\theta(t) \hat{j}]$$</div></li>
+<h2 id="Mudan&#231;as-no-movimento">Mudan&#231;as no movimento<a class="anchor-link" href="#Mudan&#231;as-no-movimento">&#182;</a></h2><ul>
+<li><div class="fragment">Como quantificar as mudanças no movimento? O movimento depende de $\vec{v}$, e mudar o movimento da partícula depende também da sua quantidade de matéria $m$.</div></li>
+<li><div class="fragment">Ex.: Suponha que você dê um "peteleco com a mesma força" em uma bola de tênis de mesa e uma bola de boliche. É mais difícil modificar o movimento da bola de boliche, por esta possuir muito mais matéria.</div></li>
+</ul>
+<blockquote><div class="fragment"><b>Quantidade de movimento</b>: $\vec{p}=m\vec{v}.$</div>
+</blockquote>
+<ul>
+<li><div class="fragment">$\vec{p}$ indica o movimento de um objeto, e a sua "resistência" a mudanças no movimento (inércia).</div></li>
+<li><div class="fragment">Sem ação de $\vec{F}$, $\vec{p}=$cte (1ª Lei). No entanto, se $\vec{F}\neq\vec{0}$, $\vec{p}$ varia.</div></li>
+</ul>
+<blockquote><div class="fragment"><b>2ª Lei de Newton</b>: $\vec{F}=\frac{d\vec{p}}{dt}=m\frac{d\vec{a}}{dt}\text{(, se }m=\text{cte)}.$</div>
+</blockquote>
+<ul>
+<li><div class="fragment">Nota: comportamento dinâmico partindo das $\vec{F}$'s.</div></li>
+<li><div class="fragment">Causa das mudanças no movimento: forças!</div></li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Observa&#231;&#245;es-sobre-a-2&#170;-Lei-de-Newton">Observa&#231;&#245;es sobre a 2&#170; Lei de Newton<a class="anchor-link" href="#Observa&#231;&#245;es-sobre-a-2&#170;-Lei-de-Newton">&#182;</a></h2><ul>
+<li><div class="fragment">Unidades de força: (massa)$\cdot$(aceleração). kg$\cdot\frac{\text{m}}{\text{s}^2}=1\text{ N}$ (SI), ou g$\cdot\frac{\text{cm}}{\text{s}^2}=1\text{ dina}$ (CGS). Conversão: $1$ dina = $10^{-5}$ N.</div></li>
+<li><div class="fragment">$\left|\vec{F}\right|=1$ N atuando sobre uma massa de $1$ Kg produz uma aceleração de $1$ m/s$^2$, ou varia $\left|\vec{v}\right|$ desta massa em $1$ m/s a cada segundo.</div></li>
+<li><div class="fragment">Observar que $\vec{F}_R=\frac{d\vec{p}}{dt}=m\frac{d\vec{a}}{dt}$ é uma **Eq. vetorial**, e equivale à dizer que $$\begin{cases}F_{R,x} = \sum_i F_{i,x} = m a_x,\\F_{R,y} = \sum_i F_{i,y}= m a_y,\\F_{R,z} = \sum_i F_{i,z}= m a_z.\\ \end{cases}$$</div></li>
+<li><div class="fragment">Quando a massa da partícula varia, deve-se usar $\vec{F}=\frac{d\vec{p}}{dt}$. Ex.: Foguetes.</div></li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Referenciais-inerciais">Referenciais inerciais<a class="anchor-link" href="#Referenciais-inerciais">&#182;</a></h2><ul>
+<li><div class="fragment">As leis de Newton só valem em referenciais inerciais</div></li>
+<li><div class="fragment">Aproximação muito boa: referencial fixo em relação às estrelas distantes, ou movendo-se com velocidade constante.</div></li>
+</ul>
+<div class="inner_image_block fragment">
+    <h4>Exemplo de movimento não inercial: ônibus em movimento</h4>
+    <img src="http://www.papodeesteira.com.br/wp-content/uploads/2013/01/onibus-lotado-5.jpg"/>
+    <p>Supondo um passageiro $P$ em repouso em relação à um ônibus que se move com velocidade constante. Qual é a relação entre as leis de Newton entre um observador sentado no ônibus e outro sentado na calçada? O que ocorre caso o ônibus freie rapidamente? Assuma que $P$ não possui atrito com o ônibus.</p>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Intera&#231;&#227;o-entre-2-corpos">Intera&#231;&#227;o entre 2 corpos<a class="anchor-link" href="#Intera&#231;&#227;o-entre-2-corpos">&#182;</a></h2><ul>
+<li><div class="fragment">Supor 2 corpos em contato, realizando forças mutuamente.</div></li>
+<li><div class="fragment">Se o contato de $1$ com $2$ está associado à força $\vec{F}_{12}$ sobre $1$, o contato também deve produzir uma força sobre $2$, $\vec{F}_{21}$. Qual a relação entre $\vec{F}_{12}$ e $\vec{F}_{21}$?</div></li>
+<li><div class="fragment">A única diferença possível é no sentido!</div></li>
+<li><div class="fragment">$\vec{F}_{12} = - \vec{F}_{21}$, $|\vec{F}_{12}|=|\vec{F}_{21}|$.</div></li>
+</ul>
+<blockquote><div class="fragment"><b>3ª Lei de Newton</b>: Para cada ação existe uma reação de mesma magnitude e direção, porém com sentido oposto.</div>
+</blockquote>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exemplo:-Sat&#233;lite-em-&#243;rbita">Exemplo: Sat&#233;lite em &#243;rbita<a class="anchor-link" href="#Exemplo:-Sat&#233;lite-em-&#243;rbita">&#182;</a></h2><ul>
+<li><div class="fragment">$\vec{F}_{ST}$: Força exercida pela terra no satélite (força peso)</div></li>
+<li><div class="fragment">$\vec{F}_{TS}$: Força exercida pelo satélite sobre a terra (força peso)</div></li>
+<li><div class="fragment">$\vec{F}_{ST}=-\vec{F}_{TS}$: Par ação e reação</div></li>
+<li><div class="fragment">Por quê a Terra "não se move"? <span class="fragment">$m_\text{Terra}\gg m_\text{satélite}$</span></div></li>
 </ul>
 
 </div>
@@ -13227,25 +12078,31 @@ $$\vec{r} = r(\cos\theta\hat{i} + \sin\theta \hat{j})\text{, (ou ainda }\vec{r} 
 <div class="cell border-box-sizing code_cell rendered">
 <script>
 $(document).ready(function(){
-    $("#input_261").hide();               <!-- Code is hidden by default -->
-    $("#button_261").click(function(){
-        $("#input_261").toggle();
+    $("#input_15").hide();               <!-- Code is hidden by default -->
+    $("#button_15").click(function(){
+        $("#input_15").toggle();
     });
 });
 </script>
-<div class="input" id="input_261">
+<div class="input" id="input_15">
 <div class="prompt input_prompt"></div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
 
-<span class="c1"># Círculo</span>
+<span class="c1"># Orbita</span>
 <span class="n">theta</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">radius</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">theta0</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="o">+</span><span class="n">theta0</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="o">+</span><span class="n">theta0</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;k:&#39;</span><span class="p">)</span>
+
+<span class="c1"># Terra</span>
+<span class="n">xt</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">radius</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">yt</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">radius</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fill_between</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="o">-</span><span class="n">yt</span><span class="p">,</span><span class="n">yt</span><span class="p">)</span>
+<span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="s2">&quot;Terra&quot;</span><span class="p">)</span>
 
 <span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
 
@@ -13254,13 +12111,12 @@ $(document).ready(function(){
 <span class="n">v</span><span class="o">.</span><span class="n">polar</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">theta0</span><span class="o">+</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">v</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">v</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.0</span><span class="p">)</span>
 
-<span class="c1"># Vetores posição</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">dxdy</span><span class="o">=</span><span class="p">[</span><span class="n">radius</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">mpl_options</span><span class="o">=</span><span class="n">line_style</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="c1"># Vetores de força</span>
+<span class="n">fts</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">dxdy</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mf">0.3</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{F}</span><span class="s1">_</span><span class="si">{TS}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">fts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">fts</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">dxdy</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{r}</span><span class="s1">(t)$&#39;</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">r</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">plot_angle</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">init_angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta(t)$&#39;</span><span class="p">)</span>
+<span class="n">fst</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">dxdy</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.3</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="o">-</span><span class="mf">0.3</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{F}</span><span class="s1">_</span><span class="si">{ST}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">fst</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">fst</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">relative_position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 
 <span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
@@ -13274,7 +12130,7 @@ $(document).ready(function(){
 
 
 <div class="output_area">
-<div class="prompt"><button class="code-btn" id="button_261"><i class="fa fa-code" style="font-size:1em; color:black"></i></button></div>
+<div class="prompt"><button class="code-btn" id="button_15"><i class="fa fa-code" style="font-size:1em; color:black"></i></button></div>
 
 
 <div class="output_svg output_subarea ">
@@ -13298,1350 +12154,457 @@ z
 " style="fill:none;"/>
   </g>
   <g id="axes_1">
-   <g id="patch_2">
-    <path clip-path="url(#p3f2ee8c49a)" d="M 224.813947 28.664777 
-L 231.721918 36.155034 
-L 229.596529 37.316139 
-L 248.466601 72.063764 
-L 229.509778 37.363531 
-L 227.384389 38.524637 
-z
-" style="fill:#0000ff;stroke:#0000ff;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_3">
-    <path clip-path="url(#p3f2ee8c49a)" d="M 260.611156 119.432127 
-L 260.611156 119.432127 
-L 260.611156 119.481553 
-L 161.759395 119.382701 
-L 260.611156 119.382701 
-L 260.611156 119.432127 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_4">
-    <path clip-path="url(#p3f2ee8c49a)" d="M 248.509977 72.040068 
-L 241.01972 78.948038 
-L 239.858615 76.822649 
-L 161.735699 119.388752 
-L 239.811223 76.735899 
-L 238.650117 74.610509 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_5">
-    <path clip-path="url(#p3f2ee8c49a)" d="M 211.185276 119.432127 
-C 211.185276 115.307948 210.669083 111.199937 209.648745 107.203968 
-C 208.628406 103.208 207.111923 99.355405 205.134686 95.736097 
-" style="fill:none;stroke:#000000;stroke-dasharray:5.6,2.4;stroke-dashoffset:0;stroke-linejoin:miter;"/>
-   </g>
-   <g id="line2d_1">
-    <path clip-path="url(#p3f2ee8c49a)" d="M 248.509977 72.040068 
-L 245.32953 66.633422 
-L 241.812575 61.439377 
-L 237.973275 56.478849 
-L 233.827088 51.771811 
-L 229.39071 47.337218 
-L 224.682004 43.192925 
-L 219.719932 39.355621 
-L 214.524473 35.840756 
-L 209.116547 32.662485 
-L 203.517931 29.833604 
-L 197.751168 27.365505 
-L 191.839479 25.268125 
-L 185.806668 23.549911 
-L 179.677027 22.217781 
-L 173.475238 21.277098 
-L 167.226274 20.731651 
-L 160.955296 20.583636 
-L 154.687556 20.833649 
-L 148.448292 21.480684 
-L 142.262627 22.522134 
-L 136.155469 23.953807 
-L 130.151409 25.769937 
-L 124.274623 27.963212 
-L 118.548774 30.524799 
-L 112.99692 33.444385 
-L 107.641415 36.710214 
-L 102.503824 40.309134 
-L 97.604835 44.226655 
-L 92.964173 48.447002 
-L 88.600525 52.95318 
-L 84.531462 57.727046 
-L 80.773369 62.749377 
-L 77.341378 67.999949 
-L 74.249308 73.45762 
-L 71.509611 79.100414 
-L 69.133317 84.90561 
-L 67.129997 90.849832 
-L 65.507715 96.909145 
-L 64.273005 103.05915 
-L 63.430838 109.275083 
-L 62.984606 115.531915 
-L 62.936105 121.804451 
-L 63.28553 128.067435 
-L 64.031475 134.295648 
-L 65.170936 140.464011 
-L 66.699324 146.547686 
-L 68.610486 152.522176 
-L 70.896725 158.363424 
-L 73.548837 164.047909 
-L 76.556141 169.552742 
-L 79.906528 174.855758 
-L 83.586509 179.935602 
-L 87.581264 184.771819 
-L 91.874708 189.344937 
-L 96.449553 193.636541 
-L 101.287377 197.62935 
-L 106.368701 201.307286 
-L 111.673064 204.65554 
-L 117.179107 207.660629 
-L 122.864659 210.310453 
-L 128.706826 212.594342 
-L 134.682085 214.5031 
-L 140.766374 216.02904 
-L 146.935194 217.166019 
-L 153.163707 217.909458 
-L 159.426831 218.256364 
-L 165.699348 218.205339 
-L 171.956 217.756589 
-L 178.171593 216.911922 
-L 184.321101 215.674737 
-L 190.379761 214.050018 
-L 196.323176 212.044306 
-L 202.127415 209.665677 
-L 207.769107 206.92371 
-L 213.225534 203.829444 
-L 218.474724 200.395341 
-L 223.495542 196.635228 
-L 228.267771 192.564244 
-L 232.772194 188.198784 
-L 236.990673 183.556424 
-L 240.906222 178.655859 
-L 244.503075 173.51682 
-L 247.766749 168.160002 
-L 250.684101 162.606973 
-L 253.243385 156.880095 
-L 255.434295 151.002427 
-L 257.248009 144.997636 
-L 258.677224 138.889903 
-L 259.716186 132.703819 
-L 260.36071 126.464295 
-L 260.608201 120.196455 
-L 260.457663 113.925538 
-L 259.909702 107.676793 
-L 258.966525 101.475383 
-L 257.631928 95.346279 
-L 255.911287 89.31416 
-L 253.811529 83.403315 
-L 251.34111 77.637546 
-L 248.509977 72.040068 
-" style="fill:none;stroke:#000000;stroke-dasharray:2.2,2.2;stroke-dashoffset:0;stroke-width:1.5;"/>
-   </g>
-   <g id="line2d_2">
-    <defs>
-     <path d="M 0 3 
-C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
-C 2.683901 1.55874 3 0.795609 3 0 
-C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
-C 1.55874 -2.683901 0.795609 -3 0 -3 
-C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
-C -2.683901 -1.55874 -3 -0.795609 -3 0 
-C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
-C -1.55874 2.683901 -0.795609 3 0 3 
-z
-" id="m4d3ace0d7c" style="stroke:#ff0000;"/>
-    </defs>
-    <g clip-path="url(#p3f2ee8c49a)">
-     <use style="fill:#ff0000;stroke:#ff0000;" x="248.509977" xlink:href="#m4d3ace0d7c" y="72.040068"/>
-    </g>
-   </g>
-   <g id="text_1">
-    <!-- $\vec{v}$ -->
-    <defs>
-     <path d="M -47.015625 63.53125 
-L -47.015625 68.40625 
-L -10.84375 68.40625 
-L -17.28125 75.984375 
-L -11.140625 75.984375 
-L -2.59375 65.96875 
-L -11.140625 55.953125 
-L -17.28125 55.953125 
-L -10.84375 63.53125 
-z
-" id="DejaVuSans-20d7"/>
-     <path d="M 7.171875 54.6875 
-L 16.703125 54.6875 
-L 24.703125 8.203125 
-L 50.875 54.6875 
-L 60.40625 54.6875 
-L 29.296875 0 
-L 17.1875 0 
-z
-" id="DejaVuSans-Oblique-76"/>
-    </defs>
-    <g transform="translate(237.846764 52.521187)scale(0.16 -0.16)">
-     <use transform="translate(61.810547 12.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-Oblique-76"/>
-    </g>
-   </g>
-   <g id="text_2">
-    <!-- $\vec{r}(t)$ -->
-    <defs>
-     <path d="M 44.578125 46.390625 
-Q 43.21875 47.125 41.453125 47.515625 
-Q 39.703125 47.90625 37.703125 47.90625 
-Q 30.515625 47.90625 25.140625 42.453125 
-Q 19.78125 37.015625 18.015625 27.875 
-L 12.5 0 
-L 3.515625 0 
-L 14.203125 54.6875 
-L 23.1875 54.6875 
-L 21.484375 46.1875 
-Q 25.046875 50.921875 30 53.453125 
-Q 34.96875 56 40.578125 56 
-Q 42.046875 56 43.453125 55.828125 
-Q 44.875 55.671875 46.296875 55.28125 
-z
-" id="DejaVuSans-Oblique-72"/>
-     <path d="M 31 75.875 
-Q 24.46875 64.65625 21.28125 53.65625 
-Q 18.109375 42.671875 18.109375 31.390625 
-Q 18.109375 20.125 21.3125 9.0625 
-Q 24.515625 -2 31 -13.1875 
-L 23.1875 -13.1875 
-Q 15.875 -1.703125 12.234375 9.375 
-Q 8.59375 20.453125 8.59375 31.390625 
-Q 8.59375 42.28125 12.203125 53.3125 
-Q 15.828125 64.359375 23.1875 75.875 
-z
-" id="DejaVuSans-28"/>
-     <path d="M 42.28125 54.6875 
-L 40.921875 47.703125 
-L 23 47.703125 
-L 17.1875 18.015625 
-Q 16.890625 16.359375 16.75 15.234375 
-Q 16.609375 14.109375 16.609375 13.484375 
-Q 16.609375 10.359375 18.484375 8.9375 
-Q 20.359375 7.515625 24.515625 7.515625 
-L 33.59375 7.515625 
-L 32.078125 0 
-L 23.484375 0 
-Q 15.484375 0 11.546875 3.125 
-Q 7.625 6.25 7.625 12.59375 
-Q 7.625 13.71875 7.765625 15.0625 
-Q 7.90625 16.40625 8.203125 18.015625 
-L 14.015625 47.703125 
-L 6.390625 47.703125 
-L 7.8125 54.6875 
-L 15.28125 54.6875 
-L 18.3125 70.21875 
-L 27.296875 70.21875 
-L 24.3125 54.6875 
-z
-" id="DejaVuSans-Oblique-74"/>
-     <path d="M 8.015625 75.875 
-L 15.828125 75.875 
-Q 23.140625 64.359375 26.78125 53.3125 
-Q 30.421875 42.28125 30.421875 31.390625 
-Q 30.421875 20.453125 26.78125 9.375 
-Q 23.140625 -1.703125 15.828125 -13.1875 
-L 8.015625 -13.1875 
-Q 14.5 -2 17.703125 9.0625 
-Q 20.90625 20.125 20.90625 31.390625 
-Q 20.90625 42.671875 17.703125 53.65625 
-Q 14.5 64.65625 8.015625 75.875 
-" id="DejaVuSans-29"/>
-    </defs>
-    <g transform="translate(193.688348 85.093113)scale(0.16 -0.16)">
-     <use transform="translate(50.293945 13.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.46875)" xlink:href="#DejaVuSans-Oblique-72"/>
-     <use transform="translate(41.113281 0.46875)" xlink:href="#DejaVuSans-28"/>
-     <use transform="translate(80.126953 0.46875)" xlink:href="#DejaVuSans-Oblique-74"/>
-     <use transform="translate(119.335938 0.46875)" xlink:href="#DejaVuSans-29"/>
-    </g>
-   </g>
-   <g id="text_3">
-    <!-- $\theta(t)$ -->
-    <defs>
-     <path d="M 45.515625 34.671875 
-L 14.453125 34.671875 
-Q 12.359375 20.0625 14.5 13.875 
-Q 17.1875 6.25 24.46875 6.25 
-Q 31.78125 6.25 37.359375 13.921875 
-Q 42.234375 20.65625 45.515625 34.671875 
-M 47.015625 42.96875 
-Q 48.34375 56.84375 46.625 61.71875 
-Q 43.953125 69.4375 36.765625 69.4375 
-Q 29.296875 69.4375 23.828125 61.8125 
-Q 19.53125 55.671875 16.15625 42.96875 
-z
-M 38.1875 76.765625 
-Q 49.90625 76.765625 54.59375 66.40625 
-Q 59.28125 56.109375 55.71875 37.84375 
-Q 52.203125 19.625 43.453125 9.28125 
-Q 34.765625 -1.125 23.046875 -1.125 
-Q 11.28125 -1.125 6.640625 9.28125 
-Q 2 19.625 5.515625 37.84375 
-Q 9.078125 56.109375 17.71875 66.40625 
-Q 26.421875 76.765625 38.1875 76.765625 
-" id="DejaVuSans-Oblique-3b8"/>
-    </defs>
-    <g transform="translate(214.43768 105.981152)scale(0.16 -0.16)">
-     <use transform="translate(0 0.234375)" xlink:href="#DejaVuSans-Oblique-3b8"/>
-     <use transform="translate(61.181641 0.234375)" xlink:href="#DejaVuSans-28"/>
-     <use transform="translate(100.195312 0.234375)" xlink:href="#DejaVuSans-Oblique-74"/>
-     <use transform="translate(139.404297 0.234375)" xlink:href="#DejaVuSans-29"/>
-    </g>
-   </g>
-  </g>
- </g>
- <defs>
-  <clipPath id="p3f2ee8c49a">
-   <rect height="217.44" width="217.439306" x="53.0525" y="10.7"/>
-  </clipPath>
- </defs>
-</svg>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="$\vec{v}$-no-MCU">$\vec{v}$ no MCU<a class="anchor-link" href="#$\vec{v}$-no-MCU">&#182;</a></h2><div class="fragment">$\vec{v}=\frac{d\vec{r}}{dt}=r[\frac{d\cos\theta(t)}{dt}\hat{i} + \frac{d\sin\theta(t)}{dt} \hat{j}]$</div><div class="fragment">Usando a regra da cadeia, $\begin{cases}\frac{d\cos\theta(t)}{dt}=\frac{d\cos\theta}{d\theta}\frac{d\theta}{dt}\\\frac{d\sin\theta(t)}{dt}=\frac{d\sin\theta}{d\theta}\frac{d\theta}{dt}\end{cases}$.</div><div class="fragment">Mas, $\frac{d\theta}{dt}=\omega$, enquanto $\frac{d\cos\theta}{d\theta}=-\sin\theta$ e $\frac{d\sin\theta}{d\theta}=\cos\theta$.</div><div class="fragment">$$\vec{v}=\omega r(-\sin\theta\hat{i} + \cos\theta \hat{j})\text{, (ou ainda }\vec{v} = \omega r\hat{\theta})$$</div><div class="fragment">Note que $\vec{r}$ e $\vec{v}$ são ortogonais.</div><div class="fragment">$$ v=|\vec{v}|=\omega r$$</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="$\vec{a}$-no-MCU">$\vec{a}$ no MCU<a class="anchor-link" href="#$\vec{a}$-no-MCU">&#182;</a></h2><div class="fragment">$\vec{a}=\frac{d\vec{v}}{dt}=\omega r[-\frac{d\sin\theta(t)}{dt}\hat{i} + \frac{d\cos\theta(t)}{dt} \hat{j}]$</div><div class="fragment">Usando novamente a regra da cadeia, $\begin{cases}\frac{d\sin\theta(t)}{dt}=\frac{d\sin\theta}{d\theta}\frac{d\theta}{dt}\\\frac{d\cos\theta(t)}{dt}=\frac{d\cos\theta}{d\theta}\frac{d\theta}{dt}\end{cases}$.</div><div class="fragment">$\frac{d\theta}{dt}=\omega$, $\frac{d\cos\theta}{d\theta}=-\sin\theta$ e $\frac{d\sin\theta}{d\theta}=\cos\theta$.</div><div class="fragment">$$\vec{a}=\omega^2 r(-\cos\theta\hat{i} - \sin\theta \hat{j})\text{, (ou ainda }\vec{v} = \omega^2 \vec{r}).$$</div><div class="fragment">$\vec{a}$ é centrípeta! (Aponta para o centro da trajetória circular)</div><div class="fragment">$$ a=|\vec{a}|=\omega^2 r$$</div><ul>
-<li><div class="fragment">Note que $\omega = \frac{v}{r}$, e em termos de $v$,</div></li>
-</ul>
-<div class="fragment">$$ a=\frac{v^2}{r}$$</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<script>
-$(document).ready(function(){
-    $("#input_262").hide();               <!-- Code is hidden by default -->
-    $("#button_262").click(function(){
-        $("#input_262").toggle();
-    });
-});
-</script>
-<div class="input" id="input_262">
-<div class="prompt input_prompt"></div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
-
-<span class="c1"># Círculo</span>
-<span class="n">theta</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">radius</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">theta0</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="o">+</span><span class="n">theta0</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="o">+</span><span class="n">theta0</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;k:&#39;</span><span class="p">)</span>
-
-<span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
-
-<span class="c1"># Vetores velocidade</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{v}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">mpl_options</span><span class="o">=</span><span class="n">uvector_style</span><span class="p">)</span>
-<span class="n">v</span><span class="o">.</span><span class="n">polar</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">theta0</span><span class="o">+</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">v</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">v</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.0</span><span class="p">)</span>
-
-<span class="c1"># Vetor aceleração</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{a}</span><span class="s1">(t)$&#39;</span><span class="p">,</span> <span class="n">mpl_options</span><span class="o">=</span><span class="n">avector_style</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">polar</span><span class="o">=</span> <span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">theta0</span><span class="o">+</span><span class="n">pi</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">r</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
-
-<span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"><button class="code-btn" id="button_262"><i class="fa fa-code" style="font-size:1em; color:black"></i></button></div>
-
-
-<div class="output_svg output_subarea ">
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Created with matplotlib (http://matplotlib.org/) -->
-<svg height="257pt" version="1.1" viewBox="0 0 281 257" width="281pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style type="text/css">
-*{stroke-linecap:butt;stroke-linejoin:round;}
-  </style>
- </defs>
- <g id="figure_1">
-  <g id="patch_1">
-   <path d="M 0 257.825 
-L 281.191806 257.825 
-L 281.191806 0 
-L 0 0 
-z
-" style="fill:none;"/>
-  </g>
-  <g id="axes_1">
-   <g id="patch_2">
-    <path clip-path="url(#pe62d83ccd6)" d="M 224.813947 28.664777 
-L 231.721918 36.155034 
-L 229.596529 37.316139 
-L 248.466601 72.063764 
-L 229.509778 37.363531 
-L 227.384389 38.524637 
-z
-" style="fill:#0000ff;stroke:#0000ff;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_3">
-    <path clip-path="url(#pe62d83ccd6)" d="M 183.447041 107.584112 
-L 190.937297 100.676142 
-L 192.098403 102.801531 
-L 248.533673 72.083443 
-L 192.145795 102.888282 
-L 193.3069 105.013671 
-z
-" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="line2d_1">
-    <path clip-path="url(#pe62d83ccd6)" d="M 248.509977 72.040068 
-L 245.32953 66.633422 
-L 241.812575 61.439377 
-L 237.973275 56.478849 
-L 233.827088 51.771811 
-L 229.39071 47.337218 
-L 224.682004 43.192925 
-L 219.719932 39.355621 
-L 214.524473 35.840756 
-L 209.116547 32.662485 
-L 203.517931 29.833604 
-L 197.751168 27.365505 
-L 191.839479 25.268125 
-L 185.806668 23.549911 
-L 179.677027 22.217781 
-L 173.475238 21.277098 
-L 167.226274 20.731651 
-L 160.955296 20.583636 
-L 154.687556 20.833649 
-L 148.448292 21.480684 
-L 142.262627 22.522134 
-L 136.155469 23.953807 
-L 130.151409 25.769937 
-L 124.274623 27.963212 
-L 118.548774 30.524799 
-L 112.99692 33.444385 
-L 107.641415 36.710214 
-L 102.503824 40.309134 
-L 97.604835 44.226655 
-L 92.964173 48.447002 
-L 88.600525 52.95318 
-L 84.531462 57.727046 
-L 80.773369 62.749377 
-L 77.341378 67.999949 
-L 74.249308 73.45762 
-L 71.509611 79.100414 
-L 69.133317 84.90561 
-L 67.129997 90.849832 
-L 65.507715 96.909145 
-L 64.273005 103.05915 
-L 63.430838 109.275083 
-L 62.984606 115.531915 
-L 62.936105 121.804451 
-L 63.28553 128.067435 
-L 64.031475 134.295648 
-L 65.170936 140.464011 
-L 66.699324 146.547686 
-L 68.610486 152.522176 
-L 70.896725 158.363424 
-L 73.548837 164.047909 
-L 76.556141 169.552742 
-L 79.906528 174.855758 
-L 83.586509 179.935602 
-L 87.581264 184.771819 
-L 91.874708 189.344937 
-L 96.449553 193.636541 
-L 101.287377 197.62935 
-L 106.368701 201.307286 
-L 111.673064 204.65554 
-L 117.179107 207.660629 
-L 122.864659 210.310453 
-L 128.706826 212.594342 
-L 134.682085 214.5031 
-L 140.766374 216.02904 
-L 146.935194 217.166019 
-L 153.163707 217.909458 
-L 159.426831 218.256364 
-L 165.699348 218.205339 
-L 171.956 217.756589 
-L 178.171593 216.911922 
-L 184.321101 215.674737 
-L 190.379761 214.050018 
-L 196.323176 212.044306 
-L 202.127415 209.665677 
-L 207.769107 206.92371 
-L 213.225534 203.829444 
-L 218.474724 200.395341 
-L 223.495542 196.635228 
-L 228.267771 192.564244 
-L 232.772194 188.198784 
-L 236.990673 183.556424 
-L 240.906222 178.655859 
-L 244.503075 173.51682 
-L 247.766749 168.160002 
-L 250.684101 162.606973 
-L 253.243385 156.880095 
-L 255.434295 151.002427 
-L 257.248009 144.997636 
-L 258.677224 138.889903 
-L 259.716186 132.703819 
-L 260.36071 126.464295 
-L 260.608201 120.196455 
-L 260.457663 113.925538 
-L 259.909702 107.676793 
-L 258.966525 101.475383 
-L 257.631928 95.346279 
-L 255.911287 89.31416 
-L 253.811529 83.403315 
-L 251.34111 77.637546 
-L 248.509977 72.040068 
-" style="fill:none;stroke:#000000;stroke-dasharray:2.2,2.2;stroke-dashoffset:0;stroke-width:1.5;"/>
-   </g>
-   <g id="line2d_2">
-    <defs>
-     <path d="M 0 3 
-C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
-C 2.683901 1.55874 3 0.795609 3 0 
-C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
-C 1.55874 -2.683901 0.795609 -3 0 -3 
-C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
-C -2.683901 -1.55874 -3 -0.795609 -3 0 
-C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
-C -1.55874 2.683901 -0.795609 3 0 3 
-z
-" id="mf1691850b9" style="stroke:#ff0000;"/>
-    </defs>
-    <g clip-path="url(#pe62d83ccd6)">
-     <use style="fill:#ff0000;stroke:#ff0000;" x="248.509977" xlink:href="#mf1691850b9" y="72.040068"/>
-    </g>
-   </g>
-   <g id="text_1">
-    <!-- $\vec{v}$ -->
-    <defs>
-     <path d="M -47.015625 63.53125 
-L -47.015625 68.40625 
-L -10.84375 68.40625 
-L -17.28125 75.984375 
-L -11.140625 75.984375 
-L -2.59375 65.96875 
-L -11.140625 55.953125 
-L -17.28125 55.953125 
-L -10.84375 63.53125 
-z
-" id="DejaVuSans-20d7"/>
-     <path d="M 7.171875 54.6875 
-L 16.703125 54.6875 
-L 24.703125 8.203125 
-L 50.875 54.6875 
-L 60.40625 54.6875 
-L 29.296875 0 
-L 17.1875 0 
-z
-" id="DejaVuSans-Oblique-76"/>
-    </defs>
-    <g transform="translate(237.846764 52.521187)scale(0.16 -0.16)">
-     <use transform="translate(61.810547 12.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-Oblique-76"/>
-    </g>
-   </g>
-   <g id="text_2">
-    <!-- $\vec{a}(t)$ -->
-    <defs>
-     <path d="M 53.71875 31.203125 
-L 47.609375 0 
-L 38.625 0 
-L 40.28125 8.296875 
-Q 36.328125 3.421875 31.265625 1 
-Q 26.21875 -1.421875 20.015625 -1.421875 
-Q 13.03125 -1.421875 8.5625 2.84375 
-Q 4.109375 7.125 4.109375 13.8125 
-Q 4.109375 23.390625 11.75 28.953125 
-Q 19.390625 34.515625 32.8125 34.515625 
-L 45.3125 34.515625 
-L 45.796875 36.921875 
-Q 45.90625 37.3125 45.953125 37.765625 
-Q 46 38.234375 46 39.203125 
-Q 46 43.5625 42.453125 45.96875 
-Q 38.921875 48.390625 32.515625 48.390625 
-Q 28.125 48.390625 23.5 47.265625 
-Q 18.890625 46.140625 14.015625 43.890625 
-L 15.578125 52.203125 
-Q 20.65625 54.109375 25.515625 55.046875 
-Q 30.375 56 34.90625 56 
-Q 44.578125 56 49.625 51.796875 
-Q 54.6875 47.609375 54.6875 39.59375 
-Q 54.6875 37.984375 54.4375 35.8125 
-Q 54.203125 33.640625 53.71875 31.203125 
-M 44 27.484375 
-L 35.015625 27.484375 
-Q 23.96875 27.484375 18.671875 24.53125 
-Q 13.375 21.578125 13.375 15.375 
-Q 13.375 11.078125 16.078125 8.640625 
-Q 18.796875 6.203125 23.578125 6.203125 
-Q 30.90625 6.203125 36.375 11.453125 
-Q 41.84375 16.703125 43.609375 25.484375 
-z
-" id="DejaVuSans-Oblique-61"/>
-     <path d="M 31 75.875 
-Q 24.46875 64.65625 21.28125 53.65625 
-Q 18.109375 42.671875 18.109375 31.390625 
-Q 18.109375 20.125 21.3125 9.0625 
-Q 24.515625 -2 31 -13.1875 
-L 23.1875 -13.1875 
-Q 15.875 -1.703125 12.234375 9.375 
-Q 8.59375 20.453125 8.59375 31.390625 
-Q 8.59375 42.28125 12.203125 53.3125 
-Q 15.828125 64.359375 23.1875 75.875 
-z
-" id="DejaVuSans-28"/>
-     <path d="M 42.28125 54.6875 
-L 40.921875 47.703125 
-L 23 47.703125 
-L 17.1875 18.015625 
-Q 16.890625 16.359375 16.75 15.234375 
-Q 16.609375 14.109375 16.609375 13.484375 
-Q 16.609375 10.359375 18.484375 8.9375 
-Q 20.359375 7.515625 24.515625 7.515625 
-L 33.59375 7.515625 
-L 32.078125 0 
-L 23.484375 0 
-Q 15.484375 0 11.546875 3.125 
-Q 7.625 6.25 7.625 12.59375 
-Q 7.625 13.71875 7.765625 15.0625 
-Q 7.90625 16.40625 8.203125 18.015625 
-L 14.015625 47.703125 
-L 6.390625 47.703125 
-L 7.8125 54.6875 
-L 15.28125 54.6875 
-L 18.3125 70.21875 
-L 27.296875 70.21875 
-L 24.3125 54.6875 
-z
-" id="DejaVuSans-Oblique-74"/>
-     <path d="M 8.015625 75.875 
-L 15.828125 75.875 
-Q 23.140625 64.359375 26.78125 53.3125 
-Q 30.421875 42.28125 30.421875 31.390625 
-Q 30.421875 20.453125 26.78125 9.375 
-Q 23.140625 -1.703125 15.828125 -13.1875 
-L 8.015625 -13.1875 
-Q 14.5 -2 17.703125 9.0625 
-Q 20.90625 20.125 20.90625 31.390625 
-Q 20.90625 42.671875 17.703125 53.65625 
-Q 14.5 64.65625 8.015625 75.875 
-" id="DejaVuSans-29"/>
-    </defs>
-    <g transform="translate(226.340464 101.047475)scale(0.16 -0.16)">
-     <use transform="translate(63.335449 13.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.46875)" xlink:href="#DejaVuSans-Oblique-61"/>
-     <use transform="translate(61.279297 0.46875)" xlink:href="#DejaVuSans-28"/>
-     <use transform="translate(100.292969 0.46875)" xlink:href="#DejaVuSans-Oblique-74"/>
-     <use transform="translate(139.501953 0.46875)" xlink:href="#DejaVuSans-29"/>
-    </g>
-   </g>
-  </g>
- </g>
- <defs>
-  <clipPath id="pe62d83ccd6">
-   <rect height="217.44" width="217.439306" x="53.0525" y="10.7"/>
-  </clipPath>
- </defs>
-</svg>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Movimento-relativo-(Galileu)">Movimento relativo (Galileu)<a class="anchor-link" href="#Movimento-relativo-(Galileu)">&#182;</a></h2><ul>
-<li>Como dois observadores distintos "percebem" um dado movimento?</li>
-<li><div class="fragment">Importante para comparação entre resultados</div></li>
-</ul>
-<div class="fragment">Ex.: Tomando o solo como o referencial $o$ ('parado'), o carro 1 como o referencial $P$ ($v_{Po}=90$ km/h) e o carro 2 pelo referencial $o'$, $v_{o'o}=80$ km/h). Qual a velocidade do carro 1 em relação ao carro 2?</div><div class="fragment">A velocidade de $P$ em relação à $o'$ (velocidade relativa), é
-$$ v_{Po'} = v_{Po} - v_{o'o} = 10\text{ km/h.}$$</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<script>
-$(document).ready(function(){
-    $("#input_263").hide();               <!-- Code is hidden by default -->
-    $("#button_263").click(function(){
-        $("#input_263").toggle();
-    });
-});
-</script>
-<div class="input" id="input_263">
-<div class="prompt input_prompt"></div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
-
-<span class="n">coord</span> <span class="o">=</span> <span class="n">array</span><span class="p">((</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
-<span class="n">text</span><span class="p">(</span><span class="mf">0.37</span><span class="p">,</span> <span class="mf">0.27</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$o$&#39;&quot;</span><span class="p">)</span>
-<span class="n">vo</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">dxdy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$v_{o&#39;o}=80$ km/h&quot;</span><span class="p">)</span>
-<span class="n">vo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">vo</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">relative_position</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">distance</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">(</span><span class="n">coord</span><span class="o">+</span><span class="n">array</span><span class="p">((</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.3</span><span class="p">)),</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">))</span>
-<span class="n">text</span><span class="p">(</span><span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.57</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$P$&#39;&quot;</span><span class="p">)</span>
-<span class="n">vo</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="n">dxdy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$v_</span><span class="si">{Po}</span><span class="s2">=90$ km/h&quot;</span><span class="p">)</span>
-<span class="n">vo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">vo</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">relative_position</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">distance</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">)</span>
-
-<span class="n">xaxis</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span><span class="n">dxdy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
-<span class="n">xaxis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">xaxis</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">relative_position</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-
-<span class="n">yaxis</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span><span class="n">dxdy</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.9</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
-<span class="n">yaxis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">yaxis</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">relative_position</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">)</span>
-
-<span class="n">text</span><span class="p">(</span><span class="mf">0.07</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$o$&#39;</span><span class="p">)</span>
-
-<span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"><button class="code-btn" id="button_263"><i class="fa fa-code" style="font-size:1em; color:black"></i></button></div>
-
-
-<div class="output_svg output_subarea ">
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Created with matplotlib (http://matplotlib.org/) -->
-<svg height="260pt" version="1.1" viewBox="0 0 308 260" width="308pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style type="text/css">
-*{stroke-linecap:butt;stroke-linejoin:round;}
-  </style>
- </defs>
- <g id="figure_1">
-  <g id="patch_1">
-   <path d="M 0 260.40375 
-L 308.173 260.40375 
-L 308.173 0 
-L 0 0 
-z
-" style="fill:none;"/>
-  </g>
-  <g id="axes_1">
-   <g id="patch_2">
-    <path clip-path="url(#p39080af22f)" d="M 104.877 187.23075 
-L 148.365 187.23075 
-L 148.365 143.74275 
-L 104.877 143.74275 
+   <g id="PolyCollection_1">
+    <path clip-path="url(#pf621e427fe)" d="M 211.185276 119.432127 
+L 211.185276 119.432127 
+L 211.160392 121.000308 
+L 211.085765 122.56691 
+L 210.961471 124.130355 
+L 210.787635 125.68907 
+L 210.564432 127.241485 
+L 210.292086 128.786036 
+L 209.970871 130.321169 
+L 209.601112 131.845337 
+L 209.18318 133.357006 
+L 208.717497 134.854655 
+L 208.20453 136.336774 
+L 207.644798 137.801871 
+L 207.038862 139.248472 
+L 206.387334 140.675119 
+L 205.69087 142.080376 
+L 204.95017 143.462829 
+L 204.165981 144.821084 
+L 203.339092 146.153775 
+L 202.470335 147.45956 
+L 201.560587 148.737123 
+L 200.610761 149.985179 
+L 199.621816 151.20247 
+L 198.594747 152.387772 
+L 197.530587 153.53989 
+L 196.430409 154.657664 
+L 195.29532 155.739969 
+L 194.126464 156.785715 
+L 192.925016 157.793849 
+L 191.692187 158.763356 
+L 190.429219 159.69326 
+L 189.137382 160.582625 
+L 187.817978 161.430554 
+L 186.472335 162.236195 
+L 185.101809 162.998735 
+L 183.707778 163.717408 
+L 182.291648 164.391489 
+L 180.854843 165.0203 
+L 179.398811 165.603207 
+L 177.925017 166.139624 
+L 176.434946 166.629011 
+L 174.930098 167.070874 
+L 173.411988 167.464769 
+L 171.882145 167.8103 
+L 170.342109 168.107117 
+L 168.793431 168.354923 
+L 167.237671 168.553468 
+L 165.676394 168.702552 
+L 164.111173 168.802025 
+L 162.543584 168.851786 
+L 160.975206 168.851786 
+L 159.407617 168.802025 
+L 157.842396 168.702552 
+L 156.28112 168.553468 
+L 154.725359 168.354923 
+L 153.176681 168.107117 
+L 151.636645 167.8103 
+L 150.106802 167.464769 
+L 148.588692 167.070874 
+L 147.083844 166.629011 
+L 145.593773 166.139624 
+L 144.119979 165.603207 
+L 142.663947 165.0203 
+L 141.227142 164.391489 
+L 139.811012 163.717408 
+L 138.416981 162.998735 
+L 137.046455 162.236195 
+L 135.700812 161.430554 
+L 134.381408 160.582625 
+L 133.089572 159.69326 
+L 131.826603 158.763356 
+L 130.593774 157.793849 
+L 129.392327 156.785715 
+L 128.22347 155.739969 
+L 127.088381 154.657664 
+L 125.988203 153.53989 
+L 124.924044 152.387772 
+L 123.896974 151.20247 
+L 122.908029 149.985179 
+L 121.958204 148.737123 
+L 121.048455 147.45956 
+L 120.179699 146.153775 
+L 119.35281 144.821084 
+L 118.56862 143.462829 
+L 117.827921 142.080376 
+L 117.131456 140.675119 
+L 116.479928 139.248472 
+L 115.873993 137.801871 
+L 115.31426 136.336774 
+L 114.801294 134.854655 
+L 114.33561 133.357006 
+L 113.917678 131.845337 
+L 113.547919 130.321169 
+L 113.226705 128.786036 
+L 112.954359 127.241485 
+L 112.731155 125.68907 
+L 112.557319 124.130355 
+L 112.433025 122.56691 
+L 112.358399 121.000308 
+L 112.333515 119.432127 
+L 112.333515 119.432127 
+L 112.333515 119.432127 
+L 112.358399 117.863946 
+L 112.433025 116.297344 
+L 112.557319 114.733898 
+L 112.731155 113.175183 
+L 112.954359 111.622769 
+L 113.226705 110.078217 
+L 113.547919 108.543085 
+L 113.917678 107.018916 
+L 114.33561 105.507247 
+L 114.801294 104.009599 
+L 115.31426 102.52748 
+L 115.873993 101.062383 
+L 116.479928 99.615782 
+L 117.131456 98.189135 
+L 117.827921 96.783878 
+L 118.56862 95.401425 
+L 119.35281 94.043169 
+L 120.179699 92.710478 
+L 121.048455 91.404694 
+L 121.958204 90.12713 
+L 122.908029 88.879075 
+L 123.896974 87.661783 
+L 124.924044 86.476482 
+L 125.988203 85.324364 
+L 127.088381 84.20659 
+L 128.22347 83.124285 
+L 129.392327 82.078539 
+L 130.593774 81.070404 
+L 131.826603 80.100897 
+L 133.089572 79.170993 
+L 134.381408 78.281629 
+L 135.700812 77.433699 
+L 137.046455 76.628059 
+L 138.416981 75.865518 
+L 139.811012 75.146846 
+L 141.227142 74.472765 
+L 142.663947 73.843954 
+L 144.119979 73.261046 
+L 145.593773 72.724629 
+L 147.083844 72.235243 
+L 148.588692 71.793379 
+L 150.106802 71.399484 
+L 151.636645 71.053954 
+L 153.176681 70.757137 
+L 154.725359 70.509331 
+L 156.28112 70.310786 
+L 157.842396 70.161702 
+L 159.407617 70.062229 
+L 160.975206 70.012468 
+L 162.543584 70.012468 
+L 164.111173 70.062229 
+L 165.676394 70.161702 
+L 167.237671 70.310786 
+L 168.793431 70.509331 
+L 170.342109 70.757137 
+L 171.882145 71.053954 
+L 173.411988 71.399484 
+L 174.930098 71.793379 
+L 176.434946 72.235243 
+L 177.925017 72.724629 
+L 179.398811 73.261046 
+L 180.854843 73.843954 
+L 182.291648 74.472765 
+L 183.707778 75.146846 
+L 185.101809 75.865518 
+L 186.472335 76.628059 
+L 187.817978 77.433699 
+L 189.137382 78.281629 
+L 190.429219 79.170993 
+L 191.692187 80.100897 
+L 192.925016 81.070404 
+L 194.126464 82.078539 
+L 195.29532 83.124285 
+L 196.430409 84.20659 
+L 197.530587 85.324364 
+L 198.594747 86.476482 
+L 199.621816 87.661783 
+L 200.610761 88.879075 
+L 201.560587 90.12713 
+L 202.470335 91.404694 
+L 203.339092 92.710478 
+L 204.165981 94.043169 
+L 204.95017 95.401425 
+L 205.69087 96.783878 
+L 206.387334 98.189135 
+L 207.038862 99.615782 
+L 207.644798 101.062383 
+L 208.20453 102.52748 
+L 208.717497 104.009599 
+L 209.18318 105.507247 
+L 209.601112 107.018916 
+L 209.970871 108.543085 
+L 210.292086 110.078217 
+L 210.564432 111.622769 
+L 210.787635 113.175183 
+L 210.961471 114.733898 
+L 211.085765 116.297344 
+L 211.160392 117.863946 
+L 211.185276 119.432127 
 z
 " style="fill:#1f77b4;"/>
    </g>
-   <g id="patch_3">
-    <path clip-path="url(#p39080af22f)" d="M 126.621 121.99875 
-L 170.109 121.99875 
-L 170.109 78.51075 
-L 126.621 78.51075 
+   <g id="patch_2">
+    <path clip-path="url(#pf621e427fe)" d="M 224.813947 28.664777 
+L 231.721918 36.155034 
+L 229.596529 37.316139 
+L 248.466601 72.063764 
+L 229.509778 37.363531 
+L 227.384389 38.524637 
 z
-" style="fill:#ff0000;"/>
+" style="fill:#0000ff;stroke:#0000ff;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_3">
+    <path clip-path="url(#pf621e427fe)" d="M 187.78457 105.214509 
+L 180.294313 112.12248 
+L 179.133208 109.99709 
+L 161.735699 119.388752 
+L 179.085815 109.91034 
+L 177.92471 107.784951 
+z
+" style="stroke:#000000;stroke-linejoin:miter;"/>
    </g>
    <g id="patch_4">
-    <path clip-path="url(#p39080af22f)" d="M 213.597 165.48675 
-L 191.853 170.92275 
-L 191.853 165.59547 
-L 148.365 165.37803 
-L 191.853 165.37803 
-L 191.853 160.05075 
+    <path clip-path="url(#pf621e427fe)" d="M 222.484802 86.257686 
+L 229.975059 79.349715 
+L 231.136164 81.475105 
+L 248.533673 72.083443 
+L 231.183556 81.561855 
+L 232.344662 83.687244 
 z
 " style="stroke:#000000;stroke-linejoin:miter;"/>
    </g>
-   <g id="patch_5">
-    <path clip-path="url(#p39080af22f)" d="M 257.085 100.25475 
-L 235.341 105.69075 
-L 235.341 100.36347 
-L 170.109 100.14603 
-L 235.341 100.14603 
-L 235.341 94.81875 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
+   <g id="line2d_1">
+    <path clip-path="url(#pf621e427fe)" d="M 248.509977 72.040068 
+L 245.32953 66.633422 
+L 241.812575 61.439377 
+L 237.973275 56.478849 
+L 233.827088 51.771811 
+L 229.39071 47.337218 
+L 224.682004 43.192925 
+L 219.719932 39.355621 
+L 214.524473 35.840756 
+L 209.116547 32.662485 
+L 203.517931 29.833604 
+L 197.751168 27.365505 
+L 191.839479 25.268125 
+L 185.806668 23.549911 
+L 179.677027 22.217781 
+L 173.475238 21.277098 
+L 167.226274 20.731651 
+L 160.955296 20.583636 
+L 154.687556 20.833649 
+L 148.448292 21.480684 
+L 142.262627 22.522134 
+L 136.155469 23.953807 
+L 130.151409 25.769937 
+L 124.274623 27.963212 
+L 118.548774 30.524799 
+L 112.99692 33.444385 
+L 107.641415 36.710214 
+L 102.503824 40.309134 
+L 97.604835 44.226655 
+L 92.964173 48.447002 
+L 88.600525 52.95318 
+L 84.531462 57.727046 
+L 80.773369 62.749377 
+L 77.341378 67.999949 
+L 74.249308 73.45762 
+L 71.509611 79.100414 
+L 69.133317 84.90561 
+L 67.129997 90.849832 
+L 65.507715 96.909145 
+L 64.273005 103.05915 
+L 63.430838 109.275083 
+L 62.984606 115.531915 
+L 62.936105 121.804451 
+L 63.28553 128.067435 
+L 64.031475 134.295648 
+L 65.170936 140.464011 
+L 66.699324 146.547686 
+L 68.610486 152.522176 
+L 70.896725 158.363424 
+L 73.548837 164.047909 
+L 76.556141 169.552742 
+L 79.906528 174.855758 
+L 83.586509 179.935602 
+L 87.581264 184.771819 
+L 91.874708 189.344937 
+L 96.449553 193.636541 
+L 101.287377 197.62935 
+L 106.368701 201.307286 
+L 111.673064 204.65554 
+L 117.179107 207.660629 
+L 122.864659 210.310453 
+L 128.706826 212.594342 
+L 134.682085 214.5031 
+L 140.766374 216.02904 
+L 146.935194 217.166019 
+L 153.163707 217.909458 
+L 159.426831 218.256364 
+L 165.699348 218.205339 
+L 171.956 217.756589 
+L 178.171593 216.911922 
+L 184.321101 215.674737 
+L 190.379761 214.050018 
+L 196.323176 212.044306 
+L 202.127415 209.665677 
+L 207.769107 206.92371 
+L 213.225534 203.829444 
+L 218.474724 200.395341 
+L 223.495542 196.635228 
+L 228.267771 192.564244 
+L 232.772194 188.198784 
+L 236.990673 183.556424 
+L 240.906222 178.655859 
+L 244.503075 173.51682 
+L 247.766749 168.160002 
+L 250.684101 162.606973 
+L 253.243385 156.880095 
+L 255.434295 151.002427 
+L 257.248009 144.997636 
+L 258.677224 138.889903 
+L 259.716186 132.703819 
+L 260.36071 126.464295 
+L 260.608201 120.196455 
+L 260.457663 113.925538 
+L 259.909702 107.676793 
+L 258.966525 101.475383 
+L 257.631928 95.346279 
+L 255.911287 89.31416 
+L 253.811529 83.403315 
+L 251.34111 77.637546 
+L 248.509977 72.040068 
+" style="fill:none;stroke:#000000;stroke-dasharray:2.2,2.2;stroke-dashoffset:0;stroke-width:1.5;"/>
    </g>
-   <g id="patch_6">
-    <path clip-path="url(#p39080af22f)" d="M 246.213 219.84675 
-L 224.469 225.28275 
-L 224.469 219.95547 
-L 50.517 219.73803 
-L 224.469 219.73803 
-L 224.469 214.41075 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_7">
-    <path clip-path="url(#p39080af22f)" d="M 50.517 24.15075 
-L 55.953 45.89475 
-L 50.62572 45.89475 
-L 50.40828 219.84675 
-L 50.40828 45.89475 
-L 45.081 45.89475 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="text_1">
-    <!-- $o$' -->
+   <g id="line2d_2">
     <defs>
-     <path d="M 25.390625 -1.421875 
-Q 15.765625 -1.421875 10.171875 4.515625 
-Q 4.59375 10.453125 4.59375 20.703125 
-Q 4.59375 26.65625 6.515625 32.828125 
-Q 8.453125 39.015625 11.53125 43.21875 
-Q 16.359375 49.75 22.3125 52.875 
-Q 28.265625 56 35.796875 56 
-Q 45.125 56 50.859375 50.1875 
-Q 56.59375 44.390625 56.59375 35.015625 
-Q 56.59375 28.515625 54.6875 22.0625 
-Q 52.78125 15.625 49.703125 11.375 
-Q 44.921875 4.828125 38.96875 1.703125 
-Q 33.015625 -1.421875 25.390625 -1.421875 
-M 13.921875 21 
-Q 13.921875 13.578125 17.015625 9.890625 
-Q 20.125 6.203125 26.421875 6.203125 
-Q 35.453125 6.203125 41.375 14.078125 
-Q 47.3125 21.96875 47.3125 34.078125 
-Q 47.3125 41.15625 44.140625 44.765625 
-Q 40.96875 48.390625 34.8125 48.390625 
-Q 29.734375 48.390625 25.78125 46.015625 
-Q 21.828125 43.65625 18.703125 38.8125 
-Q 16.40625 35.203125 15.15625 30.5625 
-Q 13.921875 25.921875 13.921875 21 
-" id="DejaVuSans-Oblique-6f"/>
-     <path d="M 17.921875 72.90625 
-L 17.921875 45.796875 
-L 9.625 45.796875 
-L 9.625 72.90625 
+     <path d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
 z
-" id="DejaVuSans-27"/>
+" id="m02e34d0aab" style="stroke:#ff0000;"/>
     </defs>
-    <g transform="translate(120.0978 172.00995)scale(0.16 -0.16)">
-     <use transform="translate(0 0.09375)" xlink:href="#DejaVuSans-Oblique-6f"/>
-     <use transform="translate(61.181641 0.09375)" xlink:href="#DejaVuSans-27"/>
+    <g clip-path="url(#pf621e427fe)">
+     <use style="fill:#ff0000;stroke:#ff0000;" x="248.509977" xlink:href="#m02e34d0aab" y="72.040068"/>
     </g>
    </g>
-   <g id="text_2">
-    <!-- $v_{o'o}=80$ km/h -->
+   <g id="text_1">
+    <!-- Terra -->
     <defs>
-     <path d="M 7.171875 54.6875 
-L 16.703125 54.6875 
-L 24.703125 8.203125 
-L 50.875 54.6875 
-L 60.40625 54.6875 
-L 29.296875 0 
-L 17.1875 0 
+     <path d="M -0.296875 72.90625 
+L 61.375 72.90625 
+L 61.375 64.59375 
+L 35.5 64.59375 
+L 35.5 0 
+L 25.59375 0 
+L 25.59375 64.59375 
+L -0.296875 64.59375 
 z
-" id="DejaVuSans-Oblique-76"/>
-     <path d="M 3.515625 5.421875 
-Q 2.875 5.609375 2.875 6.390625 
-L 15.09375 51.8125 
-Q 15.671875 53.65625 17.078125 54.78125 
-Q 18.5 55.90625 20.3125 55.90625 
-Q 22.65625 55.90625 24.4375 54.359375 
-Q 26.21875 52.828125 26.21875 50.484375 
-Q 26.21875 49.46875 25.6875 48.1875 
-L 7.625 4.984375 
-Q 7.28125 4.296875 6.6875 4.296875 
-Q 6.15625 4.296875 5 4.78125 
-Q 3.859375 5.28125 3.515625 5.421875 
-" id="Cmsy10-30"/>
-     <path d="M 10.59375 45.40625 
-L 73.1875 45.40625 
-L 73.1875 37.203125 
-L 10.59375 37.203125 
+" id="DejaVuSans-54"/>
+     <path d="M 56.203125 29.59375 
+L 56.203125 25.203125 
+L 14.890625 25.203125 
+Q 15.484375 15.921875 20.484375 11.0625 
+Q 25.484375 6.203125 34.421875 6.203125 
+Q 39.59375 6.203125 44.453125 7.46875 
+Q 49.3125 8.734375 54.109375 11.28125 
+L 54.109375 2.78125 
+Q 49.265625 0.734375 44.1875 -0.34375 
+Q 39.109375 -1.421875 33.890625 -1.421875 
+Q 20.796875 -1.421875 13.15625 6.1875 
+Q 5.515625 13.8125 5.515625 26.8125 
+Q 5.515625 40.234375 12.765625 48.109375 
+Q 20.015625 56 32.328125 56 
+Q 43.359375 56 49.78125 48.890625 
+Q 56.203125 41.796875 56.203125 29.59375 
+M 47.21875 32.234375 
+Q 47.125 39.59375 43.09375 43.984375 
+Q 39.0625 48.390625 32.421875 48.390625 
+Q 24.90625 48.390625 20.390625 44.140625 
+Q 15.875 39.890625 15.1875 32.171875 
 z
-M 10.59375 25.484375 
-L 73.1875 25.484375 
-L 73.1875 17.1875 
-L 10.59375 17.1875 
-z
-" id="DejaVuSans-3d"/>
-     <path d="M 31.78125 34.625 
-Q 24.75 34.625 20.71875 30.859375 
-Q 16.703125 27.09375 16.703125 20.515625 
-Q 16.703125 13.921875 20.71875 10.15625 
-Q 24.75 6.390625 31.78125 6.390625 
-Q 38.8125 6.390625 42.859375 10.171875 
-Q 46.921875 13.96875 46.921875 20.515625 
-Q 46.921875 27.09375 42.890625 30.859375 
-Q 38.875 34.625 31.78125 34.625 
-M 21.921875 38.8125 
-Q 15.578125 40.375 12.03125 44.71875 
-Q 8.5 49.078125 8.5 55.328125 
-Q 8.5 64.0625 14.71875 69.140625 
-Q 20.953125 74.21875 31.78125 74.21875 
-Q 42.671875 74.21875 48.875 69.140625 
-Q 55.078125 64.0625 55.078125 55.328125 
-Q 55.078125 49.078125 51.53125 44.71875 
-Q 48 40.375 41.703125 38.8125 
-Q 48.828125 37.15625 52.796875 32.3125 
-Q 56.78125 27.484375 56.78125 20.515625 
-Q 56.78125 9.90625 50.3125 4.234375 
-Q 43.84375 -1.421875 31.78125 -1.421875 
-Q 19.734375 -1.421875 13.25 4.234375 
-Q 6.78125 9.90625 6.78125 20.515625 
-Q 6.78125 27.484375 10.78125 32.3125 
-Q 14.796875 37.15625 21.921875 38.8125 
-M 18.3125 54.390625 
-Q 18.3125 48.734375 21.84375 45.5625 
-Q 25.390625 42.390625 31.78125 42.390625 
-Q 38.140625 42.390625 41.71875 45.5625 
-Q 45.3125 48.734375 45.3125 54.390625 
-Q 45.3125 60.0625 41.71875 63.234375 
-Q 38.140625 66.40625 31.78125 66.40625 
-Q 25.390625 66.40625 21.84375 63.234375 
-Q 18.3125 60.0625 18.3125 54.390625 
-" id="DejaVuSans-38"/>
-     <path d="M 31.78125 66.40625 
-Q 24.171875 66.40625 20.328125 58.90625 
-Q 16.5 51.421875 16.5 36.375 
-Q 16.5 21.390625 20.328125 13.890625 
-Q 24.171875 6.390625 31.78125 6.390625 
-Q 39.453125 6.390625 43.28125 13.890625 
-Q 47.125 21.390625 47.125 36.375 
-Q 47.125 51.421875 43.28125 58.90625 
-Q 39.453125 66.40625 31.78125 66.40625 
-M 31.78125 74.21875 
-Q 44.046875 74.21875 50.515625 64.515625 
-Q 56.984375 54.828125 56.984375 36.375 
-Q 56.984375 17.96875 50.515625 8.265625 
-Q 44.046875 -1.421875 31.78125 -1.421875 
-Q 19.53125 -1.421875 13.0625 8.265625 
-Q 6.59375 17.96875 6.59375 36.375 
-Q 6.59375 54.828125 13.0625 64.515625 
-Q 19.53125 74.21875 31.78125 74.21875 
-" id="DejaVuSans-30"/>
-     <path id="DejaVuSans-20"/>
-     <path d="M 9.078125 75.984375 
-L 18.109375 75.984375 
-L 18.109375 31.109375 
-L 44.921875 54.6875 
-L 56.390625 54.6875 
-L 27.390625 29.109375 
-L 57.625 0 
-L 45.90625 0 
-L 18.109375 26.703125 
-L 18.109375 0 
-L 9.078125 0 
-z
-" id="DejaVuSans-6b"/>
-     <path d="M 52 44.1875 
-Q 55.375 50.25 60.0625 53.125 
-Q 64.75 56 71.09375 56 
-Q 79.640625 56 84.28125 50.015625 
-Q 88.921875 44.046875 88.921875 33.015625 
-L 88.921875 0 
-L 79.890625 0 
-L 79.890625 32.71875 
-Q 79.890625 40.578125 77.09375 44.375 
-Q 74.3125 48.1875 68.609375 48.1875 
-Q 61.625 48.1875 57.5625 43.546875 
-Q 53.515625 38.921875 53.515625 30.90625 
-L 53.515625 0 
-L 44.484375 0 
-L 44.484375 32.71875 
-Q 44.484375 40.625 41.703125 44.40625 
-Q 38.921875 48.1875 33.109375 48.1875 
-Q 26.21875 48.1875 22.15625 43.53125 
-Q 18.109375 38.875 18.109375 30.90625 
+" id="DejaVuSans-65"/>
+     <path d="M 41.109375 46.296875 
+Q 39.59375 47.171875 37.8125 47.578125 
+Q 36.03125 48 33.890625 48 
+Q 26.265625 48 22.1875 43.046875 
+Q 18.109375 38.09375 18.109375 28.8125 
 L 18.109375 0 
 L 9.078125 0 
 L 9.078125 54.6875 
 L 18.109375 54.6875 
 L 18.109375 46.1875 
-Q 21.1875 51.21875 25.484375 53.609375 
-Q 29.78125 56 35.6875 56 
-Q 41.65625 56 45.828125 52.96875 
-Q 50 49.953125 52 44.1875 
-" id="DejaVuSans-6d"/>
-     <path d="M 25.390625 72.90625 
-L 33.6875 72.90625 
-L 8.296875 -9.28125 
-L 0 -9.28125 
+Q 20.953125 51.171875 25.484375 53.578125 
+Q 30.03125 56 36.53125 56 
+Q 37.453125 56 38.578125 55.875 
+Q 39.703125 55.765625 41.0625 55.515625 
 z
-" id="DejaVuSans-2f"/>
-     <path d="M 54.890625 33.015625 
-L 54.890625 0 
-L 45.90625 0 
-L 45.90625 32.71875 
-Q 45.90625 40.484375 42.875 44.328125 
-Q 39.84375 48.1875 33.796875 48.1875 
-Q 26.515625 48.1875 22.3125 43.546875 
-Q 18.109375 38.921875 18.109375 30.90625 
-L 18.109375 0 
-L 9.078125 0 
-L 9.078125 75.984375 
-L 18.109375 75.984375 
-L 18.109375 46.1875 
-Q 21.34375 51.125 25.703125 53.5625 
-Q 30.078125 56 35.796875 56 
-Q 45.21875 56 50.046875 50.171875 
-Q 54.890625 44.34375 54.890625 33.015625 
-" id="DejaVuSans-68"/>
+" id="DejaVuSans-72"/>
+     <path d="M 34.28125 27.484375 
+Q 23.390625 27.484375 19.1875 25 
+Q 14.984375 22.515625 14.984375 16.5 
+Q 14.984375 11.71875 18.140625 8.90625 
+Q 21.296875 6.109375 26.703125 6.109375 
+Q 34.1875 6.109375 38.703125 11.40625 
+Q 43.21875 16.703125 43.21875 25.484375 
+L 43.21875 27.484375 
+z
+M 52.203125 31.203125 
+L 52.203125 0 
+L 43.21875 0 
+L 43.21875 8.296875 
+Q 40.140625 3.328125 35.546875 0.953125 
+Q 30.953125 -1.421875 24.3125 -1.421875 
+Q 15.921875 -1.421875 10.953125 3.296875 
+Q 6 8.015625 6 15.921875 
+Q 6 25.140625 12.171875 29.828125 
+Q 18.359375 34.515625 30.609375 34.515625 
+L 43.21875 34.515625 
+L 43.21875 35.40625 
+Q 43.21875 41.609375 39.140625 45 
+Q 35.0625 48.390625 27.6875 48.390625 
+Q 23 48.390625 18.546875 47.265625 
+Q 14.109375 46.140625 10.015625 43.890625 
+L 10.015625 52.203125 
+Q 14.9375 54.109375 19.578125 55.046875 
+Q 24.21875 56 28.609375 56 
+Q 40.484375 56 46.34375 49.84375 
+Q 52.203125 43.703125 52.203125 31.203125 
+" id="DejaVuSans-61"/>
     </defs>
-    <g transform="translate(161.4114 187.23075)scale(0.16 -0.16)">
-     <use transform="translate(0 0.015625)" xlink:href="#DejaVuSans-Oblique-76"/>
-     <use transform="translate(59.179688 -16.390625)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6f"/>
-     <use transform="translate(105.261763 10.40625)scale(0.49)" xlink:href="#Cmsy10-30"/>
-     <use transform="translate(120.64604 -16.390625)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6f"/>
-     <use transform="translate(185.689986 0.015625)" xlink:href="#DejaVuSans-3d"/>
-     <use transform="translate(288.96147 0.015625)" xlink:href="#DejaVuSans-38"/>
-     <use transform="translate(352.584517 0.015625)" xlink:href="#DejaVuSans-30"/>
-     <use transform="translate(416.207564 0.015625)" xlink:href="#DejaVuSans-20"/>
-     <use transform="translate(447.994673 0.015625)" xlink:href="#DejaVuSans-6b"/>
-     <use transform="translate(505.904829 0.015625)" xlink:href="#DejaVuSans-6d"/>
-     <use transform="translate(603.316939 0.015625)" xlink:href="#DejaVuSans-2f"/>
-     <use transform="translate(637.008345 0.015625)" xlink:href="#DejaVuSans-68"/>
+    <g transform="translate(141.989043 139.202479)scale(0.16 -0.16)">
+     <use xlink:href="#DejaVuSans-54"/>
+     <use x="60.818359" xlink:href="#DejaVuSans-65"/>
+     <use x="122.341797" xlink:href="#DejaVuSans-72"/>
+     <use x="163.439453" xlink:href="#DejaVuSans-72"/>
+     <use x="204.552734" xlink:href="#DejaVuSans-61"/>
     </g>
    </g>
-   <g id="text_3">
-    <!-- $P$' -->
-    <defs>
-     <path d="M 16.890625 72.90625 
-L 39.703125 72.90625 
-Q 49.65625 72.90625 54.875 68.265625 
-Q 60.109375 63.625 60.109375 54.6875 
-Q 60.109375 42.671875 52.390625 35.984375 
-Q 44.671875 29.296875 30.71875 29.296875 
-L 18.3125 29.296875 
-L 12.59375 0 
-L 2.6875 0 
-z
-M 25.203125 64.796875 
-L 19.921875 37.40625 
-L 32.328125 37.40625 
-Q 40.71875 37.40625 45.203125 41.703125 
-Q 49.703125 46 49.703125 54 
-Q 49.703125 59.125 46.65625 61.953125 
-Q 43.609375 64.796875 38.09375 64.796875 
-z
-" id="DejaVuSans-Oblique-50"/>
-    </defs>
-    <g transform="translate(141.8418 106.77795)scale(0.16 -0.16)">
-     <use transform="translate(0 0.09375)" xlink:href="#DejaVuSans-Oblique-50"/>
-     <use transform="translate(60.302734 0.09375)" xlink:href="#DejaVuSans-27"/>
-    </g>
-   </g>
-   <g id="text_4">
-    <!-- $v_{Po}=90$ km/h -->
-    <defs>
-     <path d="M 10.984375 1.515625 
-L 10.984375 10.5 
-Q 14.703125 8.734375 18.5 7.8125 
-Q 22.3125 6.890625 25.984375 6.890625 
-Q 35.75 6.890625 40.890625 13.453125 
-Q 46.046875 20.015625 46.78125 33.40625 
-Q 43.953125 29.203125 39.59375 26.953125 
-Q 35.25 24.703125 29.984375 24.703125 
-Q 19.046875 24.703125 12.671875 31.3125 
-Q 6.296875 37.9375 6.296875 49.421875 
-Q 6.296875 60.640625 12.9375 67.421875 
-Q 19.578125 74.21875 30.609375 74.21875 
-Q 43.265625 74.21875 49.921875 64.515625 
-Q 56.59375 54.828125 56.59375 36.375 
-Q 56.59375 19.140625 48.40625 8.859375 
-Q 40.234375 -1.421875 26.421875 -1.421875 
-Q 22.703125 -1.421875 18.890625 -0.6875 
-Q 15.09375 0.046875 10.984375 1.515625 
-M 30.609375 32.421875 
-Q 37.25 32.421875 41.125 36.953125 
-Q 45.015625 41.5 45.015625 49.421875 
-Q 45.015625 57.28125 41.125 61.84375 
-Q 37.25 66.40625 30.609375 66.40625 
-Q 23.96875 66.40625 20.09375 61.84375 
-Q 16.21875 57.28125 16.21875 49.421875 
-Q 16.21875 41.5 20.09375 36.953125 
-Q 23.96875 32.421875 30.609375 32.421875 
-" id="DejaVuSans-39"/>
-    </defs>
-    <g transform="translate(191.853 121.99875)scale(0.16 -0.16)">
-     <use transform="translate(0 0.015625)" xlink:href="#DejaVuSans-Oblique-76"/>
-     <use transform="translate(59.179688 -16.390625)scale(0.7)" xlink:href="#DejaVuSans-Oblique-50"/>
-     <use transform="translate(101.391602 -16.390625)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6f"/>
-     <use transform="translate(166.435547 0.015625)" xlink:href="#DejaVuSans-3d"/>
-     <use transform="translate(269.707031 0.015625)" xlink:href="#DejaVuSans-39"/>
-     <use transform="translate(333.330078 0.015625)" xlink:href="#DejaVuSans-30"/>
-     <use transform="translate(396.953125 0.015625)" xlink:href="#DejaVuSans-20"/>
-     <use transform="translate(428.740234 0.015625)" xlink:href="#DejaVuSans-6b"/>
-     <use transform="translate(486.650391 0.015625)" xlink:href="#DejaVuSans-6d"/>
-     <use transform="translate(584.0625 0.015625)" xlink:href="#DejaVuSans-2f"/>
-     <use transform="translate(617.753906 0.015625)" xlink:href="#DejaVuSans-68"/>
-    </g>
-   </g>
-   <g id="text_5">
-    <!-- $x$ -->
-    <defs>
-     <path d="M 60.015625 54.6875 
-L 34.90625 27.875 
-L 50.296875 0 
-L 39.984375 0 
-L 28.421875 21.6875 
-L 8.296875 0 
-L -2.59375 0 
-L 24.3125 28.8125 
-L 10.015625 54.6875 
-L 20.3125 54.6875 
-L 30.8125 34.90625 
-L 49.125 54.6875 
-z
-" id="DejaVuSans-Oblique-78"/>
-    </defs>
-    <g transform="translate(226.6434 208.97475)scale(0.16 -0.16)">
-     <use transform="translate(0 0.3125)" xlink:href="#DejaVuSans-Oblique-78"/>
-    </g>
-   </g>
-   <g id="text_6">
-    <!-- $y$ -->
-    <defs>
-     <path d="M 24.8125 -5.078125 
-Q 18.5625 -15.578125 14.625 -18.1875 
-Q 10.6875 -20.796875 4.59375 -20.796875 
-L -2.484375 -20.796875 
-L -0.984375 -13.28125 
-L 4.203125 -13.28125 
-Q 7.953125 -13.28125 10.59375 -11.234375 
-Q 13.234375 -9.1875 16.5 -3.21875 
-L 19.28125 2 
-L 7.171875 54.6875 
-L 16.703125 54.6875 
-L 25.78125 12.796875 
-L 50.875 54.6875 
-L 60.296875 54.6875 
-z
-" id="DejaVuSans-Oblique-79"/>
-    </defs>
-    <g transform="translate(61.389 43.72035)scale(0.16 -0.16)">
-     <use transform="translate(0 0.3125)" xlink:href="#DejaVuSans-Oblique-79"/>
-    </g>
-   </g>
-   <g id="text_7">
-    <!-- $o$ -->
-    <g transform="translate(54.8658 215.49795)scale(0.16 -0.16)">
-     <use xlink:href="#DejaVuSans-Oblique-6f"/>
-    </g>
-   </g>
-  </g>
- </g>
- <defs>
-  <clipPath id="p39080af22f">
-   <rect height="217.44" width="217.44" x="39.645" y="13.27875"/>
-  </clipPath>
- </defs>
-</svg>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Posi&#231;&#227;o-e-velocidade-relativos-(caso-geral)">Posi&#231;&#227;o e velocidade relativos (caso geral)<a class="anchor-link" href="#Posi&#231;&#227;o-e-velocidade-relativos-(caso-geral)">&#182;</a></h2><ul>
-<li><div class="fragment">Sejam $\vec{r}_{Po}$ e $\vec{r}_{o'o}$ a posição dos referenciais $P$ e $o'$ em relação à $o$.</div></li>
-<li><div class="fragment">Posição de $P$ relativamente a $o'$: $\vec{r}_{Po'} = \vec{r}_{Po}-\vec{r}_{o'o}$</div></li>
-<li><div class="fragment">Velocidade de $P$ relativamente a $o'$ (derivar eq. acima): $\vec{v}_{Po'} = \vec{v}_{Po}-\vec{v}_{o'o}$, ou $$\vec{v}_{Po} = \vec{v}_{Po'} +\vec{v}_{o'o}.$$</div></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<script>
-$(document).ready(function(){
-    $("#input_265").hide();               <!-- Code is hidden by default -->
-    $("#button_265").click(function(){
-        $("#input_265").toggle();
-    });
-});
-</script>
-<div class="input" id="input_265">
-<div class="prompt input_prompt"></div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
-
-<span class="n">o</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
-<span class="n">opcoord</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
-<span class="n">pcoord</span>  <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
-
-<span class="c1"># Vetores posição</span>
-<span class="n">op</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">o</span><span class="p">,</span> <span class="n">dxdy</span><span class="o">=</span><span class="n">opcoord</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\vec</span><span class="si">{r}</span><span class="s2">_{o&#39;o}(t)$&quot;</span><span class="p">)</span>
-<span class="n">op</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">op</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.07</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">op</span><span class="o">.</span><span class="n">tip</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">);</span> <span class="n">text</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">tip</span><span class="o">+</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="s2">&quot;o&#39;&quot;</span><span class="p">)</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">o</span><span class="p">,</span> <span class="n">dxdy</span><span class="o">=</span><span class="n">pcoord</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{r}</span><span class="s1">_</span><span class="si">{Po}</span><span class="s1">(t)$&#39;</span><span class="p">)</span>
-<span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">p</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="o">.</span><span class="n">tip</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">);</span> <span class="n">text</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">tip</span><span class="o">+</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="s1">&#39;P&#39;</span><span class="p">)</span>
-
-<span class="n">pop</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">op</span><span class="o">.</span><span class="n">tip</span><span class="p">,</span> <span class="n">dxdy</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">dxdy</span><span class="o">-</span><span class="n">op</span><span class="o">.</span><span class="n">dxdy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\vec</span><span class="si">{r}</span><span class="s2">_{Po&#39;}(t)=\vec</span><span class="si">{r}</span><span class="s2">_</span><span class="si">{Po}</span><span class="s2">(t)-\vec</span><span class="si">{r}</span><span class="s2">_{o&#39;o}(t)$&quot;</span><span class="p">)</span>
-<span class="n">pop</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">pop</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">)</span>
-
-<span class="n">xaxis</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">o</span><span class="p">,</span><span class="n">dxdy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
-<span class="n">xaxis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">xaxis</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">relative_position</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-
-<span class="n">yaxis</span> <span class="o">=</span> <span class="n">vector2D</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">o</span><span class="p">,</span><span class="n">dxdy</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.9</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
-<span class="n">yaxis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span> <span class="n">yaxis</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">relative_position</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">distance</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">)</span>
-
-<span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"><button class="code-btn" id="button_265"><i class="fa fa-code" style="font-size:1em; color:black"></i></button></div>
-
-
-<div class="output_svg output_subarea ">
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Created with matplotlib (http://matplotlib.org/) -->
-<svg height="260pt" version="1.1" viewBox="0 0 373 260" width="373pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style type="text/css">
-*{stroke-linecap:butt;stroke-linejoin:round;}
-  </style>
- </defs>
- <g id="figure_1">
-  <g id="patch_1">
-   <path d="M 0 260.40375 
-L 373.803825 260.40375 
-L 373.803825 0 
-L 0 0 
-z
-" style="fill:none;"/>
-  </g>
-  <g id="axes_1">
-   <g id="patch_2">
-    <path clip-path="url(#p91c1f72ef7)" d="M 202.725 176.35875 
-L 183.311007 187.55913 
-L 181.847491 182.436823 
-L 50.487132 219.742213 
-L 181.787756 182.227749 
-L 180.324239 177.105442 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_3">
-    <path clip-path="url(#p91c1f72ef7)" d="M 159.237 89.38275 
-L 149.492881 109.566996 
-L 145.400351 106.156554 
-L 50.433479 219.777149 
-L 145.233309 106.017353 
-L 141.14078 102.606911 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_4">
-    <path clip-path="url(#p91c1f72ef7)" d="M 159.237 89.38275 
-L 173.823319 106.400122 
-L 169.058455 108.782554 
-L 202.627758 176.407371 
-L 168.86397 108.879796 
-L 164.099106 111.262228 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_5">
-    <path clip-path="url(#p91c1f72ef7)" d="M 246.213 219.84675 
-L 224.469 225.28275 
-L 224.469 219.95547 
-L 50.517 219.73803 
-L 224.469 219.73803 
-L 224.469 214.41075 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="patch_6">
-    <path clip-path="url(#p91c1f72ef7)" d="M 50.517 24.15075 
-L 55.953 45.89475 
-L 50.62572 45.89475 
-L 50.40828 219.84675 
-L 50.40828 45.89475 
-L 45.081 45.89475 
-z
-" style="stroke:#000000;stroke-linejoin:miter;"/>
-   </g>
-   <g id="line2d_1">
-    <defs>
-     <path d="M 0 3 
-C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
-C 2.683901 1.55874 3 0.795609 3 0 
-C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
-C 1.55874 -2.683901 0.795609 -3 0 -3 
-C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
-C -2.683901 -1.55874 -3 -0.795609 -3 0 
-C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
-C -1.55874 2.683901 -0.795609 3 0 3 
-z
-" id="m6285153cab" style="stroke:#ff0000;"/>
-    </defs>
-    <g clip-path="url(#p91c1f72ef7)">
-     <use style="fill:#ff0000;stroke:#ff0000;" x="202.725" xlink:href="#m6285153cab" y="176.35875"/>
-    </g>
-   </g>
-   <g id="line2d_2">
-    <g clip-path="url(#p91c1f72ef7)">
-     <use style="fill:#ff0000;stroke:#ff0000;" x="159.237" xlink:href="#m6285153cab" y="89.38275"/>
-    </g>
-   </g>
-   <g id="text_1">
-    <!-- $\vec{r}_{o'o}(t)$ -->
+   <g id="text_2">
+    <!-- $\vec{v}$ -->
     <defs>
      <path d="M -47.015625 63.53125 
 L -47.015625 68.40625 
@@ -14654,314 +12617,98 @@ L -17.28125 55.953125
 L -10.84375 63.53125 
 z
 " id="DejaVuSans-20d7"/>
-     <path d="M 44.578125 46.390625 
-Q 43.21875 47.125 41.453125 47.515625 
-Q 39.703125 47.90625 37.703125 47.90625 
-Q 30.515625 47.90625 25.140625 42.453125 
-Q 19.78125 37.015625 18.015625 27.875 
-L 12.5 0 
-L 3.515625 0 
-L 14.203125 54.6875 
-L 23.1875 54.6875 
-L 21.484375 46.1875 
-Q 25.046875 50.921875 30 53.453125 
-Q 34.96875 56 40.578125 56 
-Q 42.046875 56 43.453125 55.828125 
-Q 44.875 55.671875 46.296875 55.28125 
+     <path d="M 7.171875 54.6875 
+L 16.703125 54.6875 
+L 24.703125 8.203125 
+L 50.875 54.6875 
+L 60.40625 54.6875 
+L 29.296875 0 
+L 17.1875 0 
 z
-" id="DejaVuSans-Oblique-72"/>
-     <path d="M 25.390625 -1.421875 
-Q 15.765625 -1.421875 10.171875 4.515625 
-Q 4.59375 10.453125 4.59375 20.703125 
-Q 4.59375 26.65625 6.515625 32.828125 
-Q 8.453125 39.015625 11.53125 43.21875 
-Q 16.359375 49.75 22.3125 52.875 
-Q 28.265625 56 35.796875 56 
-Q 45.125 56 50.859375 50.1875 
-Q 56.59375 44.390625 56.59375 35.015625 
-Q 56.59375 28.515625 54.6875 22.0625 
-Q 52.78125 15.625 49.703125 11.375 
-Q 44.921875 4.828125 38.96875 1.703125 
-Q 33.015625 -1.421875 25.390625 -1.421875 
-M 13.921875 21 
-Q 13.921875 13.578125 17.015625 9.890625 
-Q 20.125 6.203125 26.421875 6.203125 
-Q 35.453125 6.203125 41.375 14.078125 
-Q 47.3125 21.96875 47.3125 34.078125 
-Q 47.3125 41.15625 44.140625 44.765625 
-Q 40.96875 48.390625 34.8125 48.390625 
-Q 29.734375 48.390625 25.78125 46.015625 
-Q 21.828125 43.65625 18.703125 38.8125 
-Q 16.40625 35.203125 15.15625 30.5625 
-Q 13.921875 25.921875 13.921875 21 
-" id="DejaVuSans-Oblique-6f"/>
-     <path d="M 3.515625 5.421875 
-Q 2.875 5.609375 2.875 6.390625 
-L 15.09375 51.8125 
-Q 15.671875 53.65625 17.078125 54.78125 
-Q 18.5 55.90625 20.3125 55.90625 
-Q 22.65625 55.90625 24.4375 54.359375 
-Q 26.21875 52.828125 26.21875 50.484375 
-Q 26.21875 49.46875 25.6875 48.1875 
-L 7.625 4.984375 
-Q 7.28125 4.296875 6.6875 4.296875 
-Q 6.15625 4.296875 5 4.78125 
-Q 3.859375 5.28125 3.515625 5.421875 
-" id="Cmsy10-30"/>
-     <path d="M 31 75.875 
-Q 24.46875 64.65625 21.28125 53.65625 
-Q 18.109375 42.671875 18.109375 31.390625 
-Q 18.109375 20.125 21.3125 9.0625 
-Q 24.515625 -2 31 -13.1875 
-L 23.1875 -13.1875 
-Q 15.875 -1.703125 12.234375 9.375 
-Q 8.59375 20.453125 8.59375 31.390625 
-Q 8.59375 42.28125 12.203125 53.3125 
-Q 15.828125 64.359375 23.1875 75.875 
-z
-" id="DejaVuSans-28"/>
-     <path d="M 42.28125 54.6875 
-L 40.921875 47.703125 
-L 23 47.703125 
-L 17.1875 18.015625 
-Q 16.890625 16.359375 16.75 15.234375 
-Q 16.609375 14.109375 16.609375 13.484375 
-Q 16.609375 10.359375 18.484375 8.9375 
-Q 20.359375 7.515625 24.515625 7.515625 
-L 33.59375 7.515625 
-L 32.078125 0 
-L 23.484375 0 
-Q 15.484375 0 11.546875 3.125 
-Q 7.625 6.25 7.625 12.59375 
-Q 7.625 13.71875 7.765625 15.0625 
-Q 7.90625 16.40625 8.203125 18.015625 
-L 14.015625 47.703125 
-L 6.390625 47.703125 
-L 7.8125 54.6875 
-L 15.28125 54.6875 
-L 18.3125 70.21875 
-L 27.296875 70.21875 
-L 24.3125 54.6875 
-z
-" id="DejaVuSans-Oblique-74"/>
-     <path d="M 8.015625 75.875 
-L 15.828125 75.875 
-Q 23.140625 64.359375 26.78125 53.3125 
-Q 30.421875 42.28125 30.421875 31.390625 
-Q 30.421875 20.453125 26.78125 9.375 
-Q 23.140625 -1.703125 15.828125 -13.1875 
-L 8.015625 -13.1875 
-Q 14.5 -2 17.703125 9.0625 
-Q 20.90625 20.125 20.90625 31.390625 
-Q 20.90625 42.671875 17.703125 53.65625 
-Q 14.5 64.65625 8.015625 75.875 
-" id="DejaVuSans-29"/>
+" id="DejaVuSans-Oblique-76"/>
     </defs>
-    <g transform="translate(123.192075 214.912314)scale(0.16 -0.16)">
-     <use transform="translate(50.293945 13.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.46875)" xlink:href="#DejaVuSans-Oblique-72"/>
-     <use transform="translate(42.070312 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6f"/>
-     <use transform="translate(88.152388 10.859375)scale(0.49)" xlink:href="#Cmsy10-30"/>
-     <use transform="translate(103.536665 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6f"/>
-     <use transform="translate(149.098189 0.46875)" xlink:href="#DejaVuSans-28"/>
-     <use transform="translate(188.111861 0.46875)" xlink:href="#DejaVuSans-Oblique-74"/>
-     <use transform="translate(227.320845 0.46875)" xlink:href="#DejaVuSans-29"/>
-    </g>
-   </g>
-   <g id="text_2">
-    <!-- o' -->
-    <defs>
-     <path d="M 30.609375 48.390625 
-Q 23.390625 48.390625 19.1875 42.75 
-Q 14.984375 37.109375 14.984375 27.296875 
-Q 14.984375 17.484375 19.15625 11.84375 
-Q 23.34375 6.203125 30.609375 6.203125 
-Q 37.796875 6.203125 41.984375 11.859375 
-Q 46.1875 17.53125 46.1875 27.296875 
-Q 46.1875 37.015625 41.984375 42.703125 
-Q 37.796875 48.390625 30.609375 48.390625 
-M 30.609375 56 
-Q 42.328125 56 49.015625 48.375 
-Q 55.71875 40.765625 55.71875 27.296875 
-Q 55.71875 13.875 49.015625 6.21875 
-Q 42.328125 -1.421875 30.609375 -1.421875 
-Q 18.84375 -1.421875 12.171875 6.21875 
-Q 5.515625 13.875 5.515625 27.296875 
-Q 5.515625 40.765625 12.171875 48.375 
-Q 18.84375 56 30.609375 56 
-" id="DejaVuSans-6f"/>
-     <path d="M 17.921875 72.90625 
-L 17.921875 45.796875 
-L 9.625 45.796875 
-L 9.625 72.90625 
-z
-" id="DejaVuSans-27"/>
-    </defs>
-    <g transform="translate(213.597 176.35875)scale(0.16 -0.16)">
-     <use xlink:href="#DejaVuSans-6f"/>
-     <use x="61.181641" xlink:href="#DejaVuSans-27"/>
+    <g transform="translate(237.846764 52.521187)scale(0.16 -0.16)">
+     <use transform="translate(61.810547 12.015625)" xlink:href="#DejaVuSans-20d7"/>
+     <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-Oblique-76"/>
     </g>
    </g>
    <g id="text_3">
-    <!-- $\vec{r}_{Po}(t)$ -->
+    <!-- $\vec{F}_{TS}$ -->
     <defs>
      <path d="M 16.890625 72.90625 
-L 39.703125 72.90625 
-Q 49.65625 72.90625 54.875 68.265625 
-Q 60.109375 63.625 60.109375 54.6875 
-Q 60.109375 42.671875 52.390625 35.984375 
-Q 44.671875 29.296875 30.71875 29.296875 
-L 18.3125 29.296875 
-L 12.59375 0 
+L 58.6875 72.90625 
+L 57.078125 64.59375 
+L 25.09375 64.59375 
+L 20.90625 43.109375 
+L 49.8125 43.109375 
+L 48.1875 34.8125 
+L 19.28125 34.8125 
+L 12.5 0 
 L 2.6875 0 
 z
-M 25.203125 64.796875 
-L 19.921875 37.40625 
-L 32.328125 37.40625 
-Q 40.71875 37.40625 45.203125 41.703125 
-Q 49.703125 46 49.703125 54 
-Q 49.703125 59.125 46.65625 61.953125 
-Q 43.609375 64.796875 38.09375 64.796875 
+" id="DejaVuSans-Oblique-46"/>
+     <path d="M 5.90625 72.90625 
+L 67.578125 72.90625 
+L 66.015625 64.59375 
+L 39.984375 64.59375 
+L 27.484375 0 
+L 17.578125 0 
+L 30.078125 64.59375 
+L 4.296875 64.59375 
 z
-" id="DejaVuSans-Oblique-50"/>
+" id="DejaVuSans-Oblique-54"/>
+     <path d="M 60.296875 70.515625 
+L 58.40625 60.890625 
+Q 53.46875 63.53125 48.609375 64.875 
+Q 43.75 66.21875 39.203125 66.21875 
+Q 30.375 66.21875 25.140625 62.359375 
+Q 19.921875 58.5 19.921875 52.09375 
+Q 19.921875 48.578125 21.84375 46.703125 
+Q 23.78125 44.828125 31.78125 42.671875 
+L 37.703125 41.21875 
+Q 47.703125 38.625 51.609375 34.640625 
+Q 55.515625 30.671875 55.515625 23.484375 
+Q 55.515625 12.453125 46.84375 5.515625 
+Q 38.1875 -1.421875 24.03125 -1.421875 
+Q 18.21875 -1.421875 12.359375 -0.265625 
+Q 6.5 0.875 0.59375 3.21875 
+L 2.59375 13.375 
+Q 8.015625 10.015625 13.453125 8.296875 
+Q 18.890625 6.59375 24.3125 6.59375 
+Q 33.546875 6.59375 39.109375 10.6875 
+Q 44.671875 14.796875 44.671875 21.390625 
+Q 44.671875 25.78125 42.453125 28.046875 
+Q 40.234375 30.328125 32.90625 32.171875 
+L 27 33.6875 
+Q 16.890625 36.328125 13.203125 39.765625 
+Q 9.515625 43.21875 9.515625 49.421875 
+Q 9.515625 60.296875 17.890625 67.25 
+Q 26.265625 74.21875 39.703125 74.21875 
+Q 44.921875 74.21875 50.046875 73.28125 
+Q 55.171875 72.359375 60.296875 70.515625 
+" id="DejaVuSans-Oblique-53"/>
     </defs>
-    <g transform="translate(74.384695 140.257696)scale(0.16 -0.16)">
-     <use transform="translate(50.293945 13.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.46875)" xlink:href="#DejaVuSans-Oblique-72"/>
-     <use transform="translate(42.070312 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-50"/>
-     <use transform="translate(84.282227 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6f"/>
-     <use transform="translate(129.84375 0.46875)" xlink:href="#DejaVuSans-28"/>
-     <use transform="translate(168.857422 0.46875)" xlink:href="#DejaVuSans-Oblique-74"/>
-     <use transform="translate(208.066406 0.46875)" xlink:href="#DejaVuSans-29"/>
+    <g transform="translate(166.361915 100.021612)scale(0.16 -0.16)">
+     <use transform="translate(60.395508 30.015625)" xlink:href="#DejaVuSans-20d7"/>
+     <use transform="translate(0 0.5625)" xlink:href="#DejaVuSans-Oblique-46"/>
+     <use transform="translate(58.476562 -15.84375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-54"/>
+     <use transform="translate(101.235352 -15.84375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-53"/>
     </g>
    </g>
    <g id="text_4">
-    <!-- P -->
-    <defs>
-     <path d="M 19.671875 64.796875 
-L 19.671875 37.40625 
-L 32.078125 37.40625 
-Q 38.96875 37.40625 42.71875 40.96875 
-Q 46.484375 44.53125 46.484375 51.125 
-Q 46.484375 57.671875 42.71875 61.234375 
-Q 38.96875 64.796875 32.078125 64.796875 
-z
-M 9.8125 72.90625 
-L 32.078125 72.90625 
-Q 44.34375 72.90625 50.609375 67.359375 
-Q 56.890625 61.8125 56.890625 51.125 
-Q 56.890625 40.328125 50.609375 34.8125 
-Q 44.34375 29.296875 32.078125 29.296875 
-L 19.671875 29.296875 
-L 19.671875 0 
-L 9.8125 0 
-z
-" id="DejaVuSans-50"/>
-    </defs>
-    <g transform="translate(170.109 89.38275)scale(0.16 -0.16)">
-     <use xlink:href="#DejaVuSans-50"/>
-    </g>
-   </g>
-   <g id="text_5">
-    <!-- $\vec{r}_{Po'}(t)=\vec{r}_{Po}(t)-\vec{r}_{o'o}(t)$ -->
-    <defs>
-     <path d="M 10.59375 45.40625 
-L 73.1875 45.40625 
-L 73.1875 37.203125 
-L 10.59375 37.203125 
-z
-M 10.59375 25.484375 
-L 73.1875 25.484375 
-L 73.1875 17.1875 
-L 10.59375 17.1875 
-z
-" id="DejaVuSans-3d"/>
-     <path d="M 10.59375 35.5 
-L 73.1875 35.5 
-L 73.1875 27.203125 
-L 10.59375 27.203125 
-z
-" id="DejaVuSans-2212"/>
-    </defs>
-    <g transform="translate(202.603825 127.495338)scale(0.16 -0.16)">
-     <use transform="translate(50.293945 13.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(0 0.46875)" xlink:href="#DejaVuSans-Oblique-72"/>
-     <use transform="translate(42.070312 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-50"/>
-     <use transform="translate(84.282227 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6f"/>
-     <use transform="translate(130.364302 10.859375)scale(0.49)" xlink:href="#Cmsy10-30"/>
-     <use transform="translate(148.482954 0.46875)" xlink:href="#DejaVuSans-28"/>
-     <use transform="translate(187.496626 0.46875)" xlink:href="#DejaVuSans-Oblique-74"/>
-     <use transform="translate(226.705611 0.46875)" xlink:href="#DejaVuSans-29"/>
-     <use transform="translate(285.201704 0.46875)" xlink:href="#DejaVuSans-3d"/>
-     <use transform="translate(438.767134 13.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(388.473189 0.46875)" xlink:href="#DejaVuSans-Oblique-72"/>
-     <use transform="translate(430.543501 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-50"/>
-     <use transform="translate(472.755415 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6f"/>
-     <use transform="translate(518.316939 0.46875)" xlink:href="#DejaVuSans-28"/>
-     <use transform="translate(557.330611 0.46875)" xlink:href="#DejaVuSans-Oblique-74"/>
-     <use transform="translate(596.539595 0.46875)" xlink:href="#DejaVuSans-29"/>
-     <use transform="translate(655.035689 0.46875)" xlink:href="#DejaVuSans-2212"/>
-     <use transform="translate(808.601118 13.015625)" xlink:href="#DejaVuSans-20d7"/>
-     <use transform="translate(758.307173 0.46875)" xlink:href="#DejaVuSans-Oblique-72"/>
-     <use transform="translate(800.377486 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6f"/>
-     <use transform="translate(846.459561 10.859375)scale(0.49)" xlink:href="#Cmsy10-30"/>
-     <use transform="translate(861.843839 -15.9375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6f"/>
-     <use transform="translate(907.405362 0.46875)" xlink:href="#DejaVuSans-28"/>
-     <use transform="translate(946.419034 0.46875)" xlink:href="#DejaVuSans-Oblique-74"/>
-     <use transform="translate(985.628018 0.46875)" xlink:href="#DejaVuSans-29"/>
-    </g>
-   </g>
-   <g id="text_6">
-    <!-- $x$ -->
-    <defs>
-     <path d="M 60.015625 54.6875 
-L 34.90625 27.875 
-L 50.296875 0 
-L 39.984375 0 
-L 28.421875 21.6875 
-L 8.296875 0 
-L -2.59375 0 
-L 24.3125 28.8125 
-L 10.015625 54.6875 
-L 20.3125 54.6875 
-L 30.8125 34.90625 
-L 49.125 54.6875 
-z
-" id="DejaVuSans-Oblique-78"/>
-    </defs>
-    <g transform="translate(226.6434 208.97475)scale(0.16 -0.16)">
-     <use transform="translate(0 0.3125)" xlink:href="#DejaVuSans-Oblique-78"/>
-    </g>
-   </g>
-   <g id="text_7">
-    <!-- $y$ -->
-    <defs>
-     <path d="M 24.8125 -5.078125 
-Q 18.5625 -15.578125 14.625 -18.1875 
-Q 10.6875 -20.796875 4.59375 -20.796875 
-L -2.484375 -20.796875 
-L -0.984375 -13.28125 
-L 4.203125 -13.28125 
-Q 7.953125 -13.28125 10.59375 -11.234375 
-Q 13.234375 -9.1875 16.5 -3.21875 
-L 19.28125 2 
-L 7.171875 54.6875 
-L 16.703125 54.6875 
-L 25.78125 12.796875 
-L 50.875 54.6875 
-L 60.296875 54.6875 
-z
-" id="DejaVuSans-Oblique-79"/>
-    </defs>
-    <g transform="translate(61.389 43.72035)scale(0.16 -0.16)">
-     <use transform="translate(0 0.3125)" xlink:href="#DejaVuSans-Oblique-79"/>
+    <!-- $\vec{F}_{ST}$ -->
+    <g transform="translate(231.963214 103.607802)scale(0.16 -0.16)">
+     <use transform="translate(60.395508 30.015625)" xlink:href="#DejaVuSans-20d7"/>
+     <use transform="translate(0 0.5625)" xlink:href="#DejaVuSans-Oblique-46"/>
+     <use transform="translate(58.476562 -15.84375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-53"/>
+     <use transform="translate(102.910156 -15.84375)scale(0.7)" xlink:href="#DejaVuSans-Oblique-54"/>
     </g>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p91c1f72ef7">
-   <rect height="217.44" width="217.44" x="39.645" y="13.27875"/>
+  <clipPath id="pf621e427fe">
+   <rect height="217.44" width="217.439306" x="53.0525" y="10.7"/>
   </clipPath>
  </defs>
 </svg>
@@ -14979,30 +12726,28 @@ z
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Acelera&#231;&#227;o-relativa">Acelera&#231;&#227;o relativa<a class="anchor-link" href="#Acelera&#231;&#227;o-relativa">&#182;</a></h2><ul>
-<li><div class="fragment">Aceleração $P$ relativamente a $o'$: $\vec{a}_{Po'} = \vec{a}_{Po}-\vec{a}_{o'o}$, ou 
-$$\vec{a}_{Po} = \vec{a}_{Po'} +\vec{a}_{o'o}.$$</div></li>
-</ul>
-<div class="fragment">Se $\vec{a}$ pode ser diferente para cada observador, como podemos estudar as leis da dinâmica? Em outras palavras, se $\vec{F} = m \vec{a}$, que $\vec{a}$ devemos usar?</div>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>R.: Se a velocidade relativa $\vec{v}_{Po'}=$cte, então $\vec{a}_{Po'}=0$ e $\vec{a}_{Po} = \vec{a}_{o'o}.$ As leis de Newton só são válidas em referenciais inerciais (não acelerados).</p>
+<p>Continua...</p>
 
 </div>
 </div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<script>
+$(document).ready(function(){
+    $("#input_None").hide();               <!-- Code is hidden by default -->
+    $("#button_None").click(function(){
+        $("#input_None").toggle();
+    });
+});
+</script>
+<div class="input" id="input_None">
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="T&#243;pico-5---Leis-de-Newton">T&#243;pico 5 - Leis de Newton<a class="anchor-link" href="#T&#243;pico-5---Leis-de-Newton">&#182;</a></h1>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
 </div>
 </div>
 </div></section></section>
