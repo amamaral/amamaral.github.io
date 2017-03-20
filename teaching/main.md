@@ -25,8 +25,8 @@ seguir as instruções repassadas no informe inicial da disciplina: [http://bit.
 - [2 - Cinemática. Movimento Retilíneo.](teaching/Fisica_1/C2 - Cinematica-MRU.slides.html)
 - [3 - Vetores](teaching/Fisica_1/C3 - Vetores.slides.html)
 - [4 - Cinemática em duas e três dimensões](teaching/Fisica_1/C4 - Movimento em 2D e 3D.slides.html)
+- [5 - Dinâmica - Leis de Newton](teaching/Fisica_1/C5 - Leis de Newton.slides.html)
 
 <!--
-- [5 - Dinâmica - Leis de Newton]()
 - [6 - Dinâmica - Atrito]()
 -->
