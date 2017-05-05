@@ -28,6 +28,7 @@ seguir as instruções repassadas no informe inicial da disciplina: [http://bit.
 - [5 - Dinâmica - Leis de Newton](teaching/Fisica_1/C5 - Leis de Newton.slides.html)
 - [6 - Forças fundamentais e forças derivadas](teaching/Fisica_1/C6 - Forças fundamentais e forças derivadas.slides.html)
 - [7 - Trabalho e energia](teaching/Fisica_1/C7 - Trabalho e energia.slides.html)
+
 <!--
 - [8 - Trabalho e energia](teaching/Fisica_1/.html)
 - [9 - Trabalho e energia](teaching/Fisica_1/.html)
