@@ -170,7 +170,7 @@ personal = CV_personal_info('Anderson Monteiro Amaral',
                             """R. Prof. Moraes Rego, 1235 <br>50670-901, Cidade
                             universitária <br>Recife - PE - Brazil""",
                             '+55 (81) 2126-2258; +55 (81) 2126-2204',
-                            'anderson.amaral(at)outlook(dot)com',
+                            'andersonamaral(at)df(dot)ufpe(dot)br',
                             'http://www.facebook.com/andersonmonteiroamaral',
                             '', #linkedin
                             'http://twitter.com/amaral_am',
@@ -206,7 +206,7 @@ academic.append(CV_entry("2006 - 2010",
                          Científico e Tecnológico (CNPq)"""))
 
 scientific = []
-scientific.append(CV_entry("2012 - Today",
+scientific.append(CV_entry("",
                            "Angular momentum of light and optical vortices",
                            "Fundamentals and applications",
                            """
@@ -217,7 +217,7 @@ scientific.append(CV_entry("2012 - Today",
                            particles. If this linear momentum rotates around a
                            point, it means that there is a non-zero angular
                            momentum of light around that point."""))
-scientific.append(CV_entry("2010 - Today",
+scientific.append(CV_entry("",
                            "Nonlinear optics",
                            "Manipulation of light with light",
                            """
@@ -242,7 +242,7 @@ if 0:
                                differently from the so-called 'classical
                                regime', and many fundamental aspects of nature
                                can be tested."""))
-scientific.append(CV_entry("2010 - 2012", "Plasmonics",
+scientific.append(CV_entry("", "Plasmonics",
                            "Light interaction with metal structures",
                            """
                            Metals can be considered as an ideal gas of
