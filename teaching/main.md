@@ -25,8 +25,13 @@ seguir as instruções repassadas no informe inicial da disciplina: [http://bit.
 - [6 - Forças fundamentais e forças derivadas](teaching/Fisica_1/C6 - Forças fundamentais e forças derivadas.slides.html)
 
 ### Unidade 2
+
 - [7 - Trabalho e energia](teaching/Fisica_1/C7 - Trabalho e energia.slides.html)
 - [8 - Centro de massa, momento linear e colisões](teaching/Fisica_1/C8 - Centro de massa, momento linear e colisões.slides.html)
+
+### Unidade 3
+
+- [8 - Revisão capítulo 10](teaching/Fisica_1/Revisao U3.slides.html)
 
 <!--
 ### Slides da unidade 3
