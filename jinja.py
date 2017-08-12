@@ -3,6 +3,7 @@ import bibtexparser
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.customization import convert_to_unicode
 import markdown
+import codecs
 
 env = Environment(loader=FileSystemLoader('jinja-templates'))
 md = markdown.Markdown()
@@ -124,11 +125,10 @@ with open('conferences//bibtex_list.bib') as bibtex_file:
 ##############
 # INDEX.HTML #
 ##############
-
 index = env.get_template('index_template.html')
 featured_works = works[0:4]
 index_html = index.render(featured=featured_works)
-with open("index.html", "w") as fh:
+with codecs.open("index.html", "w", "utf-8") as fh:
     fh.write(index_html)
 
 ##############
@@ -259,7 +259,7 @@ scientific.append(CV_entry("", "Plasmonics",
 about = env.get_template('about_template.html')
 about_html = about.render(personal_info=personal, academic_background=academic,
                           science=scientific)
-with open("about.html", "w") as fh:
+with codecs.open("about.html", "w", "utf-8") as fh:
     fh.write(about_html)
 
 ###############
@@ -268,7 +268,7 @@ with open("about.html", "w") as fh:
 
 useful = env.get_template('useful_template.html')
 useful_html = useful.render()
-with open("useful.html", "w") as fh:
+with codecs.open("useful.html", "w", "utf-8") as fh:
     fh.write(useful_html)
 
 ############
@@ -277,7 +277,7 @@ with open("useful.html", "w") as fh:
 
 error404 = env.get_template('404_template.html')
 error404_html = error404.render()
-with open("404.html", "w") as fh:
+with codecs.open("404.html", "w", "utf-8") as fh:
     fh.write(error404_html)
 
 ###########################
@@ -286,7 +286,7 @@ with open("404.html", "w") as fh:
 
 underConstruction = env.get_template('under_construction_template.html')
 underConstruction_html = underConstruction.render()
-with open("under_construction.html", "w") as fh:
+with codecs.open("under_construction.html", "w", "utf-8") as fh:
     fh.write(underConstruction_html)
 
 ###############
@@ -295,7 +295,7 @@ with open("under_construction.html", "w") as fh:
 
 papers = env.get_template('papers_template.html')
 papers_html = papers.render(papers=works)
-with open("science_papers.html", "w") as fh:
+with codecs.open("science_papers.html", "w", "utf-8") as fh:
     fh.write(papers_html)
 
 ##########################
@@ -304,7 +304,7 @@ with open("science_papers.html", "w") as fh:
 
 cpapers = env.get_template('conference_papers_template.html')
 cpapers_html = cpapers.render(papers=conference_papers)
-with open("conference_papers.html", "w") as fh:
+with codecs.open("conference_papers.html", "w", "utf-8") as fh:
     fh.write(cpapers_html)
 
 #################
@@ -312,12 +312,12 @@ with open("conference_papers.html", "w") as fh:
 #################
 
 main_page_body=''
-with open('teaching//main.md', "r") as fh:
+with codecs.open('teaching//main.md', "r", "utf-8") as fh:
     main_page_body = md.convert(fh.read())
 
 teaching = env.get_template('teaching_template.html')
 teaching_html = teaching.render(page_body=main_page_body)
-with open("teaching.html", "w") as fh:
+with codecs.open("teaching.html", "w", "utf-8") as fh:
     fh.write(teaching_html)
 
 
