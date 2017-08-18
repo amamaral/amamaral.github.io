@@ -11875,7 +11875,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Configurações </strong></p>
+<p><strong> Configurações HTML </strong></p>
 <p><!-- Autonumber displayed mathjax eqs. --></p>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -12124,6 +12124,1085 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<script>
+$(document).ready(function(){
+    $("#input_63").hide();               <!-- Code is hidden by default -->
+    $("#button_63").click(function(){
+        $("#input_63").toggle();
+    });
+});
+</script>
+<div class="input" id="input_63">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="k">import</span> <span class="n">spline</span>
+
+<span class="n">prepend</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">postpend</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+
+<span class="k">def</span> <span class="nf">apply_pre_post</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">new_values</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">prepend</span><span class="p">)</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">postpend</span><span class="p">)</span>
+    <span class="n">buff_x</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">new_values</span><span class="p">)</span>
+    <span class="n">buff_y</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">new_values</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prepend</span><span class="p">):</span>
+        <span class="n">buff_x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">buff_y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ishift</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">prepend</span><span class="p">)</span>
+    <span class="n">buff_x</span><span class="p">[</span><span class="n">ishift</span><span class="p">:(</span><span class="n">ishift</span><span class="o">+</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">buff_y</span><span class="p">[</span><span class="n">ishift</span><span class="p">:(</span><span class="n">ishift</span><span class="o">+</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">ishift</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">prepend</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">postpend</span><span class="p">):</span>
+        <span class="n">buff_x</span><span class="p">[</span><span class="n">ishift</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">buff_y</span><span class="p">[</span><span class="n">ishift</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">buff_x</span><span class="p">,</span> <span class="n">buff_y</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">xspline</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">yspline</span> <span class="o">=</span> <span class="n">spline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xspline</span><span class="p">)</span>
+<span class="n">x_full</span><span class="p">,</span> <span class="n">y_full</span> <span class="o">=</span> <span class="n">apply_pre_post</span><span class="p">(</span><span class="n">xspline</span><span class="p">,</span> <span class="n">yspline</span><span class="p">)</span>
+
+<span class="n">avg_impulse</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">yspline</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">xspline</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">xspline</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">apply_pre_post</span><span class="p">(</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">]),</span> <span class="n">avg_impulse</span><span class="o">*</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x_full</span><span class="p">,</span> <span class="n">y_full</span><span class="p">)</span>
+<span class="n">fill_between</span><span class="p">(</span><span class="n">x_full</span><span class="p">,</span> <span class="n">y_full</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">6.4</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;F (N)&#39;</span><span class="p">)</span>
+<span class="n">xticks</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$t_0$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$t_1$&#39;</span><span class="p">])</span>
+<span class="n">yticks</span><span class="p">([</span><span class="n">avg_impulse</span><span class="p">,</span> <span class="n">yspline</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$F_</span><span class="si">{med}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$F_</span><span class="si">{max}</span><span class="s1">$&#39;</span><span class="p">]);</span>
+
+<span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">6.4</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;F (N)&#39;</span><span class="p">)</span>
+<span class="n">xticks</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$t_0$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$t_1$&#39;</span><span class="p">])</span>
+<span class="n">yticks</span><span class="p">([</span><span class="n">avg_impulse</span><span class="p">,</span> <span class="n">yspline</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$F_</span><span class="si">{med}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$F_</span><span class="si">{max}</span><span class="s1">$&#39;</span><span class="p">]);</span>
+<span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"><button class="code-btn" id="button_63"><i class="fa fa-code" style="font-size:1em; color:black"></i></button></div>
+
+
+<div class="output_svg output_subarea ">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (http://matplotlib.org/) -->
+<svg height="265pt" version="1.1" viewBox="0 0 698 265" width="698pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+*{stroke-linecap:butt;stroke-linejoin:round;}
+  </style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 265.11 
+L 698.693594 265.11 
+L 698.693594 0 
+L 0 0 
+z
+" style="fill:none;"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 68.245 215.94 
+L 336.633594 215.94 
+L 336.633594 10.7 
+L 68.245 10.7 
+z
+" style="fill:#ffffff;"/>
+   </g>
+   <g id="PolyCollection_1">
+    <path clip-path="url(#p816b98d00e)" d="M 80.444482 209.720606 
+L 80.444482 209.720606 
+L 141.441889 209.720606 
+L 141.441889 209.720606 
+L 142.67416 188.420169 
+L 143.906431 168.605261 
+L 145.138702 150.232808 
+L 146.370973 133.259735 
+L 147.603244 117.64297 
+L 148.835514 103.339439 
+L 150.067785 90.306068 
+L 151.300056 78.499784 
+L 152.532327 67.877512 
+L 153.764598 58.396179 
+L 154.996869 50.012712 
+L 156.22914 42.684037 
+L 157.46141 36.36708 
+L 158.693681 31.018767 
+L 159.925952 26.596026 
+L 161.158223 23.055781 
+L 162.390494 20.35496 
+L 163.622765 18.450489 
+L 164.855036 17.299295 
+L 166.087306 16.858302 
+L 167.319577 17.084439 
+L 168.551848 17.934631 
+L 169.784119 19.365805 
+L 171.01639 21.334886 
+L 172.248661 23.79883 
+L 173.480932 26.718039 
+L 174.713202 30.059609 
+L 175.945473 33.791406 
+L 177.177744 37.881296 
+L 178.410015 42.297143 
+L 179.642286 47.006815 
+L 180.874557 51.978176 
+L 182.106828 57.179092 
+L 183.339099 62.577429 
+L 184.571369 68.141053 
+L 185.80364 73.837829 
+L 187.035911 79.635624 
+L 188.268182 85.502301 
+L 189.500453 91.405728 
+L 190.732724 97.313771 
+L 191.964995 103.194294 
+L 193.197265 109.015163 
+L 194.429536 114.744244 
+L 195.661807 120.349403 
+L 196.894078 125.798506 
+L 198.126349 131.059418 
+L 199.35862 136.100004 
+L 200.590891 140.888131 
+L 201.823161 145.391665 
+L 203.055432 149.579381 
+L 204.287703 153.441026 
+L 205.519974 156.98731 
+L 206.752245 160.229856 
+L 207.984516 163.180288 
+L 209.216787 165.850228 
+L 210.449057 168.251299 
+L 211.681328 170.395125 
+L 212.913599 172.293329 
+L 214.14587 173.957534 
+L 215.378141 175.399362 
+L 216.610412 176.630436 
+L 217.842683 177.662381 
+L 219.074954 178.506818 
+L 220.307224 179.175372 
+L 221.539495 179.679664 
+L 222.771766 180.031318 
+L 224.004037 180.241957 
+L 225.236308 180.323205 
+L 226.468579 180.286683 
+L 227.70085 180.144016 
+L 228.93312 179.906826 
+L 230.165391 179.586736 
+L 231.397662 179.19537 
+L 232.629933 178.74435 
+L 233.862204 178.246069 
+L 235.094475 177.719613 
+L 236.326746 177.187517 
+L 237.559016 176.672342 
+L 238.791287 176.196652 
+L 240.023558 175.783008 
+L 241.255829 175.453973 
+L 242.4881 175.232109 
+L 243.720371 175.139979 
+L 244.952642 175.200146 
+L 246.184912 175.435171 
+L 247.417183 175.867617 
+L 248.649454 176.520046 
+L 249.881725 177.415021 
+L 251.113996 178.575104 
+L 252.346267 180.022857 
+L 253.578538 181.780844 
+L 254.810809 183.871625 
+L 256.043079 186.317765 
+L 257.27535 189.141824 
+L 258.507621 192.366366 
+L 259.739892 196.013953 
+L 260.972163 200.107147 
+L 262.204434 204.66851 
+L 263.436705 209.720606 
+L 263.436705 209.720606 
+L 324.434112 209.720606 
+L 324.434112 209.720606 
+L 324.434112 209.720606 
+L 263.436705 209.720606 
+L 263.436705 209.720606 
+L 262.204434 209.720606 
+L 260.972163 209.720606 
+L 259.739892 209.720606 
+L 258.507621 209.720606 
+L 257.27535 209.720606 
+L 256.043079 209.720606 
+L 254.810809 209.720606 
+L 253.578538 209.720606 
+L 252.346267 209.720606 
+L 251.113996 209.720606 
+L 249.881725 209.720606 
+L 248.649454 209.720606 
+L 247.417183 209.720606 
+L 246.184912 209.720606 
+L 244.952642 209.720606 
+L 243.720371 209.720606 
+L 242.4881 209.720606 
+L 241.255829 209.720606 
+L 240.023558 209.720606 
+L 238.791287 209.720606 
+L 237.559016 209.720606 
+L 236.326746 209.720606 
+L 235.094475 209.720606 
+L 233.862204 209.720606 
+L 232.629933 209.720606 
+L 231.397662 209.720606 
+L 230.165391 209.720606 
+L 228.93312 209.720606 
+L 227.70085 209.720606 
+L 226.468579 209.720606 
+L 225.236308 209.720606 
+L 224.004037 209.720606 
+L 222.771766 209.720606 
+L 221.539495 209.720606 
+L 220.307224 209.720606 
+L 219.074954 209.720606 
+L 217.842683 209.720606 
+L 216.610412 209.720606 
+L 215.378141 209.720606 
+L 214.14587 209.720606 
+L 212.913599 209.720606 
+L 211.681328 209.720606 
+L 210.449057 209.720606 
+L 209.216787 209.720606 
+L 207.984516 209.720606 
+L 206.752245 209.720606 
+L 205.519974 209.720606 
+L 204.287703 209.720606 
+L 203.055432 209.720606 
+L 201.823161 209.720606 
+L 200.590891 209.720606 
+L 199.35862 209.720606 
+L 198.126349 209.720606 
+L 196.894078 209.720606 
+L 195.661807 209.720606 
+L 194.429536 209.720606 
+L 193.197265 209.720606 
+L 191.964995 209.720606 
+L 190.732724 209.720606 
+L 189.500453 209.720606 
+L 188.268182 209.720606 
+L 187.035911 209.720606 
+L 185.80364 209.720606 
+L 184.571369 209.720606 
+L 183.339099 209.720606 
+L 182.106828 209.720606 
+L 180.874557 209.720606 
+L 179.642286 209.720606 
+L 178.410015 209.720606 
+L 177.177744 209.720606 
+L 175.945473 209.720606 
+L 174.713202 209.720606 
+L 173.480932 209.720606 
+L 172.248661 209.720606 
+L 171.01639 209.720606 
+L 169.784119 209.720606 
+L 168.551848 209.720606 
+L 167.319577 209.720606 
+L 166.087306 209.720606 
+L 164.855036 209.720606 
+L 163.622765 209.720606 
+L 162.390494 209.720606 
+L 161.158223 209.720606 
+L 159.925952 209.720606 
+L 158.693681 209.720606 
+L 157.46141 209.720606 
+L 156.22914 209.720606 
+L 154.996869 209.720606 
+L 153.764598 209.720606 
+L 152.532327 209.720606 
+L 151.300056 209.720606 
+L 150.067785 209.720606 
+L 148.835514 209.720606 
+L 147.603244 209.720606 
+L 146.370973 209.720606 
+L 145.138702 209.720606 
+L 143.906431 209.720606 
+L 142.67416 209.720606 
+L 141.441889 209.720606 
+L 141.441889 209.720606 
+L 80.444482 209.720606 
+z
+" style="fill:#1f77b4;fill-opacity:0.3;"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path d="M 0 0 
+L 0 3.5 
+" id="md663938312" style="stroke:#000000;stroke-width:0.8;"/>
+      </defs>
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="141.441889" xlink:href="#md663938312" y="215.94"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <!-- $t_0$ -->
+      <defs>
+       <path d="M 42.28125 54.6875 
+L 40.921875 47.703125 
+L 23 47.703125 
+L 17.1875 18.015625 
+Q 16.890625 16.359375 16.75 15.234375 
+Q 16.609375 14.109375 16.609375 13.484375 
+Q 16.609375 10.359375 18.484375 8.9375 
+Q 20.359375 7.515625 24.515625 7.515625 
+L 33.59375 7.515625 
+L 32.078125 0 
+L 23.484375 0 
+Q 15.484375 0 11.546875 3.125 
+Q 7.625 6.25 7.625 12.59375 
+Q 7.625 13.71875 7.765625 15.0625 
+Q 7.90625 16.40625 8.203125 18.015625 
+L 14.015625 47.703125 
+L 6.390625 47.703125 
+L 7.8125 54.6875 
+L 15.28125 54.6875 
+L 18.3125 70.21875 
+L 27.296875 70.21875 
+L 24.3125 54.6875 
+z
+" id="DejaVuSans-Oblique-74"/>
+       <path d="M 31.78125 66.40625 
+Q 24.171875 66.40625 20.328125 58.90625 
+Q 16.5 51.421875 16.5 36.375 
+Q 16.5 21.390625 20.328125 13.890625 
+Q 24.171875 6.390625 31.78125 6.390625 
+Q 39.453125 6.390625 43.28125 13.890625 
+Q 47.125 21.390625 47.125 36.375 
+Q 47.125 51.421875 43.28125 58.90625 
+Q 39.453125 66.40625 31.78125 66.40625 
+M 31.78125 74.21875 
+Q 44.046875 74.21875 50.515625 64.515625 
+Q 56.984375 54.828125 56.984375 36.375 
+Q 56.984375 17.96875 50.515625 8.265625 
+Q 44.046875 -1.421875 31.78125 -1.421875 
+Q 19.53125 -1.421875 13.0625 8.265625 
+Q 6.59375 17.96875 6.59375 36.375 
+Q 6.59375 54.828125 13.0625 64.515625 
+Q 19.53125 74.21875 31.78125 74.21875 
+" id="DejaVuSans-30"/>
+      </defs>
+      <g transform="translate(134.481889 235.0975)scale(0.16 -0.16)">
+       <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-Oblique-74"/>
+       <use transform="translate(39.208984 -15.625)scale(0.7)" xlink:href="#DejaVuSans-30"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="263.436705" xlink:href="#md663938312" y="215.94"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <!-- $t_1$ -->
+      <defs>
+       <path d="M 12.40625 8.296875 
+L 28.515625 8.296875 
+L 28.515625 63.921875 
+L 10.984375 60.40625 
+L 10.984375 69.390625 
+L 28.421875 72.90625 
+L 38.28125 72.90625 
+L 38.28125 8.296875 
+L 54.390625 8.296875 
+L 54.390625 0 
+L 12.40625 0 
+z
+" id="DejaVuSans-31"/>
+      </defs>
+      <g transform="translate(256.476705 235.0975)scale(0.16 -0.16)">
+       <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-Oblique-74"/>
+       <use transform="translate(39.208984 -15.625)scale(0.7)" xlink:href="#DejaVuSans-31"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_3">
+     <!-- t (s) -->
+     <defs>
+      <path d="M 18.3125 70.21875 
+L 18.3125 54.6875 
+L 36.8125 54.6875 
+L 36.8125 47.703125 
+L 18.3125 47.703125 
+L 18.3125 18.015625 
+Q 18.3125 11.328125 20.140625 9.421875 
+Q 21.96875 7.515625 27.59375 7.515625 
+L 36.8125 7.515625 
+L 36.8125 0 
+L 27.59375 0 
+Q 17.1875 0 13.234375 3.875 
+Q 9.28125 7.765625 9.28125 18.015625 
+L 9.28125 47.703125 
+L 2.6875 47.703125 
+L 2.6875 54.6875 
+L 9.28125 54.6875 
+L 9.28125 70.21875 
+z
+" id="DejaVuSans-74"/>
+      <path id="DejaVuSans-20"/>
+      <path d="M 31 75.875 
+Q 24.46875 64.65625 21.28125 53.65625 
+Q 18.109375 42.671875 18.109375 31.390625 
+Q 18.109375 20.125 21.3125 9.0625 
+Q 24.515625 -2 31 -13.1875 
+L 23.1875 -13.1875 
+Q 15.875 -1.703125 12.234375 9.375 
+Q 8.59375 20.453125 8.59375 31.390625 
+Q 8.59375 42.28125 12.203125 53.3125 
+Q 15.828125 64.359375 23.1875 75.875 
+z
+" id="DejaVuSans-28"/>
+      <path d="M 44.28125 53.078125 
+L 44.28125 44.578125 
+Q 40.484375 46.53125 36.375 47.5 
+Q 32.28125 48.484375 27.875 48.484375 
+Q 21.1875 48.484375 17.84375 46.4375 
+Q 14.5 44.390625 14.5 40.28125 
+Q 14.5 37.15625 16.890625 35.375 
+Q 19.28125 33.59375 26.515625 31.984375 
+L 29.59375 31.296875 
+Q 39.15625 29.25 43.1875 25.515625 
+Q 47.21875 21.78125 47.21875 15.09375 
+Q 47.21875 7.46875 41.1875 3.015625 
+Q 35.15625 -1.421875 24.609375 -1.421875 
+Q 20.21875 -1.421875 15.453125 -0.5625 
+Q 10.6875 0.296875 5.421875 2 
+L 5.421875 11.28125 
+Q 10.40625 8.6875 15.234375 7.390625 
+Q 20.0625 6.109375 24.8125 6.109375 
+Q 31.15625 6.109375 34.5625 8.28125 
+Q 37.984375 10.453125 37.984375 14.40625 
+Q 37.984375 18.0625 35.515625 20.015625 
+Q 33.0625 21.96875 24.703125 23.78125 
+L 21.578125 24.515625 
+Q 13.234375 26.265625 9.515625 29.90625 
+Q 5.8125 33.546875 5.8125 39.890625 
+Q 5.8125 47.609375 11.28125 51.796875 
+Q 16.75 56 26.8125 56 
+Q 31.78125 56 36.171875 55.265625 
+Q 40.578125 54.546875 44.28125 53.078125 
+" id="DejaVuSans-73"/>
+      <path d="M 8.015625 75.875 
+L 15.828125 75.875 
+Q 23.140625 64.359375 26.78125 53.3125 
+Q 30.421875 42.28125 30.421875 31.390625 
+Q 30.421875 20.453125 26.78125 9.375 
+Q 23.140625 -1.703125 15.828125 -13.1875 
+L 8.015625 -13.1875 
+Q 14.5 -2 17.703125 9.0625 
+Q 20.90625 20.125 20.90625 31.390625 
+Q 20.90625 42.671875 17.703125 53.65625 
+Q 14.5 64.65625 8.015625 75.875 
+" id="DejaVuSans-29"/>
+     </defs>
+     <g transform="translate(186.350547 254.5825)scale(0.16 -0.16)">
+      <use xlink:href="#DejaVuSans-74"/>
+      <use x="39.208984" xlink:href="#DejaVuSans-20"/>
+      <use x="70.996094" xlink:href="#DejaVuSans-28"/>
+      <use x="110.009766" xlink:href="#DejaVuSans-73"/>
+      <use x="162.109375" xlink:href="#DejaVuSans-29"/>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path d="M 0 0 
+L -3.5 0 
+" id="m6169fe9e99" style="stroke:#000000;stroke-width:0.8;"/>
+      </defs>
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="68.245" xlink:href="#m6169fe9e99" y="125.666645"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <!-- $F_{med}$ -->
+      <defs>
+       <path d="M 16.890625 72.90625 
+L 58.6875 72.90625 
+L 57.078125 64.59375 
+L 25.09375 64.59375 
+L 20.90625 43.109375 
+L 49.8125 43.109375 
+L 48.1875 34.8125 
+L 19.28125 34.8125 
+L 12.5 0 
+L 2.6875 0 
+z
+" id="DejaVuSans-Oblique-46"/>
+       <path d="M 89.796875 33.015625 
+L 83.40625 0 
+L 74.421875 0 
+L 80.71875 32.71875 
+Q 81.109375 34.8125 81.296875 36.328125 
+Q 81.5 37.84375 81.5 38.921875 
+Q 81.5 43.3125 79.046875 45.75 
+Q 76.609375 48.1875 72.21875 48.1875 
+Q 65.671875 48.1875 60.546875 43.28125 
+Q 55.421875 38.375 53.90625 30.515625 
+L 47.90625 0 
+L 38.921875 0 
+L 45.3125 32.71875 
+Q 45.703125 34.515625 45.890625 36.046875 
+Q 46.09375 37.59375 46.09375 38.8125 
+Q 46.09375 43.265625 43.65625 45.71875 
+Q 41.21875 48.1875 36.921875 48.1875 
+Q 30.28125 48.1875 25.140625 43.28125 
+Q 20.015625 38.375 18.5 30.515625 
+L 12.5 0 
+L 3.515625 0 
+L 14.203125 54.6875 
+L 23.1875 54.6875 
+L 21.484375 46.1875 
+Q 25.140625 50.984375 30.046875 53.484375 
+Q 34.96875 56 40.578125 56 
+Q 46.53125 56 50.359375 52.875 
+Q 54.203125 49.75 54.984375 44.1875 
+Q 59.078125 49.953125 64.46875 52.96875 
+Q 69.875 56 75.875 56 
+Q 82.90625 56 86.734375 51.953125 
+Q 90.578125 47.90625 90.578125 40.484375 
+Q 90.578125 38.875 90.375 36.9375 
+Q 90.1875 35.015625 89.796875 33.015625 
+" id="DejaVuSans-Oblique-6d"/>
+       <path d="M 48.09375 32.234375 
+Q 48.25 33.015625 48.3125 33.84375 
+Q 48.390625 34.671875 48.390625 35.5 
+Q 48.390625 41.453125 44.890625 44.921875 
+Q 41.40625 48.390625 35.40625 48.390625 
+Q 28.71875 48.390625 23.578125 44.15625 
+Q 18.453125 39.9375 15.828125 32.171875 
+z
+M 55.90625 25.203125 
+L 14.109375 25.203125 
+Q 13.8125 23.34375 13.71875 22.265625 
+Q 13.625 21.1875 13.625 20.40625 
+Q 13.625 13.625 17.796875 9.90625 
+Q 21.96875 6.203125 29.59375 6.203125 
+Q 35.453125 6.203125 40.671875 7.515625 
+Q 45.90625 8.84375 50.390625 11.375 
+L 48.6875 2.484375 
+Q 43.84375 0.53125 38.6875 -0.4375 
+Q 33.546875 -1.421875 28.21875 -1.421875 
+Q 16.84375 -1.421875 10.71875 4.015625 
+Q 4.59375 9.46875 4.59375 19.484375 
+Q 4.59375 28.03125 7.640625 35.375 
+Q 10.6875 42.71875 16.609375 48.484375 
+Q 20.40625 52.09375 25.65625 54.046875 
+Q 30.90625 56 36.8125 56 
+Q 46.09375 56 51.578125 50.4375 
+Q 57.078125 44.875 57.078125 35.5 
+Q 57.078125 33.25 56.78125 30.6875 
+Q 56.5 28.125 55.90625 25.203125 
+" id="DejaVuSans-Oblique-65"/>
+       <path d="M 41.796875 8.203125 
+Q 38.1875 3.46875 33.25 1.015625 
+Q 28.328125 -1.421875 22.3125 -1.421875 
+Q 14.109375 -1.421875 9.34375 4.171875 
+Q 4.59375 9.765625 4.59375 19.484375 
+Q 4.59375 27.59375 7.46875 34.9375 
+Q 10.359375 42.28125 15.828125 48.09375 
+Q 19.4375 51.953125 23.96875 53.96875 
+Q 28.515625 56 33.5 56 
+Q 38.765625 56 42.796875 53.453125 
+Q 46.828125 50.921875 49.03125 46.1875 
+L 54.890625 75.984375 
+L 63.921875 75.984375 
+L 49.125 0 
+L 40.09375 0 
+z
+M 13.921875 21.09375 
+Q 13.921875 14.015625 17.109375 10.0625 
+Q 20.3125 6.109375 25.984375 6.109375 
+Q 30.171875 6.109375 33.765625 8.125 
+Q 37.359375 10.15625 40.09375 14.109375 
+Q 42.96875 18.21875 44.625 23.578125 
+Q 46.296875 28.953125 46.296875 34.1875 
+Q 46.296875 40.96875 43.09375 44.765625 
+Q 39.890625 48.578125 34.28125 48.578125 
+Q 30.03125 48.578125 26.359375 46.578125 
+Q 22.703125 44.578125 20.125 40.828125 
+Q 17.28125 36.765625 15.59375 31.390625 
+Q 13.921875 26.03125 13.921875 21.09375 
+" id="DejaVuSans-Oblique-64"/>
+      </defs>
+      <g transform="translate(26.685 131.745395)scale(0.16 -0.16)">
+       <use transform="translate(0 0.09375)" xlink:href="#DejaVuSans-Oblique-46"/>
+       <use transform="translate(57.519531 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6d"/>
+       <use transform="translate(125.708008 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-65"/>
+       <use transform="translate(168.774414 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-64"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="68.245" xlink:href="#m6169fe9e99" y="16.858302"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <!-- $F_{max}$ -->
+      <defs>
+       <path d="M 53.71875 31.203125 
+L 47.609375 0 
+L 38.625 0 
+L 40.28125 8.296875 
+Q 36.328125 3.421875 31.265625 1 
+Q 26.21875 -1.421875 20.015625 -1.421875 
+Q 13.03125 -1.421875 8.5625 2.84375 
+Q 4.109375 7.125 4.109375 13.8125 
+Q 4.109375 23.390625 11.75 28.953125 
+Q 19.390625 34.515625 32.8125 34.515625 
+L 45.3125 34.515625 
+L 45.796875 36.921875 
+Q 45.90625 37.3125 45.953125 37.765625 
+Q 46 38.234375 46 39.203125 
+Q 46 43.5625 42.453125 45.96875 
+Q 38.921875 48.390625 32.515625 48.390625 
+Q 28.125 48.390625 23.5 47.265625 
+Q 18.890625 46.140625 14.015625 43.890625 
+L 15.578125 52.203125 
+Q 20.65625 54.109375 25.515625 55.046875 
+Q 30.375 56 34.90625 56 
+Q 44.578125 56 49.625 51.796875 
+Q 54.6875 47.609375 54.6875 39.59375 
+Q 54.6875 37.984375 54.4375 35.8125 
+Q 54.203125 33.640625 53.71875 31.203125 
+M 44 27.484375 
+L 35.015625 27.484375 
+Q 23.96875 27.484375 18.671875 24.53125 
+Q 13.375 21.578125 13.375 15.375 
+Q 13.375 11.078125 16.078125 8.640625 
+Q 18.796875 6.203125 23.578125 6.203125 
+Q 30.90625 6.203125 36.375 11.453125 
+Q 41.84375 16.703125 43.609375 25.484375 
+z
+" id="DejaVuSans-Oblique-61"/>
+       <path d="M 60.015625 54.6875 
+L 34.90625 27.875 
+L 50.296875 0 
+L 39.984375 0 
+L 28.421875 21.6875 
+L 8.296875 0 
+L -2.59375 0 
+L 24.3125 28.8125 
+L 10.015625 54.6875 
+L 20.3125 54.6875 
+L 30.8125 34.90625 
+L 49.125 54.6875 
+z
+" id="DejaVuSans-Oblique-78"/>
+      </defs>
+      <g transform="translate(27.165 22.937052)scale(0.16 -0.16)">
+       <use transform="translate(0 0.09375)" xlink:href="#DejaVuSans-Oblique-46"/>
+       <use transform="translate(57.519531 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6d"/>
+       <use transform="translate(125.708008 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-61"/>
+       <use transform="translate(168.603516 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-78"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_6">
+     <!-- F (N) -->
+     <defs>
+      <path d="M 9.8125 72.90625 
+L 51.703125 72.90625 
+L 51.703125 64.59375 
+L 19.671875 64.59375 
+L 19.671875 43.109375 
+L 48.578125 43.109375 
+L 48.578125 34.8125 
+L 19.671875 34.8125 
+L 19.671875 0 
+L 9.8125 0 
+z
+" id="DejaVuSans-46"/>
+      <path d="M 9.8125 72.90625 
+L 23.09375 72.90625 
+L 55.421875 11.921875 
+L 55.421875 72.90625 
+L 64.984375 72.90625 
+L 64.984375 0 
+L 51.703125 0 
+L 19.390625 60.984375 
+L 19.390625 0 
+L 9.8125 0 
+z
+" id="DejaVuSans-4e"/>
+     </defs>
+     <g transform="translate(19.3575 132.69125)rotate(-90)scale(0.16 -0.16)">
+      <use xlink:href="#DejaVuSans-46"/>
+      <use x="57.519531" xlink:href="#DejaVuSans-20"/>
+      <use x="89.306641" xlink:href="#DejaVuSans-28"/>
+      <use x="128.320312" xlink:href="#DejaVuSans-4e"/>
+      <use x="203.125" xlink:href="#DejaVuSans-29"/>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_5">
+    <path clip-path="url(#p816b98d00e)" d="M 80.444482 209.720606 
+L 141.441889 209.720606 
+L 141.441889 209.720606 
+L 142.67416 188.420169 
+L 143.906431 168.605261 
+L 145.138702 150.232808 
+L 146.370973 133.259735 
+L 147.603244 117.64297 
+L 148.835514 103.339439 
+L 150.067785 90.306068 
+L 151.300056 78.499784 
+L 152.532327 67.877512 
+L 153.764598 58.396179 
+L 154.996869 50.012712 
+L 156.22914 42.684037 
+L 157.46141 36.36708 
+L 158.693681 31.018767 
+L 159.925952 26.596026 
+L 161.158223 23.055781 
+L 162.390494 20.35496 
+L 163.622765 18.450489 
+L 164.855036 17.299295 
+L 166.087306 16.858302 
+L 167.319577 17.084439 
+L 168.551848 17.934631 
+L 169.784119 19.365805 
+L 171.01639 21.334886 
+L 172.248661 23.79883 
+L 173.480932 26.718039 
+L 174.713202 30.059609 
+L 175.945473 33.791406 
+L 177.177744 37.881296 
+L 178.410015 42.297143 
+L 179.642286 47.006815 
+L 180.874557 51.978176 
+L 182.106828 57.179092 
+L 183.339099 62.577429 
+L 184.571369 68.141053 
+L 185.80364 73.837829 
+L 187.035911 79.635624 
+L 188.268182 85.502301 
+L 189.500453 91.405728 
+L 190.732724 97.313771 
+L 191.964995 103.194294 
+L 193.197265 109.015163 
+L 194.429536 114.744244 
+L 195.661807 120.349403 
+L 196.894078 125.798506 
+L 198.126349 131.059418 
+L 199.35862 136.100004 
+L 200.590891 140.888131 
+L 201.823161 145.391665 
+L 203.055432 149.579381 
+L 204.287703 153.441026 
+L 205.519974 156.98731 
+L 206.752245 160.229856 
+L 207.984516 163.180288 
+L 209.216787 165.850228 
+L 210.449057 168.251299 
+L 211.681328 170.395125 
+L 212.913599 172.293329 
+L 214.14587 173.957534 
+L 215.378141 175.399362 
+L 216.610412 176.630436 
+L 217.842683 177.662381 
+L 219.074954 178.506818 
+L 220.307224 179.175372 
+L 221.539495 179.679664 
+L 222.771766 180.031318 
+L 224.004037 180.241957 
+L 225.236308 180.323205 
+L 226.468579 180.286683 
+L 227.70085 180.144016 
+L 228.93312 179.906826 
+L 230.165391 179.586736 
+L 231.397662 179.19537 
+L 232.629933 178.74435 
+L 233.862204 178.246069 
+L 235.094475 177.719613 
+L 236.326746 177.187517 
+L 237.559016 176.672342 
+L 238.791287 176.196652 
+L 240.023558 175.783008 
+L 241.255829 175.453973 
+L 242.4881 175.232109 
+L 243.720371 175.139979 
+L 244.952642 175.200146 
+L 246.184912 175.435171 
+L 247.417183 175.867617 
+L 248.649454 176.520046 
+L 249.881725 177.415021 
+L 251.113996 178.575104 
+L 252.346267 180.022857 
+L 253.578538 181.780844 
+L 254.810809 183.871625 
+L 256.043079 186.317765 
+L 257.27535 189.141824 
+L 258.507621 192.366366 
+L 259.739892 196.013953 
+L 260.972163 200.107147 
+L 262.204434 204.66851 
+L 263.436705 209.720606 
+L 263.436705 209.720606 
+L 324.434112 209.720606 
+" style="fill:none;stroke:#1f77b4;stroke-linecap:square;stroke-width:1.5;"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 68.245 215.94 
+L 68.245 10.7 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 336.633594 215.94 
+L 336.633594 10.7 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 68.245 215.94 
+L 336.633594 215.94 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 68.245 10.7 
+L 336.633594 10.7 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_7">
+    <path d="M 419.605 215.94 
+L 687.993594 215.94 
+L 687.993594 10.7 
+L 419.605 10.7 
+z
+" style="fill:#ffffff;"/>
+   </g>
+   <g id="PolyCollection_2">
+    <path clip-path="url(#p16b65f4a89)" d="M 431.804482 209.720606 
+L 431.804482 209.720606 
+L 492.801889 209.720606 
+L 492.801889 125.666645 
+L 614.796705 125.666645 
+L 614.796705 209.720606 
+L 675.794112 209.720606 
+L 675.794112 209.720606 
+L 675.794112 209.720606 
+L 614.796705 209.720606 
+L 614.796705 209.720606 
+L 492.801889 209.720606 
+L 492.801889 209.720606 
+L 431.804482 209.720606 
+z
+" style="fill:#1f77b4;fill-opacity:0.3;"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_3">
+     <g id="line2d_6">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="492.801889" xlink:href="#md663938312" y="215.94"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <!-- $t_0$ -->
+      <g transform="translate(485.841889 235.0975)scale(0.16 -0.16)">
+       <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-Oblique-74"/>
+       <use transform="translate(39.208984 -15.625)scale(0.7)" xlink:href="#DejaVuSans-30"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="614.796705" xlink:href="#md663938312" y="215.94"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <!-- $t_1$ -->
+      <g transform="translate(607.836705 235.0975)scale(0.16 -0.16)">
+       <use transform="translate(0 0.78125)" xlink:href="#DejaVuSans-Oblique-74"/>
+       <use transform="translate(39.208984 -15.625)scale(0.7)" xlink:href="#DejaVuSans-31"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_9">
+     <!-- t (s) -->
+     <g transform="translate(537.710547 254.5825)scale(0.16 -0.16)">
+      <use xlink:href="#DejaVuSans-74"/>
+      <use x="39.208984" xlink:href="#DejaVuSans-20"/>
+      <use x="70.996094" xlink:href="#DejaVuSans-28"/>
+      <use x="110.009766" xlink:href="#DejaVuSans-73"/>
+      <use x="162.109375" xlink:href="#DejaVuSans-29"/>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="419.605" xlink:href="#m6169fe9e99" y="125.666645"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <!-- $F_{med}$ -->
+      <g transform="translate(378.045 131.745395)scale(0.16 -0.16)">
+       <use transform="translate(0 0.09375)" xlink:href="#DejaVuSans-Oblique-46"/>
+       <use transform="translate(57.519531 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6d"/>
+       <use transform="translate(125.708008 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-65"/>
+       <use transform="translate(168.774414 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-64"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_9">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="419.605" xlink:href="#m6169fe9e99" y="16.858302"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <!-- $F_{max}$ -->
+      <g transform="translate(378.525 22.937052)scale(0.16 -0.16)">
+       <use transform="translate(0 0.09375)" xlink:href="#DejaVuSans-Oblique-46"/>
+       <use transform="translate(57.519531 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-6d"/>
+       <use transform="translate(125.708008 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-61"/>
+       <use transform="translate(168.603516 -16.3125)scale(0.7)" xlink:href="#DejaVuSans-Oblique-78"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_12">
+     <!-- F (N) -->
+     <g transform="translate(370.7175 132.69125)rotate(-90)scale(0.16 -0.16)">
+      <use xlink:href="#DejaVuSans-46"/>
+      <use x="57.519531" xlink:href="#DejaVuSans-20"/>
+      <use x="89.306641" xlink:href="#DejaVuSans-28"/>
+      <use x="128.320312" xlink:href="#DejaVuSans-4e"/>
+      <use x="203.125" xlink:href="#DejaVuSans-29"/>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <path clip-path="url(#p16b65f4a89)" d="M 431.804482 209.720606 
+L 492.801889 209.720606 
+L 492.801889 125.666645 
+L 614.796705 125.666645 
+L 614.796705 209.720606 
+L 675.794112 209.720606 
+" style="fill:none;stroke:#1f77b4;stroke-linecap:square;stroke-width:1.5;"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 419.605 215.94 
+L 419.605 10.7 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 687.993594 215.94 
+L 687.993594 10.7 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 419.605 215.94 
+L 687.993594 215.94 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 419.605 10.7 
+L 687.993594 10.7 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p816b98d00e">
+   <rect height="205.24" width="268.388594" x="68.245" y="10.7"/>
+  </clipPath>
+  <clipPath id="p16b65f4a89">
+   <rect height="205.24" width="268.388594" x="419.605" y="10.7"/>
+  </clipPath>
+ </defs>
+</svg>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Pergunta">Pergunta<a class="anchor-link" href="#Pergunta">&#182;</a></h4><p>Um paraquedista, cujo paraquedas não abriu, cai em um monte de neve e sofre ferimentos
+leves. Se caísse em um terreno sem neve, o tempo necessário para parar teria sido 10 vezes
+menor e a colisão teria sido fatal. Devido à presença da neve, <strong>a variação do momento do paraquedista</strong>:</p>
+<ol>
+<li>Aumenta</li>
+<li>Diminui</li>
+<li><span class="fragment highlight-red">Permanece igual</span></li>
+<li>Não é possível afirmar nada</li>
+</ol>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Pergunta">Pergunta<a class="anchor-link" href="#Pergunta">&#182;</a></h4><p>Um paraquedista, cujo paraquedas não abriu, cai em um monte de neve e sofre ferimentos
+leves. Se caísse em um terreno sem neve, o tempo necessário para parar teria sido 10 vezes
+menor e a colisão teria sido fatal. Devido à presença da neve, <strong>o impulso experimentado pelo paraquedista</strong>:</p>
+<ol>
+<li>Aumenta</li>
+<li>Diminui</li>
+<li><span class="fragment highlight-red">Permanece igual</span></li>
+<li>Não é possível afirmar nada</li>
+</ol>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Pergunta">Pergunta<a class="anchor-link" href="#Pergunta">&#182;</a></h4><p>Um paraquedista, cujo paraquedas não abriu, cai em um monte de neve e sofre ferimentos
+leves. Se caísse em um terreno sem neve, o tempo necessário para parar teria sido 10 vezes
+menor e a colisão teria sido fatal. Devido à presença da neve, <strong>força média experimentada pelo paraquedista</strong>:</p>
+<ol>
+<li>Aumenta</li>
+<li><span class="fragment highlight-red">Diminui</span></li>
+<li>Permanece igual</li>
+<li>Não é possível afirmar nada</li>
+</ol>
+
+</div>
+</div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12138,6 +13217,29 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
 <li><div class="fragment">Note que em geral existem forças internas não nulas! Ex.: Uma caixa sobre um plano horizontal não possui força resultante, mas existem forças internas não nulas que unem as moléculas que compõem a caixa.</div></li>
 <li><div class="fragment">Note ainda que $\vec{P}=m\vec{v}_{cm}=\vec{\text{cte}}$ implica que o <b>C.M. descreve um movimento retilíneo uniforme</b></div></li>
 </ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Exemplo---Livro-texto">Exemplo - Livro texto<a class="anchor-link" href="#Exemplo---Livro-texto">&#182;</a></h4><p>A Figura abaixo mostra um rebocador espacial e uma cápsula de carga, de massa total M, viajando ao longo de um
+ eixo x no espaço sideral com uma velocidade inicial $\vec{v}_i$ de módulo 2100 km/h em relação ao Sol. Com uma pequena explosão, o rebocador ejeta a cápsula de carga, de massa $0,20M$. Depois disso, o rebocador passa a
+viajar 500 km/h mais depressa que a cápsula ao longo do eixo $x$, ou seja, a velocidade relativa $v_{rel}$ entre a cápsula e o cargueiro é de 500 km/h. Qual é, nesse instante, a velocidade $v_{RS}$ do rebocador em relação ao Sol?</p>
+<p><img src="C8/rebocador.png" alt="fig"></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R.: $v_{RS} = 2200$ km/h</p>
 
 </div>
 </div>
@@ -12161,7 +13263,7 @@ $(document).ready(function(){
 </div>
 </div>
 </div>
-</div></section></section>
+</div></div></section></section>
 </div>
 </div>
 
