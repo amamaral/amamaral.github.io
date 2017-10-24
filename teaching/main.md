@@ -29,10 +29,10 @@ seguir as instruções repassadas no informe inicial da disciplina: [http://bit.
 
 ### Unidade 3
 
-- [8 - Revisão capítulo 10](teaching/Fisica_1/Revisao U3.slides.html)
+- [9 - Rotação](teaching/Fisica_1/C9 - Rotação.slides.html)
+- [11 - Revisão capítulo 10](teaching/Fisica_1/Revisao U3.slides.html)
 
 <!--
 ### Slides da unidade 3
-- [9 - Rotação](teaching/Fisica_1/.html)
 - [10 - Torque e momento angular](teaching/Fisica_1/.html)
 -->
