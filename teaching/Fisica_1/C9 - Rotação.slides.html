@@ -12384,6 +12384,237 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
 
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Torque">Torque<a class="anchor-link" href="#Torque">&#182;</a></h2><ul>
+<li>Por que a maçaneta da porta nunca fica perto da dobradiça?</li>
+<li><div class="fragment">O "resultado" da força aplicada depende do <u>ponto de aplicação</u> em relação ao <u>eixo de rotação</u>!</div></li>
+</ul>
+<p><img src="C9/Porta.png" alt="fig"></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Rota&#231;&#227;o-devido-&#224;-aplica&#231;&#227;o-de-uma-for&#231;a">Rota&#231;&#227;o devido &#224; aplica&#231;&#227;o de uma for&#231;a<a class="anchor-link" href="#Rota&#231;&#227;o-devido-&#224;-aplica&#231;&#227;o-de-uma-for&#231;a">&#182;</a></h2><div class="image_block" id="left">
+  <ul>
+    <li><div class="fragment">Consideremos uma força $\vec{F}$ no plano de rotação</div>
+    </li><li><div class="fragment">Trabalho realizado por $\vec{F}$: $\Delta W = F \cdot \Delta x$</div>
+    </li><li><div class="fragment">Buscamos um análogo para rotações, ou algo do tipo $\Delta W = \tau \Delta\theta$</div>
+    </li><li><div class="fragment">Qual o trabalho realizado por $\vec{F}$?</div>
+    </li><li><div class="fragment">$F_t = F \sin\phi$ realiza um deslocamento $s = r\Delta\theta$</div>
+    </li>
+  </ul>
+</div><div class="image_block" id="right">
+  <img src="C9/Torque.png" width=300px>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Rota&#231;&#227;o-devido-&#224;-aplica&#231;&#227;o-de-uma-for&#231;a">Rota&#231;&#227;o devido &#224; aplica&#231;&#227;o de uma for&#231;a<a class="anchor-link" href="#Rota&#231;&#227;o-devido-&#224;-aplica&#231;&#227;o-de-uma-for&#231;a">&#182;</a></h2><div class="image_block" id="left">
+  <ul>
+    <li><div class="fragment">$\Delta W = \tau \Delta\theta$</div>
+    </li><li><div class="fragment">$F_\perp = F \sin\phi$, e $s = r\Delta\theta$</div>
+    </li><li><div class="fragment">$\Delta W =$ (Força).(Deslocamento)</div>
+    </li><li><div class="fragment">$\Delta W = F \sin\phi\, r\Delta\theta$</div>
+    </li><li><div class="fragment">Então, $\tau=F \sin\phi\, r = \left|\vec{r}\times\vec{F}\right|$</div>
+    </li><li><div class="fragment">Vetorialmente, $$\vec{\tau}=\vec{r}\times\vec{F}$$</div>
+    </li>
+  </ul>
+</div><div class="image_block" id="right">
+  <img src="C9/Braco_Alavanca.png" width=300px>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Segunda-lei-de-Newton-para-rota&#231;&#245;es">Segunda lei de Newton para rota&#231;&#245;es<a class="anchor-link" href="#Segunda-lei-de-Newton-para-rota&#231;&#245;es">&#182;</a></h2><ul>
+<li>Qual a relação entre o torque e a aceleração angular? (à là $\vec{F}=m\vec{a}$)</li>
+<li><div class="fragment">$\tau$ está associado à aceleração tangencial:</div></li>
+<li><div class="fragment">$\tau=r\; F_t = r \; ma_t = r \; m(\alpha r) $</div></li>
+<li><div class="fragment">$\tau=mr^2 \alpha = I \alpha$ $$\tau = I \alpha$$</div></li>
+<li><div class="fragment">Vetorialmente, temos também que $\vec{\tau} = I \vec{\alpha}$</div></li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pergunta">Pergunta<a class="anchor-link" href="#Pergunta">&#182;</a></h2><p>Sabendo que $\tau = r\; F_t = I \alpha$, e pensando apenas em diminuir o esforço em abrir uma dada porta para uma dada força aplicada, onde deveria ficar o eixo de rotação da porta, e qual seria a posição ideal para a maçaneta?</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R.: O eixo deveria passar pelo centro de massa para diminuir o momento de inércia $I$, enquanto que a maçaneta deve estar o mais distante possível do eixo de rotação. Por que as portas não são feitas assim?</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exerc&#237;cio">Exerc&#237;cio<a class="anchor-link" href="#Exerc&#237;cio">&#182;</a></h2><p>Considere que um bloco de massa $m=1,2$ kg está preso por uma corda ideal a um disco de massa $M=2,4$ kg e raio $R=20$ cm. Determine a aceleração linear $a$ do bloco, a aceleração angular $\alpha$ do disco e a tração $T$ sobre a corda. Considere ainda que a corda não desliza e o sistema não possui atrito.</p>
+<p><img src="C9\Exercicio_Disco_Massa.png" alt="fig"></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R.: $a = -\frac{2m}{2m+M} g \approx -5$ m/s$^2$, $\alpha = \frac{a}{R} = -25$ rad/s$^2$, $T=-\frac{1}{2}Ma = 6,0$ N</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Trabalho-e-energia-cin&#233;tica-de-rota&#231;&#227;o">Trabalho e energia cin&#233;tica de rota&#231;&#227;o<a class="anchor-link" href="#Trabalho-e-energia-cin&#233;tica-de-rota&#231;&#227;o">&#182;</a></h1><ul>
+<li>Vimos anteriormente que para movimentos ao longo de uma direção espacial,</li>
+<li><div class="fragment">$W   = \int_{x_0}^{x_1} F(x) dx$ (Força variável)</div></li>
+<li><div class="fragment">$W_R = \int_{x_0}^{x_1} F_R(x) dx = \Delta K$ (Teo. Trabalho e Energia Cinética)</div></li>
+<li><div class="fragment">$P = \frac{dW}{dt} = F.v$</div></li>
+<li><div class="fragment">E para movimentos de rotação?</div></li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Trabalho-e-energia-cin&#233;tica-de-rota&#231;&#227;o">Trabalho e energia cin&#233;tica de rota&#231;&#227;o<a class="anchor-link" href="#Trabalho-e-energia-cin&#233;tica-de-rota&#231;&#227;o">&#182;</a></h1><ul>
+<li>Vejamos qual é o torque realizado por uma força $\vec{F}$ quando um corpo sofre um deslocamento angular entre $\theta_0$ e $\theta_1$.</li>
+<li><div class="fragment">$W   = \int_{\vec{r}_0}^{\vec{r}_1} \vec{F}(\vec{r}) d\vec{r} = \int_{\vec{r}_0}^{\vec{r}_1} \vec{F}(\vec{r}) \frac{d\vec{r}}{d\theta} d\theta$</div></li>
+<li><div class="fragment">Note que se $\theta_1,\theta_0\approx0$, então $\Delta \vec{r} = \vec{r}_1-\vec{r}_0 = r\left[(\cos\theta_1-\cos\theta_0)\hat\imath + (\sin\theta_1-\sin\theta_0)\hat\jmath\right] \approx r(\theta_1-\theta_0)\hat\jmath = r\Delta\theta\hat\jmath$</div></li>
+<li><div class="fragment">Então $W = \int_{\theta_0}^{\theta_1} r F_t d\theta$ $$W = \int_{\theta_0}^{\theta_1} \tau d\theta.$$</div></li>
+<li><div class="fragment">Note ainda que se o torque é constante, $$ W = \tau \Delta \theta$$</div></li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Energia-cin&#233;tica-de-rota&#231;&#227;o-e-pot&#234;ncia">Energia cin&#233;tica de rota&#231;&#227;o e pot&#234;ncia<a class="anchor-link" href="#Energia-cin&#233;tica-de-rota&#231;&#227;o-e-pot&#234;ncia">&#182;</a></h2><ul>
+<li>$W = \Delta K = \frac{1}{2} m v_f^2 - \frac{1}{2} m v_i^2$</li>
+<li><div class="fragment">Usando a analogia $m\rightarrow I$, $v\rightarrow\omega$,</div></li>
+<li><div class="fragment">$W = \Delta K = \frac{1}{2} I \omega_f^2 - \frac{1}{2} I \omega_i^2$ (Teo. Trabalho e Energia Cinética para sistemas sob rotação).</div></li>
+<li><div class="fragment">Potência: $P = \frac{dW}{dt} = \frac{Fdx}{dt} = \frac{\tau d\theta}{dt}$ $$P=\tau \omega$$</div></li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Alguns-problemas">Alguns problemas<a class="anchor-link" href="#Alguns-problemas">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exemplo">Exemplo<a class="anchor-link" href="#Exemplo">&#182;</a></h2><p>Considerando o disco de massa $M=2,4$ kg e raio $R=20$ cm do exemplo anterior, com uma velocidade angular inicial $\omega_0=0$ e $\alpha=25$ rad/s$^2$. Qual é a energia cinética de rotação do disco em $t=2$ s?</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R.: $K = \frac{M}{4} (R \alpha t)^2$ = 60 J</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Problema 10.63 (9a Ed.)</strong>: Uma régua de um metro é mantida verticalmente com uma das extremidades apoiada no solo e depois liberada. Determine a velocidade da outra extremidade pouco antes de tocar o solo, supondo que a extremidade de apoio não escorrega. (Sugestão: considere a régua uma barra fina e use a lei de conservação da energia.)</p>
+<p>Dado.: Para uma barra fina, $I_{cm} = \frac{ML^2}{12}$.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$v = \sqrt{3gL} \approx 5,4$ m/s</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Problema 10.66 (9a Ed.)</strong> Uma casca esférica homogênea de massa $M = 4,5$ kg e raio $R = 8,5$ cm pode girar em torno de um eixo vertical sem atrito, conforme a figura. Uma corda de massa desprezível está enrolada no equador da casca, passa por uma polia de momento de inércia $I = 3,0 \times 10^{-3}$ kg$\cdot$m$^2$ e raio $r = 5,0$ cm e está presa a um pequeno objeto de massa $m = 0,60$ kg. Não há atrito no eixo da polia e a corda não escorrega na casca nem na polia. Qual é a velocidade do objeto depois de cair $82$ cm após ter sido liberado a partir do repouso? Use considerações de energia.</p>
+<p>Dado: $I_{cm, Esfera} = \frac{2MR^2}{3}$</p>
+<p><img src="C9/Prob_10_66.png" alt="fig"></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R.: $v_m = \sqrt{\frac{m g h}{\frac{M}{3} + \frac{I}{2r^2} + \frac{m}{2}}} = 1,42$ m/s</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <script>
@@ -12404,7 +12635,7 @@ $(document).ready(function(){
 </div>
 </div>
 </div>
-</div></section></section>
+</div></div></section></section>
 </div>
 </div>
 
