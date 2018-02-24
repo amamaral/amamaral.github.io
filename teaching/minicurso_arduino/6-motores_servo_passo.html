@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Anderson M. Amaral" />
+  <title>Curso rápido de arduino</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Curso rápido de arduino</h1>
+  <p class="subtitle">Motores tipo servo e de passos</p>
+  <p class="author">
+Anderson M. Amaral
+  </p>
+  <p class="date">Agosto - 2017</p>
+</div>
+<div id="introdução" class="slide section level1">
+<h1>Introdução</h1>
+<ul class="incremental">
+<li>Para interagir com o mundo físico precisamos de motores</li>
+<li>Existem vários tipos de motores elétricos. Ex.: AC e DC.</li>
+<li>Motores DC:</li>
+<li>Motor DC com escovas (brushed DC)</li>
+<li>Motor DC sem escovas (brushless DC)</li>
+<li>Motor de passos (stepper motor)</li>
+</ul>
+<p><img src="img\brushed-dc.jpg" alt="Brushed DC" style="width:30.0%" /> <img src="img\brushless-dc.jpg" alt="Brushless DC" style="width:30.0%" /> <img src="img\NEMA-stepper.jpg" alt="Stepper" style="width:30.0%" /></p>
+</div>
+<div id="motor-dc-escovado" class="slide section level1">
+<h1>Motor DC escovado</h1>
+<ul class="incremental">
+<li>Uma corrente elétrica produz um campo magnético que tenta alinhar o eixo móvel com o campo magnético externo</li>
+<li>Quando o alinhamento está próximo do seu máximo, inverte-se o sentido da corrente DC usando as escovas</li>
+</ul>
+<div class="figure">
+<img src="img\brushed-dc-operation.gif" alt="Motor DC" style="width:50.0%" />
+<p class="caption">Motor DC</p>
+</div>
+</div>
+<div id="utilizando-um-motor-dc" class="slide section level1">
+<h1>Utilizando um motor DC</h1>
+<ul class="incremental">
+<li>Um aspecto <strong>extremamente importante</strong> é que motores DC podem facilmente queimar outros componentes eletrônicos</li>
+<li>Em especial, pode queimar o nosso arduino</li>
+<li>Precauções especiais devem ser tomadas ao usar esse tipo de motor, como por exemplo usar uma fonte de tensão externa.</li>
+<li>Em especial, motores podem usar muita corrente, e energia fornecida pela porta USB não é suficiente</li>
+<li>Pode ser bastante útil usar um diodo em paralelo para evitar correntes indutivas</li>
+<li>Por enquanto, não usaremos o motor DC diretamente</li>
+</ul>
+</div>
+<div id="servo-motor" class="slide section level1">
+<h1>Servo motor</h1>
+<ul class="incremental">
+<li>É um motor inteligente, que sabe a sua posição atual por meio de algum sensor. Os mais simples utilizam potenciômetros.</li>
+<li>Já possui os sistemas de proteção embutidos. Podemos usar diretamente sem maiores problemas.</li>
+<li>Possui 3 pinos</li>
+<li>Power (+5V) - Vermelho</li>
+<li>Sinal (usado para controle) - Amarelo, laranja, branco</li>
+<li>Terra (0V) - Preto ou Marrom</li>
+<li>Servos como aquele abaixo em geral possuem uma rotação por um ângulo entre 0-180 graus (ou -90/90).</li>
+</ul>
+<div class="figure">
+<img src="img\Servo-Motor.jpg" alt="Servo motor" style="width:30.0%" />
+<p class="caption">Servo motor</p>
+</div>
+<div class="figure">
+<img src="img\Servo_components.jpg" alt="Servo" style="width:50.0%" />
+<p class="caption">Servo</p>
+</div>
+</div>
+<div id="biblioteca-servo" class="slide section level1">
+<h1>Biblioteca <img src="arduino.cc/en/Reference/Servo" alt="Servo" /></h1>
+<ul class="incremental">
+<li><code>#include &lt;Servo.h&gt;</code></li>
+<li>Funções básicas:</li>
+<li><code>servo.attach(pin)</code>: Indica qual o pino de comunicação com o Servo</li>
+<li><code>servo.write(angle)</code>: Informa a nova posição para o servo</li>
+<li><code>servo.read(angle)</code>: Recebe o último ângulo informado</li>
+</ul>
+</div>
+<div id="exemplo" class="slide section level1">
+<h1>Exemplo</h1>
+<ul class="incremental">
+<li>Acessem <code>Exemplos\Servo\Sweep</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="pp">#include </span><span class="im">&lt;Servo.h&gt;</span>
+Servo myservo;  <span class="co">// Armazena as informações do servo</span>
+<span class="dt">int</span> pos = <span class="dv">0</span>;    <span class="co">// Variável global para manipular a posição</span>
+
+<span class="dt">void</span> setup() {
+  myservo.attach(<span class="dv">9</span>);  <span class="co">// Indica que o servo está no pino 9</span>
+}
+
+<span class="dt">void</span> loop() {
+  <span class="cf">for</span> (pos = <span class="dv">0</span>; pos &lt;= <span class="dv">180</span>; pos += <span class="dv">1</span>) { <span class="co">// Vai de 0 a 180 graus em passos de 1 grau</span>
+    myservo.write(pos);                 <span class="co">// Nova posição</span>
+    delay(<span class="dv">15</span>);                          <span class="co">// Aguarda um tempo para o servo atingir a posição final</span>
+  }
+  <span class="cf">for</span> (pos = <span class="dv">180</span>; pos &gt;= <span class="dv">0</span>; pos -= <span class="dv">1</span>) { <span class="co">// Move-se no sentido inverso ao anterior</span>
+    myservo.write(pos);              
+    delay(<span class="dv">15</span>);                       
+  }
+}</code></pre></div>
+</div>
+<div id="exercícios" class="slide section level1">
+<h1>Exercícios</h1>
+<ol class="incremental" style="list-style-type: decimal">
+<li>Use um botão para parar o movimento no exemplo anterior</li>
+<li>Controlar a orientação do servo usando um potenciômetro</li>
+<li>Controlar a orientação do servo usando dois botões, um para movimentação no sentido horário e outro no anti-horário</li>
+<li>Considere agora que o servo está na posição 0. Ao acionar um botão, o servo deve ir para o maior ângulo com uma velocidade controlada pelo potenciômetro.</li>
+</ol>
+</div>
+<div id="motor-de-passos" class="slide section level1">
+<h1>Motor de passos</h1>
+<ul class="incremental">
+<li>O motor de passos gira o eixo por um ângulo fixo, e então fica parado</li>
+<li>&quot;Dá um passo&quot;</li>
+<li>É possível dar passos fracionados em alguns sistemas (<em>microstepping</em>)</li>
+<li>Muito útil para se fazer ajustes finos de forma controlada</li>
+<li>Importante: Existe um tempo mínimo para cada passo, e caso o sinal de controle peça ao motor para mudar muito rápido, o comportamento do motor pode ser errático e não seguir o desejado.</li>
+<li>Alguns possuem engrenagens para reduzir o tamanho do passo.</li>
+</ul>
+<p><img src="img\stepper_inside.jpg" alt="Motor de passos aberto" style="width:50.0%" /> <img src="img\Motor_Passo_Drive_Uln20037.jpg" alt="Bobinas num motor de passo unipolar" style="width:50.0%" /></p>
+<ul class="incremental">
+<li><strong>Desafio</strong>: como encontrar qual dos fios é o terra?</li>
+</ul>
+</div>
+<div id="biblioteca-stepper" class="slide section level1">
+<h1>Biblioteca <img src="arduino.cc/en/Reference/Stepper" alt="Stepper" /></h1>
+<ul class="incremental">
+<li><code>#include &lt;Stepper.h&gt;</code></li>
+<li>Funções básicas:</li>
+<li><code>stepper.Stepper(steps, pin1, pin2, pin3, pin4)</code>: Número de passos por volta e pinos utilizados</li>
+<li><code>stepper.setSpeed(rpm)</code>: Ajuste da velocidade de rotação em RPM</li>
+<li><code>stepper.step(steps)</code>: Dá um determinado número de passos</li>
+</ul>
+</div>
+<div id="exemplo-1" class="slide section level1">
+<h1>Exemplo</h1>
+<ul class="incremental">
+<li>Abrir <code>Exemplos\Stepper\stepper_oneStepAtATime</code></li>
+</ul>
+<pre><code>#include &lt;Stepper.h&gt;
+
+const int stepsPerRevolution = 500;
+Stepper myStepper(stepsPerRevolution, 8, 10, 9, 11);
+
+int stepCount = 0;         // number of steps the motor has taken
+
+void setup() {
+  Serial.begin(9600);
+  myStepper.setSpeed(25);
+}
+
+void loop() {
+  // step one step:
+  myStepper.step(1);
+  Serial.print(&quot;steps:&quot;);
+  Serial.println(stepCount);
+  stepCount++;
+  delay(50);
+}</code></pre>
+</div>
+<div id="exercícios-1" class="slide section level1">
+<h1>Exercícios</h1>
+<ol class="incremental" style="list-style-type: decimal">
+<li>Controlar a posição do motor de passos usando dois botões, um para movimentação no sentido horário e outro no anti-horário.</li>
+<li>Quantos graus o motor gira a cada passo? Nota: depende da configuração das engrenagens de redução...</li>
+</ol>
+<!--- Volta completa em 2048 passos?! --->
+</div>
+</body>
+</html>

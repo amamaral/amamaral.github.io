@@ -15,20 +15,20 @@ seguir as instruções repassadas no informe inicial da disciplina: [http://bit.
 
 ### Unidade 1
 
-- [1 - Medições](teaching/Fisica_1/C1 - Medicoes.slides.html)
-- [2 - Cinemática. Movimento Retilíneo.](teaching/Fisica_1/C2 - Cinematica-MRU.slides.html)
-- [3 - Vetores](teaching/Fisica_1/C3 - Vetores.slides.html)
-- [4 - Cinemática em duas e três dimensões](teaching/Fisica_1/C4 - Movimento em 2D e 3D.slides.html)
-- [5 - Dinâmica - Leis de Newton](teaching/Fisica_1/C5 - Leis de Newton.slides.html)
-- [6 - Forças fundamentais e forças derivadas](teaching/Fisica_1/C6 - Forças fundamentais e forças derivadas.slides.html)
+- [1 - Medições](Fisica_1/C1 - Medicoes.slides.html)
+- [2 - Cinemática. Movimento Retilíneo.](Fisica_1/C2 - Cinematica-MRU.slides.html)
+- [3 - Vetores](Fisica_1/C3 - Vetores.slides.html)
+- [4 - Cinemática em duas e três dimensões](Fisica_1/C4 - Movimento em 2D e 3D.slides.html)
+- [5 - Dinâmica - Leis de Newton](Fisica_1/C5 - Leis de Newton.slides.html)
+- [6 - Forças fundamentais e forças derivadas](Fisica_1/C6 - Forças fundamentais e forças derivadas.slides.html)
 
 ### Unidade 2
 
-- [7 - Trabalho e energia](teaching/Fisica_1/C7 - Trabalho e energia.slides.html)
-- [8 - Centro de massa, momento linear e colisões](teaching/Fisica_1/C8 - Centro de massa, momento linear e colisões.slides.html)
+- [7 - Trabalho e energia](Fisica_1/C7 - Trabalho e energia.slides.html)
+- [8 - Centro de massa, momento linear e colisões](Fisica_1/C8 - Centro de massa, momento linear e colisões.slides.html)
 
 ### Unidade 3
 
-- [9 - Rotação](teaching/Fisica_1/C9 - Rotação.slides.html)
-- [10 - Torque e momento angular](teaching/Fisica_1/C10 - Rolamento torque e momento angular.slides.html)
-- [11 - Revisão capítulo 10](teaching/Fisica_1/Revisao U3.slides.html)
+- [9 - Rotação](Fisica_1/C9 - Rotação.slides.html)
+- [10 - Torque e momento angular](Fisica_1/C10 - Rolamento torque e momento angular.slides.html)
+- [11 - Revisão capítulo 10](Fisica_1/Revisao U3.slides.html)

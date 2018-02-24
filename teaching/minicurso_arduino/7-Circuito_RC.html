@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Anderson M. Amaral" />
+  <title>Curso rápido de arduino</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Curso rápido de arduino</h1>
+  <p class="subtitle">Circuito RC</p>
+  <p class="author">
+Anderson M. Amaral
+  </p>
+  <p class="date">Agosto - 2017</p>
+</div>
+<div id="introdução" class="slide section level1">
+<h1>Introdução</h1>
+<ul class="incremental">
+<li>Até o momento não falamos muito a respeito do comportamento dinâmico dos circuitos</li>
+<li>No entanto, o tempo está presente em tudo o que fazemos</li>
+<li>O circuito mais simples em que podemos analisar detalhadamente seu comportamento é o circuito RC (Resistor-Capacitor)</li>
+</ul>
+<div class="figure">
+<img src="img\circuito_RC.png" alt="Circuito RC" style="width:30.0%" />
+<p class="caption">Circuito RC</p>
+</div>
+</div>
+<div id="descrição-matemática" class="slide section level1">
+<h1>Descrição matemática</h1>
+<div class="figure">
+<img src="img\circuito_RC.png" alt="Circuito RC" style="width:30.0%" />
+<p class="caption">Circuito RC</p>
+</div>
+<ul class="incremental">
+<li>Tensão aplicada: <span class="math inline">\(V_S\)</span></li>
+<li>Tensão no Capacitor: <span class="math inline">\(q=Cv\)</span></li>
+<li>Tensão no resistor: <span class="math inline">\(v_S-v = R i\)</span></li>
+<li>Problema: Como encontrar <span class="math inline">\(v\)</span>, se <span class="math inline">\(V_S\)</span> varia no tempo?</li>
+</ul>
+</div>
+<div id="solução-montar-uma-equação-diferencial" class="slide section level1">
+<h1>Solução: montar uma equação diferencial</h1>
+<ul class="incremental">
+<li>Temos que <span class="math inline">\(q=Cv\)</span> e <span class="math inline">\(\frac{v_S-v}{R} = i\)</span></li>
+<li>Lembrando, <span class="math inline">\(i\)</span> indica quanta carga flui pelo fio por unidade de tempo (C/s), podemos usar que <span class="math inline">\(i=\frac{dq}{dt}\)</span></li>
+<li>Daí, <span class="math inline">\(q = Cv\)</span>, ou <span class="math inline">\(\frac{dq}{dt} = i = C\frac{dv}{dt}\)</span></li>
+<li>Então, <span class="math inline">\(\frac{v_S-v}{R}=C\frac{dv}{dt}\)</span>, ou passando <span class="math inline">\(v\)</span> para um mesmo lado da eq.,</li>
+<li><span class="math display">\[RC\frac{dv}{dt} + v = V_S\]</span></li>
+<li>Agora só precisamos resolver a equação diferencial</li>
+</ul>
+</div>
+<div id="solução-homogênea-v_s0" class="slide section level1">
+<h1>Solução homogênea (<span class="math inline">\(V_S=0\)</span>)</h1>
+<p><span class="math display">\[RC\frac{dv}{dt} + v = V_S\]</span></p>
+<ul class="incremental">
+<li>A solução mais simples para a Eq. Dif. ocorre quanto <span class="math inline">\(V_S=0\)</span></li>
+<li>Note então que <span class="math inline">\(RC\frac{dv}{dt} + v = 0\)</span>, ou <span class="math inline">\(\frac{dv}{dt} =-\frac{1}{RC}v\)</span>.</li>
+<li>Que função é proporcional a sua derivada?</li>
+<li><span class="math inline">\(v\)</span> é uma função tipo exponencial! Podemos verificar de maneira mais rigorosa, caso façamos a integração</li>
+<li><span class="math inline">\(\frac{dv}{v}=-\frac{dt}{RC}\)</span> -&gt; Integrando o tempo de <span class="math inline">\(0\)</span> a <span class="math inline">\(t\)</span>, temos</li>
+<li><span class="math inline">\(\log{\frac{v}{v_0}}=-\frac{t}{RC}\)</span>, ou então <span class="math inline">\(v = v_0 e^{-t/RC}\)</span></li>
+<li><span class="math inline">\(\tau = RC\)</span> é conhecido como o tempo de carga/descarga do capacitor</li>
+<li>Notar que <span class="math inline">\(\lim_{t\rightarrow\infty} v =0\)</span>.</li>
+</ul>
+</div>
+<div id="solução-inhomogenea-v_sneq-0" class="slide section level1">
+<h1>Solução inhomogenea (<span class="math inline">\(V_S\neq 0\)</span>)</h1>
+<p><span class="math display">\[RC\frac{dv}{dt} + v = V_S\]</span></p>
+<ul class="incremental">
+<li>Supor <span class="math inline">\(v = v_0 e^{-t/RC} + v_1\)</span></li>
+<li><span class="math inline">\(\frac{dv}{dt} = -\frac{v_0}{RC} e^{-t/RC}\)</span></li>
+<li><span class="math inline">\(RC\frac{dv}{dt} + v = -RC\frac{v_0}{RC} e^{-t/RC} + v_0 e^{-t/RC} + v_1 = V_S\)</span></li>
+<li><span class="math inline">\(v_1 = V_S\)</span> é solução</li>
+<li><span class="math inline">\(v = v_0 e^{-t/RC} + v_S\)</span></li>
+</ul>
+</div>
+<div id="o-que-acontece-quando-v_s-liga-abruptamente" class="slide section level1">
+<h1>O que acontece quando <span class="math inline">\(V_S\)</span> liga abruptamente?</h1>
+<ul class="incremental">
+<li><span class="math inline">\(v = v_0 e^{-t/RC} + v_S\)</span> é tal que <span class="math inline">\(v(0)=0\)</span></li>
+<li><span class="math inline">\(0 = v_0 e^0 + v_S\)</span>, ou <span class="math inline">\(v_0 = - v_S\)</span></li>
+<li>Finalmente, <span class="math display">\[v = V_S \left(1- e^{-t/RC}\right)\]</span></li>
+</ul>
+<!---
+~~~{.python}
+t = linspace(-2,5,100)
+v = (1-e**(-t))
+v[v<0] = 0
+vs = ones(t.shape)
+vs[t<0] = 0
+
+plot(t,v, label='$v$')
+plot(t,vs, label='$v_S$')
+grid()
+xlabel('t (s)')
+ylabel('v (V)')
+legend(loc=0)
+savefig('img\Carrega_cap.png')
+~~~
+-->
+<div class="figure">
+<img src="img\Carrega_cap.png" alt="Curva de carga de um capacitor" />
+<p class="caption">Curva de carga de um capacitor</p>
+</div>
+</div>
+<div id="gerenciando-melhor-o-tempo-do-arduino" class="slide section level1">
+<h1>Gerenciando melhor o tempo do arduino</h1>
+<ul class="incremental">
+<li>Até aqui, quando queriamos controlar o comportamento do arduino, usamos sempre a função <code>delay</code>.</li>
+<li>O problema disto é que o arduino para todas as outras atividades (como comunicação, ler os valores dos pinos,...) enquanto o delay não for executado totalmente.</li>
+<li>Como contornar este problema?</li>
+<li>Usando um relógio, para saber se já é hora de o arduino executar alguma tarefa, ou não.</li>
+</ul>
+</div>
+<div id="blink-without-delay" class="slide section level1">
+<h1>Blink without delay</h1>
+<ul class="incremental">
+<li>Abrir o exemplo <code>02.Digital/BlinkWithoutDelay</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="at">const</span> <span class="dt">int</span> ledPin =  LED_BUILTIN;
+<span class="dt">int</span> ledState = LOW;
+<span class="dt">unsigned</span> <span class="dt">long</span> previousMillis = <span class="dv">0</span>; <span class="co">// Ultima vez que o millis foi chamado</span>
+<span class="at">const</span> <span class="dt">long</span> interval = <span class="dv">1000</span>;       <span class="co">// Intervalo para piscar o LED</span>
+
+<span class="dt">void</span> setup() {pinMode(ledPin, OUTPUT);}
+
+<span class="dt">void</span> loop() {
+  <span class="dt">unsigned</span> <span class="dt">long</span> currentMillis = millis();
+  <span class="cf">if</span> (currentMillis - previousMillis &gt;= interval) {
+    previousMillis = currentMillis; <span class="co">// Ultima vez que o led piscou</span>
+    <span class="cf">if</span> (ledState == LOW) {
+      ledState = HIGH;
+    } <span class="cf">else</span> {
+      ledState = LOW;
+    }
+    digitalWrite(ledPin, ledState);
+  }
+}</code></pre></div>
+</div>
+<div id="exercícios" class="slide section level1">
+<h1>Exercícios</h1>
+<div class="figure">
+<img src="img\CapacitanceMeterSchem.png" alt="Carga e descarga de um capacitor" style="width:40.0%" />
+<p class="caption">Carga e descarga de um capacitor</p>
+</div>
+<ol class="incremental" style="list-style-type: decimal">
+<li>Faça um programa que carrega e descarrega um capacitor, conforme o circuito acima. Escolha valores de R e C tal que o tempo característico de carregamento seja longo o suficiente para ser medido (vários <code>ms</code>). Detalhe importante: Para que o capacitor possa ser carregado e descarregado corretamente, é <strong>fundamental</strong> que o pino de descarregamento esteja como <code>pinMode(pin, INPUT)</code> durante a etapa de carregamento. Caso esteja como <code>OUTPUT</code>, funcionará como uma fonte de tensão de <code>0V</code>, ou <code>5V</code>, enquanto que no modo <code>INPUT</code> não passa corrente pelo pino.</li>
+<li>Meça o tempo <span class="math inline">\(T\)</span> para que o capacitor carregue 63.2% de sua carga total. (Sugestão: usar a função <img src="https://www.arduino.cc/en/Reference/Millis" alt="millis" /> ou <img src="https://www.arduino.cc/en/Reference/Micros" alt="micros" />).</li>
+<li>Calcule a capacitância, usando que no tempo <span class="math inline">\(T=RC\)</span> o capacitor atinge <span class="math inline">\(1-e^{-1}=63.2\%\)</span> da tensão máxima.</li>
+<li>Uma vez que o tempo de carga depende do valor de <span class="math inline">\(R\)</span>, use diferentes pinos e resistências para controlar o tempo de carga do capacitor. Lembre-se sempre de comparar o valor medido com a especificação, ou uma medida complementar dos componentes usando um multímetro.</li>
+</ol>
+</div>
+<div id="usando-um-circuito-rc-para-tomar-médias" class="slide section level1">
+<h1>Usando um circuito RC para tomar médias</h1>
+<ul class="incremental">
+<li>Um dos aspectos mais interessantes em compreender o aspecto dinâmico dos circuitos é que podemos modificar o comportamento do sistema, e podemos realizar operações mais complexas nos circuitos.</li>
+<li>Por exemplo, o fato de um circuito RC responder mais lentamente do que um sinal de tensão aplicado, indica que podemos usar o circuito RC para tomar médias.</li>
+<li>Isto pode ser aplicado, por exemplo, para converter o sinal PWM (onda quadrada) do <code>analogWrite</code> em uma tensão mais suave</li>
+<li>Veremos isto mais abaixo</li>
+</ul>
+</div>
+<div id="breve-descrição-matemática" class="slide section level1">
+<h1>Breve descrição matemática</h1>
+<ul class="incremental">
+<li>Sabemos que a tensão no capacitor varia como</li>
+<li><span class="math inline">\(v = v_0 e^{-t/RC}\)</span>, caso a tensão aplicada seja nula, e</li>
+<li><span class="math inline">\(v = V_S \left(1- e^{-t/RC}\right)\)</span> quando se aplica uma tensão <span class="math inline">\(V_S\)</span> e o <em>capacitor está descarregado</em>.</li>
+<li>O que ocorre quando aplicamos um sinal tipo onda quadrada?</li>
+<li>Onda de amplitude <span class="math inline">\(V_S\)</span>, ligada por um tempo <span class="math inline">\(T_1\)</span> e período <span class="math inline">\(T\)</span>.</li>
+</ul>
+</div>
+<div id="carregamento-do-capacitor" class="slide section level1">
+<h1>Carregamento do capacitor</h1>
+<ul class="incremental">
+<li>Onda de amplitude <span class="math inline">\(V_S\)</span>, ligada por um tempo <span class="math inline">\(T_1\)</span> e período <span class="math inline">\(T\)</span>.</li>
+<li>Como a onda está sempre presente, podemos ter uma certa carga média presente no capacitor</li>
+<li>Supomos então que, quando a tensão é <span class="math inline">\(V_S\)</span>, a tensão no capacitor é</li>
+<li><span class="math inline">\(v(t&lt;T_1) = V_S \left(1- e^{-t/RC}\right) + v_0 e^{-t/RC}\)</span></li>
+</ul>
+</div>
+<div id="descarregamento-do-capacitor" class="slide section level1">
+<h1>Descarregamento do capacitor</h1>
+<ul class="incremental">
+<li>Entre os tempos <span class="math inline">\(T_1\)</span> e <span class="math inline">\(T\)</span>, não há tensão aplicada e o capacitor descarregará</li>
+<li>Notem então que <span class="math inline">\(v(T_1) = V_S \left(1- e^{-T_1/RC}\right) + v_0 e^{-T_1/RC}\)</span></li>
+<li><span class="math inline">\(v(t&gt;T_1) = \left[V_S \left(1- e^{-T_1/RC}\right) + v_0 e^{-T_1/RC}\right]e^{-(t-T_1)/RC}\)</span></li>
+<li><span class="math inline">\(v(T) = \left[V_S \left(1- e^{-T_1/RC}\right) + v_0 e^{-T_1/RC}\right]e^{-(T-T_1)/RC}\)</span></li>
+</ul>
+</div>
+<div id="condição-de-periodicidade" class="slide section level1">
+<h1>Condição de periodicidade</h1>
+<ul class="incremental">
+<li>Supondo que a onda está ligada por muito tempo, a resposta do capacitor deve possuir a mesma periodicidade da onda quadrada.</li>
+<li>Então, <span class="math inline">\(v(T)=v(0)=v_0\)</span>, e</li>
+<li><span class="math inline">\(v_0 = \left[V_S \left(1- e^{-T_1/RC}\right) + v_0 e^{-T_1/RC}\right]e^{-(T-T_1)/RC}\)</span></li>
+<li>Rearranjando, obtemos <span class="math inline">\(v_0 = V_S \frac{e^{T_1/RC}-1}{e^{T/RC}-1}.\)</span></li>
+<li>Se utilizarmos que para <span class="math inline">\(x\ll 1\)</span> vale <span class="math inline">\(e^x\approx 1 + x\)</span>, temos que quando <span class="math inline">\(T_1&lt;T\ll RC\)</span></li>
+<li><span class="math inline">\(v_0 = V_S \frac{T_1}{T}.\)</span></li>
+</ul>
+</div>
+<div id="o-que-acontece-com-a-tensão-no-capacitor" class="slide section level1">
+<h1>O que acontece com a tensão no capacitor?</h1>
+<ul class="incremental">
+<li><span class="math inline">\(v_0 = V_S \frac{T_1}{T}\)</span> é de certa forma uma tensão média (existe outra maneira mais rigorosa para definir a média)</li>
+<li>No entanto, a tensão no capacitor não é constante. Qual a maior variação na tensão do capacitor?</li>
+<li><span class="math inline">\(v(T_1) - v_0 = \Delta v = V_S \left(1- e^{-T_1/RC}\right) - v_0 (1-e^{-T_1/RC})\)</span></li>
+<li><span class="math inline">\(\Delta v = V_S \left(1- e^{-T_1/RC}\right) \left(1-\frac{e^{T_1/RC}-1}{e^{T/RC}-1}\right)\)</span></li>
+<li>Se <span class="math inline">\(T_1&lt;T\ll RC\)</span> podemos aproximar as exponenciais novamente como <span class="math inline">\(e^x\approx 1 + x\)</span>, e <span class="math display">\[\Delta v = V_S \frac{T}{RC}\frac{T_1}{T}\left(1-\frac{T_1}{T}\right)\]</span></li>
+</ul>
+</div>
+<div id="variação-na-tensão" class="slide section level1">
+<h1>Variação na tensão</h1>
+<ul class="incremental">
+<li><span class="math inline">\(\Delta v = V_S \frac{T}{RC}\frac{T_1}{T}\left(1-\frac{T_1}{T}\right)\)</span></li>
+<li>Quando a variação é nula?</li>
+<li>Quando a variação é máxima?</li>
+<li>Então, no pior cenário, temos que a tensão varia por <span class="math inline">\(\Delta v_{max} = V_S \frac{T}{4RC}\)</span>. Se <span class="math inline">\(T\ll RC\)</span>, estas flutuações podem se tornar bastante pequenas.</li>
+<li><span class="math inline">\(\Delta v_{max}\)</span> indica a <em>incerteza</em> com que conseguimos tomar a média usando o circuito RC.</li>
+</ul>
+</div>
+<div id="exercícios-1" class="slide section level1">
+<h1>Exercícios</h1>
+<ol class="incremental" style="list-style-type: decimal">
+<li>Usando a saída analógica e um filtro RC passa baixa, façam um conversor digital analógico (DAC) para o arduino. Como fica a tensão num osciloscópio? Sugestão: utilize a função <code>analogWrite</code> e teste pares onde <span class="math inline">\(RC=[1\)</span> s, <span class="math inline">\(100\)</span> ms, <span class="math inline">\(10\)</span> ms, <span class="math inline">\(1\)</span> ms, 100 <span class="math inline">\(\mu\)</span>s]. O que acontece com <span class="math inline">\(\Delta v_{max}\)</span> quando <span class="math inline">\(RC\)</span> varia?</li>
+<li>Façam com que o sinal devido a média realizada pelo circuito RC produza uma onda triangular.</li>
+<li>Usando a mesma ideia que no caso anterior, façam um gerador de onda senoidal onde você possa controlar a frequência. Qual a maior frequência que o seu circuito consegue atingir?</li>
+</ol>
+</div>
+<div id="frequências-de-um-sinal" class="slide section level1">
+<h1>Frequências de um sinal</h1>
+<ul class="incremental">
+<li>No encontro anterior, montamos um filtro RC que permitia obter uma média de um sinal. Tomando a média de uma onda quadrada pudemos gerar uma tensão variável em um osciloscópio com vários formatos (onda triangular, senoidal, função constante).</li>
+<li>A grande pergunta neste caso é: quais são as frequências que compõem um dado sinal?</li>
+<li>Vamos supor que o sinal de interesse é periódico, e possui período <span class="math inline">\(T\)</span>.</li>
+<li>Sabemos então que <span class="math inline">\(v(t)=v(t+T)=v(t+2T)=v(t+3T)\dots\)</span> Após passado um múltiplo inteiro de intervalos de tempo <span class="math inline">\(T\)</span>, o sinal se repete.</li>
+<li>(Detalhe: a análise que faremos a seguir é válida pra &quot;quase tudo&quot; em física! Por razões óbvias, aqui focaremos em eletrônica)</li>
+</ul>
+</div>
+<div id="sinal-de-período-t" class="slide section level1">
+<h1>Sinal de período <span class="math inline">\(T\)</span></h1>
+<ul class="incremental">
+<li>Sabemos que <span class="math inline">\(v(t)=v(t+T)=v(t+2T)=v(t+3T)\dots\)</span></li>
+<li>Que tipo de função matemática seria adequada para representar <span class="math inline">\(v(t)\)</span>?</li>
+<li>Precisamos de uma função que seja periódica, e tenha período <span class="math inline">\(T\)</span>...</li>
+<li>Podemos pensar em usar senos e cossenos!</li>
+<li>Mas podemos representar <span class="math inline">\(v(t)\)</span> em termos de senos e cossenos?</li>
+</ul>
+</div>
+<div id="a-onda-quadrada" class="slide section level1">
+<h1>A onda quadrada</h1>
+<ul class="incremental">
+<li>Vamos supor por simplicidade uma onda quadrada de período <span class="math inline">\(T=1\)</span>, e que possui um ciclo de trabalho <span class="math inline">\(T_{ligado}/T = 50\%\)</span></li>
+<li>Seno e cosseno de mesmo período: <span class="math inline">\(\sin(\frac{2\pi}{T} t)\)</span> e <span class="math inline">\(\cos(\frac{2\pi}{T} t)\)</span></li>
+</ul>
+<!---
+~~~{.python}
+%pylab inline
+t = linspace(-2,3,250)
+sw  = sin(2*pi*t)
+cw  = cos(2*pi*t)
+sqw = ones(t.shape)
+sqw[sw<0]=0
+
+plot(t,sw, label='$\sin(2\pi t)$')
+plot(t,cw, label='$\cos(2\pi t)$')
+plot(t,sqw)
+grid()
+xlabel('t (s)')
+ylabel('v (V)')
+yticks([-1,0,1])
+savefig('img\quad_sen_cos.png')
+~~~
+-->
+<ul class="incremental">
+<li><img src="img\quad_sen_cos.png" alt="Onda quadrada, seno e cosseno de mesmo periodo" /></li>
+<li>A função seno &quot;lembra mais&quot; a onda quadrada ao longo do tempo, mas claramente não descreve bem a onda quadrada perto de <span class="math inline">\(t=0\)</span>. Pode-se fazer algo a respeito?</li>
+</ul>
+</div>
+<div id="melhorando-a-aproximação-da-onda-quadrada" class="slide section level1">
+<h1>Melhorando a aproximação da onda quadrada</h1>
+<ul class="incremental">
+<li>Vimos que <span class="math inline">\(\sin(\frac{2\pi}{T} t)\)</span> tem o mesmo período que a onda quadrada, e representa aproximadamente a onda quadrada.</li>
+<li>Vamos mexer um pouco na função seno para melhorar um pouco a aproximação. Podemos diminuir a amplitude do sinal e deslocar o seno para cima por <span class="math inline">\(1/2\)</span></li>
+</ul>
+<!---
+~~~{.python}
+%pylab inline
+t = linspace(-2,3,250)
+sw  = sin(2*pi*t)
+sqw = ones(t.shape)
+sqw[sw<0]=0
+sw = sw/2 + 1/2
+
+plot(t,sw, label=r'$\frac{1}{2}\sin(2\pi t)+\frac{1}{2}$')
+plot(t,sqw)
+grid()
+xlabel('t (s)')
+ylabel('v (V)')
+yticks([0,1])
+legend(loc=1)
+savefig('img\quad_sen_melhorado.png')
+~~~
+-->
+<ul class="incremental">
+<li><img src="img\quad_sen_melhorado.png" alt="Melhorando a aproximação do seno..." /></li>
+<li>Notem que depois dos ajustes, temos que <span class="math inline">\(\frac{1}{2}\sin(2\pi t)+\frac{1}{2}\)</span> possui um termo de frequência <span class="math inline">\(0\)</span>, e outro que possui um período <span class="math inline">\(T=1 s\)</span>.</li>
+</ul>
+</div>
+<div id="melhorando-a-aproximação-da-onda-quadrada-1" class="slide section level1">
+<h1>Melhorando a aproximação da onda quadrada</h1>
+<ul class="incremental">
+<li>Usando as funções seno e cosseno de mesmo período da onda quadrada, <span class="math inline">\(\sin(\frac{2\pi}{T} t)\)</span> e <span class="math inline">\(\cos(\frac{2\pi}{T} t)\)</span>, modificar a amplitude da oscilação do seno, e adicionar um termo de frequência (período) diferente, melhoramos a aproximação.</li>
+<li><span class="math inline">\(\frac{1}{2}\sin(2\pi t)+\frac{1}{2}\)</span> aproxima uma onda quadrada de período <span class="math inline">\(T\)</span>.</li>
+<li>A condição mais importante para um sinal periódico de período <span class="math inline">\(T\)</span>, é que ele satisfaça <span class="math inline">\(v(t)=v(t+T)=v(t+2T)=v(t+3T)\dots\)</span></li>
+<li><span class="math inline">\(\sin(\frac{2\pi}{T} t)\)</span> e <span class="math inline">\(\cos(\frac{2\pi}{T} t)\)</span> constituem todas as funções que satisfazem a condição de periodicidade do sinal? Caso haja outras funções, a aproximação pode melhorar...</li>
+</ul>
+</div>
+<div id="melhorando-a-aproximação-da-onda-quadrada-2" class="slide section level1">
+<h1>Melhorando a aproximação da onda quadrada</h1>
+<ul class="incremental">
+<li>Se o seno (ou cosseno) possuir um período menor que <span class="math inline">\(T\)</span>, também é possível satisfazer a condição de periodicidade <span class="math inline">\(v(t)=v(t+T)=v(t+2T)=v(t+3T)\dots\)</span></li>
+<li>Notar que após o nosso período completo, <span class="math inline">\(\sin(\frac{2\pi}{T} T) = \sin(\frac{4\pi}{T} T) = \sin(\frac{6\pi}{T} T)\dots=0\)</span></li>
+<li>Podemos usar sinais periódicos cujas frequências são <span class="math display">\[\omega_k = k \frac{2\pi}{T}\qquad(k\in \mathbb{N}).\]</span> Quanto mais frequências usarmos, melhor ficará a nossa aproximação.</li>
+<li>Os termos que oscilam com uma frequência maior que <span class="math inline">\(\frac{2\pi}{T}\)</span> são denominadas de harmônicos.</li>
+</ul>
+</div>
+<div id="a-série-de-fourier-de-uma-onda-quadrada" class="slide section level1">
+<h1>A série de Fourier de uma onda quadrada</h1>
+<ul class="incremental">
+<li>A série de Fourier é representa uma aproximação de um sinal <span class="math inline">\(v(t)\)</span> de período <span class="math inline">\(T\)</span> como uma soma de sinais em diferentes frequências</li>
+<li><span class="math inline">\(v(t) = \sum_{k=0}^{\infty}\left[a_k \sin(\frac{2\pi k}{T} t) + b_k \cos(\frac{2\pi k}{T} t)\right]\)</span></li>
+<li><span class="math inline">\(a_k\)</span> e <span class="math inline">\(b_k\)</span> são coeficientes que indicam &quot;quanto&quot; de cada frequência está presente num sinal, bem como a fase relativa de cada frequência.</li>
+<li><p>Para a onda quadrada, temos <span class="math inline">\(v(t) = \frac{1}{2} + \frac{2}{\pi} \sum_{k=1}^{\infty} \frac{\sin(2 \pi (2k-1) t)}{2k-1}\)</span> (Ver próximo slide para detalhes) <!---
+~~~{.python}
+%pylab inline
+t = linspace(-2,3,1000)
+sw  = sin(2*pi*t)
+sqw = ones(t.shape)
+sqw[sw<0]=0
+
+def fSeries(n):
+  out = ones(t.shape) * 1/2
+  for i in arange(1,n):
+    out += 2/pi * sin(2*pi*(2*i-1)*t)/(2*i-1)
+  return out
+
+plot(t,fSeries(3), label="$k=3$")
+plot(t,fSeries(6), label="$k=6$")
+plot(t,fSeries(9), label="$k=9$")
+plot(t,sqw)
+grid()
+xlabel('t (s)')
+ylabel('v (V)')
+yticks([0,1])
+legend(loc=1)
+savefig('img\serie_Fourier.png')
+---></p></li>
+<li><div class="figure">
+<img src="img\serie_Fourier.png" alt="Aproximando a onda quadrada por sua série de Fourier" />
+<p class="caption">Aproximando a onda quadrada por sua série de Fourier</p>
+</div></li>
+</ul>
+</div>
+<div id="cálculo-dos-coeficientes-de-fourier-a_k-e-b_k" class="slide section level1">
+<h1>Cálculo dos coeficientes de Fourier <span class="math inline">\(a_k\)</span> e <span class="math inline">\(b_k\)</span></h1>
+<ul class="incremental">
+<li>Para encontrar os coeficientes, vamos usar que <span class="math inline">\(v(t)\)</span> é conhecido (1, se 0&lt;t&lt;1/2, e 0, se 1/2&lt;t&lt;1), e da propriedade de ortogonalidade entre funções trigonométricas <span class="math display">\[\int_0^1\sin(2\pi mx)\sin(2\pi nx) dx = \int_0^1\sin(2\pi mx)\cos(2\pi nx) dx = 0\text{, se }n\neq m\]</span> <span class="math display">\[\int_0^1\sin^2(2\pi nx) dx = \int_0^1\cos^2(2\pi nx) = \frac{1}{2} dx\]</span> (Lembrar de cálculo 1!)</li>
+<li>Supondo que é possível realizar a aproximação <span class="math display">\[v(t) = \sum_{k=0}^{\infty}\left[a_k \sin(2\pi k t) + b_k \cos(2\pi k t)\right]\]</span>, podemos multiplicar a equação em ambos os lados por <span class="math inline">\(\sin(2\pi nx)\)</span> e integrar <span class="math inline">\(t\)</span> entre 0 e 1.</li>
+<li><span class="math inline">\(\int_0^1 \sin(2\pi n t) v(t) dt = \int_0^1 \sin(2\pi nt) dt \sum_{k=0}^{\infty}\left[a_k \sin(2\pi k t) + b_k \cos(2\pi k t)\right]\)</span></li>
+<li><span class="math inline">\(\int_0^1 \sin(2\pi n t) v(t) = \sum_{k=0}^{\infty}\left[a_k \int_0^1 \sin(2\pi nt)\sin(2\pi k t)dt + b_k \int_0^1 \sin(2\pi nt)\cos(2\pi k t)dt\right]\)</span></li>
+<li>As integrais envolvendo seno e cosseno são sempre nulas. Já aquelas com produtos entre senos serão todas nulas, <strong>exceto</strong> para o termo onde <span class="math inline">\(k=n\)</span>.</li>
+<li><span class="math inline">\(\int_0^1 \sin(2\pi n t) v(t) dt = \frac{a_n}{2}\)</span></li>
+<li>Como <span class="math inline">\(v(t)=1\)</span> apenas quando, 0&lt;t&lt;1/2, <span class="math inline">\(\int_0^1 \sin(2\pi nx) v(t) dt = \int_0^{1/2} \sin(2\pi nt) dt = \frac{-1}{2\pi n}\left[\cos(\pi n) - \cos(0)\right]\)</span></li>
+<li><span class="math inline">\(\cos(0)=1\)</span>, enquanto <span class="math inline">\(\cos(\pi n) = (-1)^n\)</span>. Daí, <span class="math inline">\(a_n\neq0\)</span> apenas se <span class="math inline">\(n\)</span> é ímpar, ou <span class="math inline">\(n=2k-1\)</span>, com <span class="math inline">\(k\in \mathbb{N}\)</span></li>
+<li><span class="math inline">\(a_{2k-1} = \frac{2}{\pi (2k-1)}\)</span>. Verifiquem que de fato <span class="math inline">\(b_n = 0\)</span> para <span class="math inline">\(n\neq 0\)</span>, e que <span class="math inline">\(b_0=\frac{1}{2}.\)</span></li>
+</ul>
+</div>
+<div id="frequências-da-onda-quadrada" class="slide section level1">
+<h1>Frequências da onda quadrada</h1>
+<ul class="incremental">
+<li>Qual a potência do sinal que temos em cada frequência <span class="math inline">\(\omega_k\)</span>?</li>
+<li>Lembrando que <span class="math inline">\(v(t) = \sum_{k=0}^{\infty}\left[a_k \sin(\frac{2\pi}{T} t) + b_k \cos(\frac{2\pi}{T} t)\right]\)</span>, e <span class="math inline">\(P = \frac{V^2}{R}\)</span>, podemos associar <span class="math inline">\(a_k^2\)</span> e <span class="math inline">\(b_k^2\)</span> com a potência média do sinal associado a cada frequência</li>
+</ul>
+<!---
+~~~{.python}
+%pylab inline
+
+vlines(0, 0, 0.5**2)
+for i in range(1, 15):
+  vlines(2*i-1, 0, 2/(pi*(2*i-1)))
+
+grid()
+xlabel('Frequência (Hz)')
+ylabel('Potência (u. a.)')
+savefig('img\espectro_Potencia.png')
+--->
+<ul class="incremental">
+<li><img src="img\espectro_Potencia.png" alt="Espectro de potência de uma onda quadrada ideal de 1 Hz" /></li>
+<li>Para a maioria das frequências, o sinal não possui qualquer potência. O sinal está distribuído apenas sobre as frequências <span class="math inline">\(\omega_k = 2\pi(2k-1)\)</span>.</li>
+</ul>
+</div>
+<div id="biblioteca-tone" class="slide section level1">
+<h1>Biblioteca <code>tone</code></h1>
+<ul class="incremental">
+<li>Para gerar sinais com uma frequência bem determinada, o conjunto de funções <code>tone()</code> é bastante útil. Estas funções já estão automaticamente implementadas no arduino.</li>
+<li>Sintaxe: <code>tone(pin, frequency)</code>, ou <code>tone(pin, frequency, duration)</code></li>
+<li><code>pin</code>: pino utilizado para a saída do sinal de frequência determinada</li>
+<li><code>frequency</code>: frequência (&gt;31Hz)</li>
+<li><code>duration</code>(opcional): duração do tempo que a frequência será enviada</li>
+<li><code>noTone(pin)</code> desativa a geração do sinal</li>
+<li>Ver exemplo em <code>Exemplos\02.Digital\toneKeyboard</code></li>
+</ul>
+</div>
+<div id="exercicio" class="slide section level1">
+<h1>Exercicio</h1>
+<ol class="incremental" style="list-style-type: decimal">
+<li>Pensando em um circuito RC como um divisor de tensão, determine como a resistência efetiva do capacitor varia em função da frequência e da capacitância. Teste capacitores de construção diferente (cerâmico, eletrolítico, polímero, nylon...) e com várias constantes de tempo RC.</li>
+<li>Gere um sinal de frequência conhecida e, com a ajuda do professor, veja o espectro de frequências no osciloscópio.</li>
+<li>O que acontece com o espectro de frequências do sinal no osciloscópio quando você
+<ol class="incremental" style="list-style-type: lower-alpha">
+<li>Mede o espectro de potência entre o capacitor e o terra.</li>
+<li>Inverte o capacitor e o resistor no circuito e mede o espectro de potência entre o resistor e o terra.</li>
+</ol></li>
+</ol>
+</div>
+</body>
+</html>

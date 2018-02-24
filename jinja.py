@@ -6,7 +6,7 @@ import markdown
 import codecs
 
 env = Environment(loader=FileSystemLoader('jinja-templates'))
-md = markdown.Markdown()
+md = markdown.Markdown(extensions=["markdown.extensions.tables"])
 
 # Bibliographic management
 
@@ -29,9 +29,9 @@ with open('papers//bibtex_list.bib') as bibtex_file:
     parser = BibTexParser()
     parser.customization = convert_to_unicode
     bib_database = bibtexparser.load(bibtex_file, parser=parser)
-    
+
     works = [Works() for i in range(len(bib_database.entries))]
-    
+
     for index, entry in enumerate(bib_database.entries):
         works[index].title = entry['title']
         if 'file' in entry.keys():
@@ -45,27 +45,27 @@ with open('papers//bibtex_list.bib') as bibtex_file:
             works[index].href = 'http:////dx.doi.org/'+entry['doi']
         elif 'url' in entry.keys():
             works[index].href = entry['url']
-            
+
         if 'month' in entry.keys():
             works[index].month = entry['month']
-        
+
         if 'year' in entry.keys():
             works[index].year = entry['year']
-        
+
         if 'journal' in entry.keys():
             works[index].journal = entry['journal']
-            
+
         if 'volume' in entry.keys():
             works[index].volume = entry['volume']
 
         if 'author' in entry.keys():
             works[index].author = entry['author']
-            
+
         if 'pages' in entry.keys():
             works[index].pages = entry['pages']
-    
+
     works = sorted(works, key=lambda w: -int(w.year))
-    
+
 
 class Conferences():
     def __init__(self):
@@ -85,9 +85,9 @@ with open('conferences//bibtex_list.bib') as bibtex_file:
     parser = BibTexParser()
     parser.customization = convert_to_unicode
     bib_database = bibtexparser.load(bibtex_file, parser=parser)
-    
+
     conference_papers = [Conferences() for i in range(len(bib_database.entries))]
-    
+
     for index, entry in enumerate(bib_database.entries):
         conference_papers[index].title = entry['title']
         if 'file' in entry.keys():
@@ -101,25 +101,25 @@ with open('conferences//bibtex_list.bib') as bibtex_file:
             conference_papers[index].href = 'http:////dx.doi.org/'+entry['doi']
         elif 'url' in entry.keys():
             conference_papers[index].href = entry['url']
-            
+
         if 'month' in entry.keys():
             conference_papers[index].month = entry['month']
-        
+
         if 'year' in entry.keys():
             conference_papers[index].year = entry['year']
-        
+
         if 'journal' in entry.keys():
             conference_papers[index].journal = entry['journal']
-            
+
         if 'volume' in entry.keys():
             conference_papers[index].volume = entry['volume']
 
         if 'author' in entry.keys():
             conference_papers[index].author = entry['author']
-            
+
         if 'pages' in entry.keys():
             conference_papers[index].pages = entry['pages']
-    
+
     works = sorted(works, key=lambda w: -int(w.year))
 
 ##############
@@ -140,7 +140,7 @@ class CV_personal_info:
     def __init__(self, name='My name', sub_text='some description',
                  address='My address', phone='(555) 5555-5555',
                  email='my_mail@server.com', facebook='',
-                 linkedin='', twitter='', googlescholar='', researchgate='', 
+                 linkedin='', twitter='', googlescholar='', researchgate='',
                  orcid=''):
         self.name = name
         self.sub_text = sub_text
@@ -307,18 +307,48 @@ cpapers_html = cpapers.render(papers=conference_papers)
 with codecs.open("conference_papers.html", "w", "utf-8") as fh:
     fh.write(cpapers_html)
 
-#################
-# TEACHING.HTML #
-#################
+############
+# TEACHING #
+############
 
-main_page_body=''
-with codecs.open('teaching//main.md', "r", "utf-8") as fh:
-    main_page_body = md.convert(fh.read())
+class Courses():
+    def __init__(self, title='Title', folder='course_name',
+                 abstract='Short abstract'):
+        self.title = title
+        self.base_folder = folder
+        self.abstract = abstract
+        self.img = r'/thumbnail.jpg'
+        self.href = '#broken_link'
+        self.tags = ['']
 
+coursePages = []
+coursePages.append(Courses('Física 1', 'Fisica_1',
+                           'Curso de Física Geral 1 ministrado na área 2 - UFPE'))
+coursePages.append(Courses('Instrumentação eletrônica para a física', 'instrumentacao_fisica',
+                           'Curso de instrumentação para a física utilizando eletrônica analógica'))
+coursePages.append(Courses('Minicurso de arduino', 'minicurso_arduino',
+                           'Breve curso de introdução à eletrônica e programação utilizando a plataforma arduino'))
+
+
+# Cria as páginas individuais de cada curso
+for c in coursePages:
+    main_page_body = ''
+    base_filename = r'teaching/' + c.base_folder
+    c.img = base_filename + c.img
+    c.href = base_filename + ".html"
+    with codecs.open(base_filename+r'/main.md', "r", "utf-8") as fh:
+        main_page_body = md.convert(fh.read())
+    main_page_body = main_page_body.replace('<table>','<table class="table">')
+
+    cpage = env.get_template('course_template.html')
+    cpage_html = cpage.render(page_body=main_page_body)
+    with codecs.open(base_filename+".html", "w", "utf-8") as fh:
+        fh.write(cpage_html)
+
+# Cria a página geral da área de ensino
 teaching = env.get_template('teaching_template.html')
-teaching_html = teaching.render(page_body=main_page_body)
+teaching_html = teaching.render(courses=coursePages)
 with codecs.open("teaching.html", "w", "utf-8") as fh:
-    fh.write(teaching_html)
-
+        fh.write(teaching_html)
 
 print('website generation finished!')

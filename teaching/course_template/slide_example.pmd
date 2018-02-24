@@ -1,0 +1,98 @@
+---
+title: "Slide presentation example with pandoc+reveal.js"
+author: "Anderson M. Amaral"
+date: "17/02/2018"
+theme: "`white`{=html} `warsaw`{=beamer}"
+css: "custom.css"
+header-includes: '`<script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>`{=html}'
+slideNumber: "\\'c/t\\'"
+center: 'false'
+---
+
+# The start
+
+- Slide contents will appear sequentially due to pandoc's `-i` option
+- This allows a less cumbersome notation in source file
+- Enjoy!
+
+# The middle
+
+- The following slides will contain things
+- They may also contain valuable information
+
+----------
+
+- an horizontal rule may start a new slide, without a title!
+- that's neat, huh?
+
+# Highlights
+
+- It's possible to highlight contents sequentially using pandoc's native `div` and `span`
+- ::: {.fragment .highlight-blue}
+This is a fragment with a [red highlight]{.fragment .highlight-red}.
+:::
+~~~{.markdown .fragment}
+::: {.fragment .highlight-blue}
+This is a fragment with a [red highlight]{.fragment .highlight-red}.
+:::
+~~~
+
+# Math
+
+- Another important aspect is that pandoc supports math through MathJax by enclosing LaTeX expressions within `$`
+- Inline math: $x=2+2$. $x=$ [$4$]{.fragment .highlight-red}
+- Displayed math can be shown within pairs of `$$`
+
+$$ \int_0^{1} x dx = \frac{1^2}{2} - \frac{0^2}{2} = \frac{1}{2} $$
+
+::: {.fragment .highlight-green}
+$$ \int_0^{1} x dx = \frac{1^2}{2} - \frac{0^2}{2} = \frac{1}{2} $$
+:::
+
+# Columns
+
+> - The native `div` can be used to define columns
+> - See an example below
+
+:::::: {.columns}
+
+::: {.column width=60%}
+- This is the first column
+- Contains a few items
+- See?
+:::
+
+::: {.column width=40%}
+- The second column is smaller
+- but also important
+[$$ x=42 $$]{.fragment .highlight-red}
+:::
+
+::::::
+
+# Figures
+
+- Figures are an important part of any presentation endeavor
+- According to the present workflow, the figures can be produced with an appropriate image editor or made with a python script
+- See the examples below, where the python code is compiled within [atom.io]()'s hydrogen plugin
+
+:::::: {.columns .fragment}
+
+::: {.column width=40%}
+~~~{.python}
+%pylab inline
+
+x = linspace(0,2*pi,100)
+y = sin(x)
+
+plot(x,y)
+tight_layout()
+savefig('pythonplot.png', dpi=90)
+~~~
+:::
+
+::: {.column width=60%}
+![matplotlib figure caption](pythonplot.png)
+:::
+
+::::::

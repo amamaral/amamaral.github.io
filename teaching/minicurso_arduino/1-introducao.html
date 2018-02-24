@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Anderson M. Amaral" />
+  <title>Curso rápido de arduino</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Curso rápido de arduino</h1>
+  <p class="subtitle">Aspectos digitais</p>
+  <p class="author">
+Anderson M. Amaral
+  </p>
+  <p class="date">Agosto - 2017</p>
+</div>
+<div id="o-arduino-por-fora" class="slide section level1">
+<h1>O arduino por fora</h1>
+<ul class="incremental">
+<li>Plataforma para desenvolvimento eletrônico</li>
+<li>Utilizado por hobbistas, artistas e <strong>cientistas</strong>! <img src="img/arduino_uno.jpg" alt="arduino" width="600" /></li>
+<li>Visitar <a href="www.arduino.cc">arduino.cc</a> para maiores informações</li>
+</ul>
+</div>
+<div id="o-arduino-por-dentro---visão-geral" class="slide section level1">
+<h1>O arduino por dentro - visão geral</h1>
+<ul class="incremental">
+<li>Microcontrolador: computador (processador + memória + armazenamento) + periféricos de comunicação e controle.</li>
+<li>Pode obter sinais de sensores, bem como enviar sinais para controlar dispositivos.</li>
+<li>Aqui, focaremos principalmente em alguns periféricos: GPIO, PWM/TIMER e ADC. <img src="img/arduino_architecture.png" alt="Arquitetura ATMEGA328" width="600" /></li>
+</ul>
+</div>
+<div id="datasheet" class="slide section level1">
+<h1>Datasheet</h1>
+<ul class="incremental">
+<li>Como saber do que um circuito integrado (CI) é capaz?</li>
+<li>Especificações completas do fabricante disponíveis no datasheet do CI</li>
+<li>Ex.: Datasheet do microcontrolador do arduino uno (660 págs.): <img src="img/atmega_datasheet.png" alt="datasheet ATMEGA328" width="700" /></li>
+<li>O aprofundamento em tais detalhes ocorrerá conforme a necessidade...</li>
+</ul>
+</div>
+<div id="o-que-o-arduino-tem-de-especial" class="slide section level1">
+<h1>O que o arduino tem de especial?</h1>
+<div class="figure">
+<img src="img/arduino_uno.jpg" alt="arduino" width="600" />
+<p class="caption">arduino</p>
+</div>
+<ul class="incremental">
+<li><p>Como configurar um pino para ler sinais digitais?</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">unsigned</span> <span class="dt">char</span> i;
+pinMode(<span class="dv">13</span>, INPUT); <span class="co">// Configura pino como entrada</span>
+i = DigitalRead(<span class="dv">13</span>, <span class="dv">1</span>); <span class="co">// Ler valor</span></code></pre></div></li>
+<li><p>E usando uma abordagem mais tradicional?</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">unsigned</span> <span class="dt">char</span> i;
+PORTB = (<span class="dv">1</span>&lt;&lt;PB0); <span class="co">/* Define pull-ups and set outputs high */</span>
+DDRB = (<span class="dv">1</span>&lt;&lt;DDB0);<span class="co">/* Define directions for port pins */</span>
+__no_operation(); <span class="co">/* Insert nop for synchronization*/</span>
+i = PINB; <span class="co">/* Read port pins */</span></code></pre></div></li>
+</ul>
+</div>
+<div id="programando-o-microcontrolador" class="slide section level1">
+<h1>Programando o microcontrolador</h1>
+<ul class="incremental">
+<li>O cérebro do arduino é um microcontrolador ATMEL ATMega328.</li>
+<li>O ATMega328 pode ser programado em assembly (quase linguagem de máquina) ou C (mais &quot;humanizada&quot;)</li>
+<li>Dizemos que assembly é de baixo nível enquanto C é uma linguagem de alto nível.
+<ul class="incremental">
+<li><p>Blink (Assembly):</p>
+<pre><code>; Assembly Code:
+.include   &quot;m328Pdef.inc&quot;
+start:      
+ SBI      DDRB,5
+blink:              LDI      r20,250
+ CALL       delay_n_ms
+ SBI      PORTB,5
+ LDI      r20,250
+ CALL       delay_n_ms
+ CBI      PORTB,5
+ JMP       blink
+.include   &quot;delay_n_ms.h&quot;</code></pre></li>
+</ul></li>
+<li>Ex.: A linguagem python é mais abstrata que C, e por isso possui é uma linguagem de nível mais alto que C.
+<ul class="incremental">
+<li><p>Blink (Python, ex. hipotético):</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">PWM(PORTB_PIN_5, <span class="dv">1000</span>, <span class="dv">1000</span>)</code></pre></div></li>
+</ul></li>
+<li>Baixo nível: alta velocidade, porém compreender o programa é mais difícil.</li>
+<li>Alto nível: velocidade menor, porém é mais fácil compreender o programa.</li>
+<li>Ambas abordagens podem ser utilizadas para atingir os mesmos objetivos.</li>
+<li>Para todos os efeitos práticos, utilizaremos C</li>
+</ul>
+</div>
+<div id="pergunta" class="slide section level1">
+<h1>Pergunta:</h1>
+<p>Que tipo de programação do microcontrolador ATmega possui mais alto nível?</p>
+<ol class="incremental" style="list-style-type: decimal">
+<li>C puro.</li>
+<li>Funções do arduino.</li>
+</ol>
+</div>
+<div id="nosso-primeiro-programa" class="slide section level1">
+<h1>Nosso primeiro programa</h1>
+<ul class="incremental">
+<li>Façamos o arduino dar um sinal de vida.</li>
+<li>Abrir a Arduino IDE. <img src="img\arduino_IDE.png" alt="Arduino IDE" /></li>
+<li>Abrir o exemplo em <code>Arquivo\Exemplos\01. Basics\Blink</code></li>
+<li>Compilar (⭢) e observar...</li>
+<li>Mais detalhes sobre exemplos incluídos podem ser acessados em <a href="https://www.arduino.cc/en/Tutorial/BuiltInExamples">www.arduino.cc/en/Tutorial/BuiltInExamples</a></li>
+</ul>
+</div>
+<div id="dissecando-o-blink---comentários" class="slide section level1">
+<h1>Dissecando o Blink - Comentários</h1>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">/*</span>
+<span class="co">  Blink</span>
+<span class="co">  Turns on an LED on for one second, then off for one second, repeatedly.</span>
+
+<span class="co">  Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO</span>
+<span class="co">  it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN is set to</span>
+<span class="co">  the correct LED pin independent of which board is used.</span>
+<span class="co">  If you want to know what pin the on-board LED is connected to on your Arduino model, check</span>
+<span class="co">  the Technical Specs of your board  at https://www.arduino.cc/en/Main/Products</span>
+
+<span class="co">  This example code is in the public domain.</span>
+
+<span class="co">  modified 8 May 2014</span>
+<span class="co">  by Scott Fitzgerald</span>
+
+<span class="co">  modified 2 Sep 2016</span>
+<span class="co">  by Arturo Guadalupi</span>
+
+<span class="co">  modified 8 Sep 2016</span>
+<span class="co">  by Colby Newman</span>
+<span class="co">*/</span></code></pre></div>
+<ul class="incremental">
+<li>Documentação, indicando o que o programa atual realiza. (<code>\* Documentação *\</code>)</li>
+<li>Bons programas <em>necessariamente</em> contém uma boa documentação.</li>
+<li>Quando a complexidade de um projeto aumenta, torna-se bastante difícil de compreender o que cada parte do código realiza se a documentação for ruim.</li>
+<li>Dificulta a colaboração entre o programador original e outros, bem como ele mesmo no futuro.</li>
+<li><p>Comentário ao final de uma linha:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> x; <span class="co">//Comentario</span></code></pre></div></li>
+<li><p>Comentário utilizando muitas linhas: <code>cpp   \* Comentario *\</code></p></li>
+</ul>
+</div>
+<div id="dissecando-o-blink---configurações-iniciais" class="slide section level1">
+<h1>Dissecando o Blink - Configurações iniciais</h1>
+<ul class="incremental">
+<li><p>Configurações iniciais do sistema (<code>void setup(){}</code>)</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> setup() {
+  pinMode(LED_BUILTIN, OUTPUT); <span class="co">// initialize digital pin LED_BUILTIN as an output.</span>
+}</code></pre></div></li>
+<li>Cada vez que o microcontrolador inicializa ele precisa ser 'informado' sobre o que cada periférico deve realizar.</li>
+<li>Neste caso, queremos apenas informar que o pino 13 será usado como uma saída.</li>
+<li>função <code>pinMode(pin, type);</code></li>
+<li><p><strong>Nota</strong>: Ao final de cada linha de código em C, terminar com <code>;</code></p></li>
+</ul>
+</div>
+<div id="dissecando-o-blink---loop-do-sistema" class="slide section level1">
+<h1>Dissecando o Blink - Loop do sistema</h1>
+<ul class="incremental">
+<li><p>Loop do sistema (<code>void loop(){}</code>)</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> loop() {
+  digitalWrite(LED_BUILTIN, HIGH);   <span class="co">// turn the LED on (HIGH is the voltage level)</span>
+  delay(<span class="dv">1000</span>);                       <span class="co">// wait for a second</span>
+  digitalWrite(LED_BUILTIN, LOW);    <span class="co">// turn the LED off by making the voltage LOW</span>
+  delay(<span class="dv">1000</span>);                       <span class="co">// wait for a second</span>
+}</code></pre></div></li>
+<li>Deve-se colocar aqui todas as tarefas que o microcontrolador deve realizar periodicamente.</li>
+<li>No presente exemplo, ele deve fazer um led no pino 13 piscar.</li>
+<li><p>pseudo-código:</p>
+<pre><code>1) Liga LED;
+2) Aguarda 1000ms;
+3) Desliga LED;
+4) Aguarda 1000ms;
+5) Retorna ao passo 1).    </code></pre></li>
+<li>As funções disponíveis para o arduino podem ser acessadas em <a href="www.arduino.cc/en/Reference/HomePage">arduino.cc/en/Reference</a>
+<ul class="incremental">
+<li>Exemplo: informações a respeito de <a href="https://www.arduino.cc/en/Reference/DigitalWrite"><code>digitalWrite(pin, Value)</code></a> e <a href="https://www.arduino.cc/en/Reference/Delay"><code>delay(ms)</code></a>.</li>
+</ul></li>
+</ul>
+</div>
+<div id="exercício" class="slide section level1">
+<h1>Exercício</h1>
+<ul class="incremental">
+<li>No código original, o LED pisca a 0.5 Hz. Modifiquem o código para que o LED pisque a uma taxa de 1 Hz.</li>
+<li>Faça com que o led pisque uma única vez.</li>
+<li>Faça com que o led pisque apenas 3 vezes.</li>
+</ul>
+</div>
+<div id="eletrônica-do-blink" class="slide section level1">
+<h1>Eletrônica do Blink</h1>
+<ul class="incremental">
+<li>O arduino já possui um LED na própria placa para que façamos este teste inicial.</li>
+<li>Como funciona este circuito? <img src="img/Blink_schematic.png" alt="Esquema_blink" width="600" /></li>
+<li>Vamos fazer numa protoboard.</li>
+</ul>
+</div>
+<div id="exercício-blink-usando-um-led-em-uma-protoboard" class="slide section level1">
+<h1>Exercício: Blink usando um LED em uma protoboard</h1>
+<ul class="incremental">
+<li>Façamos um esquema idêntico usando uma protoboard. <img src="img/Blink_circuit.png" alt="Esquema_blink" width="400" /></li>
+<li>Componentes necessários:</li>
+<li>Resistor 220 Ohms</li>
+<li>LED</li>
+<li>Lembrando que o programa anterior utiliza o pino 13</li>
+<li>Problema: que modificações precisaríamos fazer no programa e no circuito para que o led utilize o pino 10?</li>
+</ul>
+</div>
+<div id="entrada-e-saída" class="slide section level1">
+<h1>Entrada e saída</h1>
+<ul class="incremental">
+<li>Nos exemplos anteriores, o arduino controla um led. Este é um sinal que sai do arduino.</li>
+<li>Queremos também enviar sinais para controlar o arduino. O sinal entra no arduino. Ex.: Um botão para controlar o volume de um som enviado a um auto-falante.</li>
+<li>Inicialmente, vamos considerar apenas a entrada de sinais digitais.</li>
+</ul>
+</div>
+<div id="conectando-um-botão-ao-arduino" class="slide section level1">
+<h1>Conectando um botão ao arduino</h1>
+<p><img src="img/button_schematic.png" alt="Esquema botão" width="500" /> <img src="img/button_sch.png" alt="Esquema botão" width="300" /></p>
+<ul class="incremental">
+<li>Componentes necessários:</li>
+<li>Botão</li>
+<li>Resistor 10 KOhm</li>
+<li>Fios</li>
+<li>Pergunta: qual a tensão no pino D2 quando o botão está desligado? E quando o botão está ligado?</li>
+</ul>
+</div>
+<div id="exemplo-do-arduino" class="slide section level1">
+<h1>Exemplo do arduino</h1>
+<ul class="incremental">
+<li>Abrir o exemplo em <code>Arquivo\Exemplos\01. Basics\DigitalReadSerial</code></li>
+<li>Compilar (⭢), abrir Ferramentas/Monitor Serial(CTRL+SHIFT+M) e observar...</li>
+<li>Quando o pino D2 está com tensão baixa, o monitor serial retorna 0, e retorna 1 caso a tensão esteja alta.</li>
+<li><p>Documentação</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">/*</span>
+<span class="co">DigitalReadSerial</span>
+<span class="co">Reads a digital input on pin 2, prints the result to the serial monitor</span>
+<span class="co">This example code is in the public domain.</span>
+<span class="co">*/</span></code></pre></div></li>
+</ul>
+</div>
+<div id="exercício-1" class="slide section level1">
+<h1>Exercício</h1>
+<p>Como fazer para que o sinal na porta serial seja 1 quando o botão não está pressionado? Não faça modificações no programa.</p>
+</div>
+</body>
+</html>
