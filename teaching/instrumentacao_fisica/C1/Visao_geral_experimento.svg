@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="640"
+   height="480"
+   viewBox="0 0 169.33333 127"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="Visao_modular.svg">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path4654"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path4630"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Send"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path4642"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.2) rotate(180) translate(6,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="337.56689"
+     inkscape:cy="260.28213"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-169.99998)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="51.06517"
+       y="226.1889"
+       id="text4487"><tspan
+         sodipodi:role="line"
+         id="tspan4485"
+         x="51.06517"
+         y="226.1889"
+         style="stroke-width:0.26458332"> </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="81.756943"
+       y="192.28963"
+       id="text4491"><tspan
+         sodipodi:role="line"
+         id="tspan4489"
+         x="81.756943"
+         y="192.28963"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05555534px;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua Bold';text-align:center;text-anchor:middle;stroke-width:0.26458332">Fenômeno</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="130.19487"
+       y="189.75909"
+       id="text4495"><tspan
+         sodipodi:role="line"
+         id="tspan4493"
+         x="130.19487"
+         y="189.75909"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">Parâmetros</tspan><tspan
+         sodipodi:role="line"
+         x="130.19487"
+         y="196.81465"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4497">observáveis</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="119.38141"
+       y="212.27554"
+       id="text4501"><tspan
+         sodipodi:role="line"
+         id="tspan4499"
+         x="119.38141"
+         y="212.27554"
+         style="stroke-width:0.26458332">Sensores</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="130.19487"
+       y="226.12943"
+       id="text4527"><tspan
+         sodipodi:role="line"
+         id="tspan4525"
+         x="130.90042"
+         y="226.12943"
+         style="stroke-width:0.26458332">Conversão em </tspan><tspan
+         sodipodi:role="line"
+         x="130.19487"
+         y="233.18498"
+         style="stroke-width:0.26458332"
+         id="tspan4529">sinais elétricos</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="84.477676"
+       y="286.60565"
+       id="text4555"><tspan
+         sodipodi:role="line"
+         id="tspan4553"
+         x="84.477676"
+         y="286.60565"
+         style="stroke-width:0.26458332">Registro dos dados</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#cdff00;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="27.564306"
+       y="240.72006"
+       id="text4561"><tspan
+         sodipodi:role="line"
+         x="27.564306"
+         y="240.72006"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.26458332"
+         id="tspan4557">Preparação do</tspan><tspan
+         sodipodi:role="line"
+         x="27.564306"
+         y="247.77562"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.26458332"
+         id="tspan4559">experimento</tspan></text>
+    <text
+       id="text4567"
+       y="242.3824"
+       x="130.19487"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="242.3824"
+         x="130.19487"
+         sodipodi:role="line"
+         id="tspan4571">Processamento</tspan><tspan
+         style="stroke-width:0.26458332"
+         y="249.43796"
+         x="130.19487"
+         sodipodi:role="line"
+         id="tspan4575">analógico</tspan></text>
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.42333335;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4577"
+       width="105.26637"
+       height="39.6875"
+       x="53.672619"
+       y="177.37051" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.42333335;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4581"
+       width="58.586311"
+       height="55.373489"
+       x="108.47915"
+       y="204.20683" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-232.06523"
+       y="164.74248"
+       id="text4585"
+       transform="rotate(-90)"><tspan
+         sodipodi:role="line"
+         id="tspan4583"
+         x="-232.06523"
+         y="164.74248"
+         style="stroke-width:0.26458332">Eletrônica analógica</tspan></text>
+    <text
+       id="text4591"
+       y="157.23888"
+       x="-191.23024"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"
+       transform="rotate(-90)"><tspan
+         id="tspan4589"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="157.23888"
+         x="-191.23024"
+         sodipodi:role="line">Física</tspan></text>
+    <text
+       id="text4599"
+       y="216.52959"
+       x="27.942282"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#cdff00;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         id="tspan4595"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.26458332"
+         y="216.52959"
+         x="27.942282"
+         sodipodi:role="line">Otimização de</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.26458332"
+         y="223.58514"
+         x="27.942282"
+         sodipodi:role="line"
+         id="tspan4601">parâmetros</tspan></text>
+    <ellipse
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.42333335;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4603"
+       cx="81.74144"
+       cy="189.92628"
+       rx="22.867559"
+       ry="7.5595236" />
+    <text
+       id="text4607"
+       y="268.84073"
+       x="86.178566"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="268.84073"
+         x="86.178566"
+         id="tspan4605"
+         sodipodi:role="line">Processamento</tspan><tspan
+         style="stroke-width:0.26458332"
+         y="275.89627"
+         x="86.178566"
+         sodipodi:role="line"
+         id="tspan4609">digital</tspan></text>
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.42333335;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4611"
+       width="91.470222"
+       height="39.876476"
+       x="55.5625"
+       y="255.80057" />
+    <text
+       transform="rotate(-90)"
+       id="text4615"
+       y="124.29903"
+       x="-277.61139"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="124.29903"
+         x="-277.61139"
+         id="tspan4613"
+         sodipodi:role="line">Eletrônica</tspan><tspan
+         style="stroke-width:0.26458332"
+         y="131.35458"
+         x="-277.61139"
+         sodipodi:role="line"
+         id="tspan4617">digital/</tspan><tspan
+         style="stroke-width:0.26458332"
+         y="138.41014"
+         x="-277.61139"
+         sodipodi:role="line"
+         id="tspan4619">Computador</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.46500003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Mend)"
+       d="m 84.855653,221.59373 c 0,0 8.504467,2.83482 10.016371,13.98511 1.511905,11.1503 -9.827383,16.25298 -17.00893,16.63096 -7.181548,0.37798 -17.117206,-7.51088 -16.441963,-16.06398 0.566963,-7.18156 11.528274,-14.55209 11.528274,-14.55209"
+       id="path4625"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="czzsc" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.42333335;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5599"
+       width="107.15625"
+       height="82.587807"
+       x="3.779762"
+       y="180.01636" />
+    <text
+       id="text5607"
+       y="192.33911"
+       x="27.564306"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#cdff00;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         id="tspan5603"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.26458332"
+         y="192.33911"
+         x="27.564306"
+         sodipodi:role="line">Realização do</tspan><tspan
+         id="tspan5605"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.26458332"
+         y="199.39467"
+         x="27.564306"
+         sodipodi:role="line">experimento</tspan></text>
+  </g>
+</svg>

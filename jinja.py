@@ -322,12 +322,13 @@ class Courses():
         self.tags = ['']
 
 coursePages = []
-coursePages.append(Courses('Física 1', 'Fisica_1',
-                           'Curso de Física Geral 1 ministrado na área 2 - UFPE'))
+
 coursePages.append(Courses('Instrumentação eletrônica para a física', 'instrumentacao_fisica',
                            'Curso de instrumentação para a física utilizando eletrônica analógica'))
 coursePages.append(Courses('Minicurso de arduino', 'minicurso_arduino',
                            'Breve curso de introdução à eletrônica e programação utilizando a plataforma arduino'))
+coursePages.append(Courses('Física 1', 'Fisica_1',
+                           'Curso de Física Geral 1 ministrado na área 2 - UFPE'))
 
 
 # Cria as páginas individuais de cada curso

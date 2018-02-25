@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="FI577 - Instrumentação eletrônica para a física">
+  <title>Visão geral sobre instrumentação</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Visão geral sobre instrumentação</h1>
+  <p class="author">FI577 - Instrumentação eletrônica para a física</p>
+  <p class="date">Leitura recomendada: Blackburn (todo o livro)</p>
+</section>
+
+<section id="o-método-científico" class="slide level1">
+<h1><a href="https://en.wikipedia.org/wiki/Scientific_method">O método científico</a></h1>
+<p><img data-src="C1/The_Scientific_Method_as_an_Ongoing_Process.svg" style="width:70.0%" /></p>
+</section>
+<section id="determinação-do-problema-e-processo-de-medição" class="slide level1">
+<h1>Determinação do problema e processo de medição</h1>
+<ul>
+<li class="fragment">A instrumentação científica visa a elaboração de ferramentas e/ou sistemas que permitam a realização de experimentos científicos.</li>
+<li class="fragment">Alguns aspectos da experimentação:
+<ul>
+<li class="fragment">Definimos algo que queremos observar (ex.: luz, grão de pólen, folha,…)</li>
+<li class="fragment">Formulamos uma pergunta (ex.: qual o comprimento de onda da luz emitida por uma fonte?)</li>
+<li class="fragment">Precisamos de um sistema que seja sensível a propriedade a ser medida, e que seu comportamento seja conhecido (ex.: a luz que passa por um prisma é desviada por um ângulo que depende do comprimento de onda)</li>
+<li class="fragment">Medimos o comportamento do sensor (ex.: vemos qual o ângulo de desvio da luz)</li>
+<li class="fragment">Para que tenha validade científica, <strong>o experimento deve ser reprodutível</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="espectrômetro-óptico" class="slide level1">
+<h1><a href="https://en.wikipedia.org/wiki/Optical_spectrometer">Espectrômetro óptico</a></h1>
+<p><img data-src="C1\Spectrometer_schematic.svg" /></p>
+</section>
+<section id="alguns-tipos-de-medidores" class="slide level1">
+<h1>Alguns tipos de medidores</h1>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><span class="fragment" data-fragment-index="1">Comprimento: régua, paquímetro</span></li>
+<li><span class="fragment" data-fragment-index="2">Massa: balança (mecânica, eletrônica)</span></li>
+<li><span class="fragment" data-fragment-index="3">Tempo: ampulheta, relógio</span></li>
+<li><span class="fragment" data-fragment-index="4">Campo magnético: bússola, sonda Hall</span></li>
+</ul>
+</div><div class="column" style="position:relative;margin:0 auto;" style="width:50%;">
+<p><img data-src="C1\314px-Soft_ruler.jpg" class="fragment current-visible" data-fragment-index="1" /> <img data-src="C1\320px-Weighing_scale_BW_2012-01-14_16-27-08_12_18.jpg" class="fragment current-visible" data-fragment-index="2" style="position:absolute;top:0;left:0;" /> <img data-src="C1\320px-Pocket_watch_with_chain.jpg" class="fragment current-visible" data-fragment-index="3" style="position:absolute;top:0;left:0;" /> <img data-src="C1\320px-Stanley_compass_1.jpg" class="fragment" data-fragment-index="4" style="position:absolute;top:0;left:0;" /></p>
+</div>
+</div>
+<ul>
+<li class="fragment">Em experimentos contemporâneos, é altamente desejável que o medidor represente a grandeza de interesse como um sinal elétrico pois:
+<ul>
+<li class="fragment">Pode ser processado em um circuito</li>
+<li class="fragment">Pode ser registrado e/ou analisado em um computador</li>
+</ul></li>
+</ul>
+</section>
+<section id="transdutores" class="slide level1">
+<h1><a href="https://en.wikipedia.org/wiki/Transducer">Transdutores</a></h1>
+<ul>
+<li class="fragment">Convertem um tipo de energia em outro. Ex.: uma lâmpada converte energia elétrica em luminosa, um microfone converte energia acústica em elétrica.</li>
+<li class="fragment">Existem transdutores capazes de medir e modificar uma grande quantidade de grandezas físicas. Ver Blackburn.</li>
+<li class="fragment">Para montar um instrumento, deve-se considerar inicialmente:
+<ul>
+<li class="fragment">Quais são as grandezas físicas relevantes para o experimento (ex.: campo magnético, intensidade da luz, massa…).</li>
+<li class="fragment">Que transdutores estão disponíveis para converter a grandeza de interesse <em>de</em> e <em>para</em> um sinal elétrico
+<ul>
+<li class="fragment">ex.: um LED converte um sinal elétrico em luz, e um fotodiodo converte luz em um sinal elétrico</li>
+<li class="fragment">Caso uma conversão direta não seja possível, tem que pensar um pouco mais…</li>
+</ul></li>
+<li class="fragment">Após obtido o sinal elétrico, podemos usar a eletrônica para manipular os dados do experimento da forma que quisermos.</li>
+</ul></li>
+</ul>
+</section>
+<section id="aquisição-de-dados---multímetro" class="slide level1">
+<h1>Aquisição de dados - Multímetro</h1>
+<ul>
+<li>Qual é mais fácil para <strong>estimar</strong> uma medida? <span class="fragment"><strong>Analógico</strong></span></li>
+<li>Qual é mais fácil para <strong>registrar</strong> uma medida? <span class="fragment"><strong>Digital</strong></span></li>
+</ul>
+<p><img data-src="C1\analog-vs-digital-multimeter.jpg" style="width:90.0%" /></p>
+</section>
+<section id="medidores-analógicos-e-digitais" class="slide level1">
+<h1>Medidores analógicos e digitais</h1>
+<ul>
+<li class="fragment">A principal diferença entre medidores analógicos e digitais está na forma em que a medição é exibida</li>
+<li class="fragment">Medidores analógicos tipicamente informam o valor da grandeza medida utilizando <strong>um ponteiro</strong>.
+<ul>
+<li class="fragment">Útil quando se quer acompanhar o comportamento.</li>
+<li class="fragment">É possível perceber variações na medição mesmo sem olhar diretamente para o mostrador.</li>
+<li class="fragment">Ex.: velocímetro de um carro, balança do tipo libra.</li>
+</ul></li>
+<li class="fragment">Medidores digitais tipicamente informam o valor da grandeza medida exibindo <strong>um número</strong>.
+<ul>
+<li class="fragment">Útil para registrar os valores de uma dada medição.</li>
+<li class="fragment">Especialmente conveniente para medir grandezas em um experimento.</li>
+</ul></li>
+<li class="fragment"><strong>Detalhe</strong>: para um medidor eletrônico, a única diferença entre ambas as formas de exibir o resultado da medida está no mostrador utilizado. Caso se deseje, ambas as formas podem ser usadas simultaneamente.</li>
+</ul>
+</section>
+<section id="data-acquisition-boards-daq" class="slide level1">
+<h1>Data Acquisition Boards (DAQ)</h1>
+<ul>
+<li class="fragment">Suponha que um sensor adequado converteu a grandeza de interesse em uma tensão.</li>
+<li class="fragment">Podemos usar um voltímetro para ver qual a tensão, e depois registrar num caderno,</li>
+<li class="fragment">Ou, podemos usar uma placa de aquisição de dados, para que um PC faça este registro.
+<ul>
+<li class="fragment"><img data-src="C1\NI-DAC.jpg" style="height:60.0%" /></li>
+</ul></li>
+</ul>
+</section>
+<section id="a-plataforma-arduino" class="slide level1">
+<h1>A plataforma arduino</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="fragment" data-fragment-index="1">Utilizar um computador aumenta a quantidade de medições e a qualidade dos resultados.</span></li>
+<li><span class="fragment" data-fragment-index="2">Em especial, o fator humano é reduzido no experimento e a reprodutibilidade aumenta.</span></li>
+<li><span class="fragment" data-fragment-index="3">Neste curso, utilizaremos a plataforma arduino</span>
+<ul>
+<li><span class="fragment" data-fragment-index="4">Microcontrolador</span></li>
+<li><span class="fragment" data-fragment-index="5">Computador + periféricos</span></li>
+</ul></li>
+</ul>
+</div><div class="column fragment" data-fragment-index="3" style="width:40%;">
+<p><img data-src="C1\arduino_uno.jpg" /></p>
+</div>
+</div>
+<ul>
+<li class="fragment">Utilizaremos algumas das funcionalidades <strong>básicas</strong> do arduino para montar medidores.</li>
+<li class="fragment">Caso não tenha familiaridade com o arduino, tenho um guia introdutório <a href="http://amamaral.github.io/teaching/minicurso_arduino.html">aqui</a>, e muito material pode ser encontrado no Google…</li>
+</ul>
+</section>
+<section id="controle-de-experimentos" class="slide level1">
+<h1>Controle de experimentos</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="fragment" data-fragment-index="1">Podemos construir instrumentos de medida, mas também para controlar parâmetros experimentais.</span></li>
+<li><span class="fragment" data-fragment-index="2">Permite a automação do experimento (menos suscetível a erros humanos).</span></li>
+<li><span class="fragment" data-fragment-index="3">Ex.: Guindaste</span></li>
+<li><span class="fragment" data-fragment-index="4">Ex.: aparato de Fizeau</span></li>
+</ul>
+</div><div class="column" style="position:relative;margin:0 auto;" style="width:50%;">
+<p><img data-src="C1\Feedback.png" class="fragment current-visible" data-fragment-index="3" /> <img data-src="C1\330px-Fizeau.JPG" class="fragment" style="position:absolute;top:0;left:0;" data-fragment-index="4" /></p>
+</div>
+</div>
+</section>
+<section id="visão-geral-de-um-experimento" class="slide level1">
+<h1>Visão geral de um experimento</h1>
+<p><img data-src="C1\Visao_geral_experimento.svg" style="width:80.0%" /></p>
+</section>
+<section id="visão-simplificada-desta-disciplina" class="slide level1">
+<h1>Visão simplificada desta disciplina</h1>
+<ul>
+<li class="fragment">O foco principal desta disciplina é a <strong>eletrônica analógica</strong></li>
+<li class="fragment">Veremos um pouco da física dos circuitos e dispositivos eletrônicos</li>
+<li class="fragment">Técnicas de análise de circuitos analógicos</li>
+<li class="fragment">Aspectos teóricos e práticos no projeto de circuitos analógicos</li>
+<li class="fragment">Um pouco de eletrônica digital e o arduino</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
