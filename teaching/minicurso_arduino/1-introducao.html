@@ -47,8 +47,8 @@ code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* Com
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
-    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
-  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
     charset="utf-8" type="text/javascript"></script>
 </head>
 <body>
@@ -114,7 +114,7 @@ i = PINB; <span class="co">/* Read port pins */</span></code></pre></div></li>
 <li><p>Blink (Assembly):</p>
 <pre><code>; Assembly Code:
 .include   &quot;m328Pdef.inc&quot;
-start:      
+start:
  SBI      DDRB,5
 blink:              LDI      r20,250
  CALL       delay_n_ms
