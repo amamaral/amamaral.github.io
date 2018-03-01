@@ -1,4 +1,4 @@
-﻿# FI577 - Instrumentação eletrônica para a física
+# FI577 - Instrumentação eletrônica para a física
 
 Bem vindos a página da disciplina de instrumentação eletrônica para a física. Nesta disciplina iremos explorar vários conceitos de eletrônica analógica importantes para a construção e compreensão do funcionamento de instrumentos científicos utilizados em ciências experimentais. Esta disciplina está focada em aspectos de eletrônica analógica, mas utilizaremos também algumas funcionalidades básicas do [arduino](http://www.arduino.cc) para a construção de protótipos de alguns instrumentos. Existe na internet uma grande variedade de informações sobre como utilizar o arduino, inclusive também um breve minicurso ministrado por mim, e que pode ser acessado [clicando aqui](minicurso_arduino.html).
 
@@ -19,7 +19,7 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 | #  | Tópico                              | slides                          | Roteiros das práticas |
 |----|-------------------------------------|---------------------------------|-----------------------|
 | 01 | Visão geral sobre instrumentação    | [html][s01-html] [pdf][s01-pdf] |                       |
-| 02 | Eletromagnetismo básico             |                                 |                       |
+| 02 | Eletromagnetismo básico             | [html][s02-html] [pdf][s02-pdf] |                       |
 | 03 | Abstração de circuitos eletrônicos  |                                 |                       |
 | 04 | Análise de circuitos lineares       |                                 | Prática 01            |
 | 05 | Arduino e algumas ferramentas CAD   |                                 | Prática arduino       |
@@ -37,3 +37,5 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 
 [s01-html]: instrumentacao_fisica\capitulo_1.html
 [s01-pdf]: https://www.dropbox.com/s/tumckbsmkx06uwn/capitulo_1.pdf?dl=0
+[s02-html]: instrumentacao_fisica\capitulo_2.html
+[s02-pdf]: https://www.dropbox.com/s/c8ir438wg78tosy/capitulo_2.pdf?dl=0

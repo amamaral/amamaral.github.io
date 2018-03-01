@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="FI577 - Instrumentação eletrônica para a física">
+  <title>Revisão geral sobre eletromagnetismo</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Revisão geral sobre eletromagnetismo</h1>
+  <p class="author">FI577 - Instrumentação eletrônica para a física</p>
+  <p class="date">Leitura recomendada: Purcell (Caps. 1 a 4)</p>
+</section>
+
+<section id="eletromagnetismo" class="slide level1">
+<h1>Eletromagnetismo</h1>
+<ul>
+<li class="fragment">Interação entre cargas e correntes (cargas em movimento).</li>
+<li class="fragment">Carga elétrica <span class="math inline">\(Q\)</span>
+<ul>
+<li class="fragment">2 tipos: positiva e negativa (<span class="math inline">\(Q_+\)</span>, <span class="math inline">\(Q_-\)</span>)</li>
+<li class="fragment"><em>Num sistema isolado</em>, a carga total <strong>é sempre conservada</strong>.</li>
+<li class="fragment"><span class="math inline">\(Q_+ + Q_- = \text{cte}\)</span>.</li>
+<li class="fragment"><span class="math inline">\(Q\)</span> é um escalar (não possui informação sobre direção).</li>
+</ul></li>
+</ul>
+</section>
+<section id="lei-de-coulomb-campo-elétrico-e-energia" class="slide level1">
+<h1>Lei de Coulomb, campo elétrico e energia</h1>
+<ul>
+<li class="fragment">Interações entre cargas estáticas</li>
+<li class="fragment">Força sobre <span class="math inline">\(Q\)</span> devido a <span class="math inline">\(q_1\)</span>: <span class="math inline">\(\vec{F}_{1}=k\frac{Q q_1 \hat{r}_{1,Q}}{r_{1,Q}^2}\)</span></li>
+<li class="fragment">Se há várias cargas atuando, a força total é <span class="math inline">\(\vec{F}=Q \sum_i k\frac{q_i \hat{r}_{i,Q}}{r_{i,Q}^2}\)</span>, ou <span class="math display">\[\vec{F}=Q \vec{E}\]</span></li>
+<li class="fragment"><span class="math inline">\(\vec{E}\)</span>: Campo elétrico</li>
+<li class="fragment">Estamos interessados em compreender alguns aspectos de cargas e correntes voltados a circuitos. Em especial, como podemos entender de maneira simples o que acontece quando uma carga sai de um ponto <span class="math inline">\(A\)</span> até <span class="math inline">\(B\)</span>?</li>
+</ul>
+</section>
+<section id="trabalho-e-energia-potencial" class="slide level1">
+<h1>Trabalho e energia potencial</h1>
+<ul>
+<li class="fragment"><span class="math inline">\(Q\)</span> sai do ponto <span class="math inline">\(A\)</span> e vai até <span class="math inline">\(B\)</span> seguindo um dado caminho <span class="math inline">\(C\)</span>. Como varia sua energia potencial?</li>
+<li class="fragment">Trabalho <span class="math inline">\(W = \int \text{Força}\times \text{Deslocamento} = \int_C Q\vec{E} \cdot d\vec{s}\)</span></li>
+<li class="fragment"><span class="math inline">\(W = Q \int_C \vec{E} \cdot d\vec{s}\)</span></li>
+<li class="fragment">Campo <span class="math inline">\(\vec{E}\)</span> é conservativo, logo <span class="math inline">\(W = - \Delta U\)</span> (o trabalho indica a variação do potencial <span class="math inline">\(U\)</span>).</li>
+<li class="fragment">Como <span class="math inline">\(Q\)</span> é um escalar, podemos monitorar as variações de energia da <span class="math inline">\(Q\)</span> ao observar as variações do potencial elétrico <span class="math display">\[\Delta V=-\int_C \vec{E} \cdot d\vec{s}\]</span></li>
+<li class="fragment"><span class="math inline">\(V\)</span> conforme a definição acima pode ser usado sob circunstâncias razoavelmente gerais. Vocês conseguem identificar algo que pode atrapalhar o raciocínio acima?</li>
+</ul>
+</section>
+<section id="fluxo-de-campo-elétrico" class="slide level1">
+<h1>Fluxo de campo elétrico</h1>
+<ul>
+<li class="fragment">Que porção do campo elétrico <span class="math inline">\(\vec{E}\)</span> atravessa uma dada superfície de área <span class="math inline">\(a\)</span>?</li>
+<li class="fragment">Seja <span class="math inline">\(\hat{a}\)</span> normal a superfície, denomina-se fluxo como <span class="math display">\[\vec{E}\cdot\vec{a}\]</span></li>
+<li class="fragment">Fluxo por uma superfície fechada: <span class="math inline">\(\Phi = \sum_{\text{todos os }j} \vec{E}_j\cdot\vec{a_j}\)</span>.</li>
+<li class="fragment">No limite quando as áreas tornam-se muito pequenas, <span class="math display">\[\Phi = \int_{\text{toda a superfície}} \vec{E}\cdot\,d\vec{a}\]</span></li>
+</ul>
+<p><img data-src="C2\Fluxo.png" style="width:70.0%" /></p>
+</section>
+<section id="lei-de-gauss" class="slide level1">
+<h1>Lei de Gauss</h1>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li class="fragment">O fluxo <span class="math inline">\(\Phi\)</span> não depende do formato de uma superfície fechada (Gauss)</li>
+<li class="fragment">Ex.: carga <span class="math inline">\(q\)</span> dentro de uma superfície esférica
+<ul>
+<li class="fragment"><span class="math inline">\(\vec{E} = \frac{1}{4\pi\epsilon_0} \frac{q\hat{r}}{r^2}\)</span>, <span class="math inline">\(d\vec{a}=4\pi r^2 dr \hat{r}\)</span></li>
+<li class="fragment"><span class="math inline">\(\Phi = \int_{\text{toda a superfície}} \vec{E}\cdot\,d\vec{a}\)</span></li>
+</ul></li>
+<li class="fragment"><span class="math display">\[\Phi = \int \vec{E}\cdot\,d\vec{a} =  \frac{\sum_j q_j}{\epsilon_0} = \frac{\int \rho dv}{\epsilon_0}\]</span>
+<ul>
+<li class="fragment"><span class="math inline">\(\rho\)</span>: Densidade de carga elétrica</li>
+<li class="fragment"><span class="math inline">\(dv\)</span>: elemento de volume</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:60%;">
+<p><img data-src="C2\Fluxo_sup_fechada.png" /></p>
+</div>
+</div>
+</section>
+<section id="placa-infinita-plana-homogeneamente-carregada" class="slide level1">
+<h1>Placa infinita plana homogeneamente carregada</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Qual o campo elétrico nas imediações da placa?</li>
+<li class="fragment">Pela simetria, <span class="math inline">\(\vec{E} = E \hat{n}\)</span>.</li>
+<li class="fragment">Usando a lei de Gauss para um cilindro perpendicular à superfície, e considerando <span class="math inline">\(\sigma\)</span> uma densidade de cargas na superfície, <span class="math inline">\(\rho dv = \sigma da\)</span>, e</li>
+<li class="fragment"><span class="math inline">\(\Phi = \int \vec{E} d\vec{a} = \frac{\int \sigma da}{\epsilon_0}\)</span></li>
+<li class="fragment"><span class="math inline">\(= 2E a = \frac{\sigma a}{\epsilon_0}\)</span></li>
+<li class="fragment"><span class="math inline">\(E = \frac{\sigma}{2\epsilon_0}\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="C2\Gauss_placa_infinita.png" style="width:70.0%" /></p>
+</div>
+</div>
+</section>
+<section id="condutores-e-isolantes-num-campo-eletrostático" class="slide level1">
+<h1>Condutores e isolantes num campo eletrostático</h1>
+<ul>
+<li class="fragment">O que ocorre ao inserir um material em uma região com um campo homogêneo?</li>
+<li class="fragment"><span class="math inline">\(\vec{F} = q \vec{E}\)</span>: cargas positivas tendem a se mover ao longo da direção de <span class="math inline">\(\vec{E}\)</span>, e negativas no sentido oposto.</li>
+<li class="fragment">Num isolante, o movimento das cargas é muito pequeno</li>
+<li class="fragment">Num condutor, as cargas podem se mover livremente. Sob que condição o movimento cessa?
+<ul>
+<li class="fragment">O campo elétrico é nulo dentro de um condutor ideal.</li>
+<li class="fragment">As cargas livres movem-se até a superfície.</li>
+</ul></li>
+</ul>
+<p><img data-src="C2\Campos_isolantes_condutores.png" style="width:70.0%" /></p>
+</section>
+<section id="capacitor" class="slide level1">
+<h1>Capacitor</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Suponha agora duas placas condutoras com cargas <span class="math inline">\(\pm Q\)</span>.</li>
+<li class="fragment">Qual o campo elétrico entre as placas?
+<ul>
+<li class="fragment"><span class="math inline">\(E = \frac{\sigma}{\epsilon_0} = \frac{Q}{\epsilon_0 A}\)</span></li>
+<li class="fragment"><span class="math inline">\(Q = \epsilon_0 A E\)</span></li>
+<li class="fragment">Quem é a diferença de potencial <span class="math inline">\(V\)</span>?</li>
+<li class="fragment"><span class="math inline">\(V = E s\)</span>; <span class="math inline">\(E = \frac{V}{s}\)</span></li>
+<li class="fragment"><span class="math inline">\(Q = \frac{\epsilon_0 A}{s} V = C V\)</span></li>
+<li class="fragment"><span class="math inline">\(C = \frac{\epsilon_0 A}{s}\)</span> é a capacitância.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="C2\Capacitor.png" style="width:70.0%" /></p>
+</div>
+</div>
+</section>
+<section id="energia-armazenada-num-capacitor" class="slide level1">
+<h1>Energia armazenada num capacitor</h1>
+<ul>
+<li class="fragment">Capacitor com carga <span class="math inline">\(Q=CV\)</span>. Que trabalho é necessário para levar <span class="math inline">\(dQ\)</span> de uma placa a outra?</li>
+<li class="fragment"><span class="math inline">\(dW = V dQ = \frac{Q dQ}{C}\)</span></li>
+<li class="fragment">Integrando desde quando o capacitor está descarregado, <span class="math inline">\(W = \frac{1}{C} \int_{Q=0}^{Q_f} Q dQ\)</span></li>
+<li class="fragment"><span class="math inline">\(W = \frac{Q_f^2}{2C} = \frac{C V^2}{2}\)</span>.</li>
+<li class="fragment">Importante: um capacitor pode ser visto como um reservatório de cargas elétricas ou de energia elétrica. Este comportamento será crucial em vários circuitos relevantes.</li>
+</ul>
+</section>
+<section id="corrente-elétrica" class="slide level1">
+<h1>Corrente elétrica</h1>
+<ul>
+<li class="fragment">Para que os circuitos “façam algo”, precisamos das cargas em movimento.</li>
+<li class="fragment">Quanta carga atravessa uma dada região de área A [Fig. (a)]?</li>
+<li class="fragment">Imagine <span class="math inline">\(n\)</span> cargas <span class="math inline">\(q\)</span> de velocidade <span class="math inline">\(\vec{u}\)</span>. Num tempo <span class="math inline">\(\Delta t\)</span>, o deslocamento é <span class="math inline">\(\Delta \vec{r} = \vec{u}\Delta t\)</span>.</li>
+<li class="fragment">Notar que o deslocamento na direção da região de área <span class="math inline">\(A\)</span> é dado <span class="math inline">\(u\cos\theta\)</span>, onde <span class="math inline">\(\theta\)</span> é o ângulo entre <span class="math inline">\(\vec{u}\)</span> e <span class="math inline">\(\vec{a}\)</span>.</li>
+<li class="fragment">Carga que atravessa <span class="math inline">\(A\)</span>: <span class="math inline">\((n q) \vec{a}\cdot\vec{u}\Delta t\)</span></li>
+<li class="fragment">A taxa média com que as cargas atravessam <span class="math inline">\(A\)</span> é então</li>
+<li class="fragment"><span class="math inline">\(I_a = \frac{(n q) \vec{a}\cdot\vec{u}\Delta t}{\Delta t} = (n q) \vec{a}\cdot\vec{u}\)</span></li>
+</ul>
+<p><img data-src="C2\Corrente%20e%20densidade.png" style="width:60.0%" /></p>
+</section>
+<section id="densidade-de-corrente" class="slide level1">
+<h1>Densidade de corrente</h1>
+<ul>
+<li class="fragment"><span class="math inline">\(I_a = \frac{(n q) \vec{a}\cdot\vec{u}\Delta t}{\Delta t} = (n q) \vec{a}\cdot\vec{u}\)</span></li>
+<li class="fragment">Caso haja vários tipos de partículas que podem atravessar <span class="math inline">\(A\)</span> (ex.: íons, elétrons, prótons…), podemos separar a contribuição anterior para cada espécie de partícula <span class="math inline">\(k\)</span></li>
+<li class="fragment"><span class="math inline">\(I_a = \vec{a} \cdot \sum_k n_k q_k \vec{u}_k\)</span></li>
+<li class="fragment">Densidade de corrente <span class="math inline">\(\vec{J}=\sum_k n_k q_k \vec{u}_k\)</span></li>
+<li class="fragment"><span class="math inline">\(J\)</span> é especialmente importante quando se tem diversos tipos de portadores de carga (semicondutores, soluções iônicas, plasmas…), ou quando os portadores não possuem a mesma direção de propagação.</li>
+</ul>
+</section>
+<section id="densidade-de-corrente-média" class="slide level1">
+<h1>Densidade de corrente média</h1>
+<ul>
+<li class="fragment">Consideremos apenas um tipo de portador (ex.: elétrons), em que os <span class="math inline">\(N\)</span> portadores de uma dada região podem possuir várias velocidades <span class="math inline">\(\vec{u}\)</span> distintas. A velocidade média satisfaz</li>
+<li class="fragment"><span class="math inline">\(N \bar{\vec{u}} = \sum_k n_k \vec{u}_k\)</span>, ou</li>
+<li class="fragment"><span class="math inline">\(\bar{\vec{u}} = \frac{1}{N}\sum_k n_k \vec{u}_k\)</span></li>
+<li class="fragment">Em termos de <span class="math inline">\(\bar{\vec{u}}\)</span>,</li>
+<li class="fragment"><span class="math display">\[\vec{J}= q N \bar{\vec{u}}\]</span></li>
+</ul>
+</section>
+<section id="correntes-estáticas-e-conservação-da-carga" class="slide level1">
+<h1>Correntes estáticas e conservação da carga</h1>
+<ul>
+<li class="fragment">A corrente que atravessa uma superfície <span class="math inline">\(S\)</span> é <span class="math display">\[I = \int_S \vec{J}\cdot d\vec{a}\]</span></li>
+<li class="fragment">Fisicamente, o que esta corrente indica se <span class="math inline">\(S\)</span> é uma superfície fechada?</li>
+<li class="fragment"><span class="math inline">\(I\)</span> indica <code>-</code> a variação da carga líquida armazenada em <span class="math inline">\(S\)</span>. <span class="math display">\[\int_S \vec{J}\cdot d\vec{a} = - \frac{dQ}{dt}\]</span></li>
+<li class="fragment">A relação acima indica a conservação total da carga elétrica.</li>
+</ul>
+</section>
+<section id="condutividade-elétrica" class="slide level1">
+<h1>Condutividade elétrica</h1>
+<ul>
+<li class="fragment">Como relacionar o movimento dos portadores de carga em um dado material com o campo elétrico em uma dada região?</li>
+<li class="fragment">Usualmente observa-se que vale a lei de Ohm, <span class="math display">\[\vec{J} = \sigma \vec{E},\]</span> onde <span class="math inline">\(\sigma\)</span> é a condutividade do material.
+<ul>
+<li class="fragment">Lei empírica, válida em muitos casos (mas nem sempre!).</li>
+<li class="fragment">Falha p. ex. em filamentos aquecidos.</li>
+<li class="fragment">Lembrar que <span class="math inline">\(\vec{J}= q N \bar{\vec{u}}\)</span>. Tipicamente, <span class="math inline">\(\bar{\vec{u}}\propto \vec{E}\)</span>.</li>
+<li class="fragment">Em alguns materiais <span class="math inline">\(\sigma\)</span> pode depender também da orientação dos campos relativamente ao material. Ex.: grafeno.</li>
+</ul></li>
+</ul>
+</section>
+<section id="lei-de-ohm-em-termos-da-tensão" class="slide level1">
+<h1>Lei de Ohm em termos da tensão</h1>
+<ul>
+<li class="fragment">Supor que uma corrente <span class="math inline">\(I\)</span> atravessa um paralelepípedo de comprimento <span class="math inline">\(L\)</span>, área transversal <span class="math inline">\(A\)</span> e condutividade <span class="math inline">\(\sigma\)</span>. Supor ainda que o campo <span class="math inline">\(\vec{E}\)</span> é uniforme dentro do material.
+<ul>
+<li class="fragment"><span class="math inline">\(J = I/A\)</span></li>
+<li class="fragment"><span class="math inline">\(E = V/L\)</span></li>
+<li class="fragment">Usando a lei de Ohm, <span class="math inline">\(J = \sigma E\)</span>, temos <span class="math display">\[V = R I\]</span>
+<ul>
+<li class="fragment"><span class="math inline">\(R = \frac{V}{I} = \frac{L}{\sigma A}\)</span></li>
+<li class="fragment">É usual também falar em termos da resistividade <span class="math inline">\(\rho=\sigma^{-1}\)</span>, e</li>
+<li class="fragment"><span class="math inline">\(R = \frac{\rho L}{A}\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<ul>
+<li class="fragment">Perceba que no modelo acima ignoramos diversos detalhes da configuração dos campos dentro do material Ôhmico.</li>
+<li class="fragment">Dependendo de como é o condutor que injeta a carga no material ôhmico, o campo elétrico pode ser inhomogêneo dentro do material.</li>
+</ul>
+<p><img data-src="C2\Campo_eletrico_eletrodo.png" /></p>
+</section>
+<section id="aspectos-físicos-da-condução-elétrica" class="slide level1">
+<h1>Aspectos físicos da condução elétrica</h1>
+<ul>
+<li class="fragment">Materiais são eletricamente neutros.</li>
+<li class="fragment">Os portadores de carga possuem algum tipo movimento (pois <span class="math inline">\(T\neq 0\)</span> K), mas que na média não possui qualquer direção preferencial. Por que?</li>
+<li class="fragment">O que acontece quando um campo <span class="math inline">\(\vec{E}\)</span> é aplicado?</li>
+<li class="fragment">A partícula carregada será acelerada na direção do campo.</li>
+<li class="fragment">E o que acontece após a remoção do campo <span class="math inline">\(\vec{E}\)</span>?</li>
+<li class="fragment">O portador deve reduzir sua velocidade devido a colisões dentro do material.</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<ul>
+<li class="fragment">Modelo simples:</li>
+<li class="fragment">Portador possui momento <span class="math inline">\(m \vec{u}_c\)</span> após a última colisão.</li>
+<li class="fragment">Acelera devido a <span class="math inline">\(\vec{E}\)</span> num tempo <span class="math inline">\(t\)</span>: <span class="math inline">\(\Delta \vec{p} = q \vec{E} t\)</span></li>
+<li class="fragment">Momento total após um tempo <span class="math inline">\(t\)</span>: <span class="math inline">\(m \vec{u}_c + q \vec{E} t\)</span></li>
+<li class="fragment">Se <span class="math inline">\(\vec{E}\)</span> não é muito grande, o tempo <span class="math inline">\(\tau\)</span> entre colisões não muda muito em relação à quando o material não possui campo aplicado.</li>
+<li class="fragment">Momento total de <span class="math inline">\(N\)</span> portadores: <span class="math display">\[ M\vec{u} = \frac{1}{N} \sum_{k} \left( M \vec{u}_c + q \vec{E} \tau \right)\]</span></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<ul>
+<li class="fragment">Momento total de <span class="math inline">\(N\)</span> portadores: <span class="math display">\[ M\vec{u} = \frac{1}{N} \sum_{k} \left( M \vec{u}_c + q \vec{E} \tau \right)\]</span></li>
+<li class="fragment">Mas, como a velocidade média se anula na ausência de campo aplicado, <span class="math inline">\(M\vec{u} = q \vec{E} \tau\)</span></li>
+<li class="fragment">Ou seja, <span class="math display">\[ \vec{u} = \frac{q \vec{E} \tau}{M} \]</span></li>
+<li class="fragment">A densidade de corrente satisfaz <span class="math display">\[\vec{J} = q N \bar{\vec{u}} = \frac{q^2 N \tau}{M} \vec{E}\]</span></li>
+<li class="fragment">Condutividade <span class="math display">\[\sigma = \frac{q^2 N \tau}{M}\]</span></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p><img data-src="C2\Condutividade_alguns_materiais.png" style="height:100.0%" /></p>
+</section>
+<section id="condução-em-metais" class="slide level1">
+<h1>Condução em metais</h1>
+<ul>
+<li class="fragment">Possuem elétrons fracamente presos aos átomos</li>
+<li class="fragment">Íons positivos + nuvem de elétrons</li>
+<li class="fragment">1+ elétrons de condução por cada átomo do material</li>
+<li class="fragment"><span class="math inline">\(~10^{22}\)</span> portadores por cm<span class="math inline">\(^3\)</span></li>
+</ul>
+</section>
+<section id="condução-em-semicondutores" class="slide level1">
+<h1>Condução em semicondutores</h1>
+<ul>
+<li class="fragment">Ex.: Silício possui 4 elétrons de valência</li>
+<li class="fragment">Forma ligações covalentes bastante estáveis com vizinhos.</li>
+<li class="fragment">Em uma temperatura <span class="math inline">\(T=0\)</span> K, todos os elétrons estão presos aos átomos. É um isolante ideal.</li>
+<li class="fragment">Energia necessária para remover 1 <span class="math inline">\(e^-\)</span> para a banda de condução: gap 1.12 eV.</li>
+</ul>
+<p><img data-src="C2\silicio.png" style="width:50.0%" /></p>
+</section>
+<section class="slide level1">
+
+<ul>
+<li class="fragment">Se 1 <span class="math inline">\(e^-\)</span> é promovido para a banda de condução, cria-se 2 portadores de carga efetivos:
+<ul>
+<li class="fragment">O elétron, de carga <code>-</code> na banda de condução</li>
+<li class="fragment">A vacância do elétron, de carga <code>+</code>, na banda de valência. A vacância está associada a um movimento coletivo dos elétrons na banda de valência</li>
+</ul></li>
+<li class="fragment">Com o aumento da temperatura, é possível em <span class="math inline">\(T&gt;0\)</span> K que alguns elétrons sejam promovidos para a banda de condução.</li>
+<li class="fragment">Para o silício puro a temperatura ambiente, existem cerca de <span class="math inline">\(10^{10}\)</span> elétrons e vacâncias de condução. É praticamente um isolante, se comparado a um metal típico.</li>
+</ul>
+</section>
+<section id="dopagem-de-semicondutores" class="slide level1">
+<h1>Dopagem de semicondutores</h1>
+<ul>
+<li class="fragment">Portadores podem ser gerados por aquecimento, mas também pela introdução de impurezas.</li>
+<li class="fragment">Suponha que <span class="math inline">\(10^{15}\)</span> átomos/cm<span class="math inline">\(^3\)</span> de Si são substituidos por fósforo (P), que possui 5 elétrons de valência.</li>
+<li class="fragment">“Sobra” 1 elétron do fósforo, que não participará de ligações químicas.</li>
+<li class="fragment">Neste processo, tem-se a geração de um íon positivo (P) e um elétron que pode se locomover no material.</li>
+<li class="fragment">Tem-se agora cerca de <span class="math inline">\(10^{15}\)</span> portadores de carga negativa/cm<span class="math inline">\(^3\)</span></li>
+<li class="fragment">Dopagem tipo ‘N’</li>
+</ul>
+</section>
+<section id="dopagem-de-semicondutores-1" class="slide level1">
+<h1>Dopagem de semicondutores</h1>
+<ul>
+<li class="fragment">Pode-se fazer o mesmo procedimento com outros dopantes.</li>
+<li class="fragment">Ex.: Al possui 3 elétrons na banda de valência. O Al vai remover 1 elétron dos átomos vizinhos devido às 4 ligações, o que cria uma vacância na banda de valência.</li>
+<li class="fragment">Dopagem tipo ‘P’</li>
+</ul>
+<p><img data-src="C2\dopagem.png" style="width:90.0%" /></p>
+</section>
+<section id="circuitos-e-elementos-de-circuitos" class="slide level1">
+<h1>Circuitos e elementos de circuitos</h1>
+<ul>
+<li class="fragment">O que tem dentro da caixa?</li>
+</ul>
+<p><img data-src="C2\blackbox_devices.png" style="width:80.0%" /></p>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
