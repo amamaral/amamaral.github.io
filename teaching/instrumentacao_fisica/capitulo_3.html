@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="FI577 - Instrumentação eletrônica para a física">
+  <title>Abstração de circuitos eletrônicos</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Abstração de circuitos eletrônicos</h1>
+  <p class="author">FI577 - Instrumentação eletrônica para a física</p>
+  <p class="date">Leitura recomendada: Agarwal (Caps. 1)</p>
+</section>
+
+<section id="o-poder-da-abstração" class="slide level1">
+<h1>O poder da abstração</h1>
+<div class="columns">
+<ul>
+<li><span class="fragment" data-fragment-index="1">Simplificação de conceitos para discutir os aspectos essenciais</span></li>
+</ul><div class="column" style="width:60%;">
+<ul>
+<li><span class="fragment" data-fragment-index="2">Ex.: como determinar as condições em que uma <strong>colisão</strong> ocorreu?</span></li>
+<li><span class="fragment" data-fragment-index="3">Leis de Newton para partículas pontuais!</span></li>
+<li><span class="fragment" data-fragment-index="4"><strong>Há pouca relevância nos detalhes internos</strong> do funcionamento dos veículos (peças, materiais, componentes…).</span></li>
+<li><span class="fragment" data-fragment-index="5">Pode-se proceder de forma análoga para a compreensão de circuitos eletrônicos.</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C3\300px-Head_On_Collision.jpg" class="fragment" data-fragment-index="2" /></p>
+</div>
+</div>
+</section>
+<section id="camadas-de-abstração" class="slide level1">
+<h1>Camadas de abstração</h1>
+<ul>
+<li class="fragment">A segmentação do conhecimento em camadas de abstração permite a realização de tarefas cada vez mais complexas</li>
+<li class="fragment">Especialmente interessante para instrumentação!</li>
+</ul>
+<p><img data-src="C3\Camadas_de_abstracao.png" class="fragment" style="width:50.0%" /></p>
+</section>
+<section id="circuitos-e-elementos-de-circuitos" class="slide level1">
+<h1>Circuitos e elementos de circuitos</h1>
+<ul>
+<li>O que tem dentro da caixa? <span class="fragment"><em>Em uma primeira análise</em>, não nos importa</span></li>
+</ul>
+<p><img data-src="C2\blackbox_devices.png" style="width:80.0%" /></p>
+</section>
+<section id="exemplo" class="slide level1">
+<h1>Exemplo</h1>
+<p><img data-src="C3\circuito_lampada.png" /></p>
+<ul>
+<li class="fragment">A bateria possui uma diferença de potencial entre seus terminais. Fios conectam a bateria à lâmpada.
+<ul>
+<li class="fragment"><strong>Aspectos essenciais</strong>: tensão da bateria e resistência a passagem de corrente pela lâmpada.</li>
+<li class="fragment"><strong>Aspectos não essenciais</strong>: material e dimensões do filamento utilizado, conexões elétricas, posição dos componentes…</li>
+</ul></li>
+<li class="fragment">Podemos criar um elemento ideal para representar as propriedades elétricas essenciais da lâmpada</li>
+<li class="fragment">Resistência da lâmpada: <span class="math inline">\(R = V/I\)</span></li>
+</ul>
+</section>
+<section id="abstração-de-parâmetros-concentrados" class="slide level1">
+<h1>Abstração de parâmetros concentrados</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Um elemento a parâmetro concentrado equivale a uma caixa preta acessível apenas via alguns terminais.</li>
+<li class="fragment">O que acontece nos terminais é mais importante que os detalhes internos</li>
+<li class="fragment"><strong>A caixa-preta é uma camada de abstração entre o usuário e a estrutura interna da lâmpada</strong></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C3\lumped_2term_element.png" /></p>
+</div><ul>
+<li class="fragment">Deve-se associar uma tensão e uma corrente para cada terminal. Consideraremos principalmente elementos de 2 e 3 terminais.</li>
+</ul>
+</div>
+</section>
+<section id="abstração-de-parâmetros-concentrados-1" class="slide level1">
+<h1>Abstração de parâmetros concentrados</h1>
+<ul>
+<li class="fragment">A operação de um elemento a parâmetro concentrado depende apenas das tensões e correntes em seus terminais.</li>
+<li class="fragment"><strong>Abstração de circuito a parâmetros concentrado</strong>: um circuito que obedece ao regime de matéria concentrada e composto por elementos a parâmetros concentrados e conectado por fios ideais resulta na abstração a circuitos concentrados
+<ul>
+<li class="fragment">Análoga a simplificação de partículas pontuais nas leis de Newton. Os detalhes internos são considerados irrelevantes.</li>
+<li class="fragment">Saímos das Eqs. de Maxwell para usar relações algébricas mais simples.</li>
+</ul></li>
+</ul>
+</section>
+<section id="regime-de-parâmetros-concentrados" class="slide level1">
+<h1>Regime de parâmetros concentrados</h1>
+<ul>
+<li class="fragment">Elemento de 2 terminais: <img data-src="C3\lumped_element.png" /></li>
+<li class="fragment">Características determinadas apenas pela tensão e corrente</li>
+<li class="fragment">Quando podemos considerar um circuito como composto apenas por elementos de parâmetros concentrados?</li>
+<li class="fragment">Precisamos partir das Eqs. de Maxwell, para encontrar as restrições associadas a esta simplificação.</li>
+</ul>
+</section>
+<section id="r1---fluxo-magnético" class="slide level1">
+<h1>R1 - Fluxo magnético</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Havíamos visto anteriormente que para um caminho <span class="math inline">\(P\)</span> aberto vale aproximadamente a relação <span class="math inline">\(\Delta V = -\int_P \vec{E}\cdot d\vec{l}\)</span>.</li>
+<li class="fragment">Sabe-se da lei da indução de Faraday que para um caminho <span class="math inline">\(C\)</span> fechado, <span class="math display">\[\int_C \vec{E}\cdot d\vec{l} = -\frac{d\Phi_B}{dt},\]</span> onde <span class="math inline">\(\frac{d\Phi_B}{dt}\)</span> é o fluxo de campo magnético por uma superfície com bordas em <span class="math inline">\(C\)</span>.</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C3\magnetic_flux.png" /></p>
+</div><ul>
+<li class="fragment">Para definir uma tensão única entre os terminais, precisamos ter <span class="math display">\[\frac{d\Phi_B}{dt} = 0\]</span> em quaisquer caminhos externos ao elemento.</li>
+<li class="fragment">Então esta discussão exclui indutores?</li>
+</ul>
+</div>
+</section>
+<section id="r2---carga-total" class="slide level1">
+<h1>R2 - Carga total</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Havíamos visto anteriormente que <span class="math inline">\(I = \int_A \vec{J}\cdot d\vec{a}\)</span> indica a corrente que atravessa uma superfície de área <span class="math inline">\(A\)</span>.</li>
+<li class="fragment">Para uma superfície fechada <span class="math inline">\(S\)</span> temos <span class="math inline">\(\int_S \vec{J}\cdot d\vec{a} = - \frac{dQ}{dt}\)</span>, onde <span class="math inline">\(Q\)</span> é a carga dentro de <span class="math inline">\(S\)</span></li>
+<li class="fragment">Para definir uma corrente única entre os terminais, precisamos ter <span class="math display">\[\frac{dQ}{dt}=0\]</span></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C3\current_conservation.png" /></p>
+</div><ul>
+<li class="fragment">Então esta discussão exclui capacitores?</li>
+</ul>
+</div>
+</section>
+<section id="r3---dimensões" class="slide level1">
+<h1>R3 - Dimensões</h1>
+<ul>
+<li class="fragment">Outra limitação está associada com as dimensões do circuito.</li>
+<li class="fragment">Em geral, <span class="math inline">\(V=V(t)\)</span> e <span class="math inline">\(I=I(t)\)</span>. Se o circuito é grande o suficiente para que a <strong>velocidade finita de propagação dos sinais</strong> seja relevante, as tensões e correntes dependem do caminho seguido.</li>
+<li class="fragment">Para que tais efeitos sejam irrelevantes, se <span class="math inline">\(\lambda = c/f\)</span>, onde <span class="math inline">\(f\)</span> é a maior frequência de um sinal presente num sistema, as dimensões do circuito devem ser muito menores que <span class="math inline">\(\lambda\)</span></li>
+<li class="fragment">Dimensões características para <span class="math inline">\(f=1\text{ kHz}, 1\text{ MHz}, 1\text{ GHz}\)</span>?</li>
+<li class="fragment">Quando a dimensão do circuito é <span class="math inline">\(~\lambda/10\)</span> ou maior, precisa-se considerar efeitos de linha de transmissão, e deve-se usar o conceito de <strong>circuito com parâmetros distribuidos</strong>.</li>
+</ul>
+</section>
+<section id="elementos-de-2-terminais" class="slide level1">
+<h1>Elementos de 2 terminais</h1>
+<ul>
+<li class="fragment">Satisfeitas as condições anteriores, podemos representar um circuito em termos de elementos discretos.</li>
+<li class="fragment">Elementos de 2 terminais estão entre os mais importantes. Ex.: Resistor, capacitor, indutor, baterias e fontes de tensão, diodos…</li>
+<li class="fragment">Veremos alguns exemplos a seguir</li>
+</ul>
+</section>
+<section id="baterias" class="slide level1">
+<h1>Baterias</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Especificações mais importantes: tensão nominal, energia armazenada e resistência interna.</li>
+<li class="fragment">Potência fornecida: <span class="math inline">\(P=\frac{dW}{dt}=\frac{dq V}{dt} = VI\)</span>
+<ul>
+<li class="fragment">Ocorre quando <span class="math inline">\(I\)</span> sai pelo terminal positivos</li>
+</ul></li>
+<li class="fragment">Energia fornecida num tempo <span class="math inline">\(T\)</span>: <span class="math inline">\(E=PT\)</span>
+<ul>
+<li class="fragment">Energia armazenada costuma ser representada em Ampére-hora ou Watt-hora.</li>
+</ul></li>
+<li class="fragment">Quem possui mais energia armazenada, uma bateria de Níquel-Cádmio de 6V e 950 mA-hora, ou uma de <span class="fragment highlight-red">íons de lítio</span> de 7,2 V e 900 mA-hora?</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C3\bateria.png" /></p>
+</div>
+</div>
+</section>
+<section id="resistores" class="slide level1">
+<h1>Resistores</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Um resistor possui uma relação bem determinada entre a tensão e a corrente <strong>instantâneas</strong> entre seus terminais.</li>
+<li class="fragment">Resistor linear: <span class="math inline">\(V(t) = I(t) R(t)\)</span></li>
+<li class="fragment">Resistor linear e temporalmente invariante: <span class="math inline">\(V(t) = R I(t)\)</span></li>
+<li class="fragment">Resistor não linear: <span class="math inline">\(V(t) = K I(t)^3\)</span></li>
+<li class="fragment">Nota: capacitores e indutores não possuem relações instantâneas entre tensão e corrente</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C3\resistor.png" /></p>
+</div>
+</div>
+</section>
+<section id="convenção-das-variáveis-associadas" class="slide level1">
+<h1>Convenção das variáveis associadas</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment"><strong>Definição</strong>: a corrente entra pelo terminal com a tensão mais positiva.</li>
+<li class="fragment">A potência aplicada no elemento é positiva para <span class="math inline">\(V\)</span> e <span class="math inline">\(I\)</span> positivas.</li>
+<li class="fragment">Resistor dissipa uma potência <span class="math inline">\(V I&gt;0\)</span></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C3\Resistor_variaveis_associadas.png" /></p>
+</div>
+</div>
+</section>
+<section id="exemplo-1" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<p>Considere o resistor na figura ao lado, conectado a um circuito nos pontos <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. Suponha que passa uma corrente de 2A pelo terminal <span class="math inline">\(x\)</span>.</p>
+<ol type="a">
+<li class="fragment">Qual o valor de <span class="math inline">\(i\)</span>? <span class="fragment">-2 A</span></li>
+<li class="fragment">Se <span class="math inline">\(R=10\Omega\)</span>, qual o valor de <span class="math inline">\(v\)</span>? <span class="fragment">-20 V</span></li>
+</ol>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C3\Exemplo_var_associadas.png" /></p>
+</div>
+</div>
+</section>
+<section id="alguns-componentes-de-2-terminais-ideais" class="slide level1">
+<h1>Alguns componentes de 2 terminais ideais</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Fio ideal (curto circuito): <span class="math inline">\(R=0\)</span>, ou <span class="math inline">\(v=0\)</span></li>
+<li class="fragment">Circuito aberto: <span class="math inline">\(R=\infty\)</span>, ou <span class="math inline">\(i=0\)</span></li>
+<li class="fragment">Fonte de tensão ideal: <span class="math inline">\(v=V\)</span>
+<ul>
+<li class="fragment">Mais adiante veremos qual a diferença entre uma fonte de tensão ideal de uma fonte real.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C3\fonte_tensao.png" /></p>
+</div>
+</div>
+</section>
+<section id="fontes-de-corrente-ideais" class="slide level1">
+<h1>Fontes de corrente ideais</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Da mesma forma que podemos definir um componente de 2 terminais que fixa uma tensão entre seus terminais, pode-se especificar um componente que fixa uma corrente.</li>
+<li class="fragment">Neste caso, <span class="math display">\[i=I\]</span>.
+<ul>
+<li class="fragment">Elemento dual à fonte de tensão.</li>
+<li class="fragment">Poucos componentes se comportam naturalmente como fontes de corrente (ex.: fotodiodos)</li>
+<li class="fragment">Podem ser confeccionadas (faremos mais adiante!)</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C3\fonte_corrente.png" /></p>
+</div>
+</div>
+</section>
+<section id="sinais-analógicos-e-digitais" class="slide level1">
+<h1>Sinais analógicos e digitais</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Grande parte das grandezas podem assumir “valores contínuos”. Ex.: distância, tempo, amplitude de uma onda sonora…
+<ul>
+<li class="fragment">Sinais analógicos</li>
+<li class="fragment">Vantagem: processamento do sinal pode ser realizado em tempo real facilmente</li>
+<li class="fragment">Desvantagens: mais suscetível a ruído, e é difícil de realizar modificações</li>
+</ul></li>
+<li class="fragment">Existem também grandezas que assumem apenas valores discretos
+<ul>
+<li class="fragment">Sinais digitais.</li>
+<li class="fragment">Vantagens: virtualmente imune a ruído, fácil de ser modificado</li>
+<li class="fragment">Desvantagem: o processamento do sinal é bem mais lento</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C3\analogico_digital.png" /></p>
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
