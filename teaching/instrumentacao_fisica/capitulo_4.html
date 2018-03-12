@@ -70,7 +70,7 @@
 <section id="exemplo" class="slide level1">
 <h1>Exemplo</h1>
 <ul>
-<li>Qual o valor de <span class="math inline">\(i_2\)</span>? <span class="fragment"><span class="math inline">\(i_2=5\text{ A}\)</span></span></li>
+<li>Qual o valor de <span class="math inline">\(i_2\)</span>? <span class="fragment"><span class="math inline">\(i_2=-4\text{ A}\)</span></span></li>
 </ul>
 <p><img data-src="C4\ex_lei_corrente.png" style="width:70.0%" /></p>
 </section>
@@ -226,7 +226,9 @@
 <h1>Exemplo</h1>
 <ul>
 <li>O circuito abaixo satisfaz a conservação de energia?</li>
-<li>Não, pois o sentido da corrente especificado indica que existe energia <strong>entrando</strong> na fonte de tensão. <span class="math inline">\(P_{resistor} = i^2 R = 9\text{ mW}\)</span>, <span class="math inline">\(P_{fonte} = 3\text{ V}\times 3{ mA} = 9\text{ mW}\)</span>.</li>
+</ul>
+<ul>
+<li class="fragment">Não, pois o sentido da corrente especificado indica que existe energia <strong>entrando</strong> na fonte de tensão. <span class="math inline">\(P_{resistor} = i^2 R = 9\text{ mW}\)</span>, <span class="math inline">\(P_{fonte} = 3\text{ V}\times 3{ mA} = 9\text{ mW}\)</span>.</li>
 </ul>
 <p><img data-src="C4\ex_cons_energia.png" style="width:80.0%" /></p>
 </section>
@@ -288,7 +290,7 @@
 <li class="fragment">Tensões: <span class="math inline">\(v_0=v_1\)</span>, e <span class="math inline">\(v_1=v_2\)</span></li>
 </ul></li>
 <li class="fragment">Sol.: <span class="math display">\[v_0=v_1=v_2=\frac{R_1R_2}{R_1+R_2} I,\]</span> e <span class="math display">\[i_1=\frac{R_2}{R_1+R_2} I,\]</span> <span class="math display">\[i_2=\frac{R_1}{R_1+R_2} I\]</span></li>
-<li class="fragment">Note que <span class="math inline">\(i_2\)</span> é uma fração de <span class="math inline">\(V\)</span></li>
+<li class="fragment">Note que <span class="math inline">\(i_2\)</span> é uma fração de <span class="math inline">\(I\)</span></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <p><img data-src="C4\divisor_corrente.png" /></p>
@@ -334,23 +336,253 @@
 <p><img data-src="C4\circuito_2_fontes.png" /></p>
 </div>
 </div>
-<!---
-# Curva característica de um circuito
-# Curvas características de elementos básicos
-
-- **Pergunta**: como são as curvas características de corrente vs tensão dos seguintes elementos:
-  1. Fonte de tensão ideal
-  2. Fonte de corrente ideal
-  3. Resistor
-  4. Circuito aberto e curto-circuito
-- R.: 1. reta horizontal, 2. reta vertical, 3. reta pela origem e 4. Retas horizontal e vertical passando pela origem.
-
-# Análise pelo método de nós
-# Exemplo
-# Exemplo
-# Fonte de tensão flutuante (?)
-# Linearidade e superposição (Agarwal, C3.3 e C3.5)
---->
+</section>
+<section id="análise-pelo-método-de-nós" class="slide level1">
+<h1>Análise pelo método de nós</h1>
+<ul>
+<li class="fragment">Vimos anteriormente como analisar circuitos considerando as tensões e correntes por cada elemento.</li>
+<li class="fragment">Dificuldade: para um circuito com <span class="math inline">\(N\)</span> elementos, precisamos de <span class="math inline">\(2N\)</span> variáveis. Exceto para circuitos muito simples e/ou simétricos, este tipo de abordagem é impraticável para um grande número de variáveis.</li>
+<li class="fragment">Pode-se simplificar consideravelmente a analise do circuito em termos das tensões em cada nó</li>
+<li class="fragment"><strong>Tensão do nó</strong>: d.d.p. entre um dado nó e um nó de referência (terra, ou <em>ground</em>)</li>
+</ul>
+</section>
+<section id="análise-pelo-método-de-nós-1" class="slide level1">
+<h1>Análise pelo método de nós</h1>
+<ul>
+<li class="fragment">A corrente flui sempre do nó de maior tensão para o de menor tensão.</li>
+<li class="fragment">A escolha do nó de referência (terra) é arbitrária. Escolha mais conveniente: nó com maior número de elementos conectados.</li>
+<li class="fragment">Vantagem importante: Ao invés de lidarmos com tensões e correntes em cada elemento, precisamos apenas definir as tensões nos nós e correntes nos ramos. Lei das tensões é satisfeita automaticamente.</li>
+</ul>
+</section>
+<section id="procedimento-de-análise" class="slide level1">
+<h1>Procedimento de análise</h1>
+<ul>
+<li class="fragment">Para encontrar as variáveis do circuito, pode-se seguir o roteiro abaixo:</li>
+</ul>
+<ol type="1">
+<li class="fragment">Selecionar um nó de referência (terra), cujo potencial é <span class="math inline">\(0\)</span> V.</li>
+<li class="fragment">Rotular os potenciais em relação ao terra em cada outro nó do circuito. Nós conectados ao terra por fontes de tensão possuem a tensão da fonte.</li>
+<li class="fragment">Escrever a lei das correntes para cada nó em que a tensão é desconhecida. 1 eq. por nó.</li>
+<li class="fragment">Resolver o sistema de equações encontrado.</li>
+<li class="fragment">Determinar variáveis de ramo/elemento conforme a necessidade.</li>
+</ol>
+</section>
+<section id="exemplo-6" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Voltemos ao circuito anterior com duas fontes</li>
+<li class="fragment">Problema: determinar <span class="math inline">\(e\)</span> em termos de <span class="math inline">\(V\)</span> e <span class="math inline">\(I\)</span></li>
+<li class="fragment">R.: <span class="math inline">\(e = \frac{R_1R_2}{R_1+R_2} I + \frac{R_2}{R_1+R_2} V\)</span></li>
+<li class="fragment">Notar que precisamos de um número menor de etapas para encontrar a resposta.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C4\circuito_2_fontes_metodo_nos.png" /></p>
+</div>
+</div>
+</section>
+<section id="exemplo-7" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Qual a tensão no terminal <span class="math inline">\(v_O\)</span>?</li>
+<li class="fragment"><span class="math inline">\(\frac{v_O-5}{1k}+\frac{v_O-6}{1k}=0\)</span></li>
+<li class="fragment"><span class="math inline">\(v_O = \frac{5 + 6}{2}\)</span></li>
+<li class="fragment">Circuito somador, com fator de escala <span class="math inline">\(\frac{1}{2}\)</span>.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C4\somador.png" /></p>
+</div>
+</div>
+</section>
+<section id="fonte-de-tensão-flutuante" class="slide level1">
+<h1>Fonte de tensão flutuante</h1>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>Como analisar uma fonte de tensão que não está conectada à referência (terra)?</li>
+</ul>
+<ul>
+<li class="fragment">Utilizando o conceito de super nó.</li>
+<li class="fragment"><span class="math inline">\(e_2 = e_1 + V\)</span></li>
+</ul>
+</div><div class="column" style="width:60%;">
+<p><img data-src="C4\Superno.png" /></p>
+</div>
+</div>
+</section>
+<section id="exemplo-8" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Qual o valor de <span class="math inline">\(e\)</span>?</li>
+<li class="fragment">Podemos determinar as correntes no nó 2, e encontrar…</li>
+<li class="fragment"><span class="math inline">\(e=-\frac{R_1R_2}{R_1+R_2} I - \frac{R_2}{R_1+R_2} V\)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C4\Superno_exemplo.png" /></p>
+</div>
+</div>
+</section>
+<section id="exemplo-9" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Qual o valor de <span class="math inline">\(e\)</span>? Nota: condutância <span class="math inline">\(G_i=1/R_i\)</span>.</li>
+<li class="fragment">Determinar correntes nos nós 3 e 4…</li>
+<li class="fragment"><span class="math inline">\(e=\frac{G_1(V_1+V_2-V_3)+G_2V_3}{G_1+G_2+G_3}\)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C4\Superno_exemplo_2.png" /></p>
+</div>
+</div>
+</section>
+<section id="linearidade-e-superposição" class="slide level1">
+<h1>Linearidade e superposição</h1>
+<ul>
+<li class="fragment">Perceba que as tensões e correntes em cada ponto do circuito (<span class="math inline">\(v_j,i_j\)</span>) são proporcionais às tensões e correntes das fontes (<span class="math inline">\(V_j,I_j\)</span>). <strong>Resposta linear</strong>.</li>
+<li class="fragment">Não há termos envolvendo produtos entre fontes.</li>
+<li class="fragment">Ex.: <span class="math inline">\(e = \frac{R_1R_2}{R_1+R_2} I + \frac{R_2}{R_1+R_2} V\)</span></li>
+<li class="fragment">Podemos saber a resposta devido ao conjunto das fontes superpondo as respostas individuais (i.e., “desligando” todas as outras fontes)</li>
+<li class="fragment">Fontes de <strong>tensão</strong> “desligadas”: <span class="math inline">\(0\)</span> V (curto circuito)</li>
+<li class="fragment">Fontes de <strong>corrente</strong> “desligadas”: <span class="math inline">\(0\)</span> A (circuito aberto)</li>
+</ul>
+</section>
+<section id="adicionador-resistivo" class="slide level1">
+<h1>Adicionador resistivo</h1>
+<ul>
+<li class="fragment">Qual a dependência de <span class="math inline">\(V_0\)</span> em termos de <span class="math inline">\(V_1\)</span>,<span class="math inline">\(V_2\)</span>,…?</li>
+<li class="fragment"><span class="math inline">\(V_{0,1} = \frac{R/3}{R+R/3} V_1\)</span></li>
+<li class="fragment"><span class="math inline">\(V_{0} = \frac{1}{4} (V_1+V_2+V_3+V_4)\)</span></li>
+<li class="fragment">Princípio da escada R-2R (conversão digital analógica)</li>
+</ul>
+<p><img data-src="C4\adicionador_resistivo.png" /></p>
+</section>
+<section id="curva-característica-itimes-v" class="slide level1">
+<h1>Curva característica <span class="math inline">\(I\times V\)</span></h1>
+<ul>
+<li class="fragment">Um dispositivo genérico pode ser representado por um circuito equivalente (modelo). <span class="math inline">\(i\)</span> e <span class="math inline">\(v\)</span> devem satisfazer alguma relação.</li>
+<li class="fragment">Consideremos um dispositivo de 2 terminais conforme a figura (a) abaixo. Qual é a relação entre <span class="math inline">\(i\)</span> e <span class="math inline">\(v\)</span>? <img data-src="C4\curva_i_v.png" style="width:80.0%" /></li>
+<li class="fragment">Podemos analisar a resposta do circuito ao conectar uma fonte de tensão e/ou corrente aos terminais externos.</li>
+<li class="fragment">R.: <span class="math inline">\(i=\frac{v-V}{R}\)</span></li>
+</ul>
+</section>
+<section id="curvas-características-de-elementos-básicos" class="slide level1">
+<h1>Curvas características de elementos básicos</h1>
+<ul>
+<li class="fragment"><strong>Pergunta</strong>: como são as curvas características de corrente vs tensão dos seguintes elementos:
+<ol type="1">
+<li class="fragment">Fonte de tensão ideal</li>
+<li class="fragment">Fonte de corrente ideal</li>
+<li class="fragment">Resistor</li>
+<li class="fragment">Circuito aberto e curto-circuito</li>
+</ol></li>
+<li class="fragment">R.: 1. reta horizontal, 2. reta vertical, 3. reta pela origem e 4. Retas horizontal e vertical passando pela origem.</li>
+</ul>
+</section>
+<section id="pergunta-2" class="slide level1">
+<h1>Pergunta</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Suponha que temos um circuito contendo resistores, e fontes de tensão e corrente conectadas de formas desconhecidas. Ex.: uma bateria ou fonte de tensão real.</li>
+<li class="fragment">Este circuito possui 2 terminais que são acessíveis externamente. Ex.: terminais da bateria/fonte</li>
+<li class="fragment">Do que precisamos para encontrar a curva característica <span class="math inline">\(I\times V\)</span>?</li>
+<li class="fragment">Se o circuito satisfaz a superposição linear, precisamos apenas de 2 informações!</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C4\thevenin.png" /></p>
+</div>
+</div>
+</section>
+<section id="equivalente-de-thévenin" class="slide level1">
+<h1>Equivalente de Thévenin</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Ex.: Bateria</li>
+<li class="fragment">Analisar a resposta do circuito quando os terminais estão desconectados
+<ul>
+<li class="fragment"><span class="math inline">\(v = v_{Th} = v_{OC}\)</span> (tensão de circuito aberto)</li>
+</ul></li>
+<li class="fragment">“Desligar” a fonte de tensão interna, e ver a resposta do circuito a uma fonte externa.
+<ul>
+<li class="fragment">Ex.: se <span class="math inline">\(i=i_{teste}\)</span>, com <span class="math inline">\(V=0\)</span>, teremos uma tensão <span class="math inline">\(v_a = R_{Th} i_{teste}\)</span> entre os terminais.</li>
+</ul></li>
+<li class="fragment">Então, <span class="math display">\[v = v_{OC} + R_{Th} i \]</span></li>
+<li class="fragment">Curva característica equivalente a uma fonte de tensão em série com uma resistência <span class="math inline">\(R_{Th}\)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C4\thevenin.png" /></p>
+</div>
+</div>
+</section>
+<section id="exemplo-10" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Encontrar o circuito de Thévenin equivalente ao da figura ao lado, onde os terminais são <span class="math inline">\(a\)</span> e <span class="math inline">\(a&#39;\)</span></li>
+<li class="fragment"><span class="math inline">\(v_{Th}=\frac{2}{1+2}3=2\)</span> V</li>
+<li class="fragment"><span class="math inline">\(R_{Th}=\frac{1.2}{1+2} = \frac{2}{3}\Omega\)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C4\thevenin_exemplo.png" /></p>
+</div>
+</div>
+</section>
+<section id="exemplo-11" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Encontrar o circuito de Thévenin equivalente ao da figura ao lado, onde os terminais são <span class="math inline">\(a\)</span> e <span class="math inline">\(a&#39;\)</span></li>
+<li class="fragment"><span class="math inline">\(v_{Th}=2.2=4\)</span> V</li>
+<li class="fragment"><span class="math inline">\(R_{Th}=2\Omega\)</span></li>
+<li class="fragment">Se uma fonte de tensão com <span class="math inline">\(V=1\)</span> V for conectada entre <span class="math inline">\(a\)</span> e <span class="math inline">\(a&#39;\)</span>, qual a corrente <span class="math inline">\(i\)</span> que a atravessa?</li>
+<li class="fragment"><span class="math inline">\((v_{Th}-V)=R_{Th} i\)</span>, e <span class="math inline">\(i=\frac{3}{2}\)</span> A</li>
+<li class="fragment">Circuitos complexos contendo fontes e resistores podem ser simplificados usando equivalentes de Thévenin. Compare esta ultima parte do problema a uma análise direta.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C4\thevenin_exemplo_2.png" /></p>
+</div>
+</div>
+</section>
+<section id="equivalente-de-norton" class="slide level1">
+<h1>Equivalente de Norton</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Podemos expressar o circuito equivalente também em termos de uma fonte de corrente.</li>
+<li class="fragment">Análogo ao equivalente de Thévenin
+<ul>
+<li class="fragment">Considerar a resistência <span class="math inline">\(R_N\)</span> do circuito com a fonte de corrente “desligada”. (<span class="math inline">\(R_N=R_{Th}\)</span>)</li>
+<li class="fragment">A corrente <span class="math inline">\(i_N\)</span> da fonte deve ser tal que a d.d.p. entre os terminais é igual àquela observada quando os terminais estão desconectados</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C4\Norton.png" /></p>
+</div>
+</div>
+</section>
+<section id="exemplo-12" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Encontrar o circuito de Norton equivalente ao da figura ao lado, onde os terminais são <span class="math inline">\(a\)</span> e <span class="math inline">\(a&#39;\)</span></li>
+<li class="fragment"><span class="math inline">\(R_N=\frac{1.2}{1+2} = \frac{2}{3}\Omega\)</span></li>
+<li class="fragment"><span class="math inline">\(v_{aa&#39;}=2\)</span> V</li>
+<li class="fragment"><span class="math inline">\(i_N= \frac{v_{aa&#39;}}{R_N}=3\)</span> A</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C4\thevenin_exemplo.png" /></p>
+</div>
+</div>
 </section>
     </div>
   </div>
