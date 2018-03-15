@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="FI577 - Instrumentação eletrônica para a física">
+  <title>Arduino e algumas ferramentas CAD</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Arduino e algumas ferramentas CAD</h1>
+  <p class="author">FI577 - Instrumentação eletrônica para a física</p>
+  <p class="date">Leitura recomendada: <a href="https://www.arduino.cc">www.arduino.cc</a> e Google.</p>
+</section>
+
+<section id="a-plataforma-arduino" class="slide level1">
+<h1>A plataforma arduino</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Plataforma para desenvolvimento eletrônico</li>
+<li class="fragment">Microcontrolador: computador (processador + memória + armazenamento) + periféricos de comunicação e controle.</li>
+<li class="fragment">Pode obter sinais de sensores, bem como enviar sinais para controlar dispositivos. <strong>Parte ativa de um experimento</strong></li>
+<li class="fragment">Circuito digital com possíveis aplicações analógicas
+<ul>
+<li class="fragment"><strong>Atenção</strong>: O arduino e seus periféricos são adequados para trabalhar com tensões entre 0 e 5 V. Ao conectar circuitos analógicos, deve-se ter sempre ter cuidado para que o circuito analógico não exceda estas especificações!</li>
+</ul></li>
+<li class="fragment">Aqui, focaremos principalmente em alguns periféricos: <strong>GPIO, PWM/TIMER e ADC</strong>.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C5/arduino_architecture.png" /></p>
+</div>
+</div>
+</section>
+<section id="periféricos-úteis-em-eletrônica-analógica" class="slide level1">
+<h1>Periféricos úteis em eletrônica analógica</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Estamos interessados em que tipo de grandezas físicas num circuito eletrônico?
+<ul>
+<li class="fragment">Tensões, correntes e suas variações no <strong>tempo</strong>.</li>
+</ul></li>
+<li class="fragment">Algumas aplicações dos periféricos:
+<ul>
+<li class="fragment"><strong>GPIO</strong>: pode ser usado para gerar uma tensão <span class="math inline">\(0\text{ V}\)</span> ou <span class="math inline">\(+5\text{ V}\)</span></li>
+<li class="fragment"><strong>PWM/TIMER</strong>: pode ser usado para gerar sinais analógicos e/ou medir tempos com uma precisão razoável (&lt;1 <span class="math inline">\(\mu\)</span>s).</li>
+<li class="fragment">Conversor analógico digital (<strong>ADC</strong>): mede a tensão entre um dado terminal e o terra, e registra o valor numa variável.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C5/arduino_architecture.png" /></p>
+</div>
+</div>
+</section>
+<section id="entrada-e-saída-digital-input-output---io" class="slide level1">
+<h1>Entrada e saída digital (Input Output - IO)</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">As portas Dx (Digital X) possuem a capacidade de aplicar tensões (0V ou 5V) via software.
+<ul>
+<li class="fragment"><strong>Maior corrente por pino</strong> (entrando ou saindo): 40 mA</li>
+<li class="fragment"><strong>Máxima corrente total</strong> passando por todos os pinos do arduino: 200 mA</li>
+</ul></li>
+<li class="fragment">Arduino segue a lógica digital binária (Boole)</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C5\arduino_uno.jpg" /></p>
+</div><ul>
+<li class="fragment">Também é possível ler tensões em Dx:
+<ul>
+<li class="fragment">Se <span class="math inline">\(V_{Dx} &lt; 0.3 V_{CC}\)</span>, então lê o valor <span class="math inline">\(0\)</span>. (<span class="math inline">\(V_{Dx}&lt;1.5V\)</span>)</li>
+<li class="fragment">Se <span class="math inline">\(V_{Dx} &gt; 0.7 V_{CC}\)</span>, então lê o valor <span class="math inline">\(1\)</span>. (<span class="math inline">\(V_{Dx}&gt;3.5V\)</span>)</li>
+<li class="fragment">E se <span class="math inline">\(1.5\text{ V}&lt;V_{Dx}&lt;3.5\text{ V}\)</span>?</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="saída-digital" class="slide level1">
+<h1>Saída digital</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Façamos o arduino dar um sinal de vida.</li>
+<li class="fragment">Abrir a Arduino IDE.</li>
+<li class="fragment">Abrir o exemplo em <code>Arquivo\Exemplos\01. Basics\Blink</code></li>
+<li class="fragment">Compilar (⭢) e observar…</li>
+<li class="fragment">Mais detalhes sobre exemplos incluídos podem ser acessados em <a href="https://www.arduino.cc/en/Tutorial/BuiltInExamples">www.arduino.cc/en/Tutorial/BuiltInExamples</a></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<figure>
+<img data-src="C5\arduino_IDE.png" alt="Arduino IDE" /><figcaption>Arduino IDE</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="dissecando-o-blink---comentários" class="slide level1">
+<h1>Dissecando o Blink - Comentários</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Documentação, indicando o que o programa atual realiza. (<code>\* Documentação *\</code>)</li>
+<li class="fragment">Bons programas <em>necessariamente</em> contém uma boa documentação.</li>
+<li class="fragment">Quando a complexidade de um projeto aumenta, torna-se bastante difícil de compreender o que cada parte do código realiza se a documentação for ruim.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">/*</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">  Blink</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">  Turns on an LED on for one second, then off for one second, repeatedly.</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">  Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">  it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN is set to</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">  the correct LED pin independent of which board is used.</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">  If you want to know what pin the on-board LED is connected to on your Arduino model, check</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">  the Technical Specs of your board  at https://www.arduino.cc/en/Main/Products</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">*/</span></a></code></pre></div>
+</div><ul>
+<li class="fragment">Dificulta a colaboração entre o programador original e outros, bem como ele mesmo no futuro.</li>
+<li class="fragment"><p>Comentário ao final de uma linha:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="dt">int</span> x; <span class="co">//Comentario</span></a></code></pre></div></li>
+<li class="fragment"><p>Comentário utilizando muitas linhas:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" data-line-number="1">\* Comentario *\</a></code></pre></div></li>
+</ul>
+</div>
+</section>
+<section id="configurações-iniciais" class="slide level1">
+<h1>Configurações iniciais</h1>
+<ul>
+<li class="fragment"><p>Configurações iniciais do sistema (<code>void setup(){}</code>)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="dt">void</span> setup() {</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">  pinMode(LED_BUILTIN, OUTPUT); <span class="co">// initialize digital pin LED_BUILTIN as an output.</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">}</a></code></pre></div></li>
+<li class="fragment">Cada vez que o microcontrolador inicializa ele precisa ser ‘informado’ sobre o que cada periférico deve realizar.</li>
+<li class="fragment">Neste caso, queremos apenas informar que o pino do led embutido <code>LED_BUILTIN</code> será usado como uma saída.</li>
+<li class="fragment">função <code>pinMode(pin, type);</code>, onde <code>pin=LED_BUILTIN</code> e <code>type=OUTPUT</code></li>
+<li class="fragment"><strong>Nota</strong>: Funções em geral são chamadas como <code>funcao(argumentos)</code></li>
+<li class="fragment"><strong>Nota</strong>: Ao final de cada linha de código em C, terminar com <code>;</code></li>
+<li class="fragment"><p><strong>Nota</strong>: Blocos de código começam com <code>{</code> e terminam com <code>}</code></p></li>
+</ul>
+</section>
+<section id="dissecando-o-blink---loop-do-sistema" class="slide level1">
+<h1>Dissecando o Blink - Loop do sistema</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Loop do sistema (<code>void loop(){}</code>)</li>
+<li class="fragment">Deve-se colocar aqui todas as tarefas que o microcontrolador deve realizar periodicamente.</li>
+<li class="fragment">No presente exemplo, ele deve fazer o LED embutido na placa piscar.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="dt">void</span> loop() {</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">  digitalWrite(LED_BUILTIN, HIGH);   <span class="co">// turn the LED on (HIGH is the voltage level)</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">  delay(<span class="dv">1000</span>);                       <span class="co">// wait for a second</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  digitalWrite(LED_BUILTIN, LOW);    <span class="co">// turn the LED off by making the voltage LOW</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">  delay(<span class="dv">1000</span>);                       <span class="co">// wait for a second</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">}</a></code></pre></div>
+</div><ul>
+<li class="fragment"><p>pseudo-código:</p>
+<pre><code>1) Pino do LED com tensão alta (+5V);
+2) Aguarda 1000ms;
+3) Pino do LED com tensão baixa (+0V);
+4) Aguarda 1000ms;
+5) Retorna ao passo 1).    </code></pre></li>
+<li class="fragment">As funções disponíveis para o arduino podem ser acessadas em <a href="https://www.arduino.cc/en/Reference/HomePage">arduino.cc/en/Reference</a></li>
+<li class="fragment">Exemplo: informações a respeito de <a href="https://www.arduino.cc/en/Reference/DigitalWrite"><code>digitalWrite(pin, Value)</code></a> e <a href="https://www.arduino.cc/en/Reference/Delay"><code>delay(ms)</code></a>.</li>
+</ul>
+</div>
+</section>
+<section id="exercícios" class="slide level1">
+<h1>Exercícios</h1>
+<ul>
+<li class="fragment">No código original, o LED pisca a 0.5 Hz. Modifiquem o código para que o LED pisque a uma taxa de 1 Hz.</li>
+<li class="fragment">Faça com que o led pisque apenas uma única vez.</li>
+<li class="fragment">Faça com que o led pisque apenas 3 vezes.</li>
+</ul>
+</section>
+<section id="eletrônica-do-blink" class="slide level1">
+<h1>Eletrônica do Blink</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">O arduino já possui um LED na própria placa para que façamos este teste inicial.</li>
+<li class="fragment">Podemos também conectar um LED próprio, usando uma protoboard</li>
+<li class="fragment">Ao invés do <code>LED_BUILTIN</code>, vamos usar o pino D13 como fonte</li>
+<li class="fragment"><strong>Sugestão importante</strong>: ao conectar uma fonte de tensão, usar <strong>fios vermelhos</strong> para indicar tensões (<span class="math inline">\(+V\)</span> e <span class="math inline">\(-V\)</span>), e <strong>preto</strong> para indicar o terra (<span class="math inline">\(0\text{ V}\)</span>).</li>
+<li class="fragment">Componentes necessários:
+<ul>
+<li class="fragment">Resistor 220 <span class="math inline">\(\Omega\)</span></li>
+<li class="fragment">LED</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="praticas\arduino\blink_protoboard_bb.svg" /></p>
+</div><ul>
+<li class="fragment"><strong>Problema</strong>: que modificações precisaríamos fazer no programa e no circuito para que o led utilize o pino 10?</li>
+<li class="fragment"><strong>Importante</strong>: Faremos outro exercício a seguir, mas não remova nada da montagem atual</li>
+</ul>
+</div>
+</section>
+<section id="leitura-digital-de-tensão" class="slide level1">
+<h1>Leitura digital de tensão</h1>
+<ul>
+<li class="fragment">Nos exemplos anteriores, o arduino controla um led. Este <strong>sinal sai</strong> do arduino.</li>
+<li class="fragment">Queremos também enviar sinais para controlar o arduino. O <strong>sinal entra</strong> no arduino.</li>
+<li class="fragment">Ex.: Um botão para controlar o volume de um som enviado a um auto-falante.</li>
+<li class="fragment">Inicialmente, vamos considerar apenas a entrada de sinais digitais.</li>
+<li class="fragment">Lembrando…
+<ul>
+<li class="fragment">Se <span class="math inline">\(V_{Dx} &lt; 0.3 V_{CC}\)</span>, então lê o valor <span class="math inline">\(0\)</span>. (<span class="math inline">\(V_{Dx}&lt;1.5V\)</span>)</li>
+<li class="fragment">Se <span class="math inline">\(V_{Dx} &gt; 0.7 V_{CC}\)</span>, então lê o valor <span class="math inline">\(1\)</span>. (<span class="math inline">\(V_{Dx}&gt;3.5V\)</span>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="circuito-equivalente" class="slide level1">
+<h1>Circuito equivalente</h1>
+<ul>
+<li class="fragment">Como representar um botão ideal em um circuito?</li>
+<li class="fragment">Circuitos aberto (Não há contato elétrico) e fechado (Há contato elétrico).</li>
+<li class="fragment">Como converter a informação de que o contato elétrico foi realizado ou não em uma tensão?</li>
+<li class="fragment">2 estados representáveis por uma resistência efetiva:
+<ul>
+<li class="fragment">Aberto (<span class="math inline">\(R=\infty\)</span>) <span class="fragment">queremos que <span class="math inline">\(V\rightarrow 0\)</span> V</span></li>
+<li class="fragment">Fechado (<span class="math inline">\(R=0\)</span>) <span class="fragment">queremos que <span class="math inline">\(V\rightarrow 5\)</span> V</span></li>
+</ul></li>
+<li class="fragment">Podemos usar um divisor de tensão
+<ul>
+<li class="fragment"><span class="math inline">\(V_O = \frac{R_2}{R_1+R_2} V_{CC}\)</span></li>
+<li class="fragment">O botão deve ser <span class="math inline">\(R_1\)</span> ou <span class="math inline">\(R_2\)</span> para satisfazer as condições acima? O que acontece se trocarmos o resistor e o botão no circuito?</li>
+</ul></li>
+</ul>
+</section>
+<section id="leitura-do-estado-do-botão" class="slide level1">
+<h1>Leitura do estado do botão</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Componentes necessários:
+<ul>
+<li class="fragment">Botão</li>
+<li class="fragment">Resistor 10 K<span class="math inline">\(\Omega\)</span></li>
+</ul></li>
+<li class="fragment">O pino compartilhado entre o resistor e o botão deve ser conectado a D2</li>
+<li class="fragment">Abrir o exemplo em <code>Arquivo\Exemplos\01. Basics\DigitalReadSerial</code></li>
+<li class="fragment">Compilar (⭢), abrir <code>Ferramentas/Monitor Serial(CTRL+SHIFT+M)</code> e observar…</li>
+<li class="fragment">O estado do botão é exibido no Monitor Serial.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C5\button_schematic.png" /></p>
+</div>
+</div>
+</section>
+<section id="analisando-o-digitalreadserial" class="slide level1">
+<h1>Analisando o DigitalReadSerial</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Documentação</li>
+<li class="fragment">Declaração da variável <code>pushButton</code></li>
+<li class="fragment"><code>int pushButton</code> indica um espaço na memória que será usado para armazenar um número (tipo <code>int</code>). <strong>A variável deve sempre ser definida antes de ser utilizada!</strong></li>
+<li class="fragment">Para manipular esta informação na memória podemos nos referir ao nome <code>pushButton</code>.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="dt">int</span> pushButton = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="dt">void</span> setup() {</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">  Serial.begin(<span class="dv">9600</span>); <span class="co">// initialize serial communication at 9600 bits per second:</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">  pinMode(pushButton, INPUT); <span class="co">// make the pushbutton&#39;s pin an input:</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="dt">void</span> loop() {</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">  <span class="dt">int</span> buttonState = digitalRead(pushButton); <span class="co">// read the input pin:</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">  Serial.println(buttonState); <span class="co">// print out the state of the button:</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">  delay(<span class="dv">1</span>);        <span class="co">// delay in between reads for stability</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">}</a></code></pre></div>
+</div><ul>
+<li class="fragment">Operador atribuição (<code>=</code>) armazena o valor <code>2</code> na variável <code>pushButton</code></li>
+<li class="fragment">Em outras palavras, se nenhuma modificação for realizada em <code>pushButton</code> e perguntarmos o seu valor posteriormente, obteremos <code>2</code>.</li>
+</ul>
+</div>
+</section>
+<section id="algumas-operações" class="slide level1">
+<h1>Algumas operações</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Voltemos à declaração da variável <code>pushButton</code>. Poderíamos ter definido a variável de uma maneira alternativa:</li>
+<li class="fragment">Ou ainda, no lugar de <code>pushButton = 2;</code> poderíamos ter escrito <code>pushButton = 1+1;</code> (Verifiquem!)</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="dt">int</span> pushButton; \\Declaração da variável global</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="dt">void</span> setup(){</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">  pushButton = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">  (...)</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">}</a></code></pre></div>
+</div><ul>
+<li class="fragment"><a href="https://www.arduino.cc/en/Reference.Arithmetic">Operações matemáticas</a>: soma(<code>+</code>), subtração(<code>-</code>), multiplicação(<code>*</code>), divisão(<code>/</code>). Podemos também obter o resto da divisão de um inteiro por meio do operador módulo(<code>%</code>).</li>
+<li class="fragment">Operações matemáticas podem ser agrupadas utilizando-se parênteses <code>(1+2)/3==1</code></li>
+<li class="fragment">Outras funções (<span class="math inline">\(\cos,\exp\)</span>…) podem ser vistas em <a href="https://www.arduino.cc/en/Math/H">arduino-&gt;Refs</a>.</li>
+</ul>
+</div>
+</section>
+<section id="analisando-o-digitalreadserial-1" class="slide level1">
+<h1>Analisando o DigitalReadSerial</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Continuando…</li>
+<li class="fragment">Inicializa a comunicação com o computador através de <code>Serial.begin(9600);</code></li>
+<li class="fragment">pino <code>pushButton</code>(D2) será usado para medir tensões <strong>binárias</strong> <code>pinMode(pushButton, INPUT);</code></li>
+<li class="fragment">As etapas acima <strong>configuram</strong> os periféricos de comunicação (<code>Serial</code>) e de medição binária de tensão (<code>INPUT</code>). O <code>setup()</code> termina então com <code>}</code></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="dt">int</span> pushButton = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="dt">void</span> setup() {</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">  Serial.begin(<span class="dv">9600</span>); <span class="co">// initialize serial communication at 9600 bits per second:</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">  pinMode(pushButton, INPUT); <span class="co">// make the pushbutton&#39;s pin an input:</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="dt">void</span> loop() {</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">  <span class="dt">int</span> buttonState = digitalRead(pushButton); <span class="co">// read the input pin:</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">  Serial.println(buttonState); <span class="co">// print out the state of the button:</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11">  delay(<span class="dv">1</span>);        <span class="co">// delay in between reads for stability</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">}</a></code></pre></div>
+</div>
+</div>
+</section>
+<section id="analisando-o-digitalreadserial-2" class="slide level1">
+<h1>Analisando o DigitalReadSerial</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">O loop contém tarefas que devem ser realizadas periodicamente enquanto o arduino estiver ligado</li>
+<li class="fragment">Neste caso, deve realizar medidas binárias de tensão</li>
+<li class="fragment"><code>digitalRead(pushButton)</code> lê o estado da tensão no pino <code>pushButton</code> (D2)</li>
+<li class="fragment">O valor medido é armazenado na nova variável <code>int buttonState</code></li>
+<li class="fragment">O estado do botão é enviado ao computador via comunicação serial: <code>Serial.println(buttonState);</code></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="dt">int</span> pushButton = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="dt">void</span> setup() {</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">  Serial.begin(<span class="dv">9600</span>); <span class="co">// initialize serial communication at 9600 bits per second:</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">  pinMode(pushButton, INPUT); <span class="co">// make the pushbutton&#39;s pin an input:</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="dt">void</span> loop() {</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">  <span class="dt">int</span> buttonState = digitalRead(pushButton); <span class="co">// read the input pin:</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">  Serial.println(buttonState); <span class="co">// print out the state of the button:</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11">  delay(<span class="dv">1</span>);        <span class="co">// delay in between reads for stability</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12">}</a></code></pre></div>
+</div>
+</div>
+</section>
+<section id="exercício" class="slide level1">
+<h1>Exercício</h1>
+<ol type="1">
+<li class="fragment">Utilizando o circuito do exemplo <code>Blink</code>, e partindo do código do exemplo <code>DigitalReadSerial</code>, faça com que o LED acenda quando o botão é pressionado.</li>
+</ol>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

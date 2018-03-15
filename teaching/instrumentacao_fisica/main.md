@@ -22,7 +22,7 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 | 02 | Eletromagnetismo básico             | [html][s02-html] [pdf][s02-pdf] |                       |
 | 03 | Abstração de circuitos eletrônicos  | [html][s03-html] [pdf][s03-pdf] |                       |
 | 04 | Análise de circuitos lineares       | [html][s04-html] [pdf][s04-pdf] | Prática 01            |
-| 05 | Arduino e algumas ferramentas CAD   |                                 | Prática arduino       |
+| 05 | Arduino e algumas ferramentas CAD   | [html][s05-html] [pdf][s05-pdf] | Prática arduino       |
 | 06 | Sinais analógicos                   |                                 | Prática 02            |
 | 07 | Filtros passivos                    |                                 | Prática 03,Prática 04 |
 | 08 | Diodos e circuitos não lineares     |                                 | Prática 05            |
@@ -40,6 +40,8 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 [s02-html]: instrumentacao_fisica\capitulo_2.html
 [s02-pdf]: https://www.dropbox.com/s/c8ir438wg78tosy/capitulo_2.pdf?dl=0
 [s03-html]: instrumentacao_fisica\capitulo_3.html
-[s03-pdf]: #
+[s03-pdf]: https://www.dropbox.com/s/dqiccx40wuluv6k/capitulo_3.pdf?dl=0
 [s04-html]: instrumentacao_fisica\capitulo_4.html
 [s04-pdf]: https://www.dropbox.com/s/ya5svg2ek802l35/capitulo_4.pdf?dl=0
+[s05-html]: instrumentacao_fisica\capitulo_5.html
+[s05-pdf]: https://www.dropbox.com/s/aw6rady7hzqwet8/capitulo_5.pdf?dl=0
