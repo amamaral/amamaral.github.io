@@ -6,10 +6,10 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 
 ## Materiais suplementares
 
-1. [Informe inicial](instrumentacao_fisica/anexos/informe_inicial.pdf)
-2. [Códigos de resistores](instrumentacao_fisica/anexos/resistores.pdf)
-3. [Códigos de capacitores](instrumentacao_fisica/anexos/capacitores.pdf)
-4. [Osciloscópio](instrumentacao_fisica/anexos/osciloscopio.pdf)
+1. [Informe inicial](https://www.dropbox.com/s/0opfomssomraefd/informe_inicial.pdf?dl=0)
+2. [Códigos de resistores](https://www.dropbox.com/s/7tp49dwx68755qn/resistores.pdf?dl=0)
+3. [Códigos de capacitores](https://www.dropbox.com/s/484ycuat1s8cm5d/capacitores.pdf?dl=0)
+4. [Osciloscópio](https://www.dropbox.com/s/27jkhdf64go2dct/osciloscopio.pdf?dl=0)
 4. Softwares gratuitos:
     * [Fritzing](http://www.fritzing.org) (Esquemas de circuitos e projeto de PCB, voltado para a plataforma arduino)
     * [Multisim BLUE](http://br.mouser.com/MultiSimBlue/) (Simulador de circuitos analógicos e digitais)
