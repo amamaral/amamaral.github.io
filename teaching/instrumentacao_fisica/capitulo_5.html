@@ -158,7 +158,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div><div class="column" style="width:40%;">
 <p><img data-src="C5\arduino_uno.jpg" /></p>
-</div><ul>
+</div>
+</div>
+<ul>
 <li class="fragment">Também é possível ler tensões em Dx:
 <ul>
 <li class="fragment">Se <span class="math inline">\(V_{Dx} &lt; 0.3 V_{CC}\)</span>, então lê o valor <span class="math inline">\(0\)</span>. (<span class="math inline">\(V_{Dx}&lt;1.5V\)</span>)</li>
@@ -166,7 +168,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="fragment">E se <span class="math inline">\(1.5\text{ V}&lt;V_{Dx}&lt;3.5\text{ V}\)</span>?</li>
 </ul></li>
 </ul>
-</div>
 </section>
 <section id="saída-digital" class="slide level1">
 <h1>Saída digital</h1>
@@ -176,7 +177,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="fragment">Façamos o arduino dar um sinal de vida.</li>
 <li class="fragment">Abrir a Arduino IDE.</li>
 <li class="fragment">Abrir o exemplo em <code>Arquivo\Exemplos\01. Basics\Blink</code></li>
-<li class="fragment">Compilar (⭢) e observar…</li>
+<li class="fragment">Compilar (<span class="math inline">\(\rightarrow\)</span>) e observar…</li>
 <li class="fragment">Mais detalhes sobre exemplos incluídos podem ser acessados em <a href="https://www.arduino.cc/en/Tutorial/BuiltInExamples">www.arduino.cc/en/Tutorial/BuiltInExamples</a></li>
 </ul>
 </div><div class="column" style="width:40%;">
@@ -206,14 +207,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">  If you want to know what pin the on-board LED is connected to on your Arduino model, check</span></a>
 <a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">  the Technical Specs of your board  at https://www.arduino.cc/en/Main/Products</span></a>
 <a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">*/</span></a></code></pre></div>
-</div><ul>
+</div>
+</div>
+<ul>
 <li class="fragment">Dificulta a colaboração entre o programador original e outros, bem como ele mesmo no futuro.</li>
 <li class="fragment"><p>Comentário ao final de uma linha:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="dt">int</span> x; <span class="co">//Comentario</span></a></code></pre></div></li>
 <li class="fragment"><p>Comentário utilizando muitas linhas:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" data-line-number="1">\* Comentario *\</a></code></pre></div></li>
 </ul>
-</div>
 </section>
 <section id="configurações-iniciais" class="slide level1">
 <h1>Configurações iniciais</h1>
@@ -246,7 +248,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb5-4" data-line-number="4">  digitalWrite(LED_BUILTIN, LOW);    <span class="co">// turn the LED off by making the voltage LOW</span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5">  delay(<span class="dv">1000</span>);                       <span class="co">// wait for a second</span></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6">}</a></code></pre></div>
-</div><ul>
+</div>
+</div>
+<ul>
 <li class="fragment"><p>pseudo-código:</p>
 <pre><code>1) Pino do LED com tensão alta (+5V);
 2) Aguarda 1000ms;
@@ -254,9 +258,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 4) Aguarda 1000ms;
 5) Retorna ao passo 1).    </code></pre></li>
 <li class="fragment">As funções disponíveis para o arduino podem ser acessadas em <a href="https://www.arduino.cc/en/Reference/HomePage">arduino.cc/en/Reference</a></li>
-<li class="fragment">Exemplo: informações a respeito de <a href="https://www.arduino.cc/en/Reference/DigitalWrite"><code>digitalWrite(pin, Value)</code></a> e <a href="https://www.arduino.cc/en/Reference/Delay"><code>delay(ms)</code></a>.</li>
+<li class="fragment"><p>Exemplo: informações a respeito de <a href="https://www.arduino.cc/en/Reference/DigitalWrite"><code>digitalWrite(pin, Value)</code></a> e <a href="https://www.arduino.cc/en/Reference/Delay"><code>delay(ms)</code></a>.</p></li>
 </ul>
-</div>
 </section>
 <section id="exercícios" class="slide level1">
 <h1>Exercícios</h1>
@@ -283,11 +286,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div><div class="column" style="width:40%;">
 <p><img data-src="praticas\arduino\blink_protoboard_bb.svg" /></p>
-</div><ul>
+</div>
+</div>
+<ul>
 <li class="fragment"><strong>Problema</strong>: que modificações precisaríamos fazer no programa e no circuito para que o led utilize o pino 10?</li>
 <li class="fragment"><strong>Importante</strong>: Faremos outro exercício a seguir, mas não remova nada da montagem atual</li>
 </ul>
-</div>
 </section>
 <section id="leitura-digital-de-tensão" class="slide level1">
 <h1>Leitura digital de tensão</h1>
@@ -333,7 +337,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="fragment">O pino compartilhado entre o resistor e o botão deve ser conectado a D2</li>
 <li class="fragment">Abrir o exemplo em <code>Arquivo\Exemplos\01. Basics\DigitalReadSerial</code></li>
-<li class="fragment">Compilar (⭢), abrir <code>Ferramentas/Monitor Serial(CTRL+SHIFT+M)</code> e observar…</li>
+<li class="fragment">Compilar (<span class="math inline">\(\rightarrow\)</span>), abrir <code>Ferramentas/Monitor Serial(CTRL+SHIFT+M)</code> e observar…</li>
 <li class="fragment">O estado do botão é exibido no Monitor Serial.</li>
 </ul>
 </div><div class="column" style="width:40%;">
@@ -364,11 +368,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb7-10" data-line-number="10">  Serial.println(buttonState); <span class="co">// print out the state of the button:</span></a>
 <a class="sourceLine" id="cb7-11" data-line-number="11">  delay(<span class="dv">1</span>);        <span class="co">// delay in between reads for stability</span></a>
 <a class="sourceLine" id="cb7-12" data-line-number="12">}</a></code></pre></div>
-</div><ul>
+</div>
+</div>
+<ul>
 <li class="fragment">Operador atribuição (<code>=</code>) armazena o valor <code>2</code> na variável <code>pushButton</code></li>
 <li class="fragment">Em outras palavras, se nenhuma modificação for realizada em <code>pushButton</code> e perguntarmos o seu valor posteriormente, obteremos <code>2</code>.</li>
 </ul>
-</div>
 </section>
 <section id="algumas-operações" class="slide level1">
 <h1>Algumas operações</h1>
@@ -385,12 +390,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb8-4" data-line-number="4">  pushButton = <span class="dv">2</span>;</a>
 <a class="sourceLine" id="cb8-5" data-line-number="5">  (...)</a>
 <a class="sourceLine" id="cb8-6" data-line-number="6">}</a></code></pre></div>
-</div><ul>
+</div>
+</div>
+<ul>
 <li class="fragment"><a href="https://www.arduino.cc/en/Reference.Arithmetic">Operações matemáticas</a>: soma(<code>+</code>), subtração(<code>-</code>), multiplicação(<code>*</code>), divisão(<code>/</code>). Podemos também obter o resto da divisão de um inteiro por meio do operador módulo(<code>%</code>).</li>
 <li class="fragment">Operações matemáticas podem ser agrupadas utilizando-se parênteses <code>(1+2)/3==1</code></li>
 <li class="fragment">Outras funções (<span class="math inline">\(\cos,\exp\)</span>…) podem ser vistas em <a href="https://www.arduino.cc/en/Math/H">arduino-&gt;Refs</a>.</li>
 </ul>
-</div>
 </section>
 <section id="analisando-o-digitalreadserial-1" class="slide level1">
 <h1>Analisando o DigitalReadSerial</h1>
@@ -450,6 +456,250 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ol type="1">
 <li class="fragment">Utilizando o circuito do exemplo <code>Blink</code>, e partindo do código do exemplo <code>DigitalReadSerial</code>, faça com que o LED acenda quando o botão é pressionado.</li>
 </ol>
+</section>
+<section id="leitura-analógica-da-tensão" class="slide level1">
+<h1>Leitura analógica da tensão</h1>
+<ul>
+<li class="fragment">Nos exemplos anteriores, vimos como usar o arduino como uma fonte de tensão binária (0V e +5V, via <code>digitalWrite</code>) e como um medidor binário de tensão (usando o <code>digitalRead</code>).</li>
+<li class="fragment">Estamos interessados também em medir tensões analógicas</li>
+<li class="fragment"><img data-src="C5\TTL-20hz.jpg" title="fig:" alt="Sinal TTL (transistor transistor logic)" style="width:60.0%" /></li>
+</ul>
+</section>
+<section id="conversor-adc" class="slide level1">
+<h1>Conversor ADC</h1>
+<ul>
+<li class="fragment">ADC (<em>Analog to Digital Converter</em>)</li>
+<li class="fragment">Medição da tensão entre 0 e 5V com uma resolução de 10 bits. Ou seja, o intervalo 0-5V é dividido em <span class="math inline">\(2^{10}=1024\)</span> intervalos.</li>
+<li class="fragment">Osciloscópios digitais possuem tipicamente uma resolução de 8-10 bits.</li>
+<li class="fragment"><img data-src="C5\DAC_residue.png" alt="Erro de quantização" style="width:60.0%" /></li>
+<li class="fragment">Realiza até 10.000 medidas por segundo (10Ksps).</li>
+</ul>
+</section>
+<section id="sinal-analógico-de-um-potenciômetro" class="slide level1">
+<h1>Sinal analógico de um potenciômetro</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">O potenciômetro funciona como um divisor de tensão, onde podemos variar a resistência de ambos os resistores.</li>
+<li class="fragment">Variando a posição do botão, podemos variar a tensão do pino do meio suavemente entre as tensões aplicadas nos pinos externos.</li>
+<li class="fragment">É muito usado para ajustar e calibrar o comportamento de circuitos.</li>
+<li class="fragment">Usaremos um potenciômetro para medir a posição do botão.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C5\potentiometer.gif" /> <img data-src="C5\Potentiometer_as_voltage_divider.png" /></p>
+</div>
+</div>
+</section>
+<section id="medida-de-tensão-analógica-usando-o-arduino" class="slide level1">
+<h1>Medida de tensão analógica usando o arduino</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><p>Abram o exemplo em <code>Arquivo/Exemplos/01. Basics/AnalogReadSerial</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="dt">void</span> loop() {</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">  <span class="co">// Le sinal analogico no pino 0:</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">  <span class="dt">int</span> sensorValue = analogRead(A0);</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">  Serial.println(sensorValue);</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">}</a></code></pre></div></li>
+<li class="fragment">Vejam o que acontece com o valor exibido no monitor serial, que corresponde ao valor de <code>sensorValue</code>, quando a posição do potenciômetro muda.</li>
+<li class="fragment">O que acontece quando o potenciômetro está parado?</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="praticas\arduino\circuito_potenciometro.svg" style="width:90.0%" /></p>
+</div>
+</div>
+</section>
+<section id="variáveis-de-ponto-flutuante" class="slide level1">
+<h1>Variáveis de ponto flutuante</h1>
+<ul>
+<li class="fragment">Vale perceber no exemplo anterior que o resultado da medida <code>analogRead(A0)</code> é um <strong>valor inteiro</strong>, enquanto a tensão analógica <span class="math inline">\(V_{\text{pot}}\)</span> é um <strong>número real</strong>.</li>
+<li class="fragment">Para calcular com números reais, utilizamos variáveis tipo ponto flutuante.</li>
+<li class="fragment">tipos principais (linguagem C): <code>float</code> e <code>double</code>.
+<ul>
+<li class="fragment">declaração: <code>float x = 1.135;</code></li>
+<li class="fragment"><code>x</code> é uma variável que armazena números inteiros, cujo valor é igual a <code>1.135</code></li>
+<li class="fragment">Separador decimal: <code>.</code></li>
+<li class="fragment">No ATmega, <code>float</code> e <code>double</code> são equivalentes.</li>
+<li class="fragment">Num programa em C para computador, o <code>double</code> possui o dobro de bits, e pode ser usado para cálculos de maior precisão.</li>
+</ul></li>
+</ul>
+</section>
+<section id="detalhe-importante-sobre-o-cálculo-com-ponto-flutuante" class="slide level1">
+<h1>Detalhe importante sobre o cálculo com ponto flutuante</h1>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Consideremos o exemplo ao lado</li>
+<li class="fragment">Compare a saida no monitor serial</li>
+<li class="fragment">Pergunta: o que vocês esperam que aconteça se trocarmos <code>var = 1+1;</code> por <code>var = 3/2;</code>? (Não façam no programa ainda!)</li>
+<li class="fragment">Agora vejam o resultado no programa.</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="dt">void</span> setup() {</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">  Serial.begin(<span class="dv">9600</span>); <span class="co">// Inicia o envio de dados via comunicacao serial</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="dt">void</span> loop() {</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">  <span class="dt">float</span> var; <span class="co">//Declaracao da variavel local</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">  var = <span class="dv">1+1</span>;</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">  Serial.println(var); <span class="co">//Envia o valor da variavel via serial</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">  delay(<span class="dv">100</span>);</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">}</a></code></pre></div>
+</div>
+</div>
+</section>
+<section id="detalhe-importante-sobre-o-cálculo-com-ponto-flutuante-1" class="slide level1">
+<h1>Detalhe importante sobre o cálculo com ponto flutuante</h1>
+<ul>
+<li class="fragment">Ao avaliar expressões numéricas cujo resultado é um ponto flutuante, é importante indicar que os números iniciais são do tipo <code>float</code>. Caso contrário, o compilador interpretará a equação como sendo no domínio dos inteiros!</li>
+<li class="fragment">Testem agora <code>var = 3./2.;</code></li>
+<li class="fragment">O número contendo um separador decimal é automaticamente interpretado como <code>float</code>.</li>
+<li class="fragment">Detalhe final: cálculos envolvendo <code>float</code>’s são bem mais complicados para o processador do que aqueles envolvendo inteiros. Desta forma, se quisermos cálculos mais rápidos devemos evitar usar <code>float</code>.</li>
+</ul>
+</section>
+<section id="exercício-1" class="slide level1">
+<h1>Exercício</h1>
+<ul>
+<li class="fragment">Abram novamente o exemplo em <code>Arquivo/Exemplos/01. Basics/AnalogReadSerial</code>.</li>
+<li class="fragment">O sinal mostrado no monitor serial corresponde a um valor inteiro associado à medida de tensão no pino Analog 0 (<code>A0</code>). Sabendo que a resolução da medida é 10 bits (0-1023), e que o valor máximo corresponde a 5V, convertam <code>sensorValue</code> para tensão.</li>
+<li class="fragment"><strong>Nota</strong>: Em geral, quando utilizamos algum sensor, este sensor converte uma grandeza física em tensão. (ex.: <span class="math inline">\(^OC/V\)</span>), enquanto o arduino mede tensões. Desta forma, para usar um sensor precisamos converter o sinal a ser medido para tensão para então saber qual foi o valor da grandeza medida.</li>
+</ul>
+</section>
+<section id="saída-quase-analógica" class="slide level1">
+<h1>Saída quase-analógica</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">O arduino também possui uma saída com características quase-analógicas.</li>
+<li class="fragment">Existem vários tipos de conversores de sinais digitais para analógicos. O arduino possui um PWM (Pulse-Width Modulation).</li>
+<li class="fragment">O arduino envia um sinal digital com um tempo variável. A forma que o PWM do arduino opera não é exatamente conforme a figura acima, pois não existem pulsos negativos.</li>
+<li class="fragment">A média da tensão no tempo é fornece o sinal analógico de saída. O valor médio pode ser controlado facilmente.</li>
+<li class="fragment">a função <code>analogWrite</code> implementada no arduino permite modular a potência de um sinal uma resolução de 8 bits (<span class="math inline">\(2^8=256\)</span> valores de potência).</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C5\PWM-example.png" /> <img data-src="C5\pwm_wave.png" /></p>
+</div>
+</div>
+</section>
+<section id="exercício-led-com-brilho-ajustável" class="slide level1">
+<h1>Exercício: LED com brilho ajustável</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Componentes necessários: Resistor 220 <span class="math inline">\(\Omega\)</span> e LED. O anodo do LED (terminal +) deve ser conectado em um pino com saída analógica (<code>~Dx</code>), como o pino 9</li>
+<li class="fragment">Abram o exemplo <code>Exemplos\01.Basics\Fade</code></li>
+<li class="fragment">Vejam o que acontece com a intensidade do LED. a função <code>analogWrite</code> varia o brilho do LED a cada iteração do loop. Após modificar o brilho, varia o valor. <code>brightness</code> é mantido sempre entre 0 e 255, já que a resolução do <code>analogWrite</code> é de 8 bits</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="praticas\arduino\blink_protoboard_bb.svg" /></p>
+</div>
+</div>
+</section>
+<section id="análise-do-loop" class="slide level1">
+<h1>Análise do loop</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><code>analogWrite(led, brightness);</code> O brilho do pino <code>led</code> é ajustado para o valor <code>brightness</code></li>
+<li class="fragment"><code>brightness = brightness + fadeAmount;</code> O valor de <code>brightness</code> é incrementado pelo valor de <code>fadeAmount</code></li>
+<li class="fragment"><code>if (brightness &lt;= 0 || brightness &gt;= 255)</code> Se o valor do brilho for menor que <code>0</code> ou (<code>||</code>) maior que <code>255</code>, executa o bloco de código a seguir
+<ul>
+<li class="fragment"><code>fadeAmount = -fadeAmount;</code> O valor do incremento do <code>brightness</code> deve ter o sinal invertido, para que o brilho volte a variar entre <code>0</code> e <code>255</code>.</li>
+</ul></li>
+<li class="fragment"><code>delay(30);</code> Aguarda 30 ms antes de modificar novamente o valor do brilho</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="dt">int</span> led = <span class="dv">9</span>;</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="dt">int</span> brightness = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="dt">int</span> fadeAmount = <span class="dv">5</span>;</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="dt">void</span> setup() {</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">  pinMode(led, OUTPUT);</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">}</a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="dt">void</span> loop() {</a>
+<a class="sourceLine" id="cb13-10" data-line-number="10">  analogWrite(led, brightness);</a>
+<a class="sourceLine" id="cb13-11" data-line-number="11">  brightness = brightness + fadeAmount;</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb13-13" data-line-number="13">  <span class="cf">if</span> (brightness &lt;= <span class="dv">0</span> || brightness &gt;= <span class="dv">255</span>) {</a>
+<a class="sourceLine" id="cb13-14" data-line-number="14">    fadeAmount = -fadeAmount;</a>
+<a class="sourceLine" id="cb13-15" data-line-number="15">  }</a>
+<a class="sourceLine" id="cb13-16" data-line-number="16">  delay(<span class="dv">30</span>);</a>
+<a class="sourceLine" id="cb13-17" data-line-number="17">}</a></code></pre></div>
+</div>
+</div>
+</section>
+<section id="timers" class="slide level1">
+<h1>Timers</h1>
+<ul>
+<li class="fragment">A saída PWM é um sinal oriundo de um relógio interno.</li>
+<li class="fragment">Conforme dito anteriormente, as medidas de tempo usando o arduino podem ser bastante precisas (<span class="math inline">\(&lt;1\,\mu\text{s}\)</span>)</li>
+<li class="fragment">Algumas funções relevantes:
+<ul>
+<li class="fragment"><code>delay(ms)</code>: <strong>pausa</strong> o arduino por um tempo de <code>ms</code> milissegundos</li>
+<li class="fragment"><code>delayMicroseconds(us)</code>: <strong>pausa</strong> o arduino por <code>us</code> microssegundos</li>
+<li class="fragment"><code>unsigned long time = millis()</code>: A função <code>millis()</code> <strong>lê o tempo</strong> do relógio interno em milissegundos. Este valor pode ser armazenado numa variável para comparação de tempos entre diferentes eventos. Neste caso, o valor é armazenado na variável <code>time</code></li>
+<li class="fragment"><code>millis()</code>: Equivalente a função <code>millis()</code>, porem <strong>lê o tempo</strong> do relógio interno na escala de microssegundos</li>
+</ul></li>
+</ul>
+</section>
+<section id="exercício-blink-sem-delay" class="slide level1">
+<h1>Exercício: Blink sem delay</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Componentes necessários: Resistor 220 <span class="math inline">\(\Omega\)</span> e LED.</li>
+<li class="fragment">Abram o exemplo <code>Exemplos\02.Digital\BlinkWithoutDelay</code></li>
+<li class="fragment">Originalmente o exemplo utiliza o LED embutido na placa. Modifique o código para usar um LED externo, conforme o esquema ao lado.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="praticas\arduino\blink_protoboard_bb.svg" /></p>
+</div>
+</div>
+</section>
+<section id="análise-do-código" class="slide level1">
+<h1>Análise do código</h1>
+<div class="sourceCode" id="cb14"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="at">const</span> <span class="dt">int</span> ledPin =  LED_BUILTIN; <span class="co">// the number of the LED pin</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="dt">int</span> ledState = LOW;              <span class="co">// ledState used to set the LED</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="dt">unsigned</span> <span class="dt">long</span> previousMillis = <span class="dv">0</span>;<span class="co">// will store last time LED was updated</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="at">const</span> <span class="dt">long</span> interval = <span class="dv">1000</span>;      <span class="co">// interval at which to blink (milliseconds)</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">(...)</a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="dt">void</span> loop() {</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">  <span class="dt">unsigned</span> <span class="dt">long</span> currentMillis = millis();</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">  <span class="cf">if</span> (currentMillis - previousMillis &gt;= interval) {</a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">    <span class="co">// save the last time you blinked the LED</span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">    previousMillis = currentMillis;</a>
+<a class="sourceLine" id="cb14-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb14-15" data-line-number="15">    <span class="cf">if</span> (ledState == LOW) {</a>
+<a class="sourceLine" id="cb14-16" data-line-number="16">      ledState = HIGH;</a>
+<a class="sourceLine" id="cb14-17" data-line-number="17">    } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb14-18" data-line-number="18">      ledState = LOW;</a>
+<a class="sourceLine" id="cb14-19" data-line-number="19">    }</a>
+<a class="sourceLine" id="cb14-20" data-line-number="20">    digitalWrite(ledPin, ledState);</a>
+<a class="sourceLine" id="cb14-21" data-line-number="21">  }</a>
+<a class="sourceLine" id="cb14-22" data-line-number="22">}</a></code></pre></div>
+</section>
+<section id="desafio" class="slide level1">
+<h1>Desafio</h1>
+<ol type="1">
+<li class="fragment">Faça um medidor de reflexo. Conecte um LED e um botão ao arduino. Ligue um LED um certo tempo após o início do arduino, e verifique com quanto tempo uma pessoa consegue acionar o botão. Mostre resultado da medida de tempo no monitor serial usando a função <code>Serial.println(intervalo de tempo);</code></li>
+</ol>
+<p>Sugestão: inicie partindo da seguinte configuração inicial:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="dt">unsigned</span> <span class="dt">long</span> tempo = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="dt">void</span> setup() {</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">  Serial.begin(<span class="dv">9600</span>);</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">  delay(<span class="dv">5000</span>);</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">  pinMode(buttonPin, INPUT); pinMode(ledPin, OUTPUT);</a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">  digitalWrite(ledPin, HIGH); <span class="co">// liga o LED após 5 segundos do início do sistema</span></a>
+<a class="sourceLine" id="cb15-8" data-line-number="8">  tempo = millis();</a>
+<a class="sourceLine" id="cb15-9" data-line-number="9">}</a>
+<a class="sourceLine" id="cb15-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="dt">void</span> loop() {</a>
+<a class="sourceLine" id="cb15-12" data-line-number="12">  \* seu código aqui *\</a>
+<a class="sourceLine" id="cb15-13" data-line-number="13">}</a></code></pre></div>
 </section>
     </div>
   </div>

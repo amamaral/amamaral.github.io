@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg:svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   id="svg5448"
+   height="218.25107"
+   width="155.3503"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="circuito_potenciometro.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     id="namedview899"
+     showgrid="true"
+     showguides="false"
+     fit-margin-top="5"
+     fit-margin-left="5"
+     fit-margin-bottom="5"
+     fit-margin-right="5"
+     inkscape:zoom="2.691226"
+     inkscape:cx="139.41649"
+     inkscape:cy="83.156839"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5448">
+    <inkscape:grid
+       type="xygrid"
+       id="grid5426"
+       units="mm"
+       spacingx="31.748031"
+       spacingy="31.748031"
+       originx="28.305842"
+       originy="-1076.063" />
+  </sodipodi:namedview>
+  <svg:defs
+     id="defs5450">
+    <svg:linearGradient
+       id="linearGradient4423">
+      <svg:stop
+         id="stop4425"
+         offset="0"
+         style="stop-color:#ff6600;stop-opacity:1;" />
+      <svg:stop
+         id="stop4427"
+         offset="1"
+         style="stop-color:#ff6600;stop-opacity:0;" />
+    </svg:linearGradient>
+    <svg:marker
+       style="overflow:visible"
+       id="TriangleOutS"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <svg:path
+         transform="scale(0.2)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;marker-start:none"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path3548"
+         inkscape:connector-curvature="0" />
+    </svg:marker>
+    <svg:radialGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-8.40408e-4)"
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       id="radialGradient4429"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4447"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4449"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4451"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4453"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4455"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4457"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4459"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4461"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4463"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4465"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4467"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4469"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4471"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4473"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4475"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4477"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4479"
+       xlink:href="#linearGradient4423" />
+    <svg:radialGradient
+       r="21.449848"
+       fy="314.35028"
+       fx="329.58322"
+       cy="314.35028"
+       cx="329.58322"
+       gradientTransform="translate(0,-8.40408e-4)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4481"
+       xlink:href="#linearGradient4423" />
+    <svg:marker
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker11344"
+       style="overflow:visible">
+      <svg:path
+         id="path11346"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;marker-start:none"
+         transform="scale(0.2)"
+         inkscape:connector-curvature="0" />
+    </svg:marker>
+  </svg:defs>
+  <svg:metadata
+     id="metadata5453">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </svg:metadata>
+  <svg:text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.9999485px;line-height:125%;font-family:'Bitstream Vera Sans';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+     x="67.804626"
+     y="39.212059"
+     id="text6428"
+     transform="scale(0.97385928,1.0268424)"><svg:tspan
+       id="tspan6430"
+       x="67.804626"
+       y="39.212059">+5 <svg:tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:FreeSerif;-inkscape-font-specification:FreeSerif"
+   id="tspan4675">V</svg:tspan></svg:tspan></svg:text>
+  <svg:g
+     id="g2411"
+     transform="rotate(-90,24.25974,144.7787)">
+    <svg:path
+       inkscape:connector-curvature="0"
+       transform="matrix(1.5,0,0,1.99999,-491.236,-52.9068)"
+       d="m 435.82676,100.86611 a 14.173228,10.629921 0 0 1 -14.17323,10.62992 14.173228,10.629921 0 0 1 -14.17322,-10.62992 14.173228,10.629921 0 0 1 14.17322,-10.629919 14.173228,10.629921 0 0 1 14.17323,10.629919 z"
+       id="path6432"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:#000000;stroke-width:2.04573131;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none" />
+    <svg:path
+       inkscape:connector-curvature="0"
+       id="path6436"
+       d="m 112.89761,148.8248 h 7.0866"
+       style="fill:none;stroke:#000000;stroke-width:3.54330873;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <svg:path
+       inkscape:connector-curvature="0"
+       id="path6440"
+       d="M 141.24405,141.73819 V 155.9114"
+       style="fill:none;stroke:#000000;stroke-width:3.54330611;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <svg:path
+       inkscape:connector-curvature="0"
+       id="path6442"
+       d="M 148.33067,148.8248 H 134.15745"
+       style="fill:none;stroke:#000000;stroke-width:3.54330611;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </svg:g>
+  <svg:rect
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#666666;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.54399991;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none"
+     id="rect3251"
+     width="0"
+     height="7.0866141"
+     x="947.47852"
+     y="910.5932"
+     ry="0" />
+  <svg:g
+     id="g2396"
+     transform="translate(-162.63113,-4.1249525)">
+    <svg:path
+       inkscape:connector-curvature="0"
+       id="path3980"
+       d="M 212.1968,201.43114 H 169.67713"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:3.54330707;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <svg:path
+       inkscape:connector-curvature="0"
+       id="path3984"
+       d="m 190.93697,187.2579 v 14.17324"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:3.54330587;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <svg:path
+       inkscape:connector-curvature="0"
+       id="path3994"
+       d="M 205.11019,208.51774 H 176.76373"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:3.54330707;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <svg:path
+       inkscape:connector-curvature="0"
+       id="path3996"
+       d="M 198.02357,215.60436 H 183.85035"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:3.54330707;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </svg:g>
+  <svg:g
+     style="display:inline"
+     id="g4018"
+     transform="matrix(-2,0,0,-2,1899.0169,1479.7281)" />
+  <svg:g
+     id="g5102"
+     transform="rotate(-90,-142.17331,137.16457)">
+    <svg:path
+       inkscape:connector-curvature="0"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -156.39366,307.64372 h 10.62992"
+       id="path5067" />
+    <svg:path
+       inkscape:connector-curvature="0"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -103.24406,307.64372 10.62992,2e-5"
+       id="path5069" />
+    <svg:path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-width:3.54330707;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -103.24406,307.64372 -3.5433,-7.0866 -7.08662,14.17322 -7.08662,-14.17322 -7.08662,14.17322 -7.0866,-14.17322 -7.08662,14.17322 -3.5433,-7.08662"
+       id="path5071" />
+    <svg:path
+       inkscape:connector-curvature="0"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -124.50395,316.50199 -3.5433,5.31496 h 7.08661 z"
+       id="path5088" />
+    <svg:path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -124.50395,320.0453 v 19.48819"
+       id="path5090" />
+  </svg:g>
+  <svg:g
+     id="g6614"
+     transform="matrix(-1,0,0,1,241.11475,2.7077775)">
+    <svg:path
+       inkscape:connector-curvature="0"
+       id="path7873"
+       d="m 124.01582,116.92915 -17.71654,-4e-5"
+       style="fill:none;stroke:#000000;stroke-width:3.54330897;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <svg:path
+       inkscape:connector-curvature="0"
+       transform="matrix(-0.248134,0.248134,0.248134,0.248134,125.585,3.12303)"
+       d="m 283.55872,190.46263 a 15.373666,15.373666 0 0 1 -15.37366,15.37367 15.373666,15.373666 0 0 1 -15.37367,-15.37367 15.373666,15.373666 0 0 1 15.37367,-15.37366 15.373666,15.373666 0 0 1 15.37366,15.37366 z"
+       id="path7875"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:6.0584116;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </svg:g>
+  <svg:rect
+     ry="0"
+     y="893.23492"
+     x="-448.5845"
+     height="7.0866141"
+     width="0"
+     id="rect11662"
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#666666;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.54399991;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none" />
+  <svg:g
+     transform="matrix(-2,0,0,-2,502.95689,1462.3681)"
+     id="g11710"
+     style="display:inline" />
+  <svg:g
+     transform="translate(-936.31611,-205.68693)"
+     style="display:inline"
+     id="g2705" />
+  <svg:rect
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#666666;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.54399991;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none"
+     id="rect2724"
+     width="0"
+     height="7.0866141"
+     x="-87.167137"
+     y="340.47897"
+     ry="0" />
+  <svg:g
+     style="display:inline"
+     id="g2736"
+     transform="matrix(-2,0,0,-2,864.37489,909.61807)" />
+  <svg:path
+     inkscape:connector-curvature="0"
+     style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path5985"
+     d="" />
+  <svg:text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+     x="-709.49939"
+     y="-143.69514"
+     id="text12449"><svg:tspan
+       id="tspan12451"
+       x="-709.49939"
+       y="-143.69514" /></svg:text>
+  <svg:text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+     x="-664.95166"
+     y="-24.901205"
+     id="text12475"><svg:tspan
+       id="tspan12477"
+       x="-664.95166"
+       y="-24.901205" /></svg:text>
+  <head />
+  <svg:path
+     style="fill:none;stroke:#000000;stroke-width:3.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 28.305842,87.888857 V 56.140827"
+     id="path5428"
+     inkscape:connector-curvature="0" />
+  <svg:path
+     style="fill:none;stroke:#000000;stroke-width:3.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 28.305842,151.38492 v 31.74803"
+     id="path5430"
+     inkscape:connector-curvature="0" />
+  <svg:path
+     style="fill:none;stroke:#000000;stroke-width:3.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 60.053873,119.63689 H 117.85611"
+     id="path5432"
+     inkscape:connector-curvature="0" />
+  <svg:text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.33333397px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+     x="150.42322"
+     y="83.713371"
+     id="text5436"><svg:tspan
+       sodipodi:role="line"
+       id="tspan5434"
+       x="150.42322"
+       y="83.713371">Analog</svg:tspan><svg:tspan
+       sodipodi:role="line"
+       x="150.42322"
+       y="110.38004"
+       id="tspan5438">pin A0</svg:tspan></svg:text>
+</svg:svg>
