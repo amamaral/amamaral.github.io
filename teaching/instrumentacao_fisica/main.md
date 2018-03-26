@@ -10,9 +10,10 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 2. [Códigos de resistores](https://www.dropbox.com/s/7tp49dwx68755qn/resistores.pdf?dl=0)
 3. [Códigos de capacitores](https://www.dropbox.com/s/484ycuat1s8cm5d/capacitores.pdf?dl=0)
 4. [Osciloscópio](https://www.dropbox.com/s/27jkhdf64go2dct/osciloscopio.pdf?dl=0)
-4. Softwares gratuitos:
+5. Softwares gratuitos:
     * [Fritzing](http://www.fritzing.org) (Esquemas de circuitos e projeto de PCB, voltado para a plataforma arduino)
     * [Multisim BLUE](http://br.mouser.com/MultiSimBlue/) (Simulador de circuitos analógicos e digitais)
+    * [Circuit Lab](https://www.circuitlab.com/) (Simulador online de circuitos analógicos)
 
 ## Slides das aulas
 
@@ -21,9 +22,9 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 | 01 | Visão geral sobre instrumentação    | [html][s01-html] [pdf][s01-pdf] |                       |
 | 02 | Eletromagnetismo básico             | [html][s02-html] [pdf][s02-pdf] |                       |
 | 03 | Abstração de circuitos eletrônicos  | [html][s03-html] [pdf][s03-pdf] |                       |
-| 04 | Análise de circuitos lineares       | [html][s04-html] [pdf][s04-pdf] | Prática 01            |
+| 04 | Análise de circuitos lineares       | [html][s04-html] [pdf][s04-pdf] | [Prática 01][p01-pdf] |
 | 05 | Arduino e algumas ferramentas CAD   | [html][s05-html] [pdf][s05-pdf] |                       |
-| 06 | Sinais analógicos                   |                                 | Prática 02            |
+| 06 | Sinais analógicos                   | [html][s06-html] [pdf][s06-pdf] | Prática 02            |
 | 07 | Filtros passivos                    |                                 | Prática 03,Prática 04 |
 | 08 | Diodos e circuitos não lineares     |                                 | Prática 05            |
 | 09 | Transistores                        |                                 | Prática 06            |
@@ -45,3 +46,7 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 [s04-pdf]: https://www.dropbox.com/s/ya5svg2ek802l35/capitulo_4.pdf?dl=0
 [s05-html]: instrumentacao_fisica/capitulo_5.html
 [s05-pdf]: https://www.dropbox.com/s/aw6rady7hzqwet8/capitulo_5.pdf?dl=0
+[s06-html]: instrumentacao_fisica/capitulo_6.html
+[s06-pdf]: #
+
+[p01-pdf]: https://www.dropbox.com/s/3pfmhemipys4nqh/pratica_1.pdf?dl=0
