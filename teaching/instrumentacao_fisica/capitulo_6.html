@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="FI577 - Instrumentação eletrônica para a física">
+  <title>Sinais analógicos</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Sinais analógicos</h1>
+  <p class="author">FI577 - Instrumentação eletrônica para a física</p>
+  <p class="date">Leitura recomendada: Horowitz &amp; Hill Cap. 1 e Agarwal Caps. 10 e 13</p>
+</section>
+
+<section id="resposta-transiente-circuito-rc" class="slide level1">
+<h1>Resposta transiente: circuito RC</h1>
+<ul>
+<li class="fragment">Até aqui, os sinais considerados eram constantes no tempo</li>
+<li class="fragment">Agora consideraremos tensões e correntes que variam no tempo</li>
+<li class="fragment">O primeiro circuito é o circuito RC <img data-src="C6\circuito_RC.png" style="width:30.0%" /></li>
+</ul>
+</section>
+<section id="descrição-matemática" class="slide level1">
+<h1>Descrição matemática</h1>
+<p><img data-src="C6\circuito_RC.png" style="width:30.0%" /></p>
+<ul>
+<li class="fragment">Tensão aplicada: <span class="math inline">\(V_S\)</span></li>
+<li class="fragment">Tensão no Capacitor: <span class="math inline">\(q=Cv\)</span></li>
+<li class="fragment">Tensão no resistor: <span class="math inline">\(v_S-v = R i\)</span></li>
+<li class="fragment">Problema: Como encontrar <span class="math inline">\(v\)</span>, se <span class="math inline">\(V_S\)</span> varia no tempo?</li>
+</ul>
+</section>
+<section id="solução-montar-uma-equação-diferencial" class="slide level1">
+<h1>Solução: montar uma equação diferencial</h1>
+<ul>
+<li class="fragment">Temos que <span class="math inline">\(q=Cv\)</span> e <span class="math inline">\(\frac{v_S-v}{R} = i\)</span></li>
+<li class="fragment">Lembrando, <span class="math inline">\(i\)</span> indica quanta carga flui pelo fio por unidade de tempo (C/s), podemos usar que <span class="math inline">\(i=\frac{dq}{dt}\)</span></li>
+<li class="fragment">Daí, <span class="math inline">\(q = Cv\)</span>, ou <span class="math inline">\(\frac{dq}{dt} = i = C\frac{dv}{dt}\)</span></li>
+<li class="fragment">Então, <span class="math inline">\(\frac{v_S-v}{R}=C\frac{dv}{dt}\)</span>, ou passando <span class="math inline">\(v\)</span> para um mesmo lado da eq.,</li>
+<li class="fragment"><span class="math display">\[RC\frac{dv}{dt} + v = V_S\]</span></li>
+<li class="fragment">Agora só precisamos resolver a equação diferencial</li>
+</ul>
+</section>
+<section id="solução-homogênea-v_s0" class="slide level1">
+<h1>Solução homogênea (<span class="math inline">\(V_S=0\)</span>)</h1>
+<p><span class="math display">\[RC\frac{dv}{dt} + v = V_S\]</span></p>
+<ul>
+<li class="fragment">A solução mais simples para a Eq. Dif. ocorre quanto <span class="math inline">\(V_S=0\)</span></li>
+<li class="fragment">Note então que <span class="math inline">\(RC\frac{dv}{dt} + v = 0\)</span>, ou <span class="math inline">\(\frac{dv}{dt} =-\frac{1}{RC}v\)</span>.</li>
+<li class="fragment">Que função é proporcional a sua derivada?</li>
+<li class="fragment"><span class="math inline">\(v\)</span> é uma função tipo exponencial! Podemos verificar de maneira mais rigorosa, caso façamos a integração</li>
+<li class="fragment"><span class="math inline">\(\frac{dv}{v}=-\frac{dt}{RC}\)</span> -&gt; Integrando o tempo de <span class="math inline">\(0\)</span> a <span class="math inline">\(t\)</span>, temos</li>
+<li class="fragment"><span class="math inline">\(\log{\frac{v}{v_0}}=-\frac{t}{RC}\)</span>, ou então <span class="math inline">\(v = v_0 e^{-t/RC}\)</span></li>
+<li class="fragment"><span class="math inline">\(\tau = RC\)</span> é conhecido como o tempo de carga/descarga do capacitor, ou tempo característico do circuito</li>
+<li class="fragment">Notar que <span class="math inline">\(\lim_{t\rightarrow\infty} v =0\)</span>.</li>
+</ul>
+</section>
+<section id="solução-inhomogenea-v_sneq-0" class="slide level1">
+<h1>Solução inhomogenea (<span class="math inline">\(V_S\neq 0\)</span>)</h1>
+<p><span class="math display">\[RC\frac{dv}{dt} + v = V_S\]</span></p>
+<ul>
+<li class="fragment">Supor <span class="math inline">\(v = v_0 e^{-t/RC} + v_1\)</span></li>
+<li class="fragment"><span class="math inline">\(\frac{dv}{dt} = -\frac{v_0}{RC} e^{-t/RC}\)</span></li>
+<li class="fragment"><span class="math inline">\(RC\frac{dv}{dt} + v = -RC\frac{v_0}{RC} e^{-t/RC} + v_0 e^{-t/RC} + v_1 = V_S\)</span></li>
+<li class="fragment"><span class="math inline">\(v_1 = V_S\)</span> é solução</li>
+<li class="fragment"><span class="math inline">\(v = v_0 e^{-t/RC} + v_S\)</span></li>
+</ul>
+</section>
+<section id="o-que-acontece-quando-v_s-liga-abruptamente" class="slide level1">
+<h1>O que acontece quando <span class="math inline">\(V_S\)</span> liga abruptamente?</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><span class="math inline">\(v = v_0 e^{-t/RC} + v_S\)</span> é tal que <span class="math inline">\(v(0)=0\)</span></li>
+<li class="fragment"><span class="math inline">\(0 = v_0 e^0 + v_S\)</span>, ou <span class="math inline">\(v_0 = - v_S\)</span></li>
+<li class="fragment">Finalmente, <span class="math display">\[v = V_S \left(1- e^{-t/RC}\right)\]</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+t = linspace(-2,5,100)
+v = (1-e**(-t))
+v[v<0] = 0
+vs = ones(t.shape)
+vs[t<0] = 0
+
+plot(t,v, label='$v$')
+plot(t,vs, label='$v_S$')
+grid()
+xlabel('t (s)')
+ylabel('v (V)')
+legend(loc=0)
+tight_layout()
+savefig('C6\Carrega_cap.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="C6\Carrega_cap.png" alt="Curva de carga de um capacitor" /></span></p>
+</div>
+</div>
+</section>
+<section id="o-que-acontece-quando-v_s-desliga-abruptamente" class="slide level1">
+<h1>O que acontece quando <span class="math inline">\(V_S\)</span> desliga abruptamente?</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Supondo que a fonte de tensão <span class="math inline">\(v_S\)</span> está ligada a muito tempo, e é desligada em <span class="math inline">\(t=0\)</span>, quem são <span class="math inline">\(v(t=0^-)\)</span> e <span class="math inline">\(v(t\rightarrow\infty)\)</span>?</li>
+<li class="fragment"><span class="math inline">\(v = a e^{-t/RC} + b\)</span> é tal que <span class="math inline">\(v(0)=v_S\)</span> e <span class="math inline">\(v(\infty)=0\)</span></li>
+<li class="fragment"><span class="math inline">\(v_S = a + b\)</span>, e <span class="math inline">\(0 = b\)</span></li>
+<li class="fragment">Finalmente, <span class="math display">\[v = V_S \left(e^{-t/RC}\right)\]</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+t = linspace(-2,5,100)
+v = (e**(-t))
+v[t<0] = 1
+vs = zeros(t.shape)
+vs[t<0] = 1
+
+plot(t,v, label='$v$')
+plot(t,vs, label='$v_S$')
+grid()
+xlabel('t (s)')
+ylabel('v (V)')
+legend(loc=0)
+tight_layout()
+savefig('C6\Descarrega_cap.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="C6\Descarrega_cap.png" /></span></p>
+</div>
+</div>
+</section>
+<section id="análise-intuitiva" class="slide level1">
+<h1>Análise intuitiva</h1>
+<ul>
+<li class="fragment">Podemos analisar o que ocorre com o circuito RC em tempos curtos e longos.</li>
+<li class="fragment"><span class="math inline">\(v = a e^{-t/RC} + b\)</span></li>
+<li class="fragment"><span class="math inline">\(t \leq 0\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(v_0 = a + b\)</span></li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(t \gg RC\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(v_\infty = b\)</span></li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(v = v_0 e^{-t/RC} + v_\infty (1-e^{-t/RC})\)</span></li>
+</ul>
+</section>
+<section id="componentes-passivos-sob-sinais-senoidais" class="slide level1">
+<h1>Componentes passivos sob sinais senoidais</h1>
+<ul>
+<li class="fragment">Fourier: decomposição em senos e cossenos de sinais periódicos e localizados</li>
+<li class="fragment">Vamos considerar inicialmente <span class="math display">\[ V=A \sin (2\pi f t), \]</span>ou <span class="math display">\[ V=A \sin (\omega t),\]</span> onde <span class="math inline">\(\omega=2\pi f\)</span> é a frequência angular do sinal considerado.</li>
+<li class="fragment">Tipicamente em eletrônica, <span class="math inline">\(1\text{ Hz}&lt;f&lt;100\text{ MHz}\)</span></li>
+<li class="fragment">Amplitude do sinal <span class="math inline">\(A\)</span></li>
+</ul>
+</section>
+<section id="algumas-notações-para-a-amplitude" class="slide level1">
+<h1>Algumas notações para a amplitude</h1>
+<ul>
+<li class="fragment">Amplitude <span class="math inline">\(A\)</span> em <span class="math inline">\(V=A \sin (\omega t)\)</span></li>
+<li class="fragment">Amplitude pico-a-pico: <span class="math inline">\(V_{pp}=2A\)</span></li>
+<li class="fragment">Amplitude RMS (<em>Root Mean Square</em>)
+<ul>
+<li class="fragment"><span class="math inline">\(V_{rms} = \sqrt{\frac{1}{T_2-T_1}\int_{T_1}^{T_2} V(t) dt}\)</span></li>
+<li class="fragment">Para um sinal senoidal, <span class="math inline">\(V_{rms}=\frac{A}{\sqrt{2}}\)</span></li>
+<li class="fragment">Depende fortemente das características do sinal</li>
+</ul></li>
+<li class="fragment">Definições análogas existem para outras quantidades. Ex.: potência <span class="math inline">\(P\)</span></li>
+<li class="fragment">Qual o valor aproximado de <span class="math inline">\(x\)</span> em <span class="math inline">\(P_{pp}=x P_{rms}\)</span>?</li>
+<li class="fragment"><span class="math inline">\(x\approx 2,83\)</span></li>
+</ul>
+</section>
+<section id="decibéis" class="slide level1">
+<h1>Decibéis</h1>
+<ul>
+<li class="fragment">Para comparar sinais com amplitudes muito distintas é interessante usar uma escala logarítmica</li>
+<li class="fragment">Sejam dois sinais de potências <span class="math inline">\(P_1\)</span> e <span class="math inline">\(P_2\)</span>, <span class="math display">\[\text{dB} = 10 \log \frac{P_2}{P_1}\]</span></li>
+<li class="fragment">Sejam dois sinais de amplitudes <span class="math inline">\(A_1\)</span> e <span class="math inline">\(A_2\)</span>, <span class="math display">\[\text{dB} = 20 \log \frac{A_2}{A_1}\]</span> (<span class="math inline">\(P_i\propto A_i^2\)</span>)</li>
+<li class="fragment">O dB também é usado para expressar um valor de sinal absoluto
+<ul>
+<li class="fragment">0 dBV (1V rms)</li>
+<li class="fragment">0 dBm (1 mW)</li>
+</ul></li>
+</ul>
+</section>
+<section id="resposta-em-frequência-aproximada" class="slide level1">
+<h1>Resposta em frequência aproximada</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Havíamos visto que para um capacitor, <span class="math inline">\(i=C \frac{dv}{dt}\)</span>.</li>
+<li class="fragment">O que ocorre sob uma tensão <span class="math inline">\(v=A \sin (\omega t)\)</span> senoidal?</li>
+<li class="fragment"><span class="math inline">\(i=C\omega A \cos (\omega t)\)</span></li>
+<li class="fragment">A menos de uma fase constante (<span class="math inline">\(90^\circ\)</span>), temos</li>
+<li class="fragment"><span class="math inline">\(i=\frac{v}{1/\omega C}\)</span></li>
+<li class="fragment">“Resistência” dependente da frequência <span class="math inline">\(R=1/\omega C\)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C6\circuito_RC_Vac.png" /></p>
+</div>
+</div>
+</section>
+<section id="exemplo" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Filtro RC passa baixa (aproximado)</li>
+<li class="fragment">Considerar o capacitor como um resistor de resistência <span class="math inline">\(R=1/\omega C\)</span>. <span class="math inline">\(V_{out}=\)</span>?</li>
+<li class="fragment"><span class="math inline">\(V_{out} = V_{in}/(1+\omega R C)\)</span></li>
+<li class="fragment">A tensão na saída é pequena se a frequência é grande (<span class="math inline">\(\omega\gg RC\)</span>)</li>
+<li class="fragment">Como fazer um filtro que permite a passagem de frequências altas usando resistores e capacitores?</li>
+<li class="fragment">R.: invertendo o capacitor e o resistor</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+f = logspace(-3,3,100)
+R = 1/(1+f)
+
+semilogx(f,R)
+grid()
+xlabel('$f/f_0$')
+ylabel('$v_{out}/v_{in}$')
+tight_layout()
+savefig('C6\RC_freq_response.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="C6\RC_freq_response.png" /></span> <img data-src="C6\RC_passa_baixa.png" /></p>
+</div>
+</div>
+</section>
+<section id="resposta-em-frequência-completa" class="slide level1">
+<h1>Resposta em frequência completa</h1>
+<ul>
+<li class="fragment">A resposta completa de um dado circuito a um dado sinal senoidal contém variações de amplitude e fase (ex.: <span class="math inline">\(\cos\omega t = \sin(\omega t - \pi/2)\)</span>)</li>
+<li class="fragment">Problema mais simples se usamos números complexos</li>
+<li class="fragment"><span class="math inline">\(v=A \cos (\omega t + \phi) = \mathbb{R}\left\{A e^{j \omega t+\phi}\right\}\)</span></li>
+<li class="fragment">Fazemos as operações no domínio dos complexos, e depois consideramos a parte real apenas</li>
+</ul>
+</section>
+<section id="exemplo-1" class="slide level1">
+<h1>Exemplo</h1>
+<ul>
+<li class="fragment">Resposta de um capacitor a uma tensão AC</li>
+<li class="fragment"><span class="math inline">\(I=C \frac{dv}{dt}\)</span>, com <span class="math inline">\(v=Ae^{j\omega t}\)</span></li>
+<li class="fragment"><span class="math inline">\(i=j\omega C Ae^{j\omega t} = j\omega C v\)</span></li>
+<li class="fragment">Tomando a parte real, <span class="math inline">\(\mathbb{R}\{v\} = A \cos\omega t\)</span>, e <span class="math inline">\(\mathbb{R}\{i\} = \omega C A \sin\omega t\)</span></li>
+<li class="fragment">Podemos ver ainda a lei de Ohm generalizada, <span class="math inline">\(v = \frac{1}{j \omega C} i = Z i\)</span></li>
+<li class="fragment">$Z=(j C)^{-1} $ Impedância do capacitor</li>
+</ul>
+</section>
+<section id="impedância" class="slide level1">
+<h1>Impedância</h1>
+<ul>
+<li class="fragment">A parte imaginária da impedância é denominada de <strong>reatância</strong>. Capacitores e indutores são elementos reativos.</li>
+<li class="fragment">Para um indutor de indutância <span class="math inline">\(L\)</span>, a tensão <span class="math inline">\(V\)</span> e a corrente <span class="math inline">\(I\)</span> entre seus terminais estão relacionadas por <span class="math inline">\(V=L\frac{dI}{dt}\)</span>.</li>
+<li class="fragment">Fazendo a mesma análise feita para o capacitor, teremos que <span class="math display">\[Z_L=j\omega L\]</span></li>
+<li class="fragment">Para cada elemento do circuito, temos <span class="math display">\[V = Z I\]</span></li>
+<li class="fragment">Como considerar impedâncias em série e em paralelo?
+<ul>
+<li class="fragment">Usar as regras para associação de resistores!</li>
+</ul></li>
+</ul>
+</section>
+<section id="exemplo-2" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Filtro RC passa baixa (cálculo completo)</li>
+<li class="fragment">Considerar um capacitor de impedância <span class="math inline">\(Z=-j/\omega C\)</span>. <span class="math inline">\(v_{out}=\)</span>?</li>
+<li class="fragment"><span class="math inline">\(v_{out} = \frac{-j}{\omega R C-j} v_{in}\)</span></li>
+<li class="fragment"><span class="math inline">\(|v_{out}|=\frac{1}{\sqrt{1+ (\omega R C)^2}} |v_{in}|\)</span></li>
+<li class="fragment">Atenuação de 3 dB <span class="math inline">\([\log(|v_{out}|/|v_{in}|)=\log(1/2)=-3\,\text{dB}]\)</span> em <span class="math display">\[f_{3dB}=\frac{1}{2\pi RC}\]</span></li>
+<li class="fragment">Qual a fase de <span class="math inline">\(v_{out}\)</span> em relação a <span class="math inline">\(v_{in}\)</span>?</li>
+<li class="fragment"><span class="math inline">\(\phi = \tan^{-1}(-RC\omega) = -\tan^{-1}\left(\frac{f}{f_{3dB}}\right)\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+f = logspace(-3,3,100)
+R = 1/(1+f)
+R2 = 1/sqrt(1+f**2)
+
+semilogx(f,R, label='aprox.')
+semilogx(f,R2, label='exato')
+grid()
+xlabel('$f/f_0$')
+ylabel('$|v_{out}|/|v_{in}|$')
+legend(loc=0)
+tight_layout()
+savefig('C6\RC_freq_response_2.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="C6\RC_freq_response_2.png" /></span> <img data-src="C6\RC_passa_baixa.png" /></p>
+</div>
+</div>
+</section>
+<section id="exemplo-3" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Filtro RC passa alta</li>
+<li class="fragment">Considerar um capacitor de impedância <span class="math inline">\(Z=-j/\omega C\)</span>. <span class="math inline">\(v_{out}=\)</span>?</li>
+<li class="fragment"><span class="math inline">\(v_{out} = \frac{R}{R -j (\omega C)^-1} v_{in}\)</span></li>
+<li class="fragment">Função de transferência: <span class="math inline">\(T = \frac{v_{out}}{v_{in}} = \left|T\right|e^{j\phi}\)</span></li>
+<li class="fragment"><span class="math inline">\(|T|=\frac{\omega R C}{\sqrt{1+ (\omega R C)^2}}\)</span></li>
+<li class="fragment"><span class="math inline">\(\phi = \tan^{-1}(\frac{1}{RC\omega}) = -\tan^{-1}\left(\frac{f_{3dB}}{f}\right)\)</span></li>
+<li class="fragment">Ponto de 3 dB <span class="math inline">\([\log(|T|)=\log(1/2)=-3\,\text{dB}]\)</span> em <span class="math inline">\(f_{3dB}=\frac{1}{2\pi RC}\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+f = logspace(-3,3,100)
+T = f/sqrt(1+f**2)
+phi = arctan(1/f)
+
+subplot(211)
+semilogx(f, 10*log(T))
+ylabel('$|T(f)|$ (dB)')
+yticks(-arange(0,80,20))
+grid(which='both')
+
+subplot(212)
+semilogx(f, phi*180/pi)
+ylabel('$\phi$ ($^\circ$)')
+xlabel('$f/f_0$')
+yticks([0,45,90])
+grid(which='both')
+
+tight_layout(h_pad=0.0)
+savefig('C6\RC_freq_response_3.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="C6\RC_freq_response_3.png" /></span> <img data-src="C6\RC_passa_alta.png" /></p>
+</div>
+</div>
+</section>
+<section id="função-de-transferência" class="slide level1">
+<h1>Função de transferência</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Suponha um circuito de 4 terminais, conforme a figura ao lado</li>
+<li class="fragment">Suponha ainda que <span class="math inline">\(T\)</span> contém apenas elementos lineares (resistores, capacitores e indutores)</li>
+<li class="fragment">Pode-se escrever em geral que <span class="math inline">\(V_O(\omega) = T(\omega) V_I(\omega)\)</span>, ou <span class="math display">\[T(\omega) = \frac{V_O(\omega)}{ V_I(\omega)}\]</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="C6\func_transf.svg" style="width:100.0%" /></p>
+</div>
+</div>
+<ul>
+<li class="fragment"><span class="math inline">\(T\)</span> indica como a amplitude e a fase do sinal variam em função da frequência, para todas as frequências</li>
+<li class="fragment">Conhecendo <span class="math inline">\(T\)</span> sabemos o comportamento geral do circuito</li>
+<li class="fragment">Como medir <span class="math inline">\(T\)</span>? <span class="fragment">Uma forma possível é introduzir em <span class="math inline">\(V_O\)</span> um sinal senoidal de frequência conhecida, e medir a amplitude e fase de <span class="math inline">\(V_I\)</span></span></li>
+</ul>
+</section>
+<section id="thévenin-generalizado" class="slide level1">
+<h1>Thévenin generalizado</h1>
+<ul>
+<li class="fragment">Uma consequência importante é o teorema de Thévenin generalizado.</li>
+<li class="fragment">Uma fonte de sinal que contém apenas elementos lineares pode ser representado por uma fonte de tensão <span class="math inline">\(V\)</span> (que pode variar no tempo) em série com uma impedância <span class="math inline">\(Z\)</span></li>
+<li class="fragment"><img data-src="C6\thevenin_generalizado.svg" /></li>
+</ul>
+</section>
+<section id="breve-referência" class="slide level1">
+<h1>Breve referência</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Lei elementar</th>
+<th style="text-align: center;">Impedância (<span class="math inline">\(Z\)</span>)</th>
+<th style="text-align: center;">Admitância (<span class="math inline">\(Y=1/Z\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Resistor</td>
+<td style="text-align: center;"><span class="math inline">\(V = R I\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Z_R=R\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Y_R=1/R\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Capacitor</td>
+<td style="text-align: center;"><span class="math inline">\(C\frac{dV}{dt} = I\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Z_C=-j/(\omega C)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Y_C=j \omega C\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Indutor</td>
+<td style="text-align: center;"><span class="math inline">\(V=L\frac{dI}{dt}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Z_L=j \omega L\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Y_L=-j/(\omega L)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Onde assume-se que as tensões e correntes possuem uma dependência temporal <span class="math inline">\(V=Ae^{j\omega t}\)</span></p>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

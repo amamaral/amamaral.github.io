@@ -24,7 +24,7 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 | 03 | Abstração de circuitos eletrônicos  | [html][s03-html] [pdf][s03-pdf] |                       |
 | 04 | Análise de circuitos lineares       | [html][s04-html] [pdf][s04-pdf] | [Prática 01][p01-pdf] |
 | 05 | Arduino e algumas ferramentas CAD   | [html][s05-html] [pdf][s05-pdf] |                       |
-| 06 | Sinais analógicos                   | [html][s06-html] [pdf][s06-pdf] | Prática 02            |
+| 06 | Sinais analógicos                   | [html][s06-html] [pdf][s06-pdf] | [Prática 02][p02-pdf] |
 | 07 | Filtros passivos                    |                                 | Prática 03,Prática 04 |
 | 08 | Diodos e circuitos não lineares     |                                 | Prática 05            |
 | 09 | Transistores                        |                                 | Prática 06            |
@@ -50,3 +50,4 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 [s06-pdf]: #
 
 [p01-pdf]: https://www.dropbox.com/s/3pfmhemipys4nqh/pratica_1.pdf?dl=0
+[p02-pdf]: https://www.dropbox.com/s/3gx5mcg7ue63gy4/pratica_2.pdf?dl=0
