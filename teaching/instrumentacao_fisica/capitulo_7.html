@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="FI577 - Instrumentação eletrônica para a física">
+  <title>Filtros passivos</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Filtros passivos</h1>
+  <p class="author">FI577 - Instrumentação eletrônica para a física</p>
+  <p class="date">Leituras recomendadas: Horowitz &amp; Hill Cap. 1 e Agarwal Caps. 10 e 13</p>
+</section>
+
+<section id="sinais-ac-e-impedância" class="slide level1">
+<h1>Sinais AC e impedância</h1>
+<ul>
+<li class="fragment">Representamos a tensão em termos de números complexos</li>
+<li class="fragment"><span class="math inline">\(v=A \cos (\omega t + \phi) = \mathbb{R}\left\{A e^{j \omega t+\phi}\right\}\)</span></li>
+<li class="fragment">Fazemos as operações no domínio dos complexos, e depois consideramos a parte real apenas</li>
+<li class="fragment">Sabendo a relação entre <span class="math inline">\(v\)</span> e <span class="math inline">\(i\)</span> para cada elemento linear (resistor, capacitor e indutor), podemos encontrar uma relação tipo <span class="math inline">\(v=Zi\)</span>, onde <span class="math inline">\(Z\)</span> é chamada de <strong>impedância</strong></li>
+</ul>
+</section>
+<section id="exemplo" class="slide level1">
+<h1>Exemplo</h1>
+<ul>
+<li class="fragment">Resposta de um capacitor a uma tensão AC</li>
+<li class="fragment"><span class="math inline">\(I=C \frac{dv}{dt}\)</span>, com <span class="math inline">\(v=Ae^{j\omega t}\)</span></li>
+<li class="fragment"><span class="math inline">\(i=j\omega C Ae^{j\omega t} = j\omega C v\)</span></li>
+<li class="fragment"><span class="math inline">\(v = \frac{1}{j \omega C} i = Z i\)</span></li>
+<li class="fragment">$Z=(j C)^{-1} $ Impedância do capacitor</li>
+</ul>
+</section>
+<section id="breve-referência" class="slide level1">
+<h1>Breve referência</h1>
+<p>último slide do capítulo 6</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Lei elementar</th>
+<th style="text-align: center;">Impedância (<span class="math inline">\(Z\)</span>)</th>
+<th style="text-align: center;">Admitância (<span class="math inline">\(Y=1/Z\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Resistor</td>
+<td style="text-align: center;"><span class="math inline">\(V = R I\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Z_R=R\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Y_R=1/R\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Capacitor</td>
+<td style="text-align: center;"><span class="math inline">\(C\frac{dV}{dt} = I\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Z_C=-j/(\omega C)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Y_C=j \omega C\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Indutor</td>
+<td style="text-align: center;"><span class="math inline">\(V=L\frac{dI}{dt}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Z_L=j \omega L\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Y_L=-j/(\omega L)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Onde assume-se que as tensões e correntes possuem uma dependência temporal <span class="math inline">\(V=Ae^{j\omega t}\)</span></p>
+</section>
+<section id="impedância-efetiva-e-função-de-transferência" class="slide level1">
+<h1>Impedância efetiva e função de transferência</h1>
+<ul>
+<li class="fragment">Para cada elemento do circuito, temos <span class="math display">\[V = Z I\]</span></li>
+<li class="fragment">Como considerar impedâncias em série e em paralelo?
+<ul>
+<li class="fragment">Usar as regras para associação de resistores!</li>
+</ul></li>
+<li class="fragment">Notar que em geral, <span class="math inline">\(Z=Z(\omega)\)</span> é uma função da frequência.</li>
+<li class="fragment">Anteriormente encontramos relações entre as tensões em diferentes pontos num circuito</li>
+<li class="fragment">Ex.: Divisor de tensão: <span class="math inline">\(V_{out} = \frac{R_2}{R_1+R_2} V_{in} = T V_{in}\)</span></li>
+<li class="fragment"><span class="math inline">\(T \rightarrow\)</span> função de transferência.</li>
+<li class="fragment">Em circuitos contendo capacitores e indutores, <span class="math inline">\(T=T(\omega)\)</span></li>
+</ul>
+</section>
+<section id="exemplo-1" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Filtro RC passa baixa</li>
+<li class="fragment">Impedâncias <span class="math inline">\(Z_C=-j/\omega C\)</span> e <span class="math inline">\(Z_R=R\)</span>. <span class="math inline">\(v_{out}=\)</span>?</li>
+<li class="fragment"><span class="math inline">\(v_{out} = \frac{-j}{\omega R C-j} v_{in}\)</span></li>
+<li class="fragment"><span class="math inline">\(T = \frac{-j}{\omega R C-j} = |T|e^{j\phi}\)</span></li>
+<li class="fragment"><span class="math inline">\(|T|=\frac{1}{\sqrt{1+(\omega R C)^2}}\)</span></li>
+<li class="fragment"><span class="math inline">\(\phi = \tan^{-1}(-RC\omega) = -\tan^{-1}\left(\frac{f}{f_{3dB}}\right)\)</span></li>
+<li class="fragment">Em <span class="math inline">\(f_{3dB}=\frac{1}{2\pi RC}\)</span>, <span class="math inline">\(|T|=1/\sqrt{2}\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+f = logspace(-3,3,100)
+T = 1/sqrt(1+f**2)
+phi = -arctan(f)
+
+subplot(211)
+semilogx(f, T)
+ylabel('$|T(f)|$')
+#yticks(-arange(0,80,20))
+grid(which='both')
+
+subplot(212)
+semilogx(f, phi*180/pi)
+ylabel('$\phi$ ($^\circ$)')
+xlabel('$f/f_0$')
+yticks([0,-45,-90])
+grid(which='both')
+
+tight_layout(h_pad=0.0)
+savefig('C7\RC_Transfer_function.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="C7\RC_Transfer_function.png" /></span></p>
+</div>
+</div>
+</section>
+<section id="exemplo-2" class="slide level1">
+<h1>Exemplo</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Filtro RL passa alta</li>
+<li class="fragment">Impedância do indutor <span class="math inline">\(Z=j\omega L\)</span>. Como devemos conectar <span class="math inline">\(R\)</span>, <span class="math inline">\(L\)</span> aos terminais?</li>
+<li class="fragment"><span class="math inline">\(T = \frac{j L \omega}{R +j L \omega} v_{in}\)</span></li>
+<li class="fragment"><span class="math inline">\(|T|=\frac{\omega L/R}{\sqrt{1+ (\omega L/R)^2}}\)</span></li>
+<li class="fragment">Ponto de 3 dB? <span class="fragment">em <span class="math inline">\(f_{3dB}=\frac{1}{2\pi}\frac{R}{L}\)</span></span></li>
+<li class="fragment"><span class="math inline">\(\phi = \tan^{-1}(R/L\omega)\)</span></li>
+<li class="fragment">Podemos também obter um passa-baixa invertendo <span class="math inline">\(R\)</span> e <span class="math inline">\(L\)</span> no circuito</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+f = logspace(-3,3,100)
+T = f/sqrt(1+f**2)
+phi = arctan(1/f)
+
+subplot(211)
+semilogx(f, T)
+ylabel('$|T(f)|$')
+#yticks(-arange(0,80,20))
+grid(which='both')
+
+subplot(212)
+semilogx(f, phi*180/pi)
+ylabel('$\phi$ ($^\circ$)')
+xlabel('$f/f_0$')
+yticks([0,45,90])
+grid(which='both')
+
+tight_layout(h_pad=0.0)
+savefig('C7\RL_high_pass.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="C7\RL_high_pass.png" /></span> <img data-src="C6\func_transf.svg" style="width:100.0%" /></p>
+</div>
+</div>
+</section>
+<section id="circuitos-lc" class="slide level1">
+<h1>Circuitos <span class="math inline">\(LC\)</span></h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Sabemos os efeitos das combinações entre resistores e vimos <span class="math inline">\(RC\)</span> e <span class="math inline">\(RL\)</span> em série.</li>
+<li class="fragment">Formam filtros passa-baixa e passa-alta</li>
+<li class="fragment">E um circuito sem dissipação, contendo apenas reatância (<span class="math inline">\(Z\)</span> imaginário)?</li>
+<li class="fragment">Ex.: <span class="math inline">\(L\)</span> e <span class="math inline">\(C\)</span> em paralelo (<span class="math inline">\(Z_{C} = -j/\omega C\)</span>, <span class="math inline">\(Z_{L} = j \omega L\)</span>)</li>
+<li class="fragment"><span class="math inline">\(Z_{LC,\text{paralelo}}=\)</span> <span class="fragment"><span class="math inline">\(\frac{Z_CZ_L}{Z_C+Z_L} = \frac{L/C}{j(\omega L - 1/\omega C)} = \frac{-j \omega L}{\omega^2LC-1}\)</span></span></li>
+<li class="fragment">Qual a “cara” de <span class="math inline">\(Z_{LC}\)</span> em função da frequência?</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+f = logspace(-3,3,100)
+Z = f/abs(f**2-1)
+
+semilogx(f, Z)
+ylabel('$|Z|$')
+yticks(arange(0,8,2),[])
+xlabel(r'$f/f_0$')
+#yticks(-arange(0,80,20))
+grid(which='both')
+
+tight_layout(h_pad=0.0)
+savefig('C7\LC_parallel.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="C7\LC_parallel.png" /></span></p>
+</div>
+</div>
+<ul>
+<li class="fragment">Se montarmos um divisor de tensão com um resistor em série com LC, o que esperamos para a tensão dividida em <span class="math inline">\(f=f_0=(LC)^{-1/2}\)</span>?</li>
+<li class="fragment">E <span class="math inline">\(f\)</span> longe de <span class="math inline">\(f_0\)</span>?</li>
+</ul>
+</section>
+<section id="ressonador-rlc" class="slide level1">
+<h1>Ressonador RLC</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Colocando um resistor em série com o LC anterior, temos</li>
+<li class="fragment"><span class="math inline">\(T(\omega)=\frac{\frac{-j \omega L}{\omega^2LC-1}}{R-j\frac{ \omega L}{\omega^2LC-1}}=\frac{-j \omega L/R}{(\omega^2LC-1)-j\omega L/R}\)</span></li>
+<li class="fragment">Definindo <span class="math inline">\(\omega^2LC=(\frac{\omega}{\omega_0})^2\)</span>, <span class="math display">\[\omega_0=\frac{1}{\sqrt{LC}}\]</span></li>
+<li class="fragment"><span class="math inline">\(\omega_0\)</span>: Frequência de ressonância (onde <span class="math inline">\(Z_{LC}\rightarrow\infty\)</span>)</li>
+<li class="fragment">Seja <span class="math inline">\(\omega L/R = \frac{\omega}{\omega_0} \omega_0 L/R = \frac{\omega}{\omega_0} Q\)</span>, então <span class="math display">\[Q=\frac{1}{R}\sqrt{\frac{L}{C}}\]</span></li>
+<li class="fragment"><span class="math inline">\(Q\)</span>: Fator de qualidade (indica a largura da ressonância)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+f = linspace(0,3,300)
+
+for Q in [1, 5, 10]:
+  T = f/Q/sqrt((f**2-1)**2+(f/Q)**2)
+  plot(f, T, label='Q='+str(Q))
+
+ylabel('$|T(f)|$')
+xlabel(r'$f/f_0$')
+legend(loc=0)
+grid(which='both')
+
+tight_layout(h_pad=0.0)
+savefig('C7\RLC_ressonance.png')
+~~~
+-->
+<p><img data-src="C7\RLC_parallel.png" /> <span class="fragment"><img data-src="C7\RLC_ressonance.png" /></span></p>
+</div>
+</div>
+</section>
+<section id="ressonador-rlc-1" class="slide level1">
+<h1>Ressonador RLC</h1>
+<ul>
+<li class="fragment">Qual é a variação da fase?</li>
+<li class="fragment"><span class="math inline">\(\phi = \tan^{-1}\left(Q \frac{1-\omega^2/\omega_0^2}{\omega/\omega_0}\right)\)</span> <!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+f = linspace(0,3,300)
+
+for Q in [1, 5, 10]:
+  phi = arctan(Q*(1-f**2)/f)
+  plot(f, phi*180/pi, label='Q='+str(Q))
+
+ylabel('$\phi$ ($^\circ$)')
+yticks([-90,-45,0,45,90])
+xlabel(r'$f/f_0$')
+legend(loc=0)
+grid(which='both')
+
+tight_layout(h_pad=0.0)
+savefig('C7\RLC_fase.png')
+~~~
+--></li>
+<li class="fragment"><img data-src="C7\RLC_fase.png" /></li>
+<li class="fragment">Na ressonância (<span class="math inline">\(f=f_0\)</span>), a saída está em fase com a entrada (sinais “caminham” juntos)</li>
+<li class="fragment">Ou seja, apenas um sinal ressonante passa por este circuito (<span class="math inline">\(Q\gg1\)</span>). Além disto, quando este sinal passa pelo circuito ele mantém sua fase original.</li>
+<li class="fragment">Filtro passa-banda, com uma largura determinada pelo fator de qualidade <span class="math inline">\(Q\)</span></li>
+</ul>
+</section>
+<section id="lc-em-série" class="slide level1">
+<h1><span class="math inline">\(LC\)</span> em série</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><span class="math inline">\(Z_{C} = -j/\omega C\)</span>, <span class="math inline">\(Z_{L} = j \omega L\)</span></li>
+<li class="fragment"><span class="math inline">\(Z_{LC,\text{série}}=\)</span> <span class="fragment"><span class="math inline">\(Z_C+Z_L=j \left(\omega L-\frac{1}{\omega C}\right)\)</span></span></li>
+<li class="fragment">Qual a “cara” de <span class="math inline">\(Z_{LC}\)</span> em função da frequência?</li>
+<li class="fragment"><span class="math inline">\(Z_{LC,\text{série}}(\omega\rightarrow 0)=\infty\)</span> e <span class="math inline">\(Z_{LC,\text{série}}(\omega\rightarrow \infty)=\infty\)</span></li>
+<li class="fragment">Se montarmos um divisor de tensão com um resistor em série com LC, o que esperamos para a tensão dividida em <span class="math inline">\(f=f_0=(LC)^{-1/2}\)</span>?</li>
+<li class="fragment">E <span class="math inline">\(f\)</span> longe de <span class="math inline">\(f_0\)</span>?</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+f = logspace(-3,3,100)
+Z = abs(f**2-1)/f
+
+semilogx(f, Z)
+ylabel('$|T(f)|$')
+xlabel(r'$f/f_0$')
+yticks(arange(0,1000,250),[])
+grid(which='both')
+
+tight_layout(h_pad=0.0)
+savefig('C7\LC_series.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="C7\LC_series.png" /></span></p>
+</div>
+</div>
+</section>
+<section id="rlc-em-série" class="slide level1">
+<h1>RLC em série</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Colocando um resistor em série com o LC anterior, temos</li>
+<li class="fragment"><span class="math inline">\(T(\omega)=\frac{\frac{j}{\omega C}(\omega^2LC-1)}{R+\frac{j}{\omega C}(\omega^2LC-1)}= \frac{j(\omega^2LC-1)}{RC\omega+j(\omega^2LC-1)}\)</span></li>
+<li class="fragment">Usando <span class="math inline">\(\omega_0=\frac{1}{\sqrt{LC}}\)</span>, e <span class="math inline">\(Q=\frac{1}{R}\sqrt{\frac{L}{C}}\)</span>,</li>
+<li class="fragment"><span class="math inline">\(T = \frac{j((\frac{\omega}{\omega_0})^2-1)}{Q\frac{\omega}{\omega_0}+j((\frac{\omega}{\omega_0})^2-1)}\)</span></li>
+<li class="fragment">Este filtro impede a passagem de sinais na frequência de ressonância <span class="math inline">\(\omega_0\)</span> (Filtro Notch)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+f = linspace(0,3,300)
+
+for Q in [1, 5, 10]:
+  T = abs(f**2-1)/sqrt((f**2-1)**2+(f/Q)**2)
+  plot(f, T, label='Q='+str(Q))
+
+ylabel('$|T(f)|$')
+xlabel(r'$f/f_0$')
+legend(loc=0)
+grid(which='both')
+
+tight_layout(h_pad=0.0)
+savefig('C7\RLC_notch_ressonance.png')
+~~~
+-->
+<p><img data-src="C7\RLC_series.png" /> <span class="fragment"><img data-src="C7\RLC_notch_ressonance.png" /></span></p>
+</div>
+</div>
+</section>
+<section id="cálculo-analógico-com-um-circuito-rc" class="slide level1">
+<h1>Cálculo analógico com um circuito RC</h1>
+<ul>
+<li class="fragment">Suponha um sinal periódico: <span class="math inline">\(v=Ae^{j\omega t}\)</span></li>
+<li class="fragment"><span class="math inline">\(\frac{dv}{dt} = j\omega v\)</span>, enquanto <span class="math inline">\(\int v dt = \frac{v}{j\omega} + C\)</span></li>
+<li class="fragment">Seja <span class="math inline">\(T = j\omega A\)</span>, onde <span class="math inline">\(A=\text{cte}\)</span>
+<ul>
+<li class="fragment">Então <span class="math inline">\(v_{out}=j\omega A v_{in} = A\frac{dv_{in}}{dt}\)</span></li>
+<li class="fragment"><span class="math inline">\(v_{out}\)</span> é a derivada de <span class="math inline">\(v_{in}\)</span></li>
+</ul></li>
+<li class="fragment">Seja <span class="math inline">\(T = A/j\omega\)</span>, onde <span class="math inline">\(A=\text{cte}\)</span>
+<ul>
+<li class="fragment">Então, <span class="math inline">\(v_{out}= A v_{in}/j\omega = A \int v dt\)</span></li>
+</ul></li>
+<li class="fragment">Podemos calcular usando elementos lineares!
+<ul>
+<li class="fragment">Basta montar um circuito com a função de transferência correta</li>
+<li class="fragment">Exemplos na prática 3</li>
+</ul></li>
+</ul>
+</section>
+<section id="anúncio" class="slide level1">
+<h1>Anúncio</h1>
+</section>
+<section id="por-que-usar-filtros" class="slide level1">
+<h1>Por que usar filtros</h1>
+<ul>
+<li class="fragment">Processamento do sinal de interesse, como eliminação de <strong>ruído</strong></li>
+<li class="fragment">E o que é ruído?
+<ul>
+<li class="fragment">Tensões e/ou correntes que estão presentes no sistema mas não carregam informação de interesse</li>
+<li class="fragment">Consultar Horowitz &amp; Hill Cap. 8, ou Application Note (A.N.) <a href="http://www.thinksrs.com/downloads/PDFs/ApplicationNotes/SignalEnhancement.pdf">SRS - Signal Enhancement</a>.</li>
+<li class="fragment">Ruído Johnson (excitações térmicas) em um resistor <span class="math inline">\(R\)</span>: <span class="math display">\[v_{RMS} = \sqrt{4 k T R \Delta f}\]</span></li>
+<li class="fragment">Shot-noise (Flutuações na corrente devido a discretização da carga)</li>
+<li class="fragment">Ruído 1/f (Flicker), causado por uma infinidade de razões…</li>
+</ul></li>
+</ul>
+</section>
+<section id="ex.-ruído-johnson-nyquist" class="slide level1">
+<h1>Ex.: ruído Johnson-Nyquist</h1>
+<p><em>H. Nyquist</em>, Thermal agitation of electric charge in conductors, Phys. Rev. <strong>32</strong>, 110 (1928).</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Como compreender o ruído Johnson, devido às excitações térmicas dos portadores de carga num resistor?</li>
+<li class="fragment">Energia térmica de um portador de carga em 1D a temperatura <span class="math inline">\(T\)</span>: <span class="math inline">\(\propto kT/2\)</span></li>
+<li class="fragment">Potência devido aos portadores numa dada faixa de frequência <span class="math inline">\(\Delta f\)</span>: <span class="math inline">\(\propto \frac{kT}{\Delta T} = kT \Delta f\)</span></li>
+<li class="fragment">Potência associada a uma d.d.p. entre os terminais de um resistor (R): <span class="math inline">\(v^2/R\)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C7\JohnsonNoiseEquivalentCircuits.svg" /></p>
+</div>
+</div>
+<ul>
+<li class="fragment">Tensão Johnson: <span class="math inline">\(\frac{v^2}{R}=4 kT \Delta f\)</span>, ou <span class="math display">\[v_{RMS} = \sqrt{4 k T R \Delta f}\]</span></li>
+<li class="fragment">Nota: o fator <span class="math inline">\(4\)</span> entra devido a uma consideração correta do fluxo de cargas, bem como do teorema da equipartição.</li>
+</ul>
+</section>
+<section id="algumas-cores-de-ruído" class="slide level1">
+<h1>Algumas cores de ruído</h1>
+<ul>
+<li class="fragment">Rede elétrica (60 Hz)
+<ul>
+<li class="fragment">Costuma estar sempre presente, mesmo tomando-se medidas preventivas.</li>
+</ul></li>
+<li class="fragment">Ruído rosa (1/f)
+<ul>
+<li class="fragment">Várias fontes de ruído operam em frequências baixas em algum momento. Ex.: sismos, correntes de ar, flutuações de temperatura…</li>
+</ul></li>
+<li class="fragment">Ruído branco (presente em todas as frequências)
+<ul>
+<li class="fragment">Shot noise e Johnson. Origem na física fundamental da operação do circuito e estará sempre presente. Tipicamente pode ser considerado pequeno.</li>
+</ul></li>
+</ul>
+<p><img data-src="C7\Noise_Voltage_Density.png" style="width:50.0%" /></p>
+</section>
+<section id="algumas-formas-de-eliminação-de-ruído" class="slide level1">
+<h1>Algumas formas de eliminação de ruído</h1>
+<ul>
+<li class="fragment">Diferentes tipos de ruídos requerem estratégias diferentes para sua eliminação</li>
+<li class="fragment">Ex.: Sinal com frequência bem definida <span class="math inline">\(f\)</span>
+<ul>
+<li class="fragment">Passa-baixa, passa-alta, <span class="fragment highlight-red">passa-banda</span> ou notch?</li>
+<li class="fragment">Notar que, caso tenhamos o controle de <span class="math inline">\(f\)</span>, podemos projetar um filtro adequado de forma simples.</li>
+</ul></li>
+<li class="fragment">Ex.: como podemos eliminar o ruído em 60 Hz usando um resistor e um capacitor?
+<ul>
+<li class="fragment">Usando um filtro passa-alta. Qual o menor valor adequado para <span class="math inline">\(f_{3dB}\)</span>?</li>
+<li class="fragment">Suponha que o sinal de interesse possui <span class="math inline">\(f=1\text{ KHz}\)</span>. Qual a atenuação do sinal? E do ruído em 60 Hz?</li>
+<li class="fragment">Relação sinal ruído: compromisso entre passagem do sinal de interesse e ruído resultante. <span class="math display">\[\frac{S}{N} = \frac{|T(1\text{ kHz})|}{|T(60\text{ Hz})|} \frac{|v_s|}{|v_N|}\]</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="sinais-pequenos" class="slide level1">
+<h1>Sinais pequenos</h1>
+<ul>
+<li class="fragment">O que fazer se o sinal de interesse é muito pequeno?</li>
+<li class="fragment">Ex.: supor <span class="math inline">\(V_1=v_N + v_s\)</span>, onde a tensão de ruido <span class="math inline">\(v_N\)</span> e de sinal <span class="math inline">\(v_s\)</span> satisfazem <span class="math inline">\(v_N\gg v_s\)</span>.
+<ul>
+<li class="fragment">Sabemos realizar soma e subtração de tensões</li>
+<li class="fragment">Se conseguirmos produzir uma tensão <span class="math inline">\(V_2 = v_N\)</span>, onde <span class="math inline">\(V_2\)</span> inclui todas as fontes de ruído do sistema, exceto o sinal de interesse, então <span class="math display">\[v_s = V_1-V_2\]</span></li>
+<li class="fragment">Medida do tipo diferencial. Costuma exigir amplificação</li>
+<li class="fragment">Veremos algumas ideias mais adiante na parte de amplificadores operacionais.</li>
+</ul></li>
+<li class="fragment"><strong>Nota</strong>: Esta ideia também pode ser aplicada para remover o ruído de baixa frequência:
+<ul>
+<li class="fragment">Pode-se medir a resposta do sistema quando não há sinal, <span class="math inline">\(V_2=V(t)=v_N(t)\)</span>, e depois ativar o sinal para medir <span class="math inline">\(V_1=V(t+\delta)=v_N(t+\delta)+v_S(t+\delta)\)</span>. Em outras palavras, o sinal é uma onda quadrada sobre um padrão de ruído de fundo. Se a modulação é rápida o suficiente, tal que <span class="math inline">\(v_N(t+\delta)\approx v_N(t)\)</span>, temos <span class="math display">\[V(t+\delta)-V(t)=v_S(t+\delta)\]</span></li>
+</ul></li>
+</ul>
+<!---
+# Acoplamento AC e ajuste de offset
+# Medidas raciométricas
+# Ponte de Wheatstone
+--->
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -17,23 +17,23 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 
 ## Slides das aulas
 
-| #  | Tópico                              | slides                          | Roteiros das práticas |
-|----|-------------------------------------|---------------------------------|-----------------------|
-| 01 | Visão geral sobre instrumentação    | [html][s01-html] [pdf][s01-pdf] |                       |
-| 02 | Eletromagnetismo básico             | [html][s02-html] [pdf][s02-pdf] |                       |
-| 03 | Abstração de circuitos eletrônicos  | [html][s03-html] [pdf][s03-pdf] |                       |
-| 04 | Análise de circuitos lineares       | [html][s04-html] [pdf][s04-pdf] | [Prática 01][p01-pdf] |
-| 05 | Arduino e algumas ferramentas CAD   | [html][s05-html] [pdf][s05-pdf] |                       |
-| 06 | Sinais analógicos                   | [html][s06-html] [pdf][s06-pdf] | [Prática 02][p02-pdf] |
-| 07 | Filtros passivos                    |                                 | Prática 03,Prática 04 |
-| 08 | Diodos e circuitos não lineares     |                                 | Prática 05            |
-| 09 | Transistores                        |                                 | Prática 06            |
-| 10 | Amplificador diferencial            |                                 | Prática 07            |
-| 11 | Amplificador operacional            |                                 | Prática 08            |
-| 12 | Filtros ativos                      |                                 | Prática 09            |
-| 13 | Oscilador e defasador               |                                 | Prática 10            |
-| 14 | Computador analógico                |                                 | Prática 11            |
-| 15 | Portas lógicas e eletrônica digital |                                 | Prática 12            |
+| #  | Tópico                              | slides                          | Roteiros das práticas            |
+|----|-------------------------------------|---------------------------------|----------------------------------|
+| 01 | Visão geral sobre instrumentação    | [html][s01-html] [pdf][s01-pdf] |                                  |
+| 02 | Eletromagnetismo básico             | [html][s02-html] [pdf][s02-pdf] |                                  |
+| 03 | Abstração de circuitos eletrônicos  | [html][s03-html] [pdf][s03-pdf] |                                  |
+| 04 | Análise de circuitos lineares       | [html][s04-html] [pdf][s04-pdf] | [Prática 01][p01-pdf]            |
+| 05 | Arduino e algumas ferramentas CAD   | [html][s05-html] [pdf][s05-pdf] |                                  |
+| 06 | Sinais analógicos                   | [html][s06-html] [pdf][s06-pdf] | [Prática 02][p02-pdf]            |
+| 07 | Filtros passivos                    | [html][s07-html] [pdf][s07-pdf] | [Prática 03][p03-pdf],Prática 04 |
+| 08 | Diodos e circuitos não lineares     |                                 | Prática 05                       |
+| 09 | Transistores                        |                                 | Prática 06                       |
+| 10 | Amplificador diferencial            |                                 | Prática 07                       |
+| 11 | Amplificador operacional            |                                 | Prática 08                       |
+| 12 | Filtros ativos                      |                                 | Prática 09                       |
+| 13 | Oscilador e defasador               |                                 | Prática 10                       |
+| 14 | Computador analógico                |                                 | Prática 11                       |
+| 15 | Portas lógicas e eletrônica digital |                                 | Prática 12                       |
 
 
 [s01-html]: instrumentacao_fisica/capitulo_1.html
@@ -48,6 +48,10 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 [s05-pdf]: https://www.dropbox.com/s/aw6rady7hzqwet8/capitulo_5.pdf?dl=0
 [s06-html]: instrumentacao_fisica/capitulo_6.html
 [s06-pdf]: #
+[s07-html]: instrumentacao_fisica/capitulo_7.html
+[s07-pdf]: #
+
 
 [p01-pdf]: https://www.dropbox.com/s/3pfmhemipys4nqh/pratica_1.pdf?dl=0
 [p02-pdf]: https://www.dropbox.com/s/3gx5mcg7ue63gy4/pratica_2.pdf?dl=0
+[p03-pdf]: https://www.dropbox.com/s/37q855js78buat4/pratica_3.pdf?dl=0
