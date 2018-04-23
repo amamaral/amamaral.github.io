@@ -459,6 +459,44 @@ savefig('C7\RLC_notch_ressonance.png')
 </ul>
 <p><img data-src="C7\Noise_Voltage_Density.png" style="width:50.0%" /></p>
 </section>
+<section id="acoplamento-ac-e-ajuste-de-offset" class="slide level1">
+<h1>Acoplamento AC e ajuste de offset</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Supor <span class="math inline">\(V_i = V_{i,DC}+V_{i,AC}e^{j\omega t}\)</span>. Qual a impedância entre os nós de tensão <span class="math inline">\(V_i\)</span> e <span class="math inline">\(V_a\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(Z(\omega = 0) = \frac{-j}{\omega C}\rightarrow \infty\)</span></li>
+<li class="fragment"><span class="math inline">\(Z(\omega = 0)\)</span> equivale a um curto-circuito ou <span class="fragment highlight-red">circuito aberto</span>?</li>
+<li class="fragment">Componente DC do sinal <span class="math inline">\(V_i\)</span> não “passa” para <span class="math inline">\(V_a\)</span></li>
+<li class="fragment"><span class="math inline">\(Z(\omega \rightarrow \infty) = \frac{-j}{\omega C} \rightarrow 0\)</span></li>
+<li class="fragment"><span class="math inline">\(Z(\omega \rightarrow \infty)\)</span> equivale a um <span class="fragment highlight-red">curto-circuito</span> ou circuito aberto?</li>
+<li class="fragment">Componente AC do sinal <span class="math inline">\(V_i\)</span> passa completamente</li>
+</ul></li>
+<li class="fragment">Qual é o componente DC de tensão em <span class="math inline">\(V_a\)</span>?</li>
+<li class="fragment"><span class="math display">\[V_a = \frac{4,7k}{10k + 4,7k} 9V + V_{i,AC}e^{j\omega t}\]</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="praticas\P3_Q3.svg" /></p>
+</div>
+</div>
+</section>
+<section id="acoplamento-ac-e-ajuste-de-offset-1" class="slide level1">
+<h1>Acoplamento AC e ajuste de offset</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Qual é a tensão em <span class="math inline">\(V_b\)</span>?</li>
+<li class="fragment"><span class="math display">\[V_b = V_{i,AC}e^{j\omega t}\]</span></li>
+<li class="fragment">Acoplamento AC pode ser usado para eliminar alguns tipos de ruídos mais simples em baixa frequência</li>
+<li class="fragment">Qual é a frequência característica de corte entre <span class="math inline">\(V_i\)</span> e <span class="math inline">\(V_a\)</span>?</li>
+<li class="fragment"><span class="math inline">\(f_{3dB} = \frac{1}{2\pi R C}\)</span>, onde <span class="math inline">\(R = \left(4,7\,k\Omega\parallel 10\,k\Omega\right)\)</span> e <span class="math inline">\(C=4,7\,\mu\text{F}\)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="praticas\P3_Q3.svg" /></p>
+</div>
+</div>
+</section>
 <section id="algumas-formas-de-eliminação-de-ruído" class="slide level1">
 <h1>Algumas formas de eliminação de ruído</h1>
 <ul>
@@ -493,8 +531,6 @@ savefig('C7\RLC_notch_ressonance.png')
 </ul></li>
 </ul>
 <!---
-# Acoplamento AC e ajuste de offset
-# Medidas raciométricas
 # Ponte de Wheatstone
 --->
 </section>
