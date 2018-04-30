@@ -25,8 +25,8 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 | 04 | Análise de circuitos lineares       | [html][s04-html] [pdf][s04-pdf] | [Prática 01][p01-pdf]            |
 | 05 | Arduino e algumas ferramentas CAD   | [html][s05-html] [pdf][s05-pdf] |                                  |
 | 06 | Sinais analógicos                   | [html][s06-html] [pdf][s06-pdf] | [Prática 02][p02-pdf]            |
-| 07 | Filtros passivos                    | [html][s07-html] [pdf][s07-pdf] | [Prática 03][p03-pdf],Prática 04 |
-| 08 | Diodos e circuitos não lineares     |                                 | Prática 05                       |
+| 07 | Filtros passivos                    | [html][s07-html] [pdf][s07-pdf] | [Prática 03][p03-pdf], [Prática 04][p04-pdf] |
+| 08 | Diodos e circuitos não lineares     | [html][s08-html] [pdf][s08-pdf] | Prática 05                       |
 | 09 | Transistores                        |                                 | Prática 06                       |
 | 10 | Amplificador diferencial            |                                 | Prática 07                       |
 | 11 | Amplificador operacional            |                                 | Prática 08                       |
@@ -50,8 +50,11 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 [s06-pdf]: #
 [s07-html]: instrumentacao_fisica/capitulo_7.html
 [s07-pdf]: #
+[s08-html]: instrumentacao_fisica/capitulo_8.html
+[s08-pdf]: #
 
 
 [p01-pdf]: https://www.dropbox.com/s/3pfmhemipys4nqh/pratica_1.pdf?dl=0
 [p02-pdf]: https://www.dropbox.com/s/3gx5mcg7ue63gy4/pratica_2.pdf?dl=0
 [p03-pdf]: https://www.dropbox.com/s/37q855js78buat4/pratica_3.pdf?dl=0
+[p04-pdf]: https://www.dropbox.com/s/mjqeild4rv878e4/pratica_4.pdf?dl=0

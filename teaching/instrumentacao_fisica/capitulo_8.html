@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="FI577 - Instrumentação eletrônica para a física">
+  <title>Diodos e circuitos não lineares</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Diodos e circuitos não lineares</h1>
+  <p class="author">FI577 - Instrumentação eletrônica para a física</p>
+  <p class="date">Leituras recomendadas: Agarwal Caps. 16 e Horowitz &amp; Hill Cap. 1</p>
+</section>
+
+<section id="diodos-e-circuitos-não-lineares" class="slide level1">
+<h1>Diodos e circuitos não lineares</h1>
+<ul>
+<li class="fragment">Até aqui consideramos apenas circuitos contendo <strong>elementos lineares</strong>
+<ul>
+<li class="fragment"><span class="math inline">\(V \propto I\)</span></li>
+<li class="fragment">Os efeitos das fontes são independentes</li>
+<li class="fragment"><strong>Thévenin</strong></li>
+</ul></li>
+<li class="fragment">Para <strong>controlar</strong> o comportamento de circuitos, precisamos também de elementos com um comportamento <strong>não linear</strong>
+<ul>
+<li class="fragment"><span class="math inline">\(V = f(I)\)</span>, onde <span class="math inline">\(f(I)\)</span> não é uma função de primeiro grau.</li>
+<li class="fragment"><strong>Os efeitos das fontes não são mais independentes</strong>. Podemos obter respostas diferentes, dependendo de cada configuração específica do circuito.</li>
+<li class="fragment"><strong>Não vale Thévenin</strong></li>
+</ul></li>
+<li class="fragment">Consideraremos inicialmente o <strong>diodo</strong></li>
+</ul>
+</section>
+<section id="junção-pn" class="slide level1">
+<h1>Junção PN</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Silício é um semicondutor. Conduz pouco em seu estado puro.</li>
+<li class="fragment">Podemos introduzir no silício cargas livres positivas (<strong>dopagem tipo P</strong>, p.ex. com fósforo) ou negativas (<strong>dopagem tipo N</strong>, p. ex. com alumínio)</li>
+<li class="fragment">Fisicamente, o diodo contém uma região com dopagem P justaposta a uma junção tipo N.</li>
+<li class="fragment"><strong>Assimetria</strong> nos portadores de carga em cada terminal</li>
+<li class="fragment"><strong>Assimetria no fluxo</strong> de portadores (corrente)</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C8\juncao_pn.png" style="width:100.0%" /></p>
+</div>
+</div>
+</section>
+<section id="comportamento-do-diodo" class="slide level1">
+<h1>Comportamento do diodo</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Vimos na prática 1 que a corrente só flui entre os terminais do diodo para uma polarização da tensão.</li>
+<li class="fragment">Polarização direta: tensão mais positiva no terminal P</li>
+<li class="fragment">Polarização reversa: tensão mais positiva no terminal N</li>
+<li class="fragment">Alguns conceitos gerais conforme o potencial percebido pelos portadores de carga negativa</li>
+<li class="fragment">Considere elétrons com energia <span class="math inline">\(\mu\)</span> (potencial químico)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="C8\juncao_pn_interno.svg" style="width:100.0%" /><br />
+</p>
+</div>
+</div>
+<ul>
+<li class="fragment">Polarização direta: <strong>pequeno aumento</strong> da d.d.p. entre P e N ‘empurra’ os portadores para a junção.</li>
+<li class="fragment">Polarização reversa: <strong>pequena redução</strong> na d.d.p. entre P e N não permite a passagem de corrente devido ao campo elétrico natural da junção.</li>
+<li class="fragment">Avalanche: <strong>grande redução</strong> na d.d.p. entre P e N permite a passagem de uma <strong>grande corrente</strong></li>
+</ul>
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 16
+rcParams['text.usetex'] = True
+
+x = linspace(-20,20,256)
+a = 0.8
+potential = a*(2*arctan(x)/pi) - (1-a)
+e_field = -1/(1+x**2)
+
+plot(x, potential, label='V(x)')
+fill_between(x, potential, ones(x.shape), color='lightgray')
+plot(x, e_field  , label=r'$\vec{E}(x)$')
+text(-10, 0.1, 'P')
+text( 10, 0.1, 'N')
+vlines(0, -1, 1, linestyle='dashed')
+hlines(1.0, x.min(), x.max(), label=r'$\mu$')
+grid()
+xlabel('x')
+xticks([])
+yticks([])
+legend(loc=4)
+savefig('C8/juncao_pn_interno.svg')
+~~~
+--->
+</section>
+<section id="análise-de-circuitos-contendo-elementos-não-lineares" class="slide level1">
+<h1>Análise de circuitos contendo elementos não lineares</h1>
+<ul>
+<li class="fragment">Relação <span class="math inline">\(i\)</span> vs <span class="math inline">\(v\)</span> para um diodo: <span class="math display">\[i = i_s \left(e^{v/v_{th}}-1\right),\]</span> onde <span class="math inline">\(v_{th}=kT/q\)</span> é a energia térmica <span class="math inline">\(kT\)</span> de um portador de carga <span class="math inline">\(q\)</span>. <span class="math inline">\(i_s~1\text{ pA}\)</span> e <span class="math inline">\(v_{th}~0.025\text{ V}\)</span></li>
+<li class="fragment"><strong>Relação não linear</strong></li>
+<li class="fragment">Como analisar um circuito contendo elementos não lineares?</li>
+<li class="fragment">Várias das simplificações anteriores não são mais válidas…</li>
+</ul>
+</section>
+<section id="uma-questão-de-escala" class="slide level1">
+<h1>Uma questão de escala</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Consideremos a curva <span class="math inline">\(i\)</span> vs <span class="math inline">\(v\)</span> para um diodo típico em duas escalas distintas.</li>
+<li class="fragment"><span class="math inline">\(i = i_s \left(e^{v/v_{th}}\right)\)</span>, com <span class="math inline">\(i_s~1\text{ pA}\)</span> e <span class="math inline">\(v_{th}~0.025\text{ V}\)</span></li>
+<li class="fragment">Na escala de pA, o caráter exponencial é mais evidente</li>
+<li class="fragment">Na escala de mA, o diodo aparenta um comportamento tipo limiar:
+<ul>
+<li class="fragment">Não conduz, se <span class="math inline">\(v&lt;0.6\,\text{V}\)</span></li>
+<li class="fragment">Conduz, se <span class="math inline">\(v&gt;0.6\,\text{V}\)</span></li>
+</ul></li>
+<li class="fragment">Como podemos modelar o comportamento do diodo em termos de elementos mais simples?</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="C8/i_vs_v_diodo.svg" /></p>
+</div>
+</div>
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 16
+rcParams['text.usetex'] = True
+
+v = linspace(-5,5,1000)
+i = 1E-12*(exp(v/0.025)-1)
+
+subplot(211)
+plot(v, i*1E12)
+xlim(-0.1,0.2)
+ylim(-2,1E1)
+ylabel('i (pA)')
+grid()
+
+subplot(212)
+plot(v, i*1E3)
+grid()
+xlim(-1,2)
+ylim(-2, 10)
+ylabel('i (mA)')
+xlabel('v');
+
+tight_layout()
+savefig('C8/i_vs_v_diodo.pdf')
+~~~
+--->
+</section>
+<section id="método-de-estados-assumidos" class="slide level1">
+<h1>Método de estados assumidos</h1>
+<ul>
+<li class="fragment">Podemos considerar o circuito inicial e assumir que o diodo possui 2 estados: circuito <strong>fechado</strong> ou <strong>aberto</strong>.</li>
+<li class="fragment">Diodo ligado: <span class="math inline">\(v=0\)</span>, para qualquer <span class="math inline">\(i\)</span> positivo.</li>
+<li class="fragment">Diodo desligado: <span class="math inline">\(i=0\)</span>, para qualquer <span class="math inline">\(v\)</span> negativo.</li>
+<li class="fragment"><strong>Método</strong>:
+<ol type="1">
+<li class="fragment">Desenhar subcircuito para cada estado do diodo (Lig./Deslig.)</li>
+<li class="fragment">Analisar o comportamento de cada subcircuito</li>
+<li class="fragment">Verificar quando as expressões no passo (2) são válidas</li>
+</ol></li>
+</ul>
+</section>
+<section id="exemplo" class="slide level1">
+<h1>Exemplo</h1>
+<ul>
+<li>Retificador de meia onda</li>
+</ul>
+<p><img data-src="C8\retificador_meia_onda.png" style="width:70.0%" /></p>
+</section>
+<section id="modelo-aprimorado" class="slide level1">
+<h1>Modelo aprimorado</h1>
+<ul>
+<li class="fragment">Podemos aproximar a curva <span class="math inline">\(i\)</span> vs <span class="math inline">\(v\)</span> de forma ainda melhor com os seguintes estados:</li>
+<li class="fragment">Diodo desligado: <span class="math inline">\(i=0\)</span>, para qualquer <span class="math inline">\(v&lt;0.6\)</span> negativo.</li>
+<li class="fragment">Diodo ligado: <span class="math inline">\(v=0.6+R_D i\)</span>, para qualquer <span class="math inline">\(i\)</span> positivo.</li>
+</ul>
+<p><img data-src="C8\modelo_melhorado.png" style="width:70.0%" /></p>
+</section>
+<section id="detector-de-pico" class="slide level1">
+<h1>Detector de pico</h1>
+<p><img data-src="C8\peak_detector.png" style="width:45.0%" /> <span class="fragment"><img data-src="C8\peak_detector_waveform.png" style="width:45.0%" /></span></p>
+</section>
+<section id="retificador" class="slide level1">
+<h1>Retificador</h1>
+<ul>
+<li class="fragment">Estimar a flutuação na tensão do capacitor em função do tempo?</li>
+<li class="fragment">Tensão de <em>ripple</em> (oscilação) pico-a-pico <span class="math inline">\(\approx V_p \frac{\tau}{RC}\)</span></li>
+<li class="fragment">Importante ao considerar fontes de tensão retificadas.</li>
+<li class="fragment">Se <span class="math inline">\(RC~10\tau\)</span>, a oscilação na tensão é ~<span class="math inline">\(10\%\)</span></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
