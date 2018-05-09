@@ -14,27 +14,31 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
     * [Fritzing](http://www.fritzing.org) (Esquemas de circuitos e projeto de PCB, voltado para a plataforma arduino)
     * [Multisim BLUE](http://br.mouser.com/MultiSimBlue/) (Simulador de circuitos analógicos e digitais)
     * [Circuit Lab](https://www.circuitlab.com/) (Simulador online de circuitos analógicos)
+6. Datasheets:
+    * [Transistor BC548](https://www.dropbox.com/s/vjcnxffznf18swq/BC548.pdf?dl=0)
+    * [Transistor 2N3904](https://www.dropbox.com/s/4tnwkes5p96ynba/2N3904.pdf?dl=0)
+    * [Transistor 2N2222A](https://www.dropbox.com/s/vmpjtxr21xmm7u5/2N2222A.pdf?dl=0)
+
 
 ## Slides das aulas
 
-| #  | Tópico                              | slides                          | Roteiros das práticas            |
-|----|-------------------------------------|---------------------------------|----------------------------------|
-| 01 | Visão geral sobre instrumentação    | [html][s01-html] [pdf][s01-pdf] |                                  |
-| 02 | Eletromagnetismo básico             | [html][s02-html] [pdf][s02-pdf] |                                  |
-| 03 | Abstração de circuitos eletrônicos  | [html][s03-html] [pdf][s03-pdf] |                                  |
-| 04 | Análise de circuitos lineares       | [html][s04-html] [pdf][s04-pdf] | [Prática 01][p01-pdf]            |
-| 05 | Arduino e algumas ferramentas CAD   | [html][s05-html] [pdf][s05-pdf] |                                  |
-| 06 | Sinais analógicos                   | [html][s06-html] [pdf][s06-pdf] | [Prática 02][p02-pdf]            |
+| #  | Tópico                              | slides                          | Roteiros das práticas                        |
+|----|-------------------------------------|---------------------------------|----------------------------------------------|
+| 01 | Visão geral sobre instrumentação    | [html][s01-html] [pdf][s01-pdf] |                                              |
+| 02 | Eletromagnetismo básico             | [html][s02-html] [pdf][s02-pdf] |                                              |
+| 03 | Abstração de circuitos eletrônicos  | [html][s03-html] [pdf][s03-pdf] |                                              |
+| 04 | Análise de circuitos lineares       | [html][s04-html] [pdf][s04-pdf] | [Prática 01][p01-pdf]                        |
+| 05 | Arduino e algumas ferramentas CAD   | [html][s05-html] [pdf][s05-pdf] |                                              |
+| 06 | Sinais analógicos                   | [html][s06-html] [pdf][s06-pdf] | [Prática 02][p02-pdf]                        |
 | 07 | Filtros passivos                    | [html][s07-html] [pdf][s07-pdf] | [Prática 03][p03-pdf], [Prática 04][p04-pdf] |
-| 08 | Diodos e circuitos não lineares     | [html][s08-html] [pdf][s08-pdf] | Prática 05                       |
-| 09 | Transistores                        |                                 | Prática 06                       |
-| 10 | Amplificador diferencial            |                                 | Prática 07                       |
-| 11 | Amplificador operacional            |                                 | Prática 08                       |
-| 12 | Filtros ativos                      |                                 | Prática 09                       |
-| 13 | Oscilador e defasador               |                                 | Prática 10                       |
-| 14 | Computador analógico                |                                 | Prática 11                       |
-| 15 | Portas lógicas e eletrônica digital |                                 | Prática 12                       |
-
+| 08 | Diodos e circuitos não lineares     | [html][s08-html] [pdf][s08-pdf] | [Prática 05][p05-pdf]                        |
+| 09 | Transistores                        |                                 | Prática 06                                   |
+| 10 | Amplificador diferencial            |                                 | Prática 07                                   |
+| 11 | Amplificador operacional            |                                 | Prática 08                                   |
+| 12 | Filtros ativos                      |                                 | Prática 09                                   |
+| 13 | Oscilador e defasador               |                                 | Prática 10                                   |
+| 14 | Computador analógico                |                                 | Prática 11                                   |
+| 15 | Portas lógicas e eletrônica digital |                                 | Prática 12                                   |
 
 [s01-html]: instrumentacao_fisica/capitulo_1.html
 [s01-pdf]: https://www.dropbox.com/s/tumckbsmkx06uwn/capitulo_1.pdf?dl=0
@@ -58,3 +62,4 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 [p02-pdf]: https://www.dropbox.com/s/3gx5mcg7ue63gy4/pratica_2.pdf?dl=0
 [p03-pdf]: https://www.dropbox.com/s/37q855js78buat4/pratica_3.pdf?dl=0
 [p04-pdf]: https://www.dropbox.com/s/mjqeild4rv878e4/pratica_4.pdf?dl=0
+[p05-pdf]: https://www.dropbox.com/s/s6yb17m8byqmz82/pratica_5.pdf?dl=0
