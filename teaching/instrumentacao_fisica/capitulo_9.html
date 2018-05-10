@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="FI577 - Instrumentação eletrônica para a física">
+  <title>Transistores</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Transistores</h1>
+  <p class="author">FI577 - Instrumentação eletrônica para a física</p>
+  <p class="date">Leituras recomendadas: Agarwal Caps. 6 e Horowitz &amp; Hill Cap. 2</p>
+</section>
+
+<section id="controle" class="slide level1">
+<h1>Controle?</h1>
+<ul>
+<li class="fragment">Até aqui consideramos elementos <strong>passivos</strong></li>
+<li class="fragment">Elementos recebem um dado sinal e passam adiante, conforme o sinal e suas propriedades internas apenas</li>
+<li class="fragment"><strong>Como podemos usar um sinal e controlar o comportamento de outro componente</strong>? Ex.: Mandar um pulso de tensão para ligar uma lâmpada.
+<ul>
+<li class="fragment">Muito difícil com elementos de 2 terminais apenas… Apenas uma entrada e uma saída</li>
+<li class="fragment">Precisamos de um dispositivo que possua ao menos 3 terminais</li>
+</ul></li>
+</ul>
+</section>
+<section id="o-primeiro-transistor" class="slide level1">
+<h1>O primeiro transistor</h1>
+<p><strong>Prêmio Nobel de 1953</strong>: William Bradford Shockley, John Bardeen, Walter Houser Brattain</p>
+<p><img data-src="C9\first_transistor.jpg" style="width:80.0%" /></p>
+</section>
+<section id="o-transistor" class="slide level1">
+<h1>O transistor</h1>
+<ul>
+<li class="fragment">“Válvula” que pode ser usada para controlar o fluxo de corrente num circuito</li>
+<li class="fragment">3 terminais! “Entrada”, “saída” e “controle”
+<ul>
+<li class="fragment">Emissor e coletor: Entrada e saída da maior parte da corrente no transistor</li>
+<li class="fragment">Base: <em>Controle</em> do fluxo de portadores</li>
+</ul></li>
+<li class="fragment">Inicialmente vamos analisar principalmente o transistor bipolar</li>
+</ul>
+</section>
+<section id="modelo-simplificado" class="slide level1">
+<h1>Modelo simplificado</h1>
+<p>Vamos analisar inicialmente o comportamento de um transistor bipolar NPN por meio de um modelo simples. (inverter as polaridades para o caso PNP)</p>
+<ul>
+<li class="fragment">A corrente aplicada na base controla a quantidade de corrente entre o coletor e o emissor.</li>
+</ul>
+<ol type="1">
+<li class="fragment"><strong>Polaridade</strong>: O coletor deve estar mais positivo que os outros terminais</li>
+<li class="fragment"><strong>Junções</strong>: O transistor possui duas junções PN. Em geral, a corrente</li>
+<li class="fragment"><strong>Especificações máximas</strong>: Cada transistor possui valores máximos de tensão (<span class="math inline">\(V_{CE}\)</span>) e corrente (<span class="math inline">\(I_C,I_B\)</span>) que suporta. É importante consultar os <em>datasheets</em></li>
+</ol>
+<ul>
+<li class="fragment">Se 1-3 são satisfeitos, então <span class="math display">\[ I_C = h_{FE} I_B = \beta I_B \]</span></li>
+<li class="fragment">Ganho de corrente <span class="math inline">\(\beta\approx 30-100\)</span>.</li>
+<li class="fragment"><span class="math inline">\(I_E=I_C+I_B = (\beta+1)I_B\)</span></li>
+</ul>
+</section>
+<section id="experimento-1" class="slide level1">
+<h1>Experimento 1</h1>
+<ul>
+<li class="fragment">Usando um transistor NPN <span class="math inline">\(BC548\)</span>, identifique os terminais e verifique que de fato pode-se compreender as correntes entre pares de terminais do transistor como diodos. Este comportamento está associado com as junções PN presentes no transistor. Datasheet no google ou <a href="https://www.dropbox.com/s/vjcnxffznf18swq/BC548.pdf?dl=0">aqui</a></li>
+</ul>
+<p><img data-src="C9\BC548_photo.png" style="width:40.0%" /> <img data-src="C9\npn_pnp_currents.png" style="width:30.0%" /></p>
+</section>
+<section id="transistor-man-hh" class="slide level1">
+<h1>Transistor man (H&amp;H)</h1>
+<ul>
+<li class="fragment">Transistor pode ser pensado inicialmente como uma resistência variável, cujo valor de <span class="math inline">\(R\)</span> é ajustado conforme <span class="math inline">\(I_B\)</span>.</li>
+<li class="fragment">No entanto, é mais correto pensar em termos de uma fonte de corrente</li>
+</ul>
+<p><img data-src="C9\transistor_man.png" style="width:60.0%" /></p>
+</section>
+<section id="fonte-de-corrente" class="slide level1">
+<h1>Fonte de corrente</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Até aqui trabalhamos apenas com fontes de tensão. Entretanto, fontes de corrente também são bastante úteis e interessantes. Usando o fato que <span class="math inline">\(I_C\propto I_B\)</span>, podemos usar um transistor bipolar para garantir uma dada corrente no coletor</li>
+<li class="fragment">Qual a relação entre <span class="math inline">\(V_B\)</span> e <span class="math inline">\(V_E\)</span>?</li>
+<li class="fragment"><span class="math inline">\(V_E\approx V_B-0.6\)</span></li>
+<li class="fragment">Uma vez que o resistor está entre <span class="math inline">\(V_E\)</span> e o terra, <span class="math inline">\(V_E=R_E I_E\)</span>.</li>
+<li class="fragment">Se <span class="math inline">\(\beta\gg1\)</span>, então <span class="math display">\[I_C\approx \frac{V_B-0.6}{R_E}\]</span></li>
+<li class="fragment">Podemos ter uma corrente “qualquer” em <span class="math inline">\(I_C\)</span>, dada uma tensão <span class="math inline">\(V_B\)</span></li>
+<li class="fragment">Como podemos ajustar o valor de <span class="math inline">\(V_B\)</span> na prática?</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C9\current_source.png" /></p>
+</div>
+</div>
+</section>
+<section id="experimento-2" class="slide level1">
+<h1>Experimento 2</h1>
+<p>Construa o circuito de uma fonte de corrente conforme a figura. Utilize um potenciômetro de 10 K<span class="math inline">\(\Omega\)</span> como resistência de carga <span class="math inline">\(R_L\)</span> variável.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Acompanhe a corrente que passa pelo potenciômetro (corrente de carga). Caso isto não seja possível, determine meça a tensão entre os terminais de <span class="math inline">\(R_E\)</span> e de <span class="math inline">\(R_L\)</span> para mensurar a corrente entre os terminais dos resistores.</li>
+<li class="fragment">O que acontece com a corrente?</li>
+<li class="fragment">Existe algum valor de <span class="math inline">\(R_L\)</span> para o qual a corrente deixa de ser constante? Como é possível explicar este comportamento?</li>
+<li class="fragment">Qual é a maior diferença de potencial que esta fonte de corrente pode aplicar a um resistor? A faixa de operação da fonte de corrente é chamada de compliance.</li>
+<li class="fragment">Mesmo dentro da faixa de compliance, a corrente fornecida varia quando a carga varia. Por que?</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C9\current_source_biased.png" /></p>
+</div>
+</div>
+</section>
+<section id="impedância-de-entrada-e-saída" class="slide level1">
+<h1>Impedância de entrada e saída</h1>
+<ul>
+<li class="fragment">Uma das características mais importantes do transistor é que ele pode ser usado para isolar segmentos de circuitos e produzir ganhos de potência.</li>
+<li class="fragment">Situação ideal</li>
+<li class="fragment">Qual a impedância interna de uma fonte de tensão IDEAL?</li>
+<li class="fragment"><span class="math inline">\(Z_{out}=0\)</span></li>
+<li class="fragment">Supor agora que vamos adicionar à saída de uma fonte de REAL de tensão. Que tipo de impedância de carga <span class="math inline">\(Z_L\)</span> é a ideal para não perturbar a tensão de saída da fonte?</li>
+<li class="fragment"><span class="math inline">\(Z_{in}=\infty\)</span></li>
+<li class="fragment">O transistor pode ser usado para aproximar nosso circuito destas características “desejáveis”</li>
+</ul>
+</section>
+<section id="z-no-seguidor-de-emissor" class="slide level1">
+<h1><span class="math inline">\(Z\)</span> no seguidor de emissor</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Ganho de tensão <span class="math inline">\(G\approx 1\)</span></li>
+<li class="fragment">O que acontece com as tensões e correntes no emissor quando se adiciona alguma carga em <span class="math inline">\(R_E\)</span>?</li>
+<li class="fragment"><span class="math inline">\(V_B = V_E + 0.6 \rightarrow \Delta V_B = \Delta V_E\)</span></li>
+<li class="fragment">Mas <span class="math inline">\(\Delta V_E = R \Delta I_E\)</span>, ou seja <span class="math inline">\(\Delta I_E = \frac{\Delta V_B}{R}\)</span></li>
+<li class="fragment"><span class="math inline">\(\Delta I_E = (\beta+1)\Delta I_B\)</span>… logo <span class="math inline">\(\Delta V_B = R(\beta+1)\Delta I_B\)</span></li>
+<li class="fragment">A resistência “percebida” pela fonte de tensão em <span class="math inline">\(V_B\)</span> é maior</li>
+<li class="fragment"><span class="math inline">\(Z_{in} = (\beta+1)Z_{carga}\)</span></li>
+<li class="fragment">Um cálculo similar mostra que um elemento de carga percebe a fonte com uma impedância menor, <span class="math display">\[Z_out = \frac{Z_{fonte}}{\beta+1}\]</span></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C9\emitter_follower.png" /></p>
+</div>
+</div>
+</section>
+<section class="slide level1">
+
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><strong>Experimento 3 - Seguidor de emissor (I):</strong> Vamos utilizar uma fonte de tensão regulada para investigar o comportamento de um transistor NPN BC548 na configuração de seguidor de emissor, conforme a figura a seguir. Utilize os seguintes valores: <span class="math inline">\(R_{in}=270\,\Omega\)</span>, <span class="math inline">\(R_E=3,3\,\Omega\)</span>, <span class="math inline">\(V_{CC}=10\,\text{V}\)</span>.</p>
+<ul>
+<li class="fragment">Conecte em <span class="math inline">\(V_{in}\)</span> um sinal senoidal, de amplitude <span class="math inline">\(1\,\)</span>V e <span class="math inline">\(f=1\,\)</span>kHz. Certifique-se de que a tensão de offset no gerador de função é nula. Conecte o osciloscópio em <span class="math inline">\(V_{out}\)</span>.</li>
+</ul>
+<ol type="a">
+<li class="fragment">Utilize <span class="math inline">\(V_{CC}=10\,\text{V}\)</span> . O sinal observado na saída contem apenas a parte positiva do sinal de entrada? É o que você esperava para o transistor?</li>
+<li class="fragment">Por que o sinal na saída possui uma amplitude aproximadamente 0,6 V menor?</li>
+<li class="fragment">Quando a tensão na entrada torna-se negativa, a junção B-E fica polarizada reversamente. Perceba que aparece um sinal negativo para uma amplitude suficientemente negativa. No caso do BC548, esta tensão de <em>breakdown</em> <span class="math inline">\(V_{BE0}=5,0\,V\)</span>.</li>
+<li class="fragment">Utilize agora que <span class="math inline">\(V_{CC}=5\,\text{V}\)</span>. O que acontece com a amplitude do sinal de saída quando a amplitude de <span class="math inline">\(V_{in}\)</span> é suficientemente grande?</li>
+</ol>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C9\seguidor_emissor_pratica.png" /></p>
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
