@@ -32,7 +32,7 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 | 06 | Sinais analógicos                   | [html][s06-html] [pdf][s06-pdf] | [Prática 02][p02-pdf]                        |
 | 07 | Filtros passivos                    | [html][s07-html] [pdf][s07-pdf] | [Prática 03][p03-pdf], [Prática 04][p04-pdf] |
 | 08 | Diodos e circuitos não lineares     | [html][s08-html] [pdf][s08-pdf] | [Prática 05][p05-pdf]                        |
-| 09 | Transistores                        | [html][s09-html] [pdf][s09-pdf] | Prática 06                                   |
+| 09 | Transistores                        | [html][s09-html] [pdf][s09-pdf] | [Prática 06][p06-pdf]                        |
 | 10 | Amplificador diferencial            |                                 | Prática 07                                   |
 | 11 | Amplificador operacional            |                                 | Prática 08                                   |
 | 12 | Filtros ativos                      |                                 | Prática 09                                   |
@@ -65,3 +65,4 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 [p03-pdf]: https://www.dropbox.com/s/37q855js78buat4/pratica_3.pdf?dl=0
 [p04-pdf]: https://www.dropbox.com/s/mjqeild4rv878e4/pratica_4.pdf?dl=0
 [p05-pdf]: https://www.dropbox.com/s/s6yb17m8byqmz82/pratica_5.pdf?dl=0
+[p06-pdf]: https://www.dropbox.com/s/pm5p5ebb0za3a43/pratica_6.pdf?dl=0

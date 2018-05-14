@@ -200,6 +200,9 @@ pythontex-files-*/
 # Latexian
 TSWLatexianTemp*
 
+# Pandoc
+*.pmd
+
 ## Editors:
 # WinEdt
 *.bak

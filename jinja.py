@@ -4,6 +4,8 @@ from bibtexparser.bparser import BibTexParser
 from bibtexparser.customization import convert_to_unicode
 import markdown
 import codecs
+import os
+import re, yaml, pypandoc, datetime
 
 env = Environment(loader=FileSystemLoader('jinja-templates'))
 md = markdown.Markdown(extensions=["markdown.extensions.tables"])
@@ -182,7 +184,7 @@ academic = []
 academic.append(CV_entry("2012 - 2016", "Ph.D. in physics",
                          """Universidade Federal de Pernambuco, UFPE, Recife,
                          Brazil""",
-                         """Title: <a href'#link-to-thesis'>Transverse optical phenomena with 
+                         """Title: <a href'#link-to-thesis'>Transverse optical phenomena with
                          Gaussian beams and optical vortices</a> (in English) <br>
                          Advisor: Cid Bartolomeu de Araújo <br>
                          Co-advisor: Edilson Lucena Falcão Filho <br>
@@ -351,5 +353,82 @@ teaching = env.get_template('teaching_template.html')
 teaching_html = teaching.render(courses=coursePages)
 with codecs.open("teaching.html", "w", "utf-8") as fh:
         fh.write(teaching_html)
+
+########
+# BLOG #
+########
+
+class post_class():
+    def __init__(self):
+        self.title = 'default'
+        self.author = 'author'
+        self.date = '01/01/2001'
+        self.last_update = self.date
+        self.image = r''
+        self.short = 'abstract example'
+        self.tags = ['']
+        self.status = ''
+        self.language = 'En'
+
+        self.href = '#broken_link'
+
+class tags_handler_class():
+    def __init__(self):
+        self._tags = {}
+    def add_tags_from_post(self, post):
+        for t in post.tags:
+            if t.lower() in self._tags.keys():
+                self._tags[t.lower()].append(post)
+            else:
+                self._tags[t.lower()] = [post]
+
+tags_handler = tags_handler_class()
+posts = []
+
+def process_post(config, contents, filename):
+    post = post_class()
+    for key in config.keys():
+        post.__setattr__(key, config[key])
+
+    if filename.endswith('pmd'):
+        filename = filename.rstrip('pmd')+'html'
+    post.href = filename
+
+    processed_contents = pypandoc.convert(contents, "html",format="md")
+
+    page = env.get_template('blog_template.html')
+    page_html = page.render(post=post, page_body=processed_contents)
+
+    with codecs.open(post.href, "w", "utf-8") as fh:
+        fh.write(page_html)
+
+    posts.append(post)
+    tags_handler.add_tags_from_post(post)
+
+
+# Search for *.pmd files in the blog folder, and opens them
+for file in os.listdir('blog'):
+    if file.endswith('.pmd'):
+        fullname = os.path.join('blog',file)
+        with codecs.open(fullname, "r", "utf-8") as fh:
+            contents = fh.read()
+
+            # Get the YAML header at the documento beginning
+            config = re.search('---\n?(:?.*\n)*?---', contents).group(0)
+            contents = contents.replace(config, '').lstrip()
+            config = yaml.load(config.strip('---'))
+
+            if 'status' in config.keys():
+                if config['status'].lower() == 'publish':
+                    process_post(config, contents, fullname)
+
+# Reorder posts by post date
+posts = sorted(posts, key=lambda w: datetime.datetime.strptime(w.date, r"%d/%m/%Y"), reverse=True)
+
+blog_index       = env.get_template('blog_index_template.html')
+blog_index_html  = blog_index.render(posts=posts, tags=tags_handler._tags)
+
+with codecs.open("blog.html", "w", "utf-8") as fh:
+    fh.write(blog_index_html)
 
 print('website generation finished!')
