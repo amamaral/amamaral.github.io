@@ -1,185 +1,30 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title> Blog posting options and configurations </title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Add custom CSS here -->
-    <link href="/css/modern-business.css" rel="stylesheet">
-    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/academicons/css/academicons.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Anderson M. Amaral" />
+  <meta name="author" content="José Silva" />
+  <title>Blog posting options and configurations</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
-
 <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-                <a class="navbar-brand" href="/index.html"> Anderson M. Amaral</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/about.html">Personal Info</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-flask pull-left"></i> Science<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/science_papers.html">Papers</a>
-                            </li>
-                            <li><a href="/conference_papers.html">Conference papers</a>
-                            </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
-                            </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Science links</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gears"></i> Technical work<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Papers</a>
-                            </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Software</a>
-                            </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
-                            </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Electronics links</a>
-                            </li>
-                        </ul>
-                    </li>
-		    <li><a href="/teaching.html"><i class="fa fa-book"></i> Teaching (Ensino)</a>
-		    </li>
-                    <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Blog</a>
-                    </li>
-		    <li><a href="/useful.html"><i class="fa fa-user"></i></a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    
-
-<style type="text/css">
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-</style>
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-{ position: relative; }
-pre.numberSource a.sourceLine:empty
-{ position: absolute; }
-pre.numberSource a.sourceLine::before
-{ content: attr(data-line-number);
-  position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-  border: none; pointer-events: all;
-  -webkit-touch-callout: none; -webkit-user-select: none;
-  -khtml-user-select: none; -moz-user-select: none;
-  -ms-user-select: none; user-select: none;
-  padding: 0 4px; width: 4em;
-  color: #aaaaaa;
-}
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-{ background-color: #f8f8f8; }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-lg-12">
-                <h1 class="page-header"> Blog posting options and configurations
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="/blog.html">Blog</a></li>
-                    <li class="active">Blog posting options and configurations</li>
-                </ol>
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-lg-8">
-
-                <!-- the actual blog post: title/author/date/content -->
-                <hr>
-                <p><i class="fa fa-clock-o"></i> Posted on 27/04/2018
-                </p>
-                
-                <hr>
-                <img src="banner/default.svg" class="img-responsive">
-                
-                <hr>
-                <h1 id="introduction">Introduction</h1>
+<header>
+<h1 class="title">Blog posting options and configurations</h1>
+<p class="author">Anderson M. Amaral</p>
+<p class="author">José Silva</p>
+<p class="date">27/04/2018</p>
+</header>
+<h1 id="introduction">Introduction</h1>
 <p>The documents present in this folder will be compiled and set to an html file given an adequate set of options. This file is mostly for making it easier to produce articles. The post is configured from the YAML header as given above, and should be adequately interpreted by the website’s python/jinja template script. The contents must be typed in a pandoc’s markdown style</p>
 <h1 id="article-fields">Article fields</h1>
 <h2 id="title-author-and-date">Title, author and date</h2>
@@ -197,97 +42,5 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Any post can be written in different languages. The default is english “En”, but it may be written also in portuguese “Pt”.</p>
 <h1 id="features-to-add">Features to add</h1>
 <p>Atom/RSS feed, comments (Disqus), search, social media share buttons (AddThis)</p>
-
-            </div>
-
-            <div class="col-lg-4">
-                <div class="well">
-                    <h4>Blog Search</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                    <!-- /input-group -->
-                </div>
-                <!-- /well -->
-                <div class="well">
-                    <h4>Popular Blog Categories</h4>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#dinosaurs">Dinosaurs</a>
-                                </li>
-                                <li><a href="#spaceships">Spaceships</a>
-                                </li>
-                                <li><a href="#fried-foods">Fried Foods</a>
-                                </li>
-                                <li><a href="#wild-animals">Wild Animals</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#alien-abductions">Alien Abductions</a>
-                                </li>
-                                <li><a href="#business-casual">Business Casual</a>
-                                </li>
-                                <li><a href="#robots">Robots</a>
-                                </li>
-                                <li><a href="#fireworks">Fireworks</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /well -->
-                <div class="well">
-                    <h4>Side Widget Well</h4>
-                    <p>Bootstrap's default well's work great for side widgets! What is a widget anyways...?</p>
-                </div>
-                <!-- /well -->
-            </div>
-        </div>
-
-    </div>
-    <!-- /.container -->
-
-
-    <div class="container">
-
-        <hr>
-
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    Copyright © 2018 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
-                </div>
-            </div>
-        </footer>
-
-    </div>
-    <!-- /.container -->
-
-    <!-- JavaScript -->
-    <script src="/js/jquery-1.10.2.js"></script>
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/modern-business.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script> 
-
-    <!-- Google Analytics -->
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-77641001-1', 'auto');
-        ga('send', 'pageview');
-    </script>
-    <!-- /.ga -->
-    <!-- /.js -->
 </body>
-
 </html>

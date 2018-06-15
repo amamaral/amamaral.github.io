@@ -394,7 +394,14 @@ def process_post(config, contents, filename):
         filename = filename.rstrip('pmd')+'html'
     post.href = filename
 
-    processed_contents = pypandoc.convert(contents, "html",format="md")
+    processed_contents = pypandoc.convert(contents,
+                                          "html",
+                                          format="md",
+                                          extra_args=['--mathjax',
+                                                      '--highlight-style=tango'])
+    ## TODO: Use BeautifulSoup to modify html classes and other tuned properties...
+    processed_contents = processed_contents.replace('<table>','<table class="table">')
+    processed_contents = processed_contents.replace('<img','<img class="img-responsive"')
 
     page = env.get_template('blog_template.html')
     page_html = page.render(post=post, page_body=processed_contents)
@@ -432,3 +439,5 @@ with codecs.open("blog.html", "w", "utf-8") as fh:
     fh.write(blog_index_html)
 
 print('website generation finished!')
+
+#pypandoc.convert(extr)

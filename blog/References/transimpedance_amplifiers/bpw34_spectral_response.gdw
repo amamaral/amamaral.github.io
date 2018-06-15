@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetDataWorkspace>
+  <version>2.26.0.20</version>
+  <WSversion>10</WSversion>
+  <File>
+    <Name>C:\Users\ander\Dropbox\website\amamaral.github.io\blog\References\transimpedance_amplifiers\bpw34_spectral_response.bmp</Name>
+    <Width>732</Width>
+    <Height>620</Height>
+  </File>
+  <Line>
+    <Caption>Line #1</Caption>
+    <LineColor>0,0,0</LineColor>
+    <BkColor>254,254,254</BkColor>
+    <PtColor>220,70,220</PtColor>
+    <LineType>0</LineType>
+    <Points MF="9">2784,2649,2825,2589,2865,2529,2905,2469,2946,2409,2986,2349,3027,2290,3069,2232,3111,2173,3152,2115</Points>
+    <Points MF="9">3194,2056,3235,1997,3278,1939,3322,1881,3364,1823,3406,1765,3448,1707,3492,1651,3537,1596,3581,1539</Points>
+    <Points MF="9">3624,1482,3668,1425,3713,1369,3759,1314,3806,1259,3853,1205,3900,1150,3947,1095,3995,1042,4044,990</Points>
+    <Points MF="9">4094,938,4144,887,4196,837,4248,787,4300,737,4354,690,4410,645,4468,602,4527,561,4587,522</Points>
+    <Points MF="9">4649,486,4715,459,4785,447,4857,451,4927,469,4989,504,5038,554,5076,616,5106,682,5132,749</Points>
+    <Points MF="9">5157,816,5181,885,5203,953,5225,1021,5245,1091,5263,1161,5282,1231,5300,1301,5319,1370,5337,1440</Points>
+    <Points MF="9">5354,1510,5371,1580,5389,1650,5407,1720,5424,1790,5440,1860,5455,1931,5471,2002,5488,2072,5503,2142</Points>
+    <Points MF="9">5517,2213,5532,2283,5546,2353,5561,2424,5577,2494,5591,2565,5605,2636,5618,2707,5632,2778,5646,2849</Points>
+    <Points MF="9">5658,2920,5671,2991,5685,3062,5699,3133,5713,3204,5726,3275,5741,3346,5757,3416,5772,3487,5787,3557</Points>
+    <Points MF="9">5803,3627,5821,3696,5839,3766,5857,3836,5877,3905,5901,3972,5927,4039,5957,4105,2742,2707,2702,2767</Points>
+    <Points MF="9">2662,2827,2623,2887,2584,2948,2545,3008,2506,3068,2467,3129,2428,3190,2388,3251,2350,3312,2313,3374</Points>
+    <Points MF="9">2274,3434,2235,3494,2197,3555,2161,3617,2124,3679,2086,3740,2046,3800,2006,3860,1967,3920,1926,3980</Points>
+    <Points MF="9">1885,4040,1844,4099,1803,4159,1760,4217,1716,4274,1673,4331,1628,4387,1581,4442,1536,4498</Points>
+  </Line>
+  <CurrentLine>0</CurrentLine>
+  <Xmin MF="9">1183,4702,3.500000e+002</Xmin>
+  <Xmax MF="9">6277,4702,1.150000e+003</Xmax>
+  <Ymin MF="9">1192,4711,0.000000e+000</Ymin>
+  <Ymax MF="9">1210,436,1.000000e+000</Ymax>
+  <XScale>linear</XScale>
+  <YScale>linear</YScale>
+  <Position>-33,-10</Position>
+  <Zoom>
+    <Scale>100.0</Scale>
+  </Zoom>
+  <Digitize>
+    <IgnorePixels>1</IgnorePixels>
+    <LineIDMethod>2</LineIDMethod>
+  </Digitize>
+  <AutoTrace>
+    <TraceDistance>8</TraceDistance>
+    <SmoothLines>1</SmoothLines>
+  </AutoTrace>
+  <DigitizeArea>
+    <LineOrArea>0</LineOrArea>
+    <RotateAngle>0.000000</RotateAngle>
+    <dx>8.000000</dx>
+  </DigitizeArea>
+  <GridSettings>
+    <ShowGrid>0</ShowGrid>
+    <AreaType>0</AreaType>
+    <dx>15.000000</dx>
+    <dy>15.000000</dy>
+  </GridSettings>
+</GetDataWorkspace>

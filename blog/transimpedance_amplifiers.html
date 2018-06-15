@@ -1,0 +1,513 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Transimpedance amplifiers - Application in optical sensing with photodiodes </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="/css/modern-business.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/academicons/css/academicons.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+                <a class="navbar-brand" href="/index.html"> Anderson M. Amaral</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/about.html">Personal Info</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-flask pull-left"></i> Science<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/science_papers.html">Papers</a>
+                            </li>
+                            <li><a href="/conference_papers.html">Conference papers</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Science links</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gears"></i> Technical work<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/blog.html" data-toggle="tooltip" title="Technical articles in my blog">Articles</a>
+                            </li>
+                            <li><a href="http://www.github.com/amamaral" data-toggle="tooltip" title="Github software repositories">Software</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Electronics links</a>
+                            </li>
+                        </ul>
+                    </li>
+		    <li><a href="/teaching.html"><i class="fa fa-book"></i> Teaching (Ensino)</a>
+		    </li>
+                    <li><a href="/blog.html" data-toggle="tooltip" title="Educational and technical blog">Blog</a>
+                    </li>
+		    <li><a href="/useful.html"><i class="fa fa-user"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    
+
+<style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; }
+pre.numberSource a.sourceLine:empty
+{ position: absolute; }
+pre.numberSource a.sourceLine::before
+{ content: attr(data-line-number);
+  position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+  border: none; pointer-events: all;
+  -webkit-touch-callout: none; -webkit-user-select: none;
+  -khtml-user-select: none; -moz-user-select: none;
+  -ms-user-select: none; user-select: none;
+  padding: 0 4px; width: 4em;
+  color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+{ background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li class="active">Transimpedance amplifiers - Application in optical sensing with photodiodes</li>
+                </ol>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-8">
+
+                <!-- the actual blog post: title/author/date/content -->
+                <h2 class="page-header"> Transimpedance amplifiers - Application in optical sensing with photodiodes </h2><i class="fa fa-clock-o"></i> Posted on 31/05/2018
+                
+                <hr>
+                <p>In usual optical detectors a given flux of photons (the quantum of the electromagnetic field) are directly converted into a flux of electrons (quantum of electrical current). An associated practical problem is that our measurement instruments are often more appropriate to measure voltage, instead of currents. A transimpedance amplifier is a configuration which converts a current into a (possibly large) voltage with the help of an amplifier.</p>
+<h1 id="a-brief-recapitulation-of-amplifiers-nomenclature">A brief recapitulation of amplifiers nomenclature</h1>
+<p>An amplifier is a device that receives some signal (current or voltage) at its input and outputs another signal (also a current or voltage). There are then 4 possible configurations. Suppose that at the input one has a voltage signal <span class="math inline">\(V_{in}\)</span>, and the output is another voltage <span class="math inline">\(V_{out}\)</span>. This amplifier can be characterized by its voltage gain <span class="math inline">\(A_v = \frac{V_{out}}{V_{in}}\)</span>. For an amplifier which inputs and outputs currents, we also can characterize the current gain as <span class="math inline">\(A_i = \frac{I_{out}}{I_{in}}\)</span>. Notice that <span class="math inline">\(A_v\)</span> and <span class="math inline">\(A_i\)</span> are unitless quantities. Now, if an amplifier accepts a current as an input and outputs a voltage, we can’t characterize any gain in terms of an unitless quantity. To remain the gain characterization in terms of signal out/signal in, we must have <span class="math inline">\(Z_{amp}=\frac{V_{out}}{I_{in}}\)</span>, which has units of Ohms. For a constant, DC signal, <span class="math inline">\(Z_{amp}\)</span> would be a resistance, while in general for time varying signals <span class="math inline">\(Z_{amp}\)</span> is called an impedance. Equivalently, if an amplifier has an input voltage and outputs a current, it’s called a transconductance amplifier, due to its gain <span class="math inline">\(G_{amp}=\frac{I_{out}}{V_{in}}\)</span> (expressed in Siemens, or <span class="math inline">\(\Omega^{-1}\)</span>)</p>
+<h1 id="design-of-a-transimpedance-amplifier">Design of a transimpedance amplifier</h1>
+<h2 id="some-characteristics-of-photodiodes">Some characteristics of photodiodes</h2>
+<p>Here we will comment some physical aspects of sensing light with photodiodes. At the end of this section there are some photodiode typical characteristics and the circuit design starts in the following section.</p>
+<h3 id="currents-in-a-photodiode">Currents in a photodiode</h3>
+<p>A photodiode is mainly characterized by the PN junction, which is an interface between positively (P) and negatively (N) doped semiconductors. Because of the spatial distribution of dopants at such interface, there is intrinsic tendency of charges to flow (diffusion process) from the P-doped region to the N-doped region and vice-versa. However, this spatial charge diffusion must cease for a PN junction in equilibrium, where there is no external input power.</p>
+<p>The spatial charge diffusion means that close to the PN junction there are some negative charges at the P-doped region, while there are also positive charges at the N-doped region. The electric field established after the charge redistribution must be such that no extra charges can flow through the junction. In other words, the field must establish a barrier to the charge flow, and is oriented from the N-region to the P-region.</p>
+<p>Considering the PN junction in equilibrium, there are basically two ways to conduct an electric current across this junction:</p>
+<ol type="1">
+<li>Increase (decrease) the electric potential at the P(N)-doped region. The extra energy can be used to overcome the barrier after some threshold, and an electric current may occur. <strong>The current flows the P-doped to the N-doped region</strong>.</li>
+<li>If a photon hits the semiconductor, it may transfer it’s total energy to a charge carrier (either an electron or a hole). If these charge carriers are produced in the PN junction, they will be accelerated by the existing field due to the diffused spatial charges. <strong>The current flows the N-doped to the P-doped region</strong>. This current is also called <strong>reverse current</strong>.</li>
+</ol>
+<p>The current associated with a voltage <span class="math inline">\(V_D\)</span> across the diode terminals is well approximated by the <a href="https://en.wikipedia.org/wiki/Shockley_diode_equation">Shockley diode equation</a>: <span class="math display">\[I(V_D) = I_D \left(e^{V_D/V_T}-1\right)\]</span> <span class="math inline">\(I_D\)</span> is the dark, or saturation current, and <span class="math inline">\(V_T=kT/q\)</span> for an ideal diode (<span class="math inline">\(k\)</span> is the Boltzmann constant, <span class="math inline">\(T\)</span> the temperature and <span class="math inline">\(q\)</span> is the electrical charge). The dark current depends on several parameters as doping, temperature and PN junction area, such that it’s a parameter that varies significantly from diode to diode.</p>
+<p>The total current across a diode includes also the reverse current, and can be expressed as</p>
+<p><span class="math display">\[I = I_D \left(e^{V_D/V_T}-1\right) - I_{rev}\]</span></p>
+<p>We could also include other contributions to the current, as those due to thermal noise, shot noise and 1/f noise. For these contributions, see for example this <a href="https://sensing.honeywell.com/index.php?ci_id=138865&amp;la_id=1">Honeywell’s Application Note on Photodiodes</a>.</p>
+<p>Under zero voltage bias (<span class="math inline">\(V_D=0\)</span>), one has that <span class="math inline">\(I=-I_{rev}\)</span> and only the photogenerated current is relevant. Thus, photodiodes are very useful to measure light. How can we relate <span class="math inline">\(I_{rev}\)</span> to the properties of the electromagnetic field?</p>
+<h3 id="photogenerated-current">Photogenerated current</h3>
+<p>Suppose that <span class="math inline">\(N\)</span> photons/s are impinging the photodiode active surface. If all photons are used by charge carriers to produce a current, then <span class="math inline">\(I_{rev}=qN\)</span>. However, this photon-flux to electron-flux conversion process cannot occur with 100% of efficiency due to several reasons, as surface reflection of photons at the photodiode surface and carrier recombination in the semiconductor. To consider the imperfections, we introduce the quantum efficiency <span class="math inline">\(\eta\)</span>, and define <span class="math display">\[I_{rev} = \eta q N\]</span></p>
+<p>Often we are not directly interested in the number of photons/s, given that it’s difficult to work in the quantum optics regime. It’s more usual to be interested in the relation between the optical power to the generated current. The energy per photon is <span class="math inline">\(E=\frac{hc}{\lambda}=\frac{1240\text{ eV.nm}}{\lambda}\)</span>, and <span class="math inline">\(N\)</span> photons/s impinge the photodiode. Thus, the relation between current and power can be expressed through the <strong>Responsivity</strong> <span class="math display">\[\text{Resp}(\lambda) = \eta \frac{\lambda}{1240\text{ nm}} \text{ A/W}\]</span></p>
+<p>Thus for a monochromatic source, one has that <span class="math inline">\(I_{rev}= R P\)</span>. If the light source has a known power spectrum <span class="math inline">\(P(\lambda)\)</span> and <span class="math inline">\(\text{Resp}(\lambda)\)</span> is also known, then <span class="math inline">\(I_{rev}= \int P(\lambda) \left|\frac{d\text{Resp}(\lambda)}{d\lambda}\right| d\lambda\)</span>.</p>
+<p>The responsivity does not grow indefinitely with <span class="math inline">\(\lambda\)</span>. Indeed, light can efficiently excite single carriers only at wavelengths larger than the material’s bandgap. For silicon at ambient temperature, that means wavelengths around <span class="math inline">\(1100\text{ nm}\)</span>. Thus, the typical responsivity is a curve like the one below. Notice that photodiodes as the FDS100 or BPW34 can reach responsivities quite close to the ideal case (<span class="math inline">\(\eta=1\)</span>) in the near infrared, while the overall quantum efficiency reduces at smaller wavelengths.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="op">%</span>pylab inline</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co"># Represent the ideal photodiode response</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">wavelengths <span class="op">=</span> linspace(<span class="dv">350</span>, <span class="dv">1150</span>, <span class="dv">100</span>) <span class="co"># UV to near IR</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">bandgap <span class="op">=</span> <span class="dv">1100</span> <span class="co"># Silicon bandgap at room temperature</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">responsivity <span class="op">=</span> wavelengths<span class="op">/</span><span class="dv">1240</span> <span class="co"># Ideal case responsivity</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">responsivity[wavelengths<span class="op">&gt;</span>bandgap] <span class="op">=</span> zeros(wavelengths.shape)[wavelengths<span class="op">&gt;</span>bandgap]</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co"># Consider the data for Thorlabs&#39;s FDS100 and BPW34 as a comparison</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">fds100 <span class="op">=</span> loadtxt(<span class="vs">r&#39;assets\TIA_FDS100_Responsivity_data.csv&#39;</span>, skiprows<span class="op">=</span><span class="dv">1</span>, unpack<span class="op">=</span><span class="va">True</span>)</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co"># Data retrieved directly from the datasheet using the getdata graph digitizer</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">bpw34 <span class="op">=</span> loadtxt(<span class="vs">r&#39;assets\TIA_bpw34_spectral_response.csv&#39;</span>, unpack<span class="op">=</span><span class="va">True</span>)</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">i <span class="op">=</span> absolute(bpw34[<span class="dv">0</span>]<span class="op">-</span><span class="dv">950</span>).argmin() <span class="co"># Which index corresponds to 950 nm?</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">bpw34[<span class="dv">1</span>] <span class="op">=</span> bpw34[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">0.66</span> <span class="op">/</span> bpw34[<span class="dv">1</span>,i] <span class="co"># Adjust the normalized response by the responsivity</span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">plot(wavelengths,responsivity, label<span class="op">=</span><span class="st">&quot;Ideal case&quot;</span>)</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">plot(fds100[<span class="dv">0</span>], fds100[<span class="dv">1</span>], label<span class="op">=</span><span class="st">&quot;FDS100&quot;</span>)</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">plot(bpw34[<span class="dv">0</span>], bpw34[<span class="dv">1</span>], label<span class="op">=</span><span class="st">&quot;BPW34&quot;</span>)</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">grid()</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">xlabel(<span class="vs">r&quot;Wavelength (nm)&quot;</span>)</a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">ylabel(<span class="vs">r&quot;Responsivity (A/W)&quot;</span>)</a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">title(<span class="vs">r&quot;Responsitivity vs Wavelength&quot;</span>)</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">legend()</a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">savefig(<span class="vs">r&#39;assets\TIA_ideal_responsivity.png&#39;</span>)</a></code></pre></div>
+<p><img class="img-responsive" src="assets\TIA_ideal_responsivity.png" /></p>
+<p>As a final note, we are considering here ordinary photodiodes, where each impinging photon generates a single electron. There is another kind of detector where the carriers lye in a very unstable state, such that a photon may produce an avalanche of carriers, the so-called avalanche photodiode (APD). The physics and electronics behind APD’s is completely different from the case studied here.</p>
+<h3 id="photodiode-norton-equivalent">Photodiode Norton equivalent</h3>
+<p>Now that some relevant aspects of the physics behind a photodiode were discussed, we may discuss on how to represent it electrically. Given that it’s quite natural to speak about the currents in a photodiode, it’s often preferable to discuss its properties in terms of its <a href="https://en.wikipedia.org/wiki/Norton%27s_theorem">Norton equivalent</a>, instead of Thévenin’s. In summary, we may represent an arbitrary DC circuit by a current source <span class="math inline">\(I\)</span> in parallel with an equivalent resistor <span class="math inline">\(R_{Shunt}\)</span>. We have already talked about the charge distribution near the PN junction, and given that there are charges separated by a distance over a given area, we may easily accept that there should be an effective capacitance <span class="math inline">\(C_J\)</span> in parallel to the current flow. This would be a model for the semiconductor itself, while there may be also a resistance associated with the electrical contacts in series with the semiconductor, <span class="math inline">\(R_{Series}\)</span>. If we consider all of these contributions, an effective model for the photodiode is given below.</p>
+<p><img class="img-responsive" src="assets\TIA_photodiode.png" style="width:60.0%" /></p>
+<p>The value of <span class="math inline">\(R_{Series}\)</span> is often negligible. Meanwhile, <span class="math inline">\(R_{Shunt}\)</span> can be estimated from the small-signal conductance <span class="math inline">\(g=\frac{dI}{dV_D} = \frac{I_D}{V_T} e^{V_D/V_T}\)</span>. At zero bias voltage <span class="math inline">\(V_D=0\)</span>, and <span class="math inline">\(g = \frac{I_D}{V_T} = 1/R_{Shunt}\)</span>. Given that <span class="math inline">\(V_T\approx 25\,\text{mV}\)</span> and <span class="math inline">\(I_D\approx\)</span> pA-nA range, <span class="math inline">\(R_{Shunt}\gtrsim 1\,\text{G}\Omega\)</span> and can be safely neglected. These simplifications are also valid under reverse bias (<span class="math inline">\(V_D&lt;0\)</span>). The last effective component is the junction capacitance <span class="math inline">\(C_J\)</span>. <span class="math inline">\(C_J\)</span> depends on several internal characteristics (as junction area, doping profile, temperature, bias voltage…) and is very important in the determination of the AC properties of the transimpedance amplifier. We may thus simplify the photodiode circuit to the model below.</p>
+<p><img class="img-responsive" src="assets\TIA_photodiode_simplified.png" style="width:40.0%" /></p>
+<h3 id="typical-photodiode-specs">Typical photodiode specs</h3>
+<ol type="a">
+<li>Thorlabs FDS100</li>
+</ol>
+<ul>
+<li>Optical characteristics
+<ul>
+<li>Responsivity: 0.65 A/W (@ 980 nm)</li>
+<li>Active area: 3.6mm x 3.6mm</li>
+</ul></li>
+<li>Electrical characteristics
+<ul>
+<li>Dark current: 1 nA (Typ.)</li>
+<li>Internal capacitance: 237 pF (@ 0V Reverse bias)</li>
+</ul></li>
+</ul>
+<ol start="2" type="a">
+<li>Vishay BPW34</li>
+</ol>
+<ul>
+<li>Optical characteristics
+<ul>
+<li>Responsivity: 0.66 A/W (@ 950 nm)</li>
+<li>Active area: 7.5 mm<span class="math inline">\(^2\)</span></li>
+</ul></li>
+<li>Electrical characteristics
+<ul>
+<li>Dark current: 2 nA (Typ.)</li>
+<li>Reverse light current: 50 <span class="math inline">\(\mu\)</span>A (Typ.)</li>
+<li>Internal capacitance: 70 pF (@ 0V Reverse bias)</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Conversion of BPW34 datasheet parameters to responsivity @ 950 nm</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">I_revCurrent <span class="op">=</span> <span class="fl">50e-6</span> <span class="co"># A</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">irradiance <span class="op">=</span> <span class="dv">1</span> <span class="op">*</span> <span class="fl">1e-3</span><span class="op">/</span>(<span class="fl">1e-2</span>)<span class="op">**</span><span class="dv">2</span> <span class="co"># W/m^2</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">area <span class="op">=</span> <span class="fl">7.5</span> <span class="op">*</span> (<span class="fl">1e-3</span>)<span class="op">**</span><span class="dv">2</span> <span class="co"># m^2</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">R <span class="op">=</span> I_revCurrent <span class="op">/</span> (irradiance <span class="op">*</span> area)</a></code></pre></div>
+<h2 id="direct-signal-measurement">Direct signal measurement</h2>
+<p>We may now use the simplified model to consider what we will measure by connecting a photodiode directly to a voltmeter or an oscilloscope. The circuit is essentially a resistor <span class="math inline">\(R\)</span> across the diode terminals, and a voltmeter that measures <span class="math inline">\(V_D\)</span>. Instead of <span class="math inline">\(C_J\)</span> only, we may also consider that the measurement instrument also contains some effective capacitance across it’s input terminals, <span class="math inline">\(C_{in}\)</span>, and the total capacitance is <span class="math inline">\(C = C_J + C_{in}\)</span>.</p>
+<h3 id="dc-analysis">DC analysis</h3>
+<p>Let us consider that the light source has a constant optical power <span class="math inline">\(P\)</span>. Given that a current <span class="math inline">\(I\)</span> flows across the photodiode, <span class="math display">\[V_D= -R I = R I_{rev} - R I_D \left(e^{V_D/V_T}-1\right).\]</span></p>
+<p>The previous expression is transcendental in <span class="math inline">\(V_D\)</span>, such that we’re not able to express <span class="math inline">\(V_D\)</span> in terms of <span class="math inline">\(I_{rev}\)</span> using elementary functions. However, we may gain understanding with a graphical solution. Let’s consider what happens for the BPW34 photodiode when connected across a 1 M<span class="math inline">\(\Omega\)</span> resistor (typical value for oscilloscopes). Using the dark current given above, <span class="math inline">\(R I_D = 2\,\text{mV}\)</span>. Also, for improved clarity, let’s consider <span class="math inline">\(V_{rev}=R I_{rev}\)</span> as the voltage contribution to <span class="math inline">\(V_D\)</span> due to light only. Ideally, we would be interested in having <span class="math inline">\(V_D=V_{rev}\)</span>. However, the increase in <span class="math inline">\(V_D\)</span> leads to a nonlinear relation between <span class="math inline">\(V_{D}\)</span> and <span class="math inline">\(V_{rev}\)</span>. When does the deviation from the linear behavior becomes significant? The figure below shows the measured voltage <span class="math inline">\(V_D\)</span> versus the voltage due to photodetection only, <span class="math inline">\(V_{rev}\)</span>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="op">%</span>pylab inline</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">V_D <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">100</span>) <span class="co"># Voltage across diode, in mV</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">R <span class="op">=</span> <span class="fl">1e6</span>     <span class="co"># 1MOhm resistor</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">I_D <span class="op">=</span> <span class="fl">2e-9</span>  <span class="co"># Dark current (in A)</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">V_T <span class="op">=</span> <span class="dv">25</span>    <span class="co"># Carrier thermal energy at room temperature (in mV)</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">v_rev_0nA <span class="op">=</span> V_D</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co"># the 1e3 factor below converts the voltage to mV</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">v_rev_2nA <span class="op">=</span> V_D <span class="op">+</span> (R <span class="op">*</span> I_D <span class="op">*</span> <span class="fl">1e3</span>) <span class="op">*</span> (exp(V_D<span class="op">/</span>V_T)<span class="op">-</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co"># Approximate a mean linear relation between V_D and v_rev</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">i <span class="op">=</span> <span class="bu">abs</span>(V_D<span class="dv">-60</span>).argmin() <span class="co"># Which V_D index is closer to V_D==60 mV?</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">V_mean_slope <span class="op">=</span> (v_rev_2nA[i]<span class="op">-</span>v_rev_2nA[<span class="dv">0</span>])<span class="op">/</span>(V_D[i]<span class="op">-</span>V_D[<span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">v_linearized <span class="op">=</span> V_mean_slope <span class="op">*</span> V_D</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">plot(v_rev_0nA, V_D, label<span class="op">=</span><span class="vs">r&#39;$I_D=0$&#39;</span>)</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">plot(v_rev_2nA, V_D, label<span class="op">=</span><span class="vs">r&#39;$I_D=2$ nA&#39;</span>)</a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">plot(v_linearized, V_D, label<span class="op">=</span><span class="vs">r&#39;Linearized relation&#39;</span>)</a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">legend()</a>
+<a class="sourceLine" id="cb3-21" data-line-number="21">ylabel(<span class="vs">r&#39;$V_D$ (mV)&#39;</span>)</a>
+<a class="sourceLine" id="cb3-22" data-line-number="22">xlabel(<span class="vs">r&#39;$V_</span><span class="sc">{rev}</span><span class="vs">=V_D + R I_D \left(e^{V_D/V_T}-1\right)$ (mV)&#39;</span>)</a>
+<a class="sourceLine" id="cb3-23" data-line-number="23">grid()</a>
+<a class="sourceLine" id="cb3-24" data-line-number="24">savefig(<span class="vs">r&#39;assets\TIA_diode_saturation.png&#39;</span>)</a></code></pre></div>
+<p><img class="img-responsive" src="assets\TIA_diode_saturation.png" /></p>
+<p>Notice that the dark current is very important to the photodiode linearity. The deviation grows exponentially with an increase in the <span class="math inline">\(V_D/V_T\)</span> ratio, what indicates that the upper voltage limit to a linear detector using this circuit is some small multiple of <span class="math inline">\(V_T\)</span>. However, if we consider only small <span class="math inline">\(V_D\)</span> voltages, its possible to obtain an approximate linear relation. Assuming that one calibrates the photodiode voltage at <span class="math inline">\(V_D=60\,\text{mV}\)</span>, the deviation between the linearized relation and the actual relation between <span class="math inline">\(V_D\)</span> and <span class="math inline">\(V_{rev}\)</span> is relatively small for <span class="math inline">\(0 \leq V_D \leq 60\,\text{mV}\)</span>. This is an important limitation when using photodiodes directly, given that such small voltages are difficult to measure using oscilloscopes (small signals may be easily lost when the photodiode operates in this linearized range). Another remark is that the photodiode response can be brought to the linear regime with the reduction of the load resistor <span class="math inline">\(R\)</span>, at the cost of reduced sensitivity.</p>
+<p>To sum up the discussion, there are a few worthy comments. Supposing that we’re in the linearized representation of the PD, we may state that <span class="math inline">\(V_{rev}=\alpha V_{D}\)</span>. Also, the typical currents necessary to maintain the diode in the linearized region occur for <span class="math inline">\(V_D\approx 50\,\text{mV}\)</span>, or when <span class="math inline">\(I_{rev}\approx 50\,\text{nA}\)</span> (Assuming <span class="math inline">\(R=1\,\text{M}\Omega\)</span>).</p>
+<h3 id="ac-analysis">AC analysis</h3>
+<p>Now we will consider what happens to the signal when the light beam pulses. This is specially important, considering that photodiodes often used to measure light from ultrafast lasers, where the light pulses have durations ranging from ns (<span class="math inline">\(10^{-9}\)</span> s) to fs (<span class="math inline">\(10^{-15}\)</span> s). Given that the currents and voltages are dynamic, the effective capacitor <span class="math inline">\(C\)</span> becomes relevant. Using Kirchhoff laws for the voltages and currents, we may check that the voltage applied to all elements is <span class="math inline">\(V_D\)</span>, whereas the current through the diode is divided between the capacitor <span class="math inline">\(C\)</span> and the resistor <span class="math inline">\(R\)</span>.</p>
+<p><span class="math display">\[-I = I_{rev} - I_D \left(e^{V_D/V_T}-1\right) = C \frac{dV_D}{dt} + \frac{V_D}{R}\]</span></p>
+<p><span class="math display">\[RC \frac{dV_D}{dt} + \left[V_D + R I_D \left(e^{V_D/V_T}-1\right)\right] = RI_{rev}\]</span></p>
+<p>Again, an exact solution to the above equation is considerably difficult. However, if we consider that the photodiode operates in the linearized region for simplicity (<span class="math inline">\(V_D/V_T\)</span> less than a factor of 2 or 3), we can approximate <span class="math inline">\(\left[V_D + R I_D \left(e^{V_D/V_T}-1\right)\right] \approx \alpha V_D\)</span>. Just to have an idea of the order of magnitude, the DC analysis above indicated that <span class="math inline">\(\alpha\approx0.75\)</span>. Now it becomes much simpler to understand the behavior of <span class="math inline">\(V_D\)</span>,</p>
+<p><span class="math display">\[RC \frac{dV_D}{dt} + \alpha V_D = RI_{rev}.\]</span></p>
+<p>The above expression is similar to the case where a capacitor <span class="math inline">\(C\)</span> discharges through a resistor <span class="math inline">\(R\)</span>. There is a source term (<span class="math inline">\(RI_{rev}\)</span>) which is due to the impinging light beam. We may then consider the transfer function between the light source and <span class="math inline">\(V_D\)</span>. Assuming <span class="math inline">\(V_D=V_{D\omega}e^{j\omega t}\)</span>, and <span class="math inline">\(I_{rev} = \text{Resp}(\lambda) P_\omega(\lambda) e^{j\omega t}\)</span>, and</p>
+<p><span class="math display">\[V_{D\omega} = \frac{R}{\alpha + j \omega RC}  \text{Resp}(\lambda) P_\omega(\lambda)\]</span></p>
+<p>Therefore, if the beam power contains terms oscillating at a high frequency (<span class="math inline">\(\omega \gg \alpha/RC\)</span>), then these terms will not be present in <span class="math inline">\(V_{D\omega}\)</span>. Thus, for fast signals one must use photodiodes with small capacitances. Fast photodiodes can be easily recognized for their small active region area.</p>
+<p>Another relevant condition is the circuit response due to an ultrashort pulse. In this case the pulse is so fast that the associated current occurs almost instantly. The beam power can be expressed in terms of the Dirac delta impulse, <span class="math inline">\(P(t)=E_{single-pulse} \delta(t)\)</span>, where <span class="math inline">\(E_{single-pulse}\)</span> is the energy contained in the optical pulse and the Dirac Delta satisfies the following properties: <span class="math inline">\(\delta(t)=0\)</span> for <span class="math inline">\(t\neq 0\)</span> and <span class="math inline">\(\int_{-\epsilon}^{\epsilon} \delta(t) dt = 1\)</span> for infinitesimal <span class="math inline">\(\epsilon\)</span>. For the short pulse, and considering that <span class="math inline">\(V_D=0\)</span> before the pulse, we have that <span class="math display">\[\frac{dV_D}{dt} = \frac{1}{C} \text{Resp}(\lambda) E_{single-pulse} \delta(t) - \frac{\alpha}{RC} V_D.\]</span></p>
+<p>Integrating both sides only from <span class="math inline">\(-\epsilon\)</span> to <span class="math inline">\(\epsilon\)</span>, where <span class="math inline">\(\epsilon\)</span> is infinitesimal, we have that</p>
+<p><span class="math display">\[V_D(\epsilon) - V_D(-\epsilon) = \frac{1}{C} \text{Resp}(\lambda) E_{single-pulse} - \frac{\alpha}{RC} \int_{-\epsilon}^{\epsilon} V_D(t) dt.\]</span></p>
+<p><span class="math inline">\(V_D(-\epsilon)=0\)</span>, because it’s <span class="math inline">\(V_D\)</span> before the pulse, while <span class="math inline">\(\int_{-\epsilon}^{\epsilon} V_D(t) dt \leq \text{Maximum}\left[V_D(-\epsilon&lt;t&lt;\epsilon)\right]2\epsilon \rightarrow 0\)</span> in the limit where <span class="math inline">\(\epsilon \rightarrow 0\)</span>. Thus, the photodiode current produced by an ultrafast pulse is equivalent to consider an instantaneous charging of the effective capacitor <span class="math inline">\(C\)</span> with a charge <span class="math inline">\(\text{Resp}(\lambda) E_{single-pulse}\)</span>, since</p>
+<p><span class="math display">\[V_D(t=0^+) = \frac{1}{C} \text{Resp}(\lambda) E_{single-pulse}\]</span></p>
+<p>To verify the behavior of <span class="math inline">\(V_D\)</span> after the pulse, it simply an issue of considering <span class="math inline">\(V_D(t=0^+)\)</span> as the initial condition. This circuit discharges as an RC circuit with a time constant <span class="math inline">\(RC/\alpha\)</span>.</p>
+<p><span class="math display">\[V_D(t&gt;0) = \frac{ \text{Resp}(\lambda) E_{single-pulse}}{C} e^{-\alpha t/RC}\]</span></p>
+<p><span class="math inline">\(V_D\)</span> can rise very fast (and the limitations in the rise time are beyond this simple model), and decays according to the photodiode capacitor <span class="math inline">\(C\)</span> and the measurement instrument resistance <span class="math inline">\(R\)</span>. The input resistance of an oscilloscope is typically around <span class="math inline">\(1\,\text{M}\Omega\)</span>, thus if one needs to reduce the circuit response time to observe fast features in the signal, one may connect a smaller resistance in parallel to the photodiode, to reduce the decay time.</p>
+<h2 id="transimpedance-amplifier-design">Transimpedance amplifier design</h2>
+<p>While it’s possible to use diodes within their almost linear range, the associated voltages (~50mV) are quite small. It’s much easier to measure voltages in the 1-5V range, where there are various tools available to measure voltages. For instance, one may use an arduino board to perform several measurements. Thus, an amplified signal may bring in several interesting aspects. Here we will consider some basics of an important configuration for photodiodes: the transimpedance amplifier, where the photodiode current is converted into a voltage. The design of these amplifiers is also nicely covered in the <a href="https://www.maximintegrated.com/en/app-notes/index.mvp/id/5129">Maxim Application Note 5129</a>, and in the <a href="http://www.ti.com/tool/tipd176">Texas Instruments Reference Design 176</a>.</p>
+<h3 id="dc-analysis-1">DC analysis</h3>
+<p>We will consider the ideal case where the photodiode is connected with to the inverting input and the ground, and a single resistor <span class="math inline">\(R_F\)</span> is connected in the feedback path. We will consider an ideal opamp, where no current flows through the input terminals.</p>
+<figure>
+<img class="img-responsive" src="" alt="Circuit schematic figure" /><figcaption>Circuit schematic figure</figcaption>
+</figure>
+<p>For an opamp under ordinary working circumstances, the output voltage <span class="math inline">\(V\)</span> is related to the inverting and non-inverting input voltages <span class="math inline">\(v_-\)</span>, <span class="math inline">\(v_+\)</span> is</p>
+<p><span class="math display">\[V = A (v_+ - v_-)\]</span></p>
+<p>The open loop gain <span class="math inline">\(A\)</span> often has very large values (<span class="math inline">\(10^{10}-10^{12}\)</span>), such that <span class="math inline">\(v_+ - v_- = V/A \approx 0\)</span>. The condition <span class="math inline">\(v_+ - v_-\)</span> is also called the <em>virtual short constraint</em>. Given that <span class="math inline">\(v_+\)</span> is grounded, <span class="math inline">\(v_-=v_+=v=0\)</span>. A nice feature of this configuration is that the voltage across the diode is <span class="math inline">\(0\,\text{V}\)</span>. Then, the dark current contribution becomes negligible and only <span class="math inline">\(I_{rev}\)</span> contributes to the current through the diode. Given that <span class="math inline">\(I_{rev}\)</span> must also flow through <span class="math inline">\(R_F\)</span>, <span class="math display">\[V=R_F I_{rev}.\]</span></p>
+<p>Notice that we the photodiode was biased <span class="math inline">\((v_+=v\neq0)\)</span>, the dark current would add to <span class="math inline">\(I_{rev}\)</span>, such that <span class="math inline">\(I_D \left(e^{-v/V_T}-1\right)\approx-I_D\)</span>. When considering the reverse bias voltage below, we assume the simplifying assumption that either the bias voltage is zero, such that the dark current is negligible <span class="math inline">\((I_D=0)\)</span>, or that the reverse bias is large enough (<span class="math inline">\(v \gg V_T\)</span>) that the full dark current is a constant factor (<span class="math inline">\(I_D \left(e^{-v/V_T}-1\right)\approx-I_D\)</span>). Also, the real opamp draws some bias current <span class="math inline">\(I_B\)</span> at its inputs, and there is some offset voltage between <span class="math inline">\(v_+\)</span> and <span class="math inline">\(v_-\)</span>, <span class="math inline">\(v_{os}=v_+ - v_-\neq 0\)</span>. Typical figures for opamps with BJT input transistors are <span class="math inline">\(I_B~100\,\text{nA}\)</span>, while FET or CMOS at the opamp input stage lowers to <span class="math inline">\(I_B&lt;100\,\text{pA}\)</span>. The input offset voltage is often around a few mV or less, and can be trimmed to zero by following the opamp manufacturer suggestions. These are the most important opamp features at DC for the present application, and we will consider these effects below.</p>
+<figure>
+<img class="img-responsive" src="" alt="Circuit schematic - opamp errors figure" /><figcaption>Circuit schematic - opamp errors figure</figcaption>
+</figure>
+<p>Consideration of the currents at the opamp inverting input gives</p>
+<p><span class="math display">\[I_{rev} + I_{D} = \frac{V-(v-v_{os})}{R_F} - I_B,\]</span></p>
+<p><span class="math display">\[V = v-v_{os} + R_F(I_{rev} + I_{D} + I_B)\]</span></p>
+<p>where it should be remembered that <span class="math inline">\(I_D=0\)</span> for the unbiased photodiode (<span class="math inline">\(v=0\)</span>), while <span class="math inline">\(I_D\neq0\)</span> in the biased case (<span class="math inline">\(v\neq0\)</span>).</p>
+<h4 id="unbiased-photodiode">Unbiased photodiode</h4>
+<p>In this case <span class="math inline">\(v=0\)</span> and <span class="math inline">\(I_{D}=0\)</span>. So, the offset voltage gives an error in the order of mV, while the base current <span class="math inline">\(I_B\)</span> is subject to the same transimpedance gain as the reverse current. Thus, <span class="math inline">\(I_B\)</span> limits the maximum achievable gain, and it’s interesting to keep it small by selecting FET input opamps. By knowing the output voltage range of interest, at a given reverse current, one may select the <span class="math inline">\(R_F\)</span> value. For instance, the arduino ADC accepts voltages in the range of 0-5 V. For the BPW34, which has a typical <span class="math inline">\(I_{rev}=50\,\mu\text{A}\)</span>, we may select <span class="math inline">\(R_F=\frac{5}{50 \cdot 10^{-6}}=100\,\text{k}\Omega\)</span>. For higher sensitivities (smaller <span class="math inline">\(I_{rev}\)</span>), the associated <span class="math inline">\(R_F\)</span> must be larger.</p>
+<h4 id="biased-photodiode">Biased photodiode</h4>
+<p>In this case <span class="math inline">\(v\neq0\)</span> and <span class="math inline">\(I_{D}\)</span> is characteristic of the photodiode. The <span class="math inline">\(v_{os}\)</span> represents again a small contribution to <span class="math inline">\(V\)</span>, and our major concerns are <span class="math inline">\(I_B\)</span> and <span class="math inline">\(I_D\)</span>. A FET input opamp will have <span class="math inline">\(I_B&lt;100\,\text{pA}\)</span>, while <span class="math inline">\(I_D\approx2\,\text{nA}\)</span>. Let’s consider that <span class="math inline">\(I_B\)</span> is negligible. Then <span class="math inline">\(V\)</span> has a minimum value of <span class="math inline">\(v+R_FI_D\)</span> and <span class="math inline">\(R_FI_{rev}\)</span> indicates the output variation due to the incident light. Increasing <span class="math inline">\(R\)</span> increases the signal gain, but decreases the maximum output voltage range. If <span class="math inline">\(I_D\)</span> is much smaller than the typical <span class="math inline">\(I_{rev}\)</span>, than we select <span class="math inline">\(R_F\)</span> as before. For example, for the BPW34, <span class="math inline">\(I_D\approx2\,\text{nA}\)</span>, while <span class="math inline">\(I_{rev}\approx50\,\mu\text{A}\)</span>. Thus, selecting a <span class="math inline">\(100\,\text{k}\)</span> resistor implies that the dark current offsets the output by <span class="math inline">\(200\,\mu\text{V}\)</span>. However, if <span class="math inline">\(I_{rev}\)</span> and <span class="math inline">\(I_D\)</span> have the same order of magnitude, they will be amplified together and the output offset due to <span class="math inline">\(I_D\)</span> will become of the order of the output voltage. Thus, for very small light powers, <strong>the unbiased configuration is more easily amplified, while the biased photodiode is adequate for larger signals</strong>. The biased version will show itself specially useful when we consider the AC response of these circuits.</p>
+<p>As a final remark, it’s possible to make <span class="math inline">\(v=0\)</span> while maintaining the diode reverse-biased by connecting the photodiode to a battery instead of ground.</p>
+<!--- Would it be an effective bias current removal to add a reverse-biased diode whose voltage drop is compensated by an opamp? In other words, to use a reverse-biased diode to create a current in the nA range to compensate for the PD dark-current. If this is feasible, it would even enable to use ordinary photodiodes as photon-counting devices! (No need for local oscillators: the bias current would be due to an opamp) --->
+<h3 id="ac-analysis---oscillations">AC analysis - Oscillations</h3>
+<p>The DC analysis neglects that the opamp output needs some time to change it’s output value. Indeed, it can be seen in the datasheets that the gain effectively drops with a frequency increase. This characteristic is represented by the unit Gain-Bandwidth-Product (<span class="math inline">\(\omega_{GBP}\)</span>) frequency, which indicates the frequency where the voltage gain becomes <span class="math inline">\(1\)</span>. To estimate the effect of opamp limited bandwidth in our analysis, we consider that the voltage gain becomes <span class="math inline">\(A \rightarrow A/\left(1+j\omega/\omega_0\right)\)</span>, to simulate the effect of a low pass filter between the input voltage difference and the output voltage. <span class="math inline">\(\omega_0\)</span> is the filter low-pass 3dB frequency, but it’s more interesting to express it in terms of <span class="math inline">\(\omega_{GBP}\)</span>.</p>
+<p>When <span class="math inline">\(\omega=\omega_{GBP}\)</span>, the gain factor becomes 1, <span class="math inline">\(|A/\left(1+j\omega_{GBP}/\omega_0\right)|=1\)</span>, or <span class="math inline">\(\omega_0 \approx \omega_{GBP}/A\)</span>. We can than verify how this affects our virtual short opamp simplification, given that now</p>
+<p><span class="math display">\[V = \frac{A}{1+jA\omega/\omega_{GBP}} (v_+ - v_-)\]</span></p>
+<p>In the limit <span class="math inline">\(A \rightarrow \infty\)</span>, we can state approximately that</p>
+<p><span class="math display">\[v_+ - v_- = j\frac{\omega}{\omega_{GBP}} V \equiv \frac{1}{\omega_{GBP}} \frac{dV}{dt}\]</span></p>
+<p>Thus, the opamp inputs will be kept at the same voltage only at signal frequencies much smaller than <span class="math inline">\(\omega_{GBP}\)</span>. When the signal frequency increases, the difference can become as large as the output voltage. This is an important feature in the design of transimpedance amplifiers because this opamp behavior will lead to oscillations in <span class="math inline">\(V\)</span>.</p>
+<p>Consider again the currents at the opamp inverting input. We have that <span class="math inline">\(v_-=-\frac{1}{\omega_{GBP}} \frac{dV}{dt}\)</span>, and the currents must satisfy</p>
+<p><span class="math display">\[ I_{rev} + I_D = - C \frac{dv_-}{dt} + \frac{V-v_-}{R_F} \]</span></p>
+<p><span class="math display">\[ R_F(I_{rev} + I_D) = \frac{R_FC}{\omega_{GBP}} \frac{d^2V}{dt^2} + \frac{1}{\omega_{GBP}} \frac{dV}{dt} + V\]</span></p>
+<p>Notice that the above equation for <span class="math inline">\(V\)</span> is of second order in time, as in the harmonic oscillator equation. These oscillations, if present, aren’t related with the input light signal, and are undesirable features in the output signal.</p>
+<p>To study these natural oscillations, we consider how <span class="math inline">\(V\)</span> behaves without any external inputs (<span class="math inline">\(I_{rev}=I_D=0\)</span>). Then,</p>
+<p><span class="math display">\[\frac{d^2V}{dt^2} + \frac{1}{R_FC} \frac{dV}{dt} +\frac{\omega_{GBP}}{R_FC}V = 0\]</span></p>
+<p><span class="math inline">\(V = V_0 e^{j\lambda t}\)</span> gives the characteristic equation</p>
+<p><span class="math display">\[-\lambda^2 +j\lambda \frac{1}{R_FC} +\frac{\omega_{GBP}}{R_FC} = 0\]</span></p>
+<p><span class="math display">\[\lambda = \frac{1}{2R_FC}\left(j \pm \sqrt{4\omega_{GBP}R_FC - 1}\right)\]</span></p>
+<p>Thus, if <span class="math inline">\(4 \omega_{GBP}R_FC &lt; 1\)</span>, then <span class="math inline">\(\lambda\)</span> will be purely imaginary and <span class="math inline">\(V\)</span> always decays exponentially. The oscillations are overdamped. The oscillations are called as critically damped when <span class="math inline">\(4 \omega_{GBP}R_FC=1\)</span>, and underdamped when <span class="math inline">\(4 \omega_{GBP}R_FC&gt;1\)</span>. In the underdamped regime, <span class="math inline">\(V_0\)</span> can oscillate several times before settling to its final value. This can be a problem specially when using pulsed lasers, where the optical pulse is much shorter than the circuit response times. If we consider the BPW34 typical figures given in the DC analysis, when using a 1 MHz GBP opamp, we have <span class="math inline">\(4 \omega_{GBP}R_FC=176\gg1\)</span>. Notice that we cannot modify <span class="math inline">\(C\)</span>, which is an intrinsic feature of our detection. To remove oscillations from the circuit above either we must decrease the opamp bandwidth or decrease the transimpedance gain through <span class="math inline">\(R_F\)</span>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1">C <span class="op">=</span> <span class="fl">70e-12</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">R_F <span class="op">=</span> <span class="fl">1e5</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">GBP <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> pi <span class="op">*</span> <span class="fl">1e6</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="dv">4</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C <span class="co"># 175.92918860102841</span></a></code></pre></div>
+<p>What can be done to remove this misbehavior? The critical condition for the onset of oscillations is <span class="math inline">\(\omega_{GBP}R_FC=1\)</span>. If we want to maintain our transimpedance gain, we have to modify the loop bandwidth somehow. The cause of these oscillations is that <span class="math inline">\(v_-\propto\frac{dV}{dt}\)</span>, specially at higher frequencies. If we modify the feedback loop such that it becomes a follower at higher frequencies, the oscillations are not possible anymore. To decrease the loop impedance at higher frequencies, we may add a capacitor <span class="math inline">\(C_F\)</span> in parallel to <span class="math inline">\(R_F\)</span>. The loop impedance becomes <span class="math inline">\(Z_L = \frac{R_F}{1+j\omega R_F C_F}\)</span>. We can apply this impedance to the equation for <span class="math inline">\(V\)</span> in frequency representation and look for purely imaginary eigensolutions for <span class="math inline">\(\omega\)</span>, which therefore will not include oscillations.</p>
+<p>After some algebra, it can be verified that as long as <span class="math inline">\(1 - 2 C_F R_F \omega_{GBP} - 4 C R_F \omega_{GBP} + C_F^2 R_F^2 \omega_{GBP}^2&gt;0\)</span>, the solution will not oscillate. Solving for <span class="math inline">\(C_F\)</span>, it is obtained that given</p>
+<p><span class="math display">\[C_F &gt; \frac{1 + 2 \sqrt{\omega_{GBP} R_F C}}{\omega_{GBP} R_F}\]</span></p>
+<p>the opamp output voltage will not oscillate. The solution above is slightly different than those proposed in <a href="https://www.maximintegrated.com/en/app-notes/index.mvp/id/5129">Maxim Application Note 5129</a> or <a href="http://www.ti.com/tool/tipd176">Texas Instruments Reference Design 176</a>, but the numerical results are quite close. Indeed, the present equation is slightly more conservative. This is interesting, because the value found for <span class="math inline">\(C_F\)</span> depend strongly on the opamp bandwidth <span class="math inline">\(\omega_{GBP}\)</span>, but this is another parameter which can vary significantly (<span class="math inline">\(\pm40\%\)</span> according to Maxim’s AN), since it’s not a trimmed parameter. Thus, the present equation can be used without having to underestimate <span class="math inline">\(\omega_{GBP}\)</span>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1">C <span class="op">=</span> <span class="fl">100e-12</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">GBP <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span> <span class="fl">1.0e6</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">R_F <span class="op">=</span> logspace(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">our_eq   <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span>sqrt(   <span class="dv">4</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>  (GBP <span class="op">*</span> R_F)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">maxim_eq <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span>sqrt(<span class="dv">1</span><span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>GBP <span class="op">*</span> R_F)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">ti_eq    <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span>sqrt(<span class="dv">1</span><span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>GBP <span class="op">*</span> R_F)</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">semilogx(R_F,   our_eq<span class="op">*</span><span class="fl">1e12</span>, label<span class="op">=</span><span class="st">&#39;This&#39;</span>)</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">semilogx(R_F, maxim_eq<span class="op">*</span><span class="fl">1e12</span>, label<span class="op">=</span><span class="st">&#39;Maxim AN 5129&#39;</span>)</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">semilogx(R_F,    ti_eq<span class="op">*</span><span class="fl">1e12</span>, label<span class="op">=</span><span class="st">&#39;TI RD 176&#39;</span>)</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">grid()<span class="op">;</span> legend()<span class="op">;</span> xlabel(<span class="st">&#39;$R_F$ ($\Omega$)&#39;</span>)<span class="op">;</span> ylabel(<span class="st">&#39;$C_F$ (pF)&#39;</span>)</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">title(<span class="vs">r&#39;Feedback capacitor selection - $C=100$ pF, $f_</span><span class="sc">{GBP}</span><span class="vs">=1$ MHz&#39;</span>)</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">savefig(<span class="vs">r&#39;assets\TIA_feedback_capacitor_selection.png&#39;</span>)</a></code></pre></div>
+<p><img class="img-responsive" src="assets\TIA_feedback_capacitor_selection.png" /></p>
+<p>Therefore, if we return to our BPW34 design attempt, the feedback loop capacitor must have at least <span class="math inline">\(C_F=23\,\text{pF}\)</span> for a <span class="math inline">\(100\,\text{k}\Omega\)</span> feedback resistor, and <span class="math inline">\(\omega_{GBP}=2\pi\cdot 1.0\,\text{MHz}\)</span>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" data-line-number="1">C <span class="op">=</span> <span class="fl">70e-12</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">R_F <span class="op">=</span> <span class="fl">1e5</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">GBP <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span> <span class="fl">1.0e6</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">C_F <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span><span class="dv">2</span><span class="op">*</span>sqrt(GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>(GBP <span class="op">*</span> R_F) <span class="co"># 23 pF</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">C_F</a></code></pre></div>
+<h2 id="transimpedance-amplifier-design-summary">Transimpedance amplifier design summary</h2>
+<h2 id="some-opamp-specs">Some opamp specs</h2>
+<p>Below are shown some specs for some ordinary opamps.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: center;">LM324</th>
+<th style="text-align: center;">TL074</th>
+<th style="text-align: center;">LF411</th>
+<th style="text-align: center;">TLC2264</th>
+<th style="text-align: center;">TLC2274</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Input type</td>
+<td style="text-align: center;">BJT</td>
+<td style="text-align: center;">FET</td>
+<td style="text-align: center;">FET</td>
+<td style="text-align: center;">CMOS</td>
+<td style="text-align: center;">CMOS</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(f_{GBP}\)</span></td>
+<td style="text-align: center;">1 MHz</td>
+<td style="text-align: center;">3 MHz</td>
+<td style="text-align: center;">4 MHz</td>
+<td style="text-align: center;">0.71 MHz</td>
+<td style="text-align: center;">2.2 MHz</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(I_B\)</span></td>
+<td style="text-align: center;">45 nA</td>
+<td style="text-align: center;">65 pA</td>
+<td style="text-align: center;">50 pA</td>
+<td style="text-align: center;">1 pA</td>
+<td style="text-align: center;">1 pA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(v_{os}\)</span></td>
+<td style="text-align: center;">2 mV</td>
+<td style="text-align: center;">3 mV</td>
+<td style="text-align: center;">0.8 mV</td>
+<td style="text-align: center;">0.3 mV</td>
+<td style="text-align: center;">0.3 mV</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">P. Supply</td>
+<td style="text-align: center;">Single</td>
+<td style="text-align: center;">Dual</td>
+<td style="text-align: center;">Dual</td>
+<td style="text-align: center;">Single</td>
+<td style="text-align: center;">Single</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tia---version-1">TIA - Version 1</h2>
+<h2 id="tia---version-2---noise-considerations">TIA - Version 2 - Noise considerations</h2>
+<!--- See analog devices AN on dark current compensation.  --->
+<h1 id="simulation">Simulation</h1>
+<h1 id="experimental-results">Experimental results</h1>
+<h1 id="complete-python-code">Complete python code</h1>
+<!--- NOTES: Add important keywords, as photoconductive (reverse bias) or photovoltaic (zero-bias) PD modes.  --->
+<!--- Final comment: Notice that typical photodiodes have high quantum efficiencies and a broadband optical response. Operating it as an LED it will have a high current to photon conversion ratio and vice-versa. Now, if two photodiodes are facing each other and there is a significant (balanced) current through them, they can emit light that will be absorbed by the other one at high efficiency. There would be a strong coupling between currents and light in between the PD's! Would it be a cavity with gain (instead of losses) at the mirrors? Considering that the light will be bouncing at the two PD's, with little power losses, would it lase? Second: would it be spectrally tunable with ease? This would be a broadband, tunable laser. Third: Consider that one PD has a 'large' current and emits light, and the other one operates as an usual PD. Can the emitter PD operate as a local oscillator to improve single photon detection efficiency? ---->
+
+            </div>
+
+            <div class="col-lg-4">
+              <!--- Google search (!?) --->
+              <script>
+                (function() {
+                  var cx = '000186217323396905804:ehdmthbtyy0';
+                  var gcse = document.createElement('script');
+                  gcse.type = 'text/javascript';
+                  gcse.async = true;
+                  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                  var s = document.getElementsByTagName('script')[0];
+                  s.parentNode.insertBefore(gcse, s);
+                })();
+              </script>
+              <gcse:search></gcse:search>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+
+    <div class="container">
+
+        <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    Copyright © 2016-2018 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/modern-business.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script> 
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-77641001-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- /.ga -->
+    <!-- /.js -->
+</body>
+
+</html>

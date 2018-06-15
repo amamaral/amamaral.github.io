@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> A sine-like wave from arduino's PWM </title>
+    <title> Python for experimental sciences - part II </title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -54,9 +54,9 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gears"></i> Technical work<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Papers</a>
+                            <li><a href="/blog.html" data-toggle="tooltip" title="Technical articles in my blog">Articles</a>
                             </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Software</a>
+                            <li><a href="http://www.github.com/amamaral" data-toggle="tooltip" title="Github software repositories">Software</a>
                             </li>
                             <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
                             </li>
@@ -66,7 +66,7 @@
                     </li>
 		    <li><a href="/teaching.html"><i class="fa fa-book"></i> Teaching (Ensino)</a>
 		    </li>
-                    <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Blog</a>
+                    <li><a href="/blog.html" data-toggle="tooltip" title="Educational and technical blog">Blog</a>
                     </li>
 		    <li><a href="/useful.html"><i class="fa fa-user"></i></a>
                     </li>
@@ -155,12 +155,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
         <div class="row">
 
             <div class="col-lg-12">
-                <h1 class="page-header"> A sine-like wave from arduino's PWM
-                </h1>
                 <ol class="breadcrumb">
                     <li><a href="/index.html">Home</a></li>
                     <li><a href="/blog.html">Blog</a></li>
-                    <li class="active">A sine-like wave from arduino's PWM</li>
+                    <li class="active">Python for experimental sciences - part II</li>
                 </ol>
             </div>
 
@@ -171,84 +169,61 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <div class="col-lg-8">
 
                 <!-- the actual blog post: title/author/date/content -->
-                <hr>
-                <p><i class="fa fa-clock-o"></i> Posted on 26/04/2018
-                </p>
+                <h2 class="page-header"> Python for experimental sciences - part II </h2><i class="fa fa-clock-o"></i> Posted on 15/05/2018
                 
                 <hr>
-                <p>Basic idea: PWM output passes through 2 integrators. Square wave becomes a triangular wave that becomes a parabolic wave with alternating concavities. The total harmonic distortion is relatively small and can be calculated. The only major issue is to calibrate the components feeding the integrators using opamps. A test must be performed…</p>
+                <h1 id="data-reading-and-analysis">Data reading and analysis</h1>
+<h2 id="storing-data-in-lists-and-arrays">Storing data in lists and arrays</h2>
+<p>As seen in the <a href="python_for_experimental_sciences_part_1.html">part I</a>, we may store ordered data in a list or a numpy array. Here we will discuss a bit more on how to manipulate this data. Let’s create an artificial dataset due to a function <span class="math inline">\(y=\sqrt{x+1}\)</span>. The array <code>y</code> contains the exact function, while <code>ydata</code> simulates experimental data, by adding a noise contribution. Measurements always have some noise, which we will add artificially with the <code>randn</code> function. Noise typically follows a <a href="https://en.wikipedia.org/wiki/Normal_distribution">Gaussian distribution</a>, and <code>randn</code> produces such distribution with mean <code>0</code> and width <code>1</code>. To adjust the noise amplitude we multiply <code>randn</code> by <code>0.1</code>. If <code>randn</code> is called without arguments, it returns a single random number. We want to add an artificial noise to each <code>x</code> value, we have to inform <code>randn</code> how many normally distributed random numbers it must generate. This can be achieved with the help of <code>len(x)</code>, which indicates how many entries there are in the <code>x</code> array. <strong>It is a good practice to not use static numbers (as the <code>num=10</code> argument given in <code>linspace</code>) directly</strong>, but some dynamic approach as using <code>len(x)</code> or <code>x.shape[0]</code> (which also indicates how many elements there are along the array’s first dimension). <strong>The program will result in an error with a static approach whenever the length of the dataset changes</strong> (ex.: we have instead that <code>x = linspace(0, 6, 20)</code>). Try to change <code>len(x)==10</code> in the code below to <code>10</code> or a different number.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="op">%</span>pylab inline</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>pi, <span class="dv">5000</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">dx <span class="op">=</span> x[<span class="dv">1</span>]<span class="op">-</span>x[<span class="dv">0</span>]</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">parabolic_wave <span class="op">=</span> zeros(x.shape)</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">parabolic_wave[x<span class="op">&lt;=</span>pi] <span class="op">=</span> (<span class="dv">4</span> <span class="op">*</span> x<span class="op">/</span>pi <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> x<span class="op">/</span>pi))[x<span class="op">&lt;=</span>pi]</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">parabolic_wave[x<span class="op">&gt;</span>pi]  <span class="op">=</span> (<span class="dv">4</span> <span class="op">*</span> (x<span class="op">/</span>pi<span class="dv">-1</span>) <span class="op">*</span> (x<span class="op">/</span>pi<span class="dv">-2</span>))[x<span class="op">&gt;</span>pi]</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">y <span class="op">=</span> sqrt(x<span class="op">+</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">ydata <span class="op">=</span> sqrt(x<span class="op">+</span><span class="dv">1</span>) <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> randn(<span class="bu">len</span>(x))</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">plot(x, y)</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">plot(x, ydata, <span class="st">&#39;k.&#39;</span>)</a>
 <a class="sourceLine" id="cb1-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">subplot(<span class="dv">211</span>)</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">plot(x, parabolic_wave, label<span class="op">=</span><span class="st">&#39;parabolic wave&#39;</span>)</a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">plot(x, sin(x), label<span class="op">=</span><span class="st">&#39;sin(x)&#39;</span>)</a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">grid()</a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">subplot(<span class="dv">212</span>)</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16">plot(x, parabolic_wave<span class="op">-</span>sin(x))</a>
-<a class="sourceLine" id="cb1-17" data-line-number="17">ylabel(<span class="st">&#39;PW(x)-sin(x)&#39;</span>)</a>
-<a class="sourceLine" id="cb1-18" data-line-number="18">grid()</a>
-<a class="sourceLine" id="cb1-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="bu">print</span>(sqrt(<span class="bu">sum</span>((parabolic_wave<span class="op">-</span>sin(x))<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> dx) <span class="op">/</span> <span class="bu">sum</span>((sin(x))<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> dx)))</a>
-<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co"># THD: 5%</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-10" data-line-number="10">savefig(<span class="vs">r&#39;assets\pes_artificial_dataset.png&#39;</span>)</a></code></pre></div>
+<p><img src="assets\pes_artificial_dataset.png" /></p>
+<h2 id="iterables-and-loops">Iterables and loops</h2>
+<h1 id="toc">TOC</h1>
+<ul>
+<li>Storing data in lists/arrays</li>
+<li>Iterables and loops
+<ul>
+<li>Lists, tuples, arrays, dicts and ordered dicts</li>
+</ul></li>
+<li>Storing data in files</li>
+<li>Reading CSV files
+<ul>
+<li>Reading text files</li>
+<li>Caveat: <code>.</code> or <code>,</code>?</li>
+</ul></li>
+<li>Reading Excel files</li>
+<li>Data modelling</li>
+<li>Fitting experimental parameters</li>
+<li>Example 1: diode current-voltage curve</li>
+<li>Example 2: RLC circuit frequency response</li>
+<li>Example 3: Harmonic distortion in a sinusoidal function generator (?)</li>
+</ul>
 
             </div>
 
             <div class="col-lg-4">
-                <div class="well">
-                    <h4>Blog Search</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                    <!-- /input-group -->
-                </div>
-                <!-- /well -->
-                <div class="well">
-                    <h4>Popular Blog Categories</h4>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#dinosaurs">Dinosaurs</a>
-                                </li>
-                                <li><a href="#spaceships">Spaceships</a>
-                                </li>
-                                <li><a href="#fried-foods">Fried Foods</a>
-                                </li>
-                                <li><a href="#wild-animals">Wild Animals</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#alien-abductions">Alien Abductions</a>
-                                </li>
-                                <li><a href="#business-casual">Business Casual</a>
-                                </li>
-                                <li><a href="#robots">Robots</a>
-                                </li>
-                                <li><a href="#fireworks">Fireworks</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /well -->
-                <div class="well">
-                    <h4>Side Widget Well</h4>
-                    <p>Bootstrap's default well's work great for side widgets! What is a widget anyways...?</p>
-                </div>
-                <!-- /well -->
+              <!--- Google search (!?) --->
+              <script>
+                (function() {
+                  var cx = '000186217323396905804:ehdmthbtyy0';
+                  var gcse = document.createElement('script');
+                  gcse.type = 'text/javascript';
+                  gcse.async = true;
+                  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                  var s = document.getElementsByTagName('script')[0];
+                  s.parentNode.insertBefore(gcse, s);
+                })();
+              </script>
+              <gcse:search></gcse:search>
             </div>
         </div>
 
@@ -263,7 +238,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    Copyright © 2018 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                    Copyright © 2016-2018 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
                 </div>
             </div>
         </footer>

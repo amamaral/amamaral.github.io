@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="FI577 - Instrumentação eletrônica para a física">
+  <title>Amplificador operacional</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Amplificador operacional</h1>
+  <p class="author">FI577 - Instrumentação eletrônica para a física</p>
+  <p class="date">Leituras recomendadas: Agarwal Cap. 15 e Horowitz &amp; Hill Cap. 4</p>
+</section>
+
+<section id="amplificação-e-controle" class="slide level1">
+<h1>Amplificação e controle</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Vimos anteriormente que é possível utilizar transistores para amplificar sinais, utilizando o terminal da base como controle de sinais.</li>
+<li class="fragment">Como podemos realizar operações matemáticas sobre os sinais que estamos utilizando (<span class="math inline">\(+, -, \times, /\)</span>)?</li>
+<li class="fragment">Podemos usar os transistores diretamente, ou usar outro componente mais apropriado…</li>
+<li class="fragment">Amplificador operacional (Amp-Op): circuito integrado que simplifica a realização de diversas operações matemáticas</li>
+<li class="fragment">O aspecto chave que permite um bom funcionamento do Amp-Op é o seu alto ganho diferencial</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C9\amplificador_emissor_comum.svg" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="modelo-simples-para-o-amp-op" class="slide level1">
+<h1>Modelo simples para o Amp-Op</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">O Amp-Op possui 2 entradas [inversora (-) e não inversora (+)].</li>
+<li class="fragment">A tensão na saída é dada por <span class="math inline">\(V_O=A\left(v_+-v_-\right)\)</span>. Amplifica a diferença entre as tensões das suas entradas.</li>
+<li class="fragment">O ganho <span class="math inline">\(A\)</span> possui um valor muito grande (ex.: <span class="math inline">\(10^5-10^{10}\)</span>)</li>
+<li class="fragment">Estimativa: se <span class="math inline">\(\delta V=10\)</span> mV, tipicamente <span class="math inline">\(V_O\geq10^3\)</span> V! Considerando que a maior tensão do circuito é dada pela fonte de tensão, parece num primeiro momento que o Amp-Op é inútil por ter um ganho muito alto…</li>
+<li class="fragment"><span class="math inline">\(A\)</span> possui o mesmo problema que o ganho de corrente de um transistor: não é um parâmetro confiável</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C11\opamp.svg" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="realimentação-negativa" class="slide level1">
+<h1>Realimentação negativa</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">A genialidade do Amp-Op está justamente em descartar o ganho excessivo, utilizando o sinal de saída para <strong>realimentar</strong> (<em>feedback</em>) uma das entradas.</li>
+<li class="fragment">Supor que <span class="math inline">\(v_-=B V_O\)</span>. Então, temos que <span class="math inline">\(V_O = \frac{A}{1+A B}v_+\)</span>.</li>
+<li class="fragment">Ora, <span class="math inline">\(A\)</span> é muito grande… de forma que <span class="math inline">\(\frac{A}{1+AB}\approx \frac{1}{B}\)</span>.</li>
+<li class="fragment"><span class="math display">\[V_O \approx \frac{v_+}{B}\]</span></li>
+<li class="fragment">A tensão na saída depende apenas dos componentes que utilizamos para a realimentação (B), que são parâmetros bem comportados.</li>
+<li class="fragment">Desde que vejamos como “construir” B’s adequados, podemos realizar diversas operações sobre <span class="math inline">\(v_+\)</span>.</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C11\opamp_negative_feedback.svg" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="realimentação-positiva" class="slide level1">
+<h1>Realimentação positiva</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Podemos também pensar em utilizar o sinal de saída para realimentar <span class="math inline">\(v_+\)</span>.</li>
+<li class="fragment"><span class="math inline">\(v_+=B V_O\)</span>. Então, temos que <span class="math inline">\(V_O = -\frac{A}{1-A B}v_-\)</span>.</li>
+<li class="fragment">Aparentemente o mesmo argumento anterior funcionaria, mas note que se <span class="math inline">\(A B = 1\)</span>, o circuito apresentará um comportamento singular.</li>
+<li class="fragment">De fato, o ganho <span class="math inline">\(A\)</span> varia com a frequência, de forma que existe uma frequência <span class="math inline">\(\omega_{GBP}\)</span> tal que <span class="math inline">\(A=1\)</span></li>
+<li class="fragment"><span class="math inline">\(\omega_{GBP}\)</span>: <em>Unity Gain-Bandwidth Product frequency</em></li>
+<li class="fragment">A realimentação positiva geralmente produz um circuito instável, sujeito a <strong>oscilações</strong>.</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C11\opamp_positive_feedback.svg" /><br />
+<img data-src="C11\LM324GBP.png" alt="LM324" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="compreendendo-circuitos-com-amp-ops" class="slide level1">
+<h1>Compreendendo circuitos com Amp-Ops</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><span class="math inline">\(V_O=A\left(v_+-v_-\right)\)</span></li>
+<li class="fragment">Notar que, se o Amp-Op está funcionando adequadamente (usando realimentação negativa), temos que <span class="math inline">\(V_O\)</span> é uma tensão limitada pela fonte de tensão usada no sistema (ex.: <span class="math inline">\(-9 \leq V_0 \leq 9\)</span>). Ou seja, <span class="math inline">\(v_+-v_-=\frac{V_O}{A}\approx 0\)</span></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C11\opamp_negative_feedback.svg" /><br />
+</p>
+</div>
+</div>
+<ul>
+<li class="fragment"><em>Curto circuito virtual</em>: <span class="math inline">\(v_+=v_-\)</span></li>
+<li class="fragment">Usando realimentação negativa, o Amp-Op força com que as tensões <span class="math inline">\(v_+\)</span> e <span class="math inline">\(v_-\)</span> sejam iguais.</li>
+<li class="fragment">Além disso, a corrente que entra no Amp-Op é geralmente desprezível</li>
+<li class="fragment"><span class="math inline">\(I_+ = I_- = I_B\)</span>. Tipicamente, <span class="math inline">\(I_B\leq100\,\text{nA}\)</span> quando o Amp-Op utiliza transistores bipolares na entrada, e <span class="math inline">\(I_B\leq100\,\text{pA}\)</span> quando utiliza transistores CMOS e/ou FET.</li>
+</ul>
+</section>
+<section id="amplificador-não-inversor" class="slide level1">
+<h1>Amplificador não-inversor</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Consideremos o circuito ao lado. Qual a relação entre <span class="math inline">\(v_{out}\)</span> e <span class="math inline">\(v_{in}\)</span>?</li>
+<li class="fragment"><span class="math inline">\(v_- = \frac{R_1}{R_1+R_2} V_{out}\)</span></li>
+<li class="fragment">Mas <span class="math inline">\(v_{in}=v_+=v_-\)</span> (curto virtual)</li>
+<li class="fragment"><span class="math inline">\(v_{in} = \frac{R_1}{R_1+R_2} V_{out}\)</span>. Ou seja,</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="praticas\P8_Q2.svg" /><br />
+</p>
+</div>
+</div>
+<ul>
+<li class="fragment"><span class="math display">\[V_{out} = \left(1+\frac{R_2}{R_1}\right) v_{in}\]</span></li>
+<li class="fragment">A tensão na saída é maior que na entrada! Notar também que a impedância da entrada é muito elevada.</li>
+</ul>
+</section>
+<section id="amplificador-inversor" class="slide level1">
+<h1>Amplificador inversor</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Consideremos o circuito ao lado. Qual a relação entre <span class="math inline">\(v_{out}\)</span> e <span class="math inline">\(v_{in}\)</span>?</li>
+<li class="fragment">Pelo princípio do curto virtual, sabemos a tensão em <span class="math inline">\(v_-\)</span>. Sabemos ainda que não entra corrente pelo Amp-Op.</li>
+<li class="fragment"><span class="math inline">\(v_- = v_+ = 0\)</span>, e <span class="math inline">\(I_{in} = I_L\)</span>.</li>
+<li class="fragment"><span class="math inline">\(I_{in} = \frac{v_{in} - 0}{R_1} = I_L = \frac{0 - v_{out}}{R_2}\)</span></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C11\inverting_amplifier.svg" /><br />
+</p>
+</div>
+</div>
+<ul>
+<li class="fragment"><span class="math display">\[v_{out} = -\frac{R_2}{R_1} V_{in}\]</span></li>
+</ul>
+</section>
+<section id="cálculo-com-amp-ops" class="slide level1">
+<h1>Cálculo com Amp-Op’s</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Podemos analisar também circuitos que contenham indutores e capacitores, substituindo as resistências nos casos anteriores por impedâncias. <span class="math inline">\(v_{out} = -\frac{Z_2}{Z_1} V_{in}\)</span></li>
+<li class="fragment">Suponha que <span class="math inline">\(Z_1 = R\)</span>, <span class="math inline">\(Z_2 = -j/\omega C\)</span>. Então, temos <span class="math display">\[v_{out} = -\frac{1}{j\omega R C} V_{in}\]</span></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C11\inverting_amplifier_generic_impedances.svg" /><br />
+</p>
+</div>
+</div>
+<ul>
+<li class="fragment">A função de transferência é a mesma de um integrador ideal (Não precisamos trabalhar com sinais pequenos)</li>
+<li class="fragment">Suponha que <span class="math inline">\(Z_1 = -j/\omega C\)</span>, <span class="math inline">\(Z_2 = R\)</span>. Então, temos <span class="math display">\[v_{out} = -j\omega R C V_{in}\]</span></li>
+<li class="fragment">A função de transferência é a mesma de um diferenciador ideal (Não precisamos trabalhar com sinais pequenos)</li>
+</ul>
+</section>
+<section id="somador" class="slide level1">
+<h1>Somador</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Podemos somar tensões usando o circuito ao lado, convertendo a soma de correntes em uma d.d.p.</li>
+<li class="fragment"><span class="math inline">\(v_- = v_+ = 0\)</span>, <span class="math inline">\(I_1 + I_2 = I_G\)</span></li>
+<li class="fragment"><span class="math inline">\(\frac{V_1-0}{R_1} + \frac{V_2-0}{R_2} = \frac{0-V_{out}}{R_G}\)</span>.</li>
+<li class="fragment">Se <span class="math inline">\(R_1=R_2=R\)</span>, <span class="math display">\[V_{out} = -\frac{R_G}{R}\left(V_1+V_2\right)\]</span></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C11\adder.svg" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="subtrator" class="slide level1">
+<h1>Subtrator</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">E como realizar uma subtração?</li>
+<li class="fragment">Podemos modificar a tensão na entrada não invertida (sem incluir <span class="math inline">\(v_+\)</span> na realimentação!)</li>
+<li class="fragment"><span class="math inline">\(v_+ = \frac{R_3}{R_2+R_3} V_2 = v_-\)</span>, <span class="math inline">\(I_1 = I_G\)</span></li>
+<li class="fragment"><span class="math inline">\(\frac{V_1-v_-}{R_1} = \frac{v_--V_{out}}{R_G}\)</span>.</li>
+<li class="fragment"><span class="math inline">\(\frac{V_1}{R_1} - \left(\frac{1}{R_1} + \frac{1}{R_G}\right) v_- = - \frac{V_{out}}{R_G}\)</span></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C11\subtracter.svg" /><br />
+</p>
+</div>
+</div>
+<ul>
+<li class="fragment"><span class="math inline">\(V_{out} = -\frac{R_G}{R_1} V_1 + \frac{R_G+R_1}{R_G R_1} \frac{R_3}{R_2+R_3} V_2\)</span></li>
+<li class="fragment">Se <span class="math inline">\(R_1=R_2=R\)</span> e <span class="math inline">\(R_3=R_G\)</span>, temos</li>
+<li class="fragment"><span class="math display">\[V_{out} = \frac{R_G}{R} (V_2-V_1)\]</span></li>
+<li class="fragment">Podemos considerar a diferença entre 2 sinais, e mesmo amplificar esta diferença (<span class="math inline">\(R_G&gt;R\)</span>)</li>
+</ul>
+</section>
+<section id="filtro-ativo-passa-baixa-sallen-key" class="slide level1">
+<h1>Filtro ativo passa-baixa (Sallen-Key)</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Amp-Op’s melhoram a performance de filtros de sinais.</li>
+<li class="fragment">Consideremos um filtro passa baixa na topologia Sallen-Key</li>
+<li class="fragment"><span class="math inline">\(v_+=v_-=V_{out}\)</span>.</li>
+<li class="fragment">Correntes em <span class="math inline">\(V_X\)</span>: <span class="math inline">\(\frac{V_{in}-V_X}{R_1} = \frac{V_{X}-V_{out}}{R_2} + \frac{V_{X}-V_{out}}{-j/\omega C_1}\)</span>.</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C11\sallen_key.svg" /><br />
+</p>
+</div>
+</div>
+<ul>
+<li class="fragment"><span class="math inline">\(C_1\)</span> e <span class="math inline">\(R_2\)</span> virtualmente em paralelo.</li>
+<li class="fragment">A corrente que atravessa <span class="math inline">\(R_2\)</span> também passa por <span class="math inline">\(C_2\)</span>: <span class="math inline">\(\frac{V_{X}-V_{out}}{R_2}=\frac{V_{out}}{-j/\omega C_2}\)</span>.</li>
+<li class="fragment">Resolvendo o sistema, encontramos <span class="math display">\[V_{out} = \frac{V_{in}}{1 - \omega^2 R_1 R_2 C_1 C_2 + j \omega (R_1+R_2) C_2}\]</span></li>
+<li class="fragment">Notar a ressonância em <span class="math inline">\(\omega_0^2 R_1 R_2 C_1 C_2=1\)</span>, ou <span class="math inline">\(\omega_0=1/\sqrt{R_1 R_2 C_1 C_2}\)</span> (existe feedback positivo!)</li>
+</ul>
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+f = logspace(-3,3,100)
+T = 1/sqrt(1+f**2)
+T_RC = 1/(1+f**2)
+T_Sallen_Key=1/(1+f**2)
+
+semilogx(f, T, label="1 RC's")
+semilogx(f, T_RC, label="2 RC's")
+semilogx(f, T_Sallen_Key, label='Sallen-Key')
+ylabel('$|T(f)|$')
+#yticks(-arange(0,80,20))
+legend(loc=0)
+grid(which='both')
+
+tight_layout(h_pad=0.0)
+savefig('C11\Sallen_Key_vs_Cascaded_RC.png')
+~~~
+--->
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

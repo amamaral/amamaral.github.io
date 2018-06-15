@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Python for experimental sciences - part I </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="/css/modern-business.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/academicons/css/academicons.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+                <a class="navbar-brand" href="/index.html"> Anderson M. Amaral</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/about.html">Personal Info</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-flask pull-left"></i> Science<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/science_papers.html">Papers</a>
+                            </li>
+                            <li><a href="/conference_papers.html">Conference papers</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Science links</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gears"></i> Technical work<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/blog.html" data-toggle="tooltip" title="Technical articles in my blog">Articles</a>
+                            </li>
+                            <li><a href="http://www.github.com/amamaral" data-toggle="tooltip" title="Github software repositories">Software</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Electronics links</a>
+                            </li>
+                        </ul>
+                    </li>
+		    <li><a href="/teaching.html"><i class="fa fa-book"></i> Teaching (Ensino)</a>
+		    </li>
+                    <li><a href="/blog.html" data-toggle="tooltip" title="Educational and technical blog">Blog</a>
+                    </li>
+		    <li><a href="/useful.html"><i class="fa fa-user"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    
+
+<style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; }
+pre.numberSource a.sourceLine:empty
+{ position: absolute; }
+pre.numberSource a.sourceLine::before
+{ content: attr(data-line-number);
+  position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+  border: none; pointer-events: all;
+  -webkit-touch-callout: none; -webkit-user-select: none;
+  -khtml-user-select: none; -moz-user-select: none;
+  -ms-user-select: none; user-select: none;
+  padding: 0 4px; width: 4em;
+  color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+{ background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li class="active">Python for experimental sciences - part I</li>
+                </ol>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-8">
+
+                <!-- the actual blog post: title/author/date/content -->
+                <h2 class="page-header"> Python for experimental sciences - part I </h2><i class="fa fa-clock-o"></i> Posted on 14/05/2018
+                
+                <hr>
+                <h1 id="python-introduction">Python introduction</h1>
+<p>Currently it’s hardly possible to perform serious scientific experiments without any sort of help from computers. They are needed for both controlling experimental setups and to analyze data. We will see in a series of posts how it’s easy to start doing data analysis with Python even for those without previous programming knowledge. The main idea of this tutorial is to allow a fast start to operate and understand how python can be used in scientific experiments. Some aspects can be difficult at the beginning, but a general recommendation is always valid: <strong>when in doubt, google for it</strong>. There are lots of information available in the web, specially for Python. The following contents aims to discuss the most basic aspects necessary to use python in basic data analysis, while a more extended text as a book would be an essential companion. Personally I like the book <a href="https://hplgit.github.io/primer.html/doc/pub/half/book.pdf"><em>A Primer on Scientific Programming with Python</em></a>, by Hans Petter Langtangen. Another great reference is the <a href="https://docs.python.org/3/tutorial/">Official Python Tutorial</a>, by Guido Van Rossum (the Python’s creator).</p>
+<h2 id="basic-setup">Basic setup</h2>
+<h3 id="installing-python">Installing Python</h3>
+<p>The first step is to install <strong>Python 3</strong>. There are several alternatives to that, and the <a href="https://www.anaconda.com/download/">Anaconda</a> is one available in all platforms (Windows, Linux and Mac). There are also other Python packages available (Ex.: <a href="http://www.winpython.org">WinPython</a> for windows platforms) or Python can be installed through a linux package manager. However these alternatives will not be discussed, but are easily found in the web. Given that I use windows, this series will consider Anaconda installed in this platform. However, the adjustments to use linux or mac should be minimal.</p>
+<h3 id="accessing-the-jupyter-notebook">Accessing the Jupyter Notebook</h3>
+<p>The Jupyter notebook can be accessed from the system console. In Windows, its useful to create some folder to contain the files that you’ll be working with. Open that folder with the Windows Explorer (Ex.: <code>My Documents\Jupyter Notebooks</code>) and access the menu <code>File &gt; Open Windows PowerShell &gt; Open Windows PowerShell</code>.</p>
+<p>To open the Jupyter notebook, type in the PowerShell</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode powershell"><code class="sourceCode powershell"><a class="sourceLine" id="cb1-1" data-line-number="1">jupyter notebook</a></code></pre></div>
+<p>Then, you must wait for the web browser to open the initial page of the Jupyter notebook. At the upper right corner there is a button to create a new notebook. Select a <code>New &gt; Python 3 notebook</code>. Now everything is set and we may start our first python program.</p>
+<h2 id="a-quick-start-in-python-programming">A quick start in python programming</h2>
+<p>By default, the new notebook is opened with an input field (a <em>Cell</em>) adequate for code input (for other input types see the dropdown menu currently stating <code>Code</code>). Type <code>print(&quot;Obey the gravity. It's the law!&quot;)</code> in the cell and press <code>Shift + Enter</code> in your keyboard. The output must be</p>
+<pre><code>Obey the gravity. It&#39;s the law!</code></pre>
+<p>This is a small program which indicates that you want that the program returns a text (more correctly <em>string</em>) informing a given comment. Python understands anything between single <code>'text'</code> and double <code>&quot;text&quot;</code> quotes as a text. In Jupyter notebook the output of a given cell is just below the associated input code.</p>
+<p>Now you think… well… the above code is nice. But, I want to perform experiments, and what I need is a computer to do heavy and difficult calculations. Python allows you to also do that easily. Consider a sum of two terms:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="dv">2</span><span class="op">+</span><span class="dv">2</span></a></code></pre></div>
+<p>Press <code>Shift + Enter</code> to execute the above code and check that the answer is correct. You can also try to improve the output. <strong>It’s possible to send several arguments to any function by separating expressions with a comma</strong>. to make your statement stronger:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="bu">print</span>(<span class="st">&quot;The sum of 2+2 is&quot;</span>, <span class="dv">2</span><span class="op">+</span><span class="dv">2</span>)</a></code></pre></div>
+<p>Python is very good at math. Indeed, we can perform several mathematical operations. Sum <code>+</code>, Difference <code>-</code>, Multiplication <code>*</code> and division <code>/</code> operators are available. Powers can be calculated with <code>**</code> (Ex.: <code>2**3=8</code>), and operations can be grouped with parenthesis (<code>1/(1+1) == 0.5</code>, while <code>(1/1) + 1 == 2</code>). Python calculates powers, multiplications and divisions before sums and differences (See <a href="https://docs.python.org/3/reference/expressions.html">operator precedence</a>). Thus, when in doubt <strong>it’s a good practice to separate multiplication and division terms with parenthesis</strong>. We can also use variables to store information (numbers, texts and even more complex structures lying ahead). Suppose that we want to consider the parabolic trajectory of a mass due to the action of gravity. We may define the variables <code>y0</code>, <code>v0</code> and <code>a</code> to store the initial information of the mass launch (initial height, initial velocity and acceleration) as follows:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python input"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1">y0 <span class="op">=</span>  <span class="fl">0.0</span> <span class="co">## m</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">v0 <span class="op">=</span> <span class="fl">20.0</span> <span class="co">## m/s</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">a  <span class="op">=</span> <span class="fl">-9.8</span> <span class="co">## m/s**2</span></a></code></pre></div>
+<p><strong>Each instruction occupies one line</strong>. Notice that we are storing only the number in the memory. The units, as m/s, are not stored. Therefore, we must be careful with the units of each variable, or be sure that the adequate conversions are considered at a later stage. <strong>To keep track of the units it’s useful to add comments</strong> at the end of the line. Python will ignore everything after a <code>#</code> symbol, and you may add any text. Comments are useful to understand what the program is doing at each step. <strong>Also notice that the decimal separator in python is the period <code>.</code>, and not the comma <code>,</code></strong>. Commas are always<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> used to separate expressions, as function arguments.</p>
+<p>Once all variables are available in the memory, you may calculate the mass height at a given time using the known formula <span class="math inline">\(y(t) = y_0+ v_0 t+\frac{at^2}{2}\)</span>. For example, at <span class="math inline">\(t=3\,\text{s}\)</span>, if we now request the python program to calculate</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python input"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" data-line-number="1">y0 <span class="op">+</span> v0 <span class="op">*</span> <span class="dv">3</span> <span class="op">+</span> a <span class="op">*</span> <span class="dv">3</span><span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span> <span class="co">## Calculate the mass height at t=3 s</span></a></code></pre></div>
+<pre><code>15.899999999999999</code></pre>
+<p>To obtain the particle height at other times, we may replace the time <span class="math inline">\(t=3\,\text{s}\)</span> by another time of interest. Also, we may the motion parameters <code>y0, v0, a</code> by updating the variable values. For example, if the particle now has an initial velocity of 15 m/s, we may adjust the initial velocity with the following code:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" data-line-number="1">v0 <span class="op">=</span> <span class="dv">15</span> <span class="co">## m/s</span></a></code></pre></div>
+<p>An important remark is that the <strong>variable names must be typed exactly in the same way everywhere</strong>. <code>v0</code> and <code>V0</code> are different variables. The syntax (or how do you <strong>exactly</strong> write things) is extremely important in a computer language. The computer is “dumb” and will only follow exact instructions. Any language imprecision will give errors.</p>
+<p>Python variables can store other types of information, besides numbers. For example, they may be used to store strings:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" data-line-number="1">message <span class="op">=</span> <span class="st">&quot;The current initial velocity is&quot;</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="bu">print</span>(message, v0)</a></code></pre></div>
+<h2 id="functions">Functions</h2>
+<p>It would be extremely annoying if we had to enter the time everywhere it appears in the trajectory formula whenever we want to determine the mass position. One approach to let the program calculate for us by defining the function <span class="math inline">\(y(t)\)</span> as a python function. There are two basic ways to define a function in python. Through the so called lambda functions, one has</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" data-line-number="1">y <span class="op">=</span> <span class="kw">lambda</span> t: y0 <span class="op">+</span> v0 <span class="op">*</span> t <span class="op">+</span> a <span class="op">*</span> t<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span></a></code></pre></div>
+<p>the general structure of a lambda function is <code>'function name' = lambda 'arguments': 'python expression'</code>. To calculate the function value we can simply type <code>y(3)</code>, <code>y(1.5)</code>, … Test the output values in a new cell for several values of <code>t</code>. Notice that the function contains <code>y0</code>, <code>v0</code> and <code>a</code> which are variables stored in memory. Try to change the values of these variables and see how they affect <code>y(t)</code>. While here we are considering a function of a single argument (<span class="math inline">\(y=y(t)\)</span>), it’s possible to have multiple arguments too. For example, suppose that we want to consider the height at a time <span class="math inline">\(t\)</span> for a particle that starts at <span class="math inline">\(y(0)=0\)</span> and allow the initial velocity to change. We may define a more specific function to this problem</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" data-line-number="1">y2 <span class="op">=</span> <span class="kw">lambda</span> t, v0y: v0y <span class="op">*</span> t <span class="op">-</span> <span class="fl">9.8</span> <span class="op">*</span> t<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span></a></code></pre></div>
+<p>Thus, if we want to consider this second scenario, we may use python to call <code>y2(1, 10)</code> to know the particle height at <code>t=1</code> s and with an initial velocity of <code>10</code> m/s. <strong>Notice the ordering</strong>: the first number indicates the value of <code>t</code>, while the second number indicates the value of <code>v0y</code>. Another possibility is to use a variable to set the argument values, as in <code>y2(2, v0)</code>. We may also use <code>y2(3.5, 13.2)</code> to consider the particle height at <code>3.5</code> s given an initial velocity of <code>13.2</code> m/s. Notice also that the <strong>comma is an argument separator</strong>, while the <strong>period is a decimal separator</strong> in python. Thus, if one tries to type a number with the comma as a decimal separator it will lead to an unexpected behavior (may even trigger error messages). For example, <code>y2(3,5, 13,2)</code> will send four arguments (<code>3</code>, <code>5</code>, <code>13</code> and <code>2</code>) to <code>y2</code>, while <code>y2</code> accepts only two arguments (<code>t</code> and <code>v0y</code>). Calling <code>y2(3,5, 13,2)</code> will lead to an error message.</p>
+<p>Sometimes the function definition through lambda functions as above is not very adequate, because Python functions are more general than mathematical functions and can also be used to request the computer to perform a more complex set of tasks. For instance, suppose that we want to know simultaneously both the particle height and velocity with a single function. We may define a function as</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">def</span> parabolic_motion(t, v0y):</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">  yt <span class="op">=</span> v0y <span class="op">*</span> t <span class="op">-</span> <span class="fl">9.8</span> <span class="op">*</span> t<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">  vt <span class="op">=</span> v0y <span class="op">-</span> <span class="fl">9.8</span> <span class="op">*</span> t</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">  <span class="bu">print</span>(<span class="st">&#39;at t=&#39;</span>, t, <span class="st">&#39;, y(t)=&#39;</span>, yt,<span class="st">&#39;, v(t)=&#39;</span>, vt)</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">  <span class="cf">return</span> yt, vt</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">## Function ends where indentation ends</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">final_height, final_velocity <span class="op">=</span> parabolic_motion(<span class="dv">5</span>, <span class="dv">15</span>)</a></code></pre></div>
+<p>Test the above code. After the line <code>def ...</code> there are several <strong>instructions, which must be indented</strong> (that is, each line starts with two spaces or more, or a tabulation). The same indentation that you use in the first line must be used in the following ones within the function. When the indentation stops it means that the instructions that should be performed by the function have ended. Given a time <code>t</code> and initial velocity <code>v0y</code>, it will compute the height and store it in <code>yt</code>, then it will compute the particle velocity and store it in <code>vt</code>. Then, it will print to the user a string informing the current time, height and velocity. <code>print</code> accepts several arguments, where some of them are strings (text between quotes) and the others are variables. Always remember that <strong>commas are used to separate expressions or arguments</strong>. Finally the <code>return</code> instruction will send the values of <code>yt</code> and <code>vt</code> as the function output. Thus, the above steps will be carried sequentially and the function will return two numbers that can be attributed to other variables. For instance, <code>final_height, final_velocity = parabolic_motion(5, 15)</code> will set <code>final_height=-47.5</code> and <code>final_velocity=-34</code>. The general structure is</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">def</span> <span class="st">&#39;function name&#39;</span>(<span class="st">&#39;arguments&#39;</span>):</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">  <span class="co">&#39;indented instructions&#39;</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">  ...</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">  <span class="cf">return</span> output</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">## Function &#39;function name&#39; ends here.</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">## The program instructions follow unindented below</span></a></code></pre></div>
+<h2 id="advanced-math-and-arrays">Advanced math and arrays</h2>
+<p>The previous concepts can be used to define some simple mathematical functions, as polynomials. However, we often need a broader set of functions in our calculations. For instance, we may need trigonometric, hyperbolic, exponential or logarithmic functions. Also, we may need to use constants as <span class="math inline">\(\pi\)</span> or <span class="math inline">\(e\)</span>. There are basically two ways to introduce such functions in a python program. The first one is through the native <code>math</code> <a href="https://docs.python.org/3/library/math.html">library</a>. In programming, a library represents a set of functions (or objects) that solve some set of problems. To use a given library, we may use the <code>import 'library'</code> instruction. To call a given library function or constant, it’s possible to use a syntax like <code>'library'.'function'</code>, or <code>'library'.'constant'</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="im">import</span> math</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="bu">print</span>(math.sin(math.pi<span class="op">/</span><span class="dv">2</span>))</a></code></pre></div>
+<pre><code>1.0</code></pre>
+<p>To consult the available constants, functions and other python objects, one may consult the <a href="https://docs.python.org/3/library/math.html">math library documentation</a>, or use some autocompletion features in the editor. For instance, if you type a period after math, <code>math.</code>, and press <code>tab</code>, then the interface will display a menu containing the available properties. For instance, <code>math.si</code>+<code>tab</code> shows <code>math.sin</code> and <code>math.sinh</code> as options. Since these are functions, we may add the parenthesis to begin the function call. To see how these functions operate, its possible to use Jupyter notebook’s tooltip feature. Consider <code>math.sin(</code> and type <code>Shift+Tab</code>. A documentation regarding the syntax and usage of that function will be readily available.</p>
+<p>While the above possibility is very general and can be used to import other libraries, the Jupyter notebook can perform a <a href="http://ipython.readthedocs.io/en/stable/interactive/magics.html">magic</a> that automatically simplifies enormously the syntax of complex mathematical expressions. One of the most convenient is the <code>%pylab</code> magic, which I recommend calling only once at the beginning cell of a notebook. Type in some cell</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="op">%</span>pylab inline</a></code></pre></div>
+<p>the <code>inline</code> option is related with the tool that we will use later to plot curves. After the <code>%pylab inline</code> magic is called, we may calculate the sine more clearly:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="bu">print</span>(sin(pi<span class="op">/</span><span class="dv">2</span>))</a></code></pre></div>
+<pre><code>1.0</code></pre>
+<p>Python is also able to handle complex numbers natively. The imaginary number is <code>1j</code>, and one can easily obtain results as the Euler’s identity: <span class="math inline">\(e^{\jmath \pi} + 1 = 0\)</span> is verified within the calculation precision,</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb19-1" data-line-number="1">exp(1j <span class="op">*</span> pi) <span class="op">+</span> <span class="dv">1</span></a></code></pre></div>
+<pre><code>1.2246467991473532e-16j</code></pre>
+<p>A remark on numeric notation in python. In a number, <code>e</code> indicates the exponentiation to a power of 10. Thus <code>1e1==10</code>, <code>1e2==100</code>, <code>-1.5e-2==-0.015</code></p>
+<!--- Create a table containing those functions which are used mostly --->
+<p>The <code>%pylab</code> magic does not use the standard python math library. Instead, it uses the <a href="https://docs.scipy.org/doc/numpy/reference/routines.math.html">Numpy library</a>, which has much more capabilities. Numpy contains a large set of tools to handle numerical data, from matrix operations to fast fourier transforms. It’ worthwhile to comment that python is a great language to code with, because it’s fast to create and test pieces of code. However, <em>this increased facility comes at a cost in processing time when python code is used directly</em>. Numpy implements several important numerical procedures using other languages<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> that process data much faster than native python. <strong>When crunching numbers, use Numpy/Scipy methods as much as possible</strong>. <a href="http://www.scipy.org">Scipy</a> is another library which contains several applications of Numpy to a multitude of science-related problems.</p>
+<p>Quite often one has to deal with functions defined within a certain range of variable values, a finite domain. The Numpy library has two main auxiliary functions that allow us to define this domain for mathematical functions, <code>arange</code> and <code>linspace</code>. <code>arange([start], stop, [step])</code> indicates an array of integer numbers starting from <code>start</code> (which is an optional argument, <code>0</code> by default) to <code>stop</code>, in equally separated <code>step</code> steps (optional, <code>step=1</code> if not given). Notice that <code>àrange</code> does not include the <code>stop</code> as a value in the array. This is sometimes useful, but must always be remembered. In the code below, <code>x</code> starts at <code>2</code> and increases in steps of <code>2</code>, until the array value is lesser than the <code>stop=9</code> value. This will produce an array containing the even numbers from <code>2</code> to <code>8</code>. <code>y</code> contains the positive integers (including <code>0</code>) lesser than stop (remember that the default <code>step</code> is <code>1</code>). It’s also possible to produce an array of fractional values with a given spacing, as in <code>z</code>.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb21-1" data-line-number="1">x <span class="op">=</span> arange(<span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">y <span class="op">=</span> arange(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb21-3" data-line-number="3">z <span class="op">=</span> arange(<span class="dv">1</span>, step<span class="op">=</span><span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb21-4" data-line-number="4">x, y, z</a></code></pre></div>
+<pre><code>(array([2, 4, 6, 8]),
+ array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
+ array([ 0. ,  0.1,  0.2,  0.3,  0.4,  0.5,  0.6,  0.7,  0.8,  0.9]))</code></pre>
+<p>While <code>arange</code> does not include the final point and one must define the spacing between values, <code>linspace(start, stop, num)</code> takes another approach. It will create an array of values between <code>start</code> and <code>stop</code>. The endpoint is included by default. <code>num</code> indicates how many points the array must have between <code>start</code> and <code>stop</code>, and is quite useful to increase or decrease the resolution in which a given function is represented in a given domain. The definition os a given step as in <code>arange</code> can be less intuitive when we want to represent functions in different domains. <code>linspace</code> is more adequate for fractional spacing than <code>arange</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb23-1" data-line-number="1">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">y <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">z <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb23-4" data-line-number="4">x, y, z</a></code></pre></div>
+<pre><code>(array([ 0.        ,  0.11111111,  0.22222222,  0.33333333,  0.44444444,
+         0.55555556,  0.66666667,  0.77777778,  0.88888889,  1.        ]),
+ array([  0.,   5.,  10.]),
+ array([  0. ,   2.5,   5. ,   7.5,  10. ]))</code></pre>
+<p>Notice that now <code>x</code> contains an array of <code>10</code> values and includes the endpoints. Considering that the number of intervals is <code>num-1</code>, the spacing between subsequent points is <code>(stop-start)/(num-1)</code>. Notice <code>num</code> represents the number of point in the array, and to obtain intervals with a given sort of regular spacing, as <code>w=(stop-start)/divisor</code>, one must use <code>num = divisor + 1</code>.</p>
+<p>The output of <code>arange</code> and <code>linspace</code> are <code>array</code> objects, which is the basic way that numpy uses to handle sets of numbers. If we want to define arrays over a given set of values, we may also use the following syntax</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb25-1" data-line-number="1">a <span class="op">=</span> array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>])</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">b <span class="op">=</span> array([<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="dv">0</span>, <span class="dv">-52</span>, <span class="dv">42</span>])</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">c <span class="op">=</span> array([ <span class="dv">1</span>, <span class="dv">1</span><span class="op">+</span>2j, <span class="dv">-3</span>, <span class="dv">-1</span><span class="op">-</span>1j])</a>
+<a class="sourceLine" id="cb25-4" data-line-number="4">a, b, c</a></code></pre></div>
+<pre><code>(array([ 1,  2,  3,  5,  7, 11, 13]),
+ array([  0.1,   0.3,   0. , -52. ,  42. ]),
+ array([ 1.+0.j,  1.+2.j, -3.+0.j, -1.-1.j]))</code></pre>
+<p>The set of numbers separated by commas within square brackets <code>[1, 2, ...,]</code> is a Python list, which is a python object that can be used to store ordered information. Beware that the order in which the data is added is retained. Also, notice that if one adds complex numbers the array automatically considers that all numbers in the array are complex.</p>
+<p>A great aspect of arrays is that one may easily perform calculations over them. For instance, we may create an array with even numbers from 0 to 10 using an <code>arange</code>. <code>arange(6)</code> creates the array <code>[0, 1, 2, 3, 4, 5]</code>, while the multiplication by <code>2</code> multiply each value individually.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="dv">2</span><span class="op">*</span>arange(<span class="dv">6</span>)</a></code></pre></div>
+<p>All of the basic operations (<code>+, -, *, /, **</code>) and the numpy functions can be calculated over each value in the array. Thus, consider that we want to calculate the values of a linear function, <span class="math inline">\(y(x)= 2 + 15 x - 5 x^2\)</span>. The numpy array is such that if we have an array <code>x</code> and we call <code>y = 2 + 15 * x - 5 * x**2</code>, then <code>y</code> will be another array that contains the result of the calculation of the right-hand side expression for each value of <code>x</code>. Numpy will get each value of <code>x</code> in the array, evaluate the mathematical expression, and return the output value to <code>y</code>. An important aspect is that Numpy evaluates the native mathematical functions and expressions quite efficiently, and since the python expression can look like the mathematical function that we want to calculate, it’s easy to check for errors.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb28-1" data-line-number="1">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">11</span>)</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">y <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">15</span> <span class="op">*</span> x <span class="op">-</span> <span class="dv">5</span> <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">x, y</a></code></pre></div>
+<pre><code>(array([ 0. ,  0.5,  1. ,  1.5,  2. ,  2.5,  3. ,  3.5,  4. ,  4.5,  5. ]),
+ array([  2.  ,   8.25,  12.  ,  13.25,  12.  ,   8.25,   2.  ,  -6.75,
+        -18.  , -31.75, -48.  ]))</code></pre>
+<p>The above code represents the set of (x, y) values that satisfy the relationship expected for the function <span class="math inline">\(y(x)\)</span>. However, it would be much nicer if we could see this in a graphical representation, as we’ll see just below. To finish this section, we may notice that we may use functions to calculate these results.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb30-1" data-line-number="1">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">11</span>)</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">y <span class="op">=</span> <span class="kw">lambda</span> t: <span class="dv">2</span> <span class="op">+</span> <span class="dv">15</span> <span class="op">*</span> t <span class="op">-</span> <span class="dv">5</span> <span class="op">*</span> t<span class="op">**</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">x, y(x)</a></code></pre></div>
+<pre><code>(array([ 0. ,  0.5,  1. ,  1.5,  2. ,  2.5,  3. ,  3.5,  4. ,  4.5,  5. ]),
+ array([  2.  ,   8.25,  12.  ,  13.25,  12.  ,   8.25,   2.  ,  -6.75,
+        -18.  , -31.75, -48.  ]))</code></pre>
+<h2 id="basic-curve-plotting">Basic curve plotting</h2>
+<p>Obtaining a list of calculated values is very important, since the computer can calculate very fast and efficiently. However, it’s often easier to understand data if we can visualize it in a graphic. The <a href="https://matplotlib.org/gallery.html">matplotlib package</a> contains several tools to produce high-quality data plots (both in 2D and 3D). Another interesting aspect is that matplotlib contains several <a href="https://matplotlib.org/gallery.html">examples</a> which are useful under several data plotting contexts. For us, we will see some of the most basic capabilities.</p>
+<p>In the previous section, we calculated <span class="math inline">\(y(x)= 2 + 15 x - 5 x^2\)</span> for <span class="math inline">\(x\in \left[0, 5\right]\)</span>. This function can be graphically represented with the simple command <code>plot(x, y)</code></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb32-1" data-line-number="1">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">11</span>)</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">y <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">15</span> <span class="op">*</span> x <span class="op">-</span> <span class="dv">5</span> <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">plot(x, y)</a>
+<a class="sourceLine" id="cb32-4" data-line-number="4">savefig(<span class="vs">r&#39;assets\pes_parabola_plot1.png&#39;</span>)</a></code></pre></div>
+<p><img class="img-responsive" src="assets\pes_parabola_plot1.png" /></p>
+<p>The function <code>savefig(r'assets\pes_parabola_plot1.png')</code> saves the current matplotlib graphic in an external file. Several file formats are supported, and this is useful to include the analyzed data in other documents (for example in Word, LaTeX,…). Notice that the above plot has some sharp corners, which are due to the small number of points used to represent <span class="math inline">\(y(x)\)</span>. We can improve the graphic resolution by changing the number of points in the <code>x</code> array:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb33-1" data-line-number="1">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">101</span>)</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">y <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">15</span> <span class="op">*</span> x <span class="op">-</span> <span class="dv">5</span> <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">plot(x, y)</a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">savefig(<span class="vs">r&#39;assets\pes_parabola_plot2.png&#39;</span>)</a></code></pre></div>
+<p><img class="img-responsive" src="assets\pes_parabola_plot2.png" /></p>
+<p>A typical scientific plot has several features, as a title, axis labels and maybe a legend, to indicate what is represented in each curve. In the example below we can see how to show several curves and add some of these features</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co">## Parabola representation with a low resolution</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">y <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">15</span> <span class="op">*</span> x <span class="op">-</span> <span class="dv">5</span> <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">plot(x, y, <span class="st">&#39;--&#39;</span>, label<span class="op">=</span><span class="st">&quot;low res.&quot;</span>)</a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">plot(x, y, <span class="st">&#39;.&#39;</span>, label<span class="op">=</span><span class="st">&quot;low res. points&quot;</span>)</a>
+<a class="sourceLine" id="cb34-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="co">## Parabola representation with a high resolution</span></a>
+<a class="sourceLine" id="cb34-8" data-line-number="8">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">101</span>)</a>
+<a class="sourceLine" id="cb34-9" data-line-number="9">y <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">15</span> <span class="op">*</span> x <span class="op">-</span> <span class="dv">5</span> <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb34-10" data-line-number="10">plot(x, y, <span class="st">&#39;-&#39;</span>, label<span class="op">=</span><span class="st">&quot;high res.&quot;</span>)</a>
+<a class="sourceLine" id="cb34-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb34-12" data-line-number="12"><span class="co">## Plot properties</span></a>
+<a class="sourceLine" id="cb34-13" data-line-number="13">title(<span class="st">&#39;$y(x)= 2 + 15 x - 5 x^2$&#39;</span>)</a>
+<a class="sourceLine" id="cb34-14" data-line-number="14">xlabel(<span class="st">&#39;x (m)&#39;</span>)</a>
+<a class="sourceLine" id="cb34-15" data-line-number="15">ylabel(<span class="st">&#39;y (m)&#39;</span>)</a>
+<a class="sourceLine" id="cb34-16" data-line-number="16">legend() <span class="co">## Use legends</span></a>
+<a class="sourceLine" id="cb34-17" data-line-number="17">grid() <span class="co">## Use grid</span></a>
+<a class="sourceLine" id="cb34-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb34-19" data-line-number="19">savefig(<span class="vs">r&#39;assets\pes_parabola_plot3.png&#39;</span>)</a></code></pre></div>
+<p><img class="img-responsive" src="assets\pes_parabola_plot3.png" /></p>
+<p>The <code>plot</code> function accepts several arguments, and its complete description is given in the <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html">documentation</a>. The string after the <code>x</code> and <code>y</code> data is used to set the curve format properties (color, line type, markers…). In the above example we set the line type as dashed (<code>--</code>), dotted (<code>.</code>) or a solid line (<code>-</code>, the default). The color changes automatically, but can also be selected in the format string. To identify each curve in the plot, we label each curve. These labels only appear when <code>legend()</code> is called. The location of <code>legend</code> can be set by using the argument <code>loc=</code> (See <a href="https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.legend">documentation</a>). <code>title</code>, <code>xlabel</code> and <code>ylabel</code> are used to set the plot title and horizontal and vertical axis labels. A nice feature is that matplotlib accepts LaTeX typeset formulas in its labels (check the <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics">LaTeX wikibook</a>).</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb35-1" data-line-number="1">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">101</span>)</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">y <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">15</span> <span class="op">*</span> x <span class="op">-</span> <span class="dv">5</span> <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">plot(x, y)</a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5">title(<span class="vs">r&#39;$y(x)= 2 + \int_0^x \left(15 - \frac</span><span class="sc">{20}{2}</span><span class="vs"> t\right) dt$&#39;</span>)</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6">xlabel(<span class="st">&#39;x (m)&#39;</span>)</a>
+<a class="sourceLine" id="cb35-7" data-line-number="7">ylabel(<span class="st">&#39;y (m)&#39;</span>)</a>
+<a class="sourceLine" id="cb35-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb35-9" data-line-number="9">savefig(<span class="vs">r&#39;assets\pes_parabola_plot4.png&#39;</span>)</a></code></pre></div>
+<p><img class="img-responsive" src="assets\pes_parabola_plot4.png" /></p>
+<p>In the above plot the title contains terms as the integral operator <code>\int</code>. LaTeX formulas must be within a string and enclosed by dollar signs <code>$</code>. Quite often these strings can be misinterpreted by python, given that <code>\</code> is used in strings to describe some special characters. Thus, <strong>when typing latex formulas one must define <code>raw</code> strings by adding the character r immediately before quotes in the formula-containing string</strong>.</p>
+<p>To finish this section, we consider a few difficult function calculations. Notice that the same <code>x</code> array is used to represent all functions.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb36-1" data-line-number="1">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">201</span>)</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">y <span class="op">=</span> <span class="dv">3</span> <span class="op">*</span> sin(<span class="dv">6</span><span class="op">*</span>x) <span class="op">*</span> exp(<span class="op">-</span>x)</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">plot(x, y, label<span class="op">=</span><span class="vs">r&#39;$3 \sin(6x) e^{-x}$&#39;</span>)</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb36-6" data-line-number="6">y <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> sqrt(sin(x)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> cos(x)<span class="op">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb36-7" data-line-number="7">plot(x, y, label<span class="op">=</span><span class="vs">r&#39;$2 \sqrt{\sin^2(x) + cos^2(x)}$&#39;</span>)</a>
+<a class="sourceLine" id="cb36-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb36-9" data-line-number="9">y <span class="op">=</span> <span class="bu">abs</span>(x <span class="op">-</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb36-10" data-line-number="10">plot(x, y, label<span class="op">=</span><span class="vs">r&#39;$|x-5|$&#39;</span>)</a>
+<a class="sourceLine" id="cb36-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb36-12" data-line-number="12">y <span class="op">=</span> log(<span class="dv">2</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb36-13" data-line-number="13">plot(x, y, label<span class="op">=</span><span class="vs">r&#39;$\log\left(2x + 1\right)$&#39;</span>)</a>
+<a class="sourceLine" id="cb36-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb36-15" data-line-number="15">title(<span class="vs">r&#39;Several mathematical functions&#39;</span>)</a>
+<a class="sourceLine" id="cb36-16" data-line-number="16">legend()</a>
+<a class="sourceLine" id="cb36-17" data-line-number="17">xlabel(<span class="st">&#39;x&#39;</span>)</a>
+<a class="sourceLine" id="cb36-18" data-line-number="18">ylabel(<span class="st">&#39;y&#39;</span>)</a>
+<a class="sourceLine" id="cb36-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb36-20" data-line-number="20">savefig(<span class="vs">r&#39;assets\pes_plots_example.png&#39;</span>)</a></code></pre></div>
+<p><img class="img-responsive" src="assets\pes_plots_example.png" /></p>
+<h2 id="summary">Summary</h2>
+<p>In the present tutorial we have seen how to install Python and the Jupyter notebook, how to use Python to calculate simple expressions, a brief introduction to python variables and functions, Numpy mathematical tools and how to use matplotlib to plot numpy arrays and numerical functions. In the following part we will see how to analyze experimental data in Jupyter notebook.</p>
+<!--- PART 2 - Experimental data analysis in 1D
+
+## Data storage in a csv or an xml file
+## Reading experimental data
+### Some caveats (`.` or `,` in datafiles, ...)
+### Iterables and loops (Lists, Dicts, Tuples, Arrays)
+## Data modelling
+## Fitting experimental parameters
+## An example: a diode current-voltage curve
+
+## Rename tutorial series as Python for experimental science (???)
+
+--->
+<!--- Future topics
+
+## Brief insights to numerical solutions of physical problems: Derivatives, integrals and differential equations
+## Communications with instruments using pyvisa (communication with arduino/oscilloscopes??)
+## Creation of Python executable programs - Using the Spyder IDE
+## Graphical user interfaces to control scientific experiments
+
+## Finite state machines and OOP
+## Noise and data filtering
+
+From here on, if more content is thought, it must always be remembered that there will be already a large set of concepts exploited in the previous tutorials. This is important to remember, since increasing the rigor and the details can be interesting to craft a book. Another aspect to keep in mind is that these ideas can be complemented to grow the set of applications. For instance, consider a set of chapters where python programs are considered to solve mechanics, thermodynamics...
+--->
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><em>Always</em> is always a tricky word. Commas are understood as text within strings. Ex.: <code>&quot;This is good, isn't it?&quot;</code>. However, since we’re mainly considering numerical manipulations in such a short manuscript, we’re reinforcing the usage of commas in python syntax.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>mainly <a href="https://en.wikipedia.org/wiki/C%2B%2B">C/C++</a> and <a href="https://en.wikipedia.org/wiki/Fortran">Fortran</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+
+            </div>
+
+            <div class="col-lg-4">
+              <!--- Google search (!?) --->
+              <script>
+                (function() {
+                  var cx = '000186217323396905804:ehdmthbtyy0';
+                  var gcse = document.createElement('script');
+                  gcse.type = 'text/javascript';
+                  gcse.async = true;
+                  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                  var s = document.getElementsByTagName('script')[0];
+                  s.parentNode.insertBefore(gcse, s);
+                })();
+              </script>
+              <gcse:search></gcse:search>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+
+    <div class="container">
+
+        <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    Copyright © 2016-2018 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/modern-business.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script> 
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-77641001-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- /.ga -->
+    <!-- /.js -->
+</body>
+
+</html>

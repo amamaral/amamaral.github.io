@@ -18,6 +18,11 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
     * [Transistor BC548](https://www.dropbox.com/s/vjcnxffznf18swq/BC548.pdf?dl=0)
     * [Transistor 2N3904](https://www.dropbox.com/s/4tnwkes5p96ynba/2N3904.pdf?dl=0)
     * [Transistor 2N2222A](https://www.dropbox.com/s/vmpjtxr21xmm7u5/2N2222A.pdf?dl=0)
+    * [Regulador de tensão positiva LM78XX](https://www.dropbox.com/s/zvql2lrckchqlvy/LM78XX_Positive_Voltage_Regulator.pdf?dl=0)
+    * [Regulador de tensão negativa LM79XX](https://www.dropbox.com/s/g34gdrr6cyjczu1/LM79XX_Negative_Voltage_Regulator.pdf?dl=0)
+    * [Amplificador Operacional LM741](https://www.dropbox.com/s/5p0oyrvw2b4d112/LM741.pdf?dl=0)
+    * [Amplificador Operacional TL071](https://www.dropbox.com/s/yl4hxtseboq2eg6/TL071.pdf?dl=0)
+    * [Amplificador Operacional LM324](https://www.dropbox.com/s/374crsunvmv5az1/LM324.pdf?dl=0)
 
 
 ## Slides das aulas
@@ -33,8 +38,8 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 | 07 | Filtros passivos                    | [html][s07-html] [pdf][s07-pdf] | [Prática 03][p03-pdf], [Prática 04][p04-pdf] |
 | 08 | Diodos e circuitos não lineares     | [html][s08-html] [pdf][s08-pdf] | [Prática 05][p05-pdf]                        |
 | 09 | Transistores                        | [html][s09-html] [pdf][s09-pdf] | [Prática 06][p06-pdf]                        |
-| 10 | Amplificador diferencial            |                                 | Prática 07                                   |
-| 11 | Amplificador operacional            |                                 | Prática 08                                   |
+| 10 | Amplificador diferencial            | [html][s10-html] [pdf][s10-pdf] | [Prática 07][p07-pdf]                        |
+| 11 | Amplificador operacional            | [html][s11-html] [pdf][s11-pdf] | [Prática 08][p08-pdf]                        |
 | 12 | Filtros ativos                      |                                 | Prática 09                                   |
 | 13 | Oscilador e defasador               |                                 | Prática 10                                   |
 | 14 | Computador analógico                |                                 | Prática 11                                   |
@@ -58,6 +63,10 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 [s08-pdf]: #
 [s09-html]: instrumentacao_fisica/capitulo_9.html
 [s09-pdf]: #
+[s10-html]: instrumentacao_fisica/capitulo_10.html
+[s10-pdf]: #
+[s11-html]: instrumentacao_fisica/capitulo_11.html
+[s11-pdf]: #
 
 
 [p01-pdf]: https://www.dropbox.com/s/3pfmhemipys4nqh/pratica_1.pdf?dl=0
@@ -66,3 +75,5 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 [p04-pdf]: https://www.dropbox.com/s/mjqeild4rv878e4/pratica_4.pdf?dl=0
 [p05-pdf]: https://www.dropbox.com/s/s6yb17m8byqmz82/pratica_5.pdf?dl=0
 [p06-pdf]: https://www.dropbox.com/s/pm5p5ebb0za3a43/pratica_6.pdf?dl=0
+[p07-pdf]: https://www.dropbox.com/s/4kiy9holsay9fwu/pratica_7.pdf?dl=0
+[p08-pdf]: https://www.dropbox.com/s/ymzvgd0wem9bv3r/pratica_8.pdf?dl=0

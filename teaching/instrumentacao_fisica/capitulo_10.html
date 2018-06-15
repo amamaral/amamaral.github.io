@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="FI577 - Instrumentação eletrônica para a física">
+  <title>Amplificador diferencial</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Amplificador diferencial</h1>
+  <p class="author">FI577 - Instrumentação eletrônica para a física</p>
+  <p class="date">Leituras recomendadas: Horowitz &amp; Hill Cap. 2</p>
+</section>
+
+<section id="amplificador-emissor-comum" class="slide level1">
+<h1>Amplificador Emissor Comum</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Vimos que o ganho de tensão do AEC é</li>
+<li class="fragment">Ganho de tensão: <span class="math inline">\(A_V=-\frac{R}{R_E}\)</span></li>
+<li class="fragment">O que acontece se <span class="math inline">\(R_E=0\)</span>?</li>
+<li class="fragment">O modelo simplificado que estamos utilizando para o transistor falha!</li>
+<li class="fragment">Precisamos de um modelo mais sofisticado</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C9\amplificador_emissor_comum.svg" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="aprimorando-o-modelo-do-transistor" class="slide level1">
+<h1>Aprimorando o modelo do transistor</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><em>Efetivamente</em>, existem diodos entre a base e o coletor e o emissor</li>
+<li class="fragment">Podemos considerar também em detalhes as correntes que passam entre os terminais</li>
+<li class="fragment">No caso de um transistor NPN, conforme o circuito ao lado</li>
+<li class="fragment">Caso mais geral</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C10\Ebers_Moll_NPN.svg" style="width:100.0%" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="transistor-em-estado-ativo" class="slide level1">
+<h1>Transistor em estado ativo</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Devido ao diodo, a corrente <span class="math inline">\(I_E\)</span> pelo emissor está relacionada com a tensão entre a base e o emissor</li>
+<li class="fragment"><span class="math inline">\(I_E = I_{ED} = I_{E0} \left(e^{\frac{V_{BE}}{V_T}}-1\right)\)</span></li>
+<li class="fragment">A corrente que entra pelo coletor, <span class="math inline">\(I_C\)</span>, é proporcional à corrente do diodo</li>
+<li class="fragment"><span class="math inline">\(I_C = \alpha_F I_{ED}\)</span>, (<span class="math inline">\(\alpha\approx 1\)</span>)</li>
+<li class="fragment">A corrente na base é a restante</li>
+<li class="fragment"><span class="math inline">\(I_C + I_B = I_E\)</span>, ou <span class="math inline">\(I_B = (1-\alpha)I_E\)</span></li>
+<li class="fragment">A corrente pelo emissor é exponencial em <span class="math inline">\(V_{BE}\)</span>!</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C10\Ebers_Moll_NPN_Active.svg" style="width:100.0%" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="cálculo" class="slide level1">
+<h1>Cálculo</h1>
+<ul>
+<li class="fragment">Vimos anteriormente que o diodo pode ser considerado num circuito em termos de dispositivo ideal que controla o fluxo de cargas em série com uma fonte de tensão (0,6 V)</li>
+<li class="fragment">Vimos ainda que era possível melhorar este modelo, incluindo uma resistência em série</li>
+<li class="fragment">Como podemos determinar esta resistência <span class="math inline">\(r_E\)</span>? Manipulando as expressões anteriores, temos</li>
+<li class="fragment"><span class="math inline">\(V_{BE} = V_T \log \left(\frac{I_E}{I_{E0}} + 1 \right)\)</span></li>
+<li class="fragment">Considerar que, na média, temos <span class="math inline">\(I_C=1\text{ mA}\approx I_E\)</span>.</li>
+<li class="fragment">Se a corrente <span class="math inline">\(I_E\)</span> variar pouco, teremos que a tensão <span class="math inline">\(V_{BE}\)</span> também varia um pouco.</li>
+<li class="fragment"><span class="math inline">\(V_{BE} + \Delta V_{BE} = V_T \log \left(\frac{I_E + \Delta I_E}{I_{E0}} + 1 \right)\)</span></li>
+<li class="fragment">Podemos definir uma resistência equivalente ao analisar a relação entre <span class="math inline">\(\Delta V_{BE} = r_E \Delta I_E\)</span></li>
+</ul>
+</section>
+<section id="resistência-equivalente" class="slide level1">
+<h1>Resistência equivalente</h1>
+<ul>
+<li class="fragment"><span class="math inline">\(V_{BE} + \Delta V_{BE} = V_T \log \left(\frac{I_E + \Delta I_E}{I_{E0}} + 1 \right)\)</span></li>
+<li class="fragment">Série de Taylor: <span class="math inline">\(F(x+a)\approx F(a) + F&#39;(a) x + F&#39;&#39;(a) \frac{x^2}{2} + \dots\)</span></li>
+<li class="fragment">Então <span class="math inline">\(\Delta V_{BE} = \frac{d V_{BE}}{dI_E} \Delta I_E\)</span>, ou <span class="math display">\[r_E=\frac{d V_{BE}}{dI_E} = \frac{V_T}{I_E + I_{E0}}\]</span></li>
+<li class="fragment">Considerando que <span class="math inline">\(V_T=25\text{ mV}\)</span>, pode-se reexpressar <span class="math inline">\(r_E\)</span> como <span class="math display">\[r_E = \frac{25}{I_E} \, \Omega \]</span> <strong>onde <span class="math inline">\(I_E\)</span> está expresso em mA</strong>.</li>
+<li class="fragment">Logo, para uma corrente de 1 mA, existe uma resistência efetiva de 25 <span class="math inline">\(\omega\)</span></li>
+<li class="fragment">Quanto maior a corrente, menor a resistência efetiva</li>
+</ul>
+</section>
+<section id="amplificador-emissor-comum-1" class="slide level1">
+<h1>Amplificador Emissor Comum</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Retornando ao AEC…</li>
+<li class="fragment">Ganho de tensão: <span class="math inline">\(A_V=-\frac{R}{R_E}\)</span></li>
+<li class="fragment">O que acontece se <span class="math inline">\(R_E=0\)</span>?</li>
+<li class="fragment">Existe uma resistência efetiva em série com o emissor, <span class="math inline">\(r_E\approx 25\,\Omega\)</span></li>
+<li class="fragment">Ganho máximo: <span class="math inline">\(A_V=-\frac{R}{r_E}\)</span></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C9\amplificador_emissor_comum.svg" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="espelho-de-corrente" class="slide level1">
+<h1>Espelho de corrente</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Uma forma de aumentar a faixa de <em>compliance</em></li>
+<li class="fragment">Transistores PNP</li>
+<li class="fragment">Notar que este circuito só faz sentido se considerarmos o modelo de Ebers-Moll!</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C10\Current_mirror.png" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="amplificador-diferencial" class="slide level1">
+<h1>Amplificador diferencial</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Até aqui vimos que é possível usar os transistores como amplificadores</li>
+<li class="fragment">É bastante comum tentar extrair sinais pequenos de dentro de grandes ruídos</li>
+<li class="fragment">Ex.: Eletrocardiograma</li>
+<li class="fragment">A extração destas informações costuma usar um <strong>amplificador diferencial</strong></li>
+<li class="fragment">Rejeita sinais comuns (caracterizada pela <strong>Common mode rejection ratio</strong>) e amplifica a diferença entre os terminais.</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C10\Transistor_diferencial.png" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="parâmetros" class="slide level1">
+<h1>Parâmetros</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">De forma mais usual, temos 2 entradas (+ e -) uma única saída</li>
+<li class="fragment"><span class="math inline">\(R_1\)</span> é grande (~k<span class="math inline">\(\Omega\)</span>) enquanto <span class="math inline">\(R_E\)</span> é pequeno (~<span class="math inline">\(100\,\Omega\)</span>)</li>
+<li class="fragment">Ganho do modo comum: <span class="math inline">\(G_{CM} = - \frac{R_C}{R_E+2R_1}\)</span></li>
+<li class="fragment">Ganho diferencial: <span class="math inline">\(G_{diff} = \frac{R_C}{2(r_e+R_E)}\)</span></li>
+<li class="fragment">Razão de rejeição do modo comum: <span class="math inline">\(CMRR=\frac{R_1}{2(r_e+R_E)}\)</span></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C10\Transistor_diferencial.png" /><br />
+</p>
+</div>
+</div>
+</section>
+<section id="fonte-de-tensão-simétrica" class="slide level1">
+<h1>Fonte de tensão simétrica</h1>
+<p><img data-src="praticas\Fonte_simetrica.svg" style="width:100.0%" /></p>
+</section>
+<section class="slide level1">
+
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">bullets</li>
+<li class="fragment">items</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C10\Ebers_Moll_NPN.svg" /><br />
+</p>
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
