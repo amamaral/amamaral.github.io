@@ -325,6 +325,8 @@ class Courses():
 
 coursePages = []
 
+coursePages.append(Courses('Sensoriamento e controle - verão 2019', 'sensoriamento_verao_2019',
+                           'Curso de sensoriamento e controle utilizando a plataforma arduino'))
 coursePages.append(Courses('Instrumentação eletrônica para a física', 'instrumentacao_fisica',
                            'Curso de instrumentação para a física utilizando eletrônica analógica'))
 coursePages.append(Courses('Minicurso de arduino', 'minicurso_arduino',
@@ -399,6 +401,7 @@ def process_post(config, contents, filename):
                                           format="md",
                                           extra_args=['--mathjax',
                                                       '--highlight-style=tango'])
+                                                      #'--self-contained']) Requires a redefinition of the folders... think a bit on how to do this
     ## TODO: Use BeautifulSoup to modify html classes and other tuned properties...
     processed_contents = processed_contents.replace('<table>','<table class="table">')
     processed_contents = processed_contents.replace('<img','<img class="img-responsive"')

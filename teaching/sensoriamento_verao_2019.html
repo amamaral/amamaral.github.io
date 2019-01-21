@@ -78,96 +78,52 @@
     </nav>
 
     
-
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Ensino
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="/index.html">Home</a>
-                    </li>
-                    <li class="active">Ensino</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-    <!-- /.container -->
 
-    <div class="container">
-        
-        <div class="row well">
-            <div class="col-lg-1 col-md-1">
-                <a href="teaching/sensoriamento_verao_2019.html"><img class="img-responsive" src="teaching/sensoriamento_verao_2019/thumbnail.jpg"></a>
-            </div>
-            <div class="col-lg-8 col-md-8">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                    <h4>Sensoriamento e controle - verão 2019</h4>
-                </a>
-                <div id="collapse1" class="collapse">
-                    <p>Curso de sensoriamento e controle utilizando a plataforma arduino</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <a class="btn btn-md btn-primary pull-right" href="teaching/sensoriamento_verao_2019.html">Acessar</a>
-            </div>
+        <!-- Contents -->
+
+        <div class="col-md-8">
+            <h1>Sensoriamento e controle - verão 2019</h1>
+<p>Bem vindos a página da disciplina de sensoriamento e controle. Nesta disciplina iremos desenvolver diversos projetos de instrumentação, sensoriamento e controle utilizando a plataforma <a href="http://www.arduino.cc">arduino</a>. A plataforma arduino é muito utilizada por desenvolvedores e hobbistas em eletrônica para a execução dos mais variados projetos. Em especial, a vasta bibliografia disponível gratuitamente na web simplifica enormemente a construção de protótipos de instrumentos com finalidades científicas e educacionais.</p>
+<p><strong>Não há pre-requisitos para o curso</strong>, mas serão utilizados alguns conceitos básicos de eletrônica e programação em linguagem C ao longo do curso. Caso tenha dúvidas na parte básica de programação, elaborei uma <a href="https://www.dropbox.com/s/2mqbzzuk4vatjsf/01-Arduino_introduction.pdf?dl=0"><strong>Apostila de programação em linguagem C usando arduino</strong></a> que segue aproximadamente a ordem conceitual das atividades desenvolvidas na primeira unidade. Esta apostila é bastante preliminar, e contém erros nos códigos e falta incluir diversas figuras. Comentários e sugestões sobre a apostila são muito bem vindos!</p>
+<p>Nesta página serão colocados todos os informativos relativos à disciplina, slides das aulas, roteiros dos experimentos e os materiais suplementares em auxílio a disciplina.</p>
+<h2>Materiais suplementares</h2>
+<ol>
+<li><a href="https://www.dropbox.com/s/2mqbzzuk4vatjsf/01-Arduino_introduction.pdf?dl=0">Apostila de programação em linguagem C usando arduino</a></li>
+<li><a href="https://www.dropbox.com/s/0opfomssomraefd/informe_inicial.pdf?dl=0">Informe inicial</a></li>
+<li><a href="https://www.dropbox.com/s/7tp49dwx68755qn/resistores.pdf?dl=0">Códigos de resistores</a></li>
+<li>Softwares gratuitos:<ul>
+<li><a href="http://www.fritzing.org">Fritzing</a> (Esquemas de circuitos e projeto de PCB, voltado para a plataforma arduino)</li>
+</ul>
+</li>
+</ol>
+<h2>Roteiros de atividades</h2>
+<ul>
+<li><a href="https://www.dropbox.com/s/6ylx8v4aj4tmhz4/informe_inicial.pdf?dl=0">Informe inicial da disciplina</a></li>
+<li>Unidade 1: <a href="https://www.dropbox.com/s/ihpzq3yffl7fwh2/Unidade_1.pdf?dl=0">Conceitos e funções básicas do arduino</a></li>
+</ul>
         </div>
-        <!-- /.row -->
-        
-        <div class="row well">
-            <div class="col-lg-1 col-md-1">
-                <a href="teaching/instrumentacao_fisica.html"><img class="img-responsive" src="teaching/instrumentacao_fisica/thumbnail.jpg"></a>
-            </div>
-            <div class="col-lg-8 col-md-8">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                    <h4>Instrumentação eletrônica para a física</h4>
-                </a>
-                <div id="collapse2" class="collapse">
-                    <p>Curso de instrumentação para a física utilizando eletrônica analógica</p>
+
+        <!-- /.contents -->
+
+        <div class="col-md-4">
+            <div class="well">
+                <!-- Search form -->
+                <h4>Resultados de avaliações</h4>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="cpfID" placeholder="Insira seu CPF">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" onclick="listVerify()"><i class="fa fa-search fa-fw fa-fh"></i></button>
+                    </span>
                 </div>
+                <!-- /.input-group -->
             </div>
-            <div class="col-lg-3 col-md-3">
-                <a class="btn btn-md btn-primary pull-right" href="teaching/instrumentacao_fisica.html">Acessar</a>
+
+            <div class="well" id="listVerifyResult">
             </div>
+
         </div>
-        <!-- /.row -->
-        
-        <div class="row well">
-            <div class="col-lg-1 col-md-1">
-                <a href="teaching/minicurso_arduino.html"><img class="img-responsive" src="teaching/minicurso_arduino/thumbnail.jpg"></a>
-            </div>
-            <div class="col-lg-8 col-md-8">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                    <h4>Minicurso de arduino</h4>
-                </a>
-                <div id="collapse3" class="collapse">
-                    <p>Breve curso de introdução à eletrônica e programação utilizando a plataforma arduino</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <a class="btn btn-md btn-primary pull-right" href="teaching/minicurso_arduino.html">Acessar</a>
-            </div>
-        </div>
-        <!-- /.row -->
-        
-        <div class="row well">
-            <div class="col-lg-1 col-md-1">
-                <a href="teaching/Fisica_1.html"><img class="img-responsive" src="teaching/Fisica_1/thumbnail.jpg"></a>
-            </div>
-            <div class="col-lg-8 col-md-8">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                    <h4>Física 1</h4>
-                </a>
-                <div id="collapse4" class="collapse">
-                    <p>Curso de Física Geral 1 ministrado na área 2 - UFPE</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <a class="btn btn-md btn-primary pull-right" href="teaching/Fisica_1.html">Acessar</a>
-            </div>
-        </div>
-        <!-- /.row -->
-        
+
     </div>
     <!-- /.container -->
 
@@ -191,6 +147,11 @@
     <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="/js/modern-business.js"></script>
+
+    <script src="/js/jquery.maskedinput.min.js"/></script>
+    <script src="/js/sha1.js"/></script>
+    <script src="/js/listVerify.js"/></script>
+    <script src="/exc2db.json"/></script>
 
 
     <!-- Google Analytics -->

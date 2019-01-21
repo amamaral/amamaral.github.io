@@ -1,0 +1,20 @@
+# Sensoriamento e controle - verão 2019
+
+Bem vindos a página da disciplina de sensoriamento e controle. Nesta disciplina iremos desenvolver diversos projetos de instrumentação, sensoriamento e controle utilizando a plataforma [arduino](http://www.arduino.cc). A plataforma arduino é muito utilizada por desenvolvedores e hobbistas em eletrônica para a execução dos mais variados projetos. Em especial, a vasta bibliografia disponível gratuitamente na web simplifica enormemente a construção de protótipos de instrumentos com finalidades científicas e educacionais.
+
+**Não há pre-requisitos para o curso**, mas serão utilizados alguns conceitos básicos de eletrônica e programação em linguagem C ao longo do curso. Caso tenha dúvidas na parte básica de programação, elaborei uma [**Apostila de programação em linguagem C usando arduino**](https://www.dropbox.com/s/2mqbzzuk4vatjsf/01-Arduino_introduction.pdf?dl=0) que segue aproximadamente a ordem conceitual das atividades desenvolvidas na primeira unidade. Esta apostila é bastante preliminar, e contém erros nos códigos e falta incluir diversas figuras. Comentários e sugestões sobre a apostila são muito bem vindos!
+
+Nesta página serão colocados todos os informativos relativos à disciplina, slides das aulas, roteiros dos experimentos e os materiais suplementares em auxílio a disciplina.
+
+## Materiais suplementares
+
+1. [Apostila de programação em linguagem C usando arduino](https://www.dropbox.com/s/2mqbzzuk4vatjsf/01-Arduino_introduction.pdf?dl=0)
+1. [Informe inicial](https://www.dropbox.com/s/0opfomssomraefd/informe_inicial.pdf?dl=0)
+2. [Códigos de resistores](https://www.dropbox.com/s/7tp49dwx68755qn/resistores.pdf?dl=0)
+3. Softwares gratuitos:
+    * [Fritzing](http://www.fritzing.org) (Esquemas de circuitos e projeto de PCB, voltado para a plataforma arduino)
+
+## Roteiros de atividades
+
+- [Informe inicial da disciplina](https://www.dropbox.com/s/6ylx8v4aj4tmhz4/informe_inicial.pdf?dl=0)
+- Unidade 1: [Conceitos e funções básicas do arduino](https://www.dropbox.com/s/ihpzq3yffl7fwh2/Unidade_1.pdf?dl=0)

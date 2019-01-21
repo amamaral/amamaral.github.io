@@ -194,6 +194,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 <p>We want that the output does not affect the signal by much, while it attenuates the noise. To achieve this we may consider a figure-of-merit <span class="math inline">\(S/N\)</span> which is proportional to the signal transfer and inversely proportional to the noise transfer. More signal and less noise should increase this figure. A simple calculation shows that <span class="math display">\[S/N = \frac{|T(f_s,f_c)|}{|T(f_n,f_c)|} = \frac{f_s}{f_n} \frac{\sqrt{f_n^2+f_c^2}}{\sqrt{f_s^2+f_c^2}}\]</span></p>
 <p><span class="math inline">\(S/N\)</span> is shown in the plot above as the green curve. Notice that if <span class="math inline">\(f_c\approx f_s\)</span> then the signal attenuation is relatively small, but the <span class="math inline">\(S/N\)</span> ratio is appreciable. Indeed this makes sense, given that to get rid of low frequency noise it’s necessary to have a filter with the highest available cutoff. Meanwhile, the highest cutoff which does not affect the signal by much is precisely when <span class="math inline">\(f_c=f_s\)</span>.</p>
+<h2 id="figure-of-merit-edit">Figure-of-merit (Edit)</h2>
+<p>Another approach to characterize the effectiveness of the filter is through the definition of a figure of merit, that increases when the signal increases at the output, while it also increases for an enhanced <span class="math inline">\(S/N\)</span> ratio. This quantity would be <span class="math inline">\(FOM=(S/N) |T(S)| = \frac{|T(f_s,f_c)|^2}{|T(f_n,f_c)|}\)</span>. Below we show how the FOM depends on frequency for the above filter. The proposed FOM makes it clearer that the filter must be at the signal frequency.</p>
+<figure>
+<img class="img-responsive" src="assets\sn_ratio_fom.svg" alt="Figure-of-merit(FOM) of a high-pass filter" /><figcaption>Figure-of-merit(FOM) of a high-pass filter</figcaption>
+</figure>
 <h2 id="summary">Summary</h2>
 <p>The above analysis is simplified but valid under various circumstances. When selecting the cutoff frequency of a given filter one must first consider to put this frequency as close as possible from the signal frequency, but not larger. However, if the total noise signal becomes negligible at smaller <span class="math inline">\(f_c\)</span> values, then such values are preferred given that less signal will be lost. Also, a higher order filter can do a much better job at filtering than this simple RC filter. Finally, it is quite straightforward to achieve a similar conclusion for a low-pass RC filter to select a signal which has a frequency smaller than that of the relevant noise source.</p>
 <p>Python code to produce the above plot:</p>
@@ -215,6 +220,24 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1-16" data-line-number="16">grid()</a>
 <a class="sourceLine" id="cb1-17" data-line-number="17">tight_layout()</a>
 <a class="sourceLine" id="cb1-18" data-line-number="18">savefig(<span class="vs">r&#39;assets\sn_ratio_hpf.svg&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="op">%</span>pylab inline</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">f <span class="op">=</span> logspace(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">fn <span class="op">=</span> <span class="dv">100</span>   <span class="co"># Noise freq.</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">fs <span class="op">=</span> <span class="dv">1000</span>  <span class="co"># Signal freq.</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">signal_transfer <span class="op">=</span> fs<span class="op">/</span>sqrt((fs<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">noise_transfer  <span class="op">=</span> fn<span class="op">/</span>sqrt((fn<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">sn_ratio <span class="op">=</span> sqrt((fn<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(fs<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">psig <span class="op">=</span> semilogx(f, signal_transfer, label<span class="op">=</span><span class="vs">r&quot;$|T_</span><span class="sc">{Signal}</span><span class="vs">(f_c)|$&quot;</span>)</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">pnoi <span class="op">=</span> semilogx(f, noise_transfer , label<span class="op">=</span><span class="vs">r&quot;$|T_</span><span class="sc">{Noise}</span><span class="vs">(f_c)|$&quot;</span>)</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">FOM <span class="op">=</span> semilogx(f, sn_ratio <span class="op">*</span> signal_transfer    , label<span class="op">=</span><span class="vs">r&quot;FOM&quot;</span>)</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">vlines(fs, <span class="dv">0</span>, <span class="fl">1.0</span>, color<span class="op">=</span><span class="bu">vars</span>(psig[<span class="dv">0</span>])[<span class="st">&#39;_color&#39;</span>], linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>, label<span class="op">=</span><span class="vs">r&quot;$f_s=</span><span class="sc">%d</span><span class="vs">$ Hz&quot;</span><span class="op">%</span>fs)</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">vlines(fn, <span class="dv">0</span>, <span class="fl">1.0</span>, color<span class="op">=</span><span class="bu">vars</span>(pnoi[<span class="dv">0</span>])[<span class="st">&#39;_color&#39;</span>], linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>, label<span class="op">=</span><span class="vs">r&quot;$f_n=</span><span class="sc">%d</span><span class="vs">$ Hz&quot;</span><span class="op">%</span>fn)</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">legend()</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">xlabel(<span class="st">&#39;$f_c$ (Hz)&#39;</span>)</a>
+<a class="sourceLine" id="cb2-16" data-line-number="16">grid()</a>
+<a class="sourceLine" id="cb2-17" data-line-number="17">tight_layout()</a>
+<a class="sourceLine" id="cb2-18" data-line-number="18">savefig(<span class="vs">r&#39;assets\sn_ratio_fom.svg&#39;</span>)</a></code></pre></div>
 
             </div>
 
