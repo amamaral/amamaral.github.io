@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Anderson M. Amaral">
+  <title>Sensoreamento e controle</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Sensoreamento e controle</h1>
+  <p class="author">Anderson M. Amaral</p>
+  <p class="date">Aula 2 - Potenciômetro e fotoresistor</p>
+</section>
+
+<section id="divisor-de-tensão" class="slide level1">
+<h1>Divisor de tensão</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">O divisor de tensão é extremamente útil para compreender diversos circuitos</li>
+<li class="fragment"><span class="math display">\[v_2=\frac{R_2}{R_1+R_2} V\]</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="Aulas_U1\divisor_tensao.png" /></p>
+</div>
+</div>
+</section>
+<section id="potenciômetro" class="slide level1">
+<h1>Potenciômetro</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Equivale a 2 resistores em série</li>
+<li class="fragment">Para um material ôhmico, <span class="math inline">\(R = \frac{\rho}{A} L\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(\rho\)</span>: resistividade</li>
+<li class="fragment"><span class="math inline">\(L\)</span>: comprimento do material</li>
+<li class="fragment"><span class="math inline">\(A\)</span>: Área transversal</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">A rotação do eixo varia <span class="math inline">\(L\)</span> de 2 resistores “efetivos”</li>
+<li class="fragment">Converte ângulo em tensão!</li>
+</ul>
+</div>
+</div>
+<p><img data-src="Aulas_U1\Potentiometer_schematic.svg" style="width:50.0%" /></p>
+</section>
+<section id="fotoresistor-ou-resistor-dependente-de-luz---rdl" class="slide level1">
+<h1>Fotoresistor (ou resistor dependente de luz - RDL)</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Para um material ôhmico, <span class="math inline">\(R = \frac{\rho}{A} L\)</span></li>
+<li class="fragment">No RDL, <span class="math inline">\(\rho\)</span> diminui com a luz incidente</li>
+<li class="fragment">Sem luz, <span class="math inline">\(R\)</span> pode atingir M<span class="math inline">\(\Omega\)</span>’s</li>
+<li class="fragment">Com luz, <span class="math inline">\(R\)</span> pode reduzir a k<span class="math inline">\(\Omega\)</span>’s</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Como conectar um RDL para perceber a presença de luz?</li>
+<li class="fragment">Divisor de tensão! Lembrar do botão</li>
+<li class="fragment"><strong>Importante</strong>: sinal analógico</li>
+</ul>
+</div>
+</div>
+<p><img data-src="Aulas_U1\light_photocell-diagram.png" style="width:70.0%" /></p>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

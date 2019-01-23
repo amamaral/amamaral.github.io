@@ -23,3 +23,4 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 
 - [Apresentação](sensoriamento_verao_2019/aula_0.html)
 - [Aula 01 - Divisor de tensão, botão e LED](sensoriamento_verao_2019/aula_1.html)
+- [Aula 02 - Potenciômetro e fotoresistor (LDR)](sensoriamento_verao_2019/aula_2.html)
