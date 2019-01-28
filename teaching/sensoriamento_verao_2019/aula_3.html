@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Anderson M. Amaral">
+  <title>Sensoreamento e controle</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Sensoreamento e controle</h1>
+  <p class="author">Anderson M. Amaral</p>
+  <p class="date">Aula 6 - Carga e descarga de um capacitor</p>
+</section>
+
+<section id="resposta-transiente-circuito-rc" class="slide level1">
+<h1>Resposta transiente: circuito RC</h1>
+<ul>
+<li class="fragment">Ao aplicar uma tensão num circuito, nem todos os pontos respondem instantaneamente</li>
+<li class="fragment">Exemplo: circuito RC <img data-src="Aulas_U1\circuito_RC.png" style="width:30.0%" /></li>
+</ul>
+</section>
+<section id="descrição-matemática" class="slide level1">
+<h1>Descrição matemática</h1>
+<p><img data-src="Aulas_U1\circuito_RC.png" style="width:30.0%" /></p>
+<ul>
+<li class="fragment">Tensão aplicada: <span class="math inline">\(V_S\)</span></li>
+<li class="fragment">Tensão no capacitor: <span class="math inline">\(q=Cv\)</span></li>
+<li class="fragment">Tensão no resistor: <span class="math inline">\(v_S-v = R i\)</span></li>
+<li class="fragment">A carga armazenada no capacitor depende de <span class="math inline">\(i\)</span>!</li>
+<li class="fragment">A solução matemática depende de uma equação diferencial. <span class="math inline">\(v\)</span> é dado por exponenciais</li>
+</ul>
+</section>
+<section id="o-que-acontece-quando-v_s-liga-abruptamente" class="slide level1">
+<h1>O que acontece quando <span class="math inline">\(V_S\)</span> liga abruptamente?</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><span class="math inline">\(v = V_S \left(1- e^{-t/RC}\right)\)</span></li>
+<li class="fragment">A demonstração matemática deste resultado pode ser encontrada nos slides mais adiante</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+t = linspace(-2,5,100)
+v = (1-e**(-t))
+v[v<0] = 0
+vs = ones(t.shape)
+vs[t<0] = 0
+
+plot(t,v, label='$v$')
+plot(t,vs, label='$v_S$')
+grid()
+xlabel('$t$ (s)')
+ylabel('$v$ (V)')
+legend(loc=0)
+tight_layout()
+savefig('Aulas_U1\Carrega_cap.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="Aulas_U1\Carrega_cap.png" alt="Curva de carga de um capacitor" /></span></p>
+</div>
+</div>
+</section>
+<section id="o-que-acontece-quando-v_s-desliga-abruptamente" class="slide level1">
+<h1>O que acontece quando <span class="math inline">\(V_S\)</span> desliga abruptamente?</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><span class="math inline">\(v = V_S \left(e^{-t/RC}\right)\)</span></li>
+<li class="fragment">A demonstração matemática deste resultado pode ser encontrada nos slides mais adiante</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+t = linspace(-2,5,100)
+v = (e**(-t))
+v[t<0] = 1
+vs = zeros(t.shape)
+vs[t<0] = 1
+
+plot(t,v, label='$v$')
+plot(t,vs, label='$v_S$')
+grid()
+xlabel('$t$ (s)')
+ylabel('$v$ (V)')
+legend(loc=0)
+tight_layout()
+savefig('Aulas_U1\Descarrega_cap.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="Aulas_U1\Descarrega_cap.png" /></span></p>
+</div>
+</div>
+</section>
+<section id="demonstração-montando-uma-equação-diferencial" class="slide level1">
+<h1>Demonstração: montando uma equação diferencial</h1>
+<ul>
+<li class="fragment">Temos que <span class="math inline">\(q=Cv\)</span> e <span class="math inline">\(\frac{v_S-v}{R} = i\)</span></li>
+<li class="fragment">Lembrando, <span class="math inline">\(i\)</span> indica quanta carga flui pelo fio por unidade de tempo (C/s), podemos usar que <span class="math inline">\(i=\frac{dq}{dt}\)</span></li>
+<li class="fragment">Daí, <span class="math inline">\(q = Cv\)</span>, ou <span class="math inline">\(\frac{dq}{dt} = i = C\frac{dv}{dt}\)</span></li>
+<li class="fragment">Então, <span class="math inline">\(\frac{v_S-v}{R}=C\frac{dv}{dt}\)</span>, ou passando <span class="math inline">\(v\)</span> para um mesmo lado da eq.,</li>
+<li class="fragment"><span class="math display">\[RC\frac{dv}{dt} + v = V_S\]</span></li>
+<li class="fragment">Agora só precisamos resolver a equação diferencial</li>
+</ul>
+</section>
+<section id="solução-homogênea-v_s0" class="slide level1">
+<h1>Solução homogênea (<span class="math inline">\(V_S=0\)</span>)</h1>
+<p><span class="math display">\[RC\frac{dv}{dt} + v = V_S\]</span></p>
+<ul>
+<li class="fragment">A solução mais simples para a Eq. Dif. ocorre quanto <span class="math inline">\(V_S=0\)</span></li>
+<li class="fragment">Note então que <span class="math inline">\(RC\frac{dv}{dt} + v = 0\)</span>, ou <span class="math inline">\(\frac{dv}{dt} =-\frac{1}{RC}v\)</span>.</li>
+<li class="fragment">Que função é proporcional a sua derivada?</li>
+<li class="fragment"><span class="math inline">\(v\)</span> é uma função tipo exponencial! Podemos verificar de maneira mais rigorosa, caso façamos a integração</li>
+<li class="fragment"><span class="math inline">\(\frac{dv}{v}=-\frac{dt}{RC}\)</span> -&gt; Integrando o tempo de <span class="math inline">\(0\)</span> a <span class="math inline">\(t\)</span>, temos</li>
+<li class="fragment"><span class="math inline">\(\log{\frac{v}{v_0}}=-\frac{t}{RC}\)</span>, ou então <span class="math inline">\(v = v_0 e^{-t/RC}\)</span></li>
+<li class="fragment"><span class="math inline">\(\tau = RC\)</span> é conhecido como o tempo de carga/descarga do capacitor, ou tempo característico do circuito</li>
+<li class="fragment">Notar que <span class="math inline">\(\lim_{t\rightarrow\infty} v =0\)</span>.</li>
+</ul>
+</section>
+<section id="solução-inhomogenea-v_sneq-0" class="slide level1">
+<h1>Solução inhomogenea (<span class="math inline">\(V_S\neq 0\)</span>)</h1>
+<p><span class="math display">\[RC\frac{dv}{dt} + v = V_S\]</span></p>
+<ul>
+<li class="fragment">Supor <span class="math inline">\(v = v_0 e^{-t/RC} + v_1\)</span></li>
+<li class="fragment"><span class="math inline">\(\frac{dv}{dt} = -\frac{v_0}{RC} e^{-t/RC}\)</span></li>
+<li class="fragment"><span class="math inline">\(RC\frac{dv}{dt} + v = -RC\frac{v_0}{RC} e^{-t/RC} + v_0 e^{-t/RC} + v_1 = V_S\)</span></li>
+<li class="fragment"><span class="math inline">\(v_1 = V_S\)</span> é solução</li>
+<li class="fragment"><span class="math inline">\(v = v_0 e^{-t/RC} + v_S\)</span></li>
+</ul>
+</section>
+<section id="o-que-acontece-quando-v_s-liga-abruptamente-1" class="slide level1">
+<h1>O que acontece quando <span class="math inline">\(V_S\)</span> liga abruptamente?</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><span class="math inline">\(v = v_0 e^{-t/RC} + v_S\)</span> é tal que <span class="math inline">\(v(0)=0\)</span></li>
+<li class="fragment"><span class="math inline">\(0 = v_0 e^0 + v_S\)</span>, ou <span class="math inline">\(v_0 = - v_S\)</span></li>
+<li class="fragment">Finalmente, <span class="math display">\[v = V_S \left(1- e^{-t/RC}\right)\]</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+t = linspace(-2,5,100)
+v = (1-e**(-t))
+v[v<0] = 0
+vs = ones(t.shape)
+vs[t<0] = 0
+
+plot(t,v, label='$v$')
+plot(t,vs, label='$v_S$')
+grid()
+xlabel('t (s)')
+ylabel('v (V)')
+legend(loc=0)
+tight_layout()
+savefig('C6\Carrega_cap.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="Aulas_U1\Carrega_cap.png" alt="Curva de carga de um capacitor" /></span></p>
+</div>
+</div>
+</section>
+<section id="o-que-acontece-quando-v_s-desliga-abruptamente-1" class="slide level1">
+<h1>O que acontece quando <span class="math inline">\(V_S\)</span> desliga abruptamente?</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Supondo que a fonte de tensão <span class="math inline">\(v_S\)</span> está ligada a muito tempo, e é desligada em <span class="math inline">\(t=0\)</span>, quem são <span class="math inline">\(v(t=0^-)\)</span> e <span class="math inline">\(v(t\rightarrow\infty)\)</span>?</li>
+<li class="fragment"><span class="math inline">\(v = a e^{-t/RC} + b\)</span> é tal que <span class="math inline">\(v(0)=v_S\)</span> e <span class="math inline">\(v(\infty)=0\)</span></li>
+<li class="fragment"><span class="math inline">\(v_S = a + b\)</span>, e <span class="math inline">\(0 = b\)</span></li>
+<li class="fragment">Finalmente, <span class="math display">\[v = V_S \left(e^{-t/RC}\right)\]</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<!---
+~~~{.python}
+%pylab inline
+rcParams['font.size'] = 22
+rcParams['text.usetex'] = True
+
+t = linspace(-2,5,100)
+v = (e**(-t))
+v[t<0] = 1
+vs = zeros(t.shape)
+vs[t<0] = 1
+
+plot(t,v, label='$v$')
+plot(t,vs, label='$v_S$')
+grid()
+xlabel('t (s)')
+ylabel('v (V)')
+legend(loc=0)
+tight_layout()
+savefig('C6\Descarrega_cap.png')
+~~~
+-->
+<p><span class="fragment"><img data-src="Aulas_U1\Descarrega_cap.png" /></span></p>
+</div>
+</div>
+</section>
+<section id="análise-intuitiva" class="slide level1">
+<h1>Análise intuitiva</h1>
+<ul>
+<li class="fragment">Podemos analisar o que ocorre com o circuito RC em tempos curtos e longos.</li>
+<li class="fragment"><span class="math inline">\(v = a e^{-t/RC} + b\)</span></li>
+<li class="fragment"><span class="math inline">\(t \leq 0\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(v_0 = a + b\)</span></li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(t \gg RC\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(v_\infty = b\)</span></li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(v = v_0 e^{-t/RC} + v_\infty (1-e^{-t/RC})\)</span></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
