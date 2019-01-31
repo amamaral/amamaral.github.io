@@ -18,6 +18,7 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 
 - [Informe inicial da disciplina](https://www.dropbox.com/s/6ylx8v4aj4tmhz4/informe_inicial.pdf?dl=0)
 - Unidade 1: [Conceitos e funções básicas do arduino](https://www.dropbox.com/s/ihpzq3yffl7fwh2/Unidade_1.pdf?dl=0)
+- Unidade 2: [Sensores e alguns instrumentos](https://www.dropbox.com/s/larkjyu2eii8hqc/Unidade_2.pdf?dl=0)
 
 ## Aulas
 
@@ -25,3 +26,4 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 - [Aula 01 - Divisor de tensão, botão e LED](sensoriamento_verao_2019/aula_1.html)
 - [Aula 02 - Potenciômetro e fotoresistor (LDR)](sensoriamento_verao_2019/aula_2.html)
 - [Aula 06 - Carga e descarga de um capacitor](sensoriamento_verao_2019/aula_3.html)
+- [Aula 08 - Fotodiodo e fototransistor](sensoriamento_verao_2019/aula_4.html)
