@@ -19,6 +19,7 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 - [Informe inicial da disciplina](https://www.dropbox.com/s/6ylx8v4aj4tmhz4/informe_inicial.pdf?dl=0)
 - Unidade 1: [Conceitos e funções básicas do arduino](https://www.dropbox.com/s/ihpzq3yffl7fwh2/Unidade_1.pdf?dl=0)
 - Unidade 2: [Sensores e alguns instrumentos](https://www.dropbox.com/s/larkjyu2eii8hqc/Unidade_2.pdf?dl=0)
+- Unidade 3: [Motores e sistemas de potência](https://www.dropbox.com/s/hnam428p27l1z8q/Unidade_3.pdf?dl=0)
 
 ## Aulas
 
