@@ -325,6 +325,8 @@ class Courses():
 
 coursePages = []
 
+coursePages.append(Courses('Sensoriamento e controle remoto', 'sensoriamento_remoto',
+                           'Sensoriamento e controle remoto utilizando a plataforma arduino, python e kivy'))
 coursePages.append(Courses('Sensoriamento e controle - verão 2019', 'sensoriamento_verao_2019',
                            'Curso de sensoriamento e controle utilizando a plataforma arduino'))
 coursePages.append(Courses('Instrumentação eletrônica para a física', 'instrumentacao_fisica',
