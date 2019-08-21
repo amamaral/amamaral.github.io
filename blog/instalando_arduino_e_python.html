@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Instalando o arduino, python e outros pacotes adicionais </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="/css/modern-business.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/academicons/css/academicons.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+                <a class="navbar-brand" href="/index.html"> Anderson M. Amaral</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/about.html">Personal Info</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-flask pull-left"></i> Science<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/science_papers.html">Papers</a>
+                            </li>
+                            <li><a href="/conference_papers.html">Conference papers</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Science links</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gears"></i> Technical work<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/blog.html" data-toggle="tooltip" title="Technical articles in my blog">Articles</a>
+                            </li>
+                            <li><a href="http://www.github.com/amamaral" data-toggle="tooltip" title="Github software repositories">Software</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Electronics links</a>
+                            </li>
+                        </ul>
+                    </li>
+		    <li><a href="/teaching.html"><i class="fa fa-book"></i> Teaching (Ensino)</a>
+		    </li>
+                    <li><a href="/blog.html" data-toggle="tooltip" title="Educational and technical blog">Blog</a>
+                    </li>
+		    <li><a href="/useful.html"><i class="fa fa-user"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    
+
+<style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; }
+pre.numberSource a.sourceLine:empty
+{ position: absolute; }
+pre.numberSource a.sourceLine::before
+{ content: attr(data-line-number);
+  position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+  border: none; pointer-events: all;
+  -webkit-touch-callout: none; -webkit-user-select: none;
+  -khtml-user-select: none; -moz-user-select: none;
+  -ms-user-select: none; user-select: none;
+  padding: 0 4px; width: 4em;
+  color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+{ background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li>Instalando o arduino, python e outros pacotes adicionais</li>
+                </ol>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-8">
+
+                <!-- the actual blog post: title/author/date/content -->
+                <h2 class="page-header"> Instalando o arduino, python e outros pacotes adicionais </h2><i class="fa fa-clock-o"></i> Posted on 21/08/2019
+                
+                <hr>
+                <h1 id="guia-básico-dos-programas-necessários-para-sensoriamento-e-controle">Guia básico dos programas necessários para Sensoriamento e controle</h1>
+<p>Utilizaremos diversos programas ao longo da disciplina, bem como várias bibliotecas adicionais. Abaixo segue um breve resumo dos passos que você deve adotar para que possa fazer estas atividades em casa ou de pesquisa. As instruções abaixo são para sistemas Windows, mas no caso do Linux a ideia geral é bem parecida.</p>
+<h1 id="arduino-e-suas-bibliotecas">Arduino e suas bibliotecas</h1>
+<p>Antes de mais nada, é fundamental que a IDE do arduino esteja instalada. Acesse &lt;www.arduino.cc&gt; e faça o download e a instalação do programa, seguindo as instruções recomendadas para o seu sistema operacional.</p>
+<p><strong>Nota para usuários de sistemas linux</strong>. A instalação da IDE arduino por vezes não permite a comunicação com a placa diretamente. É necessário acessar o terminal e digitar <code>sudo usermod -a -G dialout &lt;username&gt;</code>, onde <code>&lt;username&gt;</code> deverá ser substituído pelo nome da conta de usuário que terá autorização para programar e se comunicar com o arduino. Após a autorização é necessário reiniciar o sistema.</p>
+<p>Faça o teste básico do led piscando <code>Arquivo&gt;Exemplos&gt;01. Basics&gt;Blink</code> para verificar se tudo está funcionando corretamente. O próximo passo é instalar as bibliotecas que precisaremos para controlar alguns sensores e periféricos. Na IDE arduino, acesse o menu <code>Sketch&gt;Incluir bibliotecas&gt;Gerenciar bibliotecas</code>. Busque e instale as bibliotecas abaixo:</p>
+<ul>
+<li>Wire</li>
+<li>Adafruit Unified Sensor Library</li>
+<li>DHT sensor library</li>
+<li>LiquidCrystal I2C</li>
+</ul>
+<h2 id="instalação-do-python-e-bibliotecas-adicionais-no-windows">Instalação do Python e bibliotecas adicionais no Windows</h2>
+<p>Os passos abaixo são recomendados para quem não possui nenhuma versão anterior do Python instalada na máquina. A instalação das bibliotecas abaixo pode ser feita de forma similar em sistemas Linux ao utilizar o terminal.</p>
+<h3 id="anaconda">Anaconda</h3>
+<p>O Anaconda é um pacote de Python que contém não apenas as funcionalidades básicas da linguagem, como diversas bibliotecas acessórias já pré-configuradas.</p>
+<ul>
+<li>Acessar &lt;www.anaconda.com&gt; e efetuar o download da versão mais recente (Python 3, 64 bits)</li>
+<li>Durante a instalação, adicione o anaconda ao PATH e escolha como Python padrão do sistema</li>
+</ul>
+<h3 id="pyserial-e-kivy">PySerial e kivy</h3>
+<p>Além das bibliotecas já instaladas no Anaconda, precisaremos também de duas bibliotecas adicionais. A PySerial permite a comunicação com o arduino via serial, de forma similar ao Monitor Serial da IDE arduino. Existem outras bibliotecas mais poderosas e que permitem a comunicação com mais instrumentos, como as bibliotecas PyVisa ou Instrumental. Entretanto a PySerial é suficiente para as nossas aplicações. Para produzir interfaces gráficas no python, e ter um programa com aparência mais “profissional” para controlar nossos instrumentos, utilizaremos a biblioteca kivy.</p>
+<ul>
+<li>No menu iniciar, procure por <code>Anaconda PowerShell Prompt</code> ou <code>Anaconda Prompt</code>.</li>
+<li>No console, execute os comandos abaixo:
+<ul>
+<li><code>conda install -c anaconda pyserial</code></li>
+<li><code>conda install -c conda-forge kivy</code></li>
+</ul></li>
+</ul>
+
+            </div>
+
+            <div class="col-lg-4">
+              <!--- Google search (!?) --->
+              <script>
+                (function() {
+                  var cx = '000186217323396905804:ehdmthbtyy0';
+                  var gcse = document.createElement('script');
+                  gcse.type = 'text/javascript';
+                  gcse.async = true;
+                  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                  var s = document.getElementsByTagName('script')[0];
+                  s.parentNode.insertBefore(gcse, s);
+                })();
+              </script>
+              <gcse:search></gcse:search>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+
+    <div class="container">
+
+        <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    Copyright © 2016-2019 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/modern-business.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script> 
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-77641001-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- /.ga -->
+    <!-- /.js -->
+</body>
+
+</html>

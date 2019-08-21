@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Anderson M. Amaral" />
+  <title>Arduino as digital potentiometer</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Arduino as digital potentiometer</h1>
+<p class="author">Anderson M. Amaral</p>
+<p class="date">27/04/2018</p>
+</header>
+<p>Ativar/desativar resistores por meio das saídas digitais, alterando o estado de impedância + o estado da saída. Seria equivalente a uma escada R-2R, porém que pode ser usada para também para controlar o ganho de amplificadores externos, e outros ajustes. Lembra também o uso do pino digital no exemplo de carga/descarga do capacitor.</p>
+<p>Ideia extremamente útil para produzir um conversor de sinal PWM -&gt; onda triangular -&gt; onda quase-senoidal, visto que será necessário ajustar o integrador e/ou a amplitude da onda na saída.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># The code below states the available PWM frequencies given</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># a set of pre-scalers</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="op">%</span>pylab inline</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">OCRA <span class="op">=</span> arange(<span class="dv">0</span>, <span class="dv">256</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">prescaler_values <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">64</span>, <span class="dv">256</span>, <span class="dv">1024</span>]</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">clock <span class="op">=</span> <span class="fl">16E6</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">ftot <span class="op">=</span> []</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="cf">for</span> p <span class="kw">in</span> prescaler_values:</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">  freqs <span class="op">=</span> clock<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>OCRA))</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">  ftot.append(freqs.data)</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">  semilogy(OCRA, freqs, <span class="st">&#39;.&#39;</span>, label<span class="op">=</span>p)</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">xlabel(<span class="st">&#39;OCRA&#39;</span>)</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">ylabel(<span class="st">&#39;PWM frequency&#39;</span>)</a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">legend()</a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">grid()</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">tight_layout()</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">savefig(<span class="vs">r&#39;assets\arduino_digipot_available_frequencies.svg&#39;</span>)</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">ftot <span class="op">=</span> asarray(ftot).ravel()</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">log_bins <span class="op">=</span> logspace(<span class="dv">1</span>,<span class="dv">7</span>,(<span class="dv">7-1</span>)<span class="op">*</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">plt.hist(ftot, bins<span class="op">=</span>log_bins)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">plt.xscale(<span class="st">&#39;log&#39;</span>)</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">plt.xlabel(<span class="st">&#39;Frequency&#39;</span>)</a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">plt.ylabel(<span class="st">&#39;Available frequency setpoints&#39;</span>)</a>
+<a class="sourceLine" id="cb1-27" data-line-number="27">plt.grid()</a>
+<a class="sourceLine" id="cb1-28" data-line-number="28">savefig(<span class="vs">r&#39;assets\arduino_digipot_available_frequencies_hist.svg&#39;</span>)</a>
+<a class="sourceLine" id="cb1-29" data-line-number="29"><span class="co">#plt.hlines(5, log_bins.min(), log_bins.max(), linestyle=&#39;dashed&#39;)</span></a>
+<a class="sourceLine" id="cb1-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb1-31" data-line-number="31">p<span class="op">=</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-32" data-line-number="32">LO_freq <span class="op">=</span> clock<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>OCRA[<span class="op">-</span><span class="dv">1</span>]))</a>
+<a class="sourceLine" id="cb1-33" data-line-number="33"><span class="bu">print</span>(LO_freq)</a>
+<a class="sourceLine" id="cb1-34" data-line-number="34">delta_f <span class="op">=</span> clock<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>OCRA))<span class="op">-</span>LO_freq</a>
+<a class="sourceLine" id="cb1-35" data-line-number="35">semilogy(OCRA, <span class="bu">abs</span>(delta_f), <span class="st">&#39;.&#39;</span>)</a>
+<a class="sourceLine" id="cb1-36" data-line-number="36">hlines(LO_freq, OCRA[<span class="dv">0</span>],OCRA[<span class="op">-</span><span class="dv">1</span>])</a></code></pre></div>
+</body>
+</html>

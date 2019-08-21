@@ -8,8 +8,9 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 
 ## Materiais suplementares
 
+1. [Guia de instalação de pacotes do Arduino e Python](/blog/instalando_arduino_e_python.html)
 1. [Apostila de programação em linguagem C usando arduino](https://www.dropbox.com/s/2mqbzzuk4vatjsf/01-Arduino_introduction.pdf?dl=0)
-2. [Breve guia de programação em linguagem Python](http://amamaral.github.io/blog/python_for_experimental_sciences_part_1.html)
+2. [Breve guia de programação em linguagem Python](/blog/python_for_experimental_sciences_part_1.html)
 1. [Informe inicial](https://www.dropbox.com/s/02c2r6mqtbz1t3g/informe_inicial.pdf?dl=0)
 2. [Códigos de resistores](https://www.dropbox.com/s/7tp49dwx68755qn/resistores.pdf?dl=0)
 3. Softwares gratuitos:
