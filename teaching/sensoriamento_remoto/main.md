@@ -11,6 +11,7 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 1. [Guia de instalação de pacotes do Arduino e Python](/blog/instalando_arduino_e_python.html)
 1. [Apostila de programação em linguagem C usando arduino](https://www.dropbox.com/s/2mqbzzuk4vatjsf/01-Arduino_introduction.pdf?dl=0)
 2. [Breve guia de programação em linguagem Python](/blog/python_for_experimental_sciences_part_1.html)
+3. [Excelente livro gratuito sobre programação em Python: Hans Petter Langtangen, A Primer on Scientific Programming with Python](https://hplgit.github.io/primer.html/doc/pub/half/book.pdf)
 1. [Informe inicial](https://www.dropbox.com/s/02c2r6mqtbz1t3g/informe_inicial.pdf?dl=0)
 2. [Códigos de resistores](https://www.dropbox.com/s/7tp49dwx68755qn/resistores.pdf?dl=0)
 3. Softwares gratuitos:
@@ -22,6 +23,7 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 - [Informe inicial da disciplina](https://www.dropbox.com/s/02c2r6mqtbz1t3g/informe_inicial.pdf?dl=0)
 - Unidade 1A: [Sensores e alguns instrumentos](https://www.dropbox.com/s/os9harp7s4wrqei/Unidade_1A.pdf?dl=0)
 - Unidade 1B: [Conceitos e funções básicas do arduino](https://www.dropbox.com/s/c2oqbwql5ygpro6/Unidade_1B.pdf?dl=0)
+- Unidade 2: [Comunicação sem fio a curtas distâncias](https://www.dropbox.com/s/8jqk752q26dwf24/Unidade_2.pdf?dl=0)
 
 ## Aulas
 

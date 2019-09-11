@@ -1,0 +1,8 @@
+"Fundamentals of Noise processes"
+
+Author:Yoshihisa Yamamoto
+
+Fundamentals of statistic, Fourier analysis, statistical and quantum mechanics, and linear and nonlinear circuit theory. Thermal, quantum and 1/f noise in resistors, pn junctions, lasers, and parametric amplifiers. Energy efficiency (bit/photon) and spectral efficiency (bit/s/Hz) in coherent and single photon optical communications. Protocols and security in quantum cryptography. Decoherence of qubits in quantum computation.
+
+Obtained in 01/09/2019 from: https://www.nii.ac.jp/qis/first-quantum/e/forStudents/lecture/index.html
+

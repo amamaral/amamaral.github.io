@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Noise in some electronic circuits </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="/css/modern-business.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/academicons/css/academicons.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+                <a class="navbar-brand" href="/index.html"> Anderson M. Amaral</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/about.html">Personal Info</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-flask pull-left"></i> Science<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/science_papers.html">Papers</a>
+                            </li>
+                            <li><a href="/conference_papers.html">Conference papers</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Science links</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gears"></i> Technical work<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/blog.html" data-toggle="tooltip" title="Technical articles in my blog">Articles</a>
+                            </li>
+                            <li><a href="http://www.github.com/amamaral" data-toggle="tooltip" title="Github software repositories">Software</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Electronics links</a>
+                            </li>
+                        </ul>
+                    </li>
+		    <li><a href="/teaching.html"><i class="fa fa-book"></i> Teaching (Ensino)</a>
+		    </li>
+                    <li><a href="/blog.html" data-toggle="tooltip" title="Educational and technical blog">Blog</a>
+                    </li>
+		    <li><a href="/useful.html"><i class="fa fa-user"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    
+
+<style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; }
+pre.numberSource a.sourceLine:empty
+{ position: absolute; }
+pre.numberSource a.sourceLine::before
+{ content: attr(data-line-number);
+  position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+  border: none; pointer-events: all;
+  -webkit-touch-callout: none; -webkit-user-select: none;
+  -khtml-user-select: none; -moz-user-select: none;
+  -ms-user-select: none; user-select: none;
+  padding: 0 4px; width: 4em;
+  color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+{ background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li>Noise in some electronic circuits</li>
+                </ol>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-8">
+
+                <!-- the actual blog post: title/author/date/content -->
+                <h2 class="page-header"> Noise in some electronic circuits </h2><i class="fa fa-clock-o"></i> Posted on 01/09/2019
+                
+                <hr>
+                <h1 id="introduction">Introduction</h1>
+<p>Noise is an intrinsic feature of any real world application. Not everything works as we would like in the ideal world, and some of these problems are intrinsic from nature and cannot be avoided whatsoever. Below we will consider some sources of noise and how to identify them. Since the focus here is on electronic noise, we will start with thermal noise in resistors (Johnson-Nyquist noise). Later we will consider the shot noise in photodiodes, which are an important feature in several optical detection systems.</p>
+<h1 id="thermal-noise-in-resistors">Thermal noise in resistors</h1>
+<p>Above 0 Kelvin the conduction electrons have some motion due to the thermal energy. How to consider this? Let’s consider what would be the Norton equivalent of the circuit due to the electrons within a resistor. There are other ways to discuss this, but I believe that the following is somewhat simpler to understand. Consider that we have a disconnected and discharged resistor, which has left and right terminals. To model the current <span class="math inline">\(i_n\)</span> induced by the temperature in our circuit we want to add a current source as (a) in the Figure below.</p>
+<p>(O texto que segue está errado… tentar entender melhor a fundamentação do fenômeno e reescrever). Citar papers de Johnson e Nyquist… However there is a catch that can be more easily understood when the resistor is disconnected. If the total charge in the resistor is 0 and the thermally induced current forces a charge <span class="math inline">\(q\)</span> to the right terminal, there must be a charge <span class="math inline">\(-q\)</span> in the left terminal such the total charge remains the same. Therefore, it is like the thermal current source must flow through the resistor twice. From these concepts it is also possible to consider the Thévenin equivalent, whose schematics are shown in (c) and (d).</p>
+<figure>
+<img class="img-responsive" src="assets\johnson_noise_equiv_circuits.svg" alt="Thermal current in a resistor" /><figcaption>Thermal current in a resistor</figcaption>
+</figure>
+<p>(daqui em diante está correto)</p>
+<p>Let’s consider the current noise, <span class="math inline">\(i_n\)</span>, as depicted in (a). In classical statistical mechanics the equipartition theorem states that there is <span class="math inline">\(kT/2\)</span> of thermal energy for each degree of freedom of a system. <span class="math inline">\(k\)</span> is Boltzmann constant and <span class="math inline">\(T\)</span> is the temperature. Since both the electric and the magnetic fields[^For example, a current in a conductor is induced by an electric field, while the flow of charges induces a magnetic field.] induced in the circuit can store energy, we can state that there is an average energy of <span class="math inline">\(kT\)</span> in each degree of freedom. How to determine the energy the circuit (a)? We can consider the complex representation of a current as <span class="math display">\[
+i_n(t) = \int_0^\infty \tilde{i}_n(\omega) e^{j \omega t} d\omega + c.c.,
+\]</span> where c.c. indicates the complex conjugate of the first term. Given that the voltage is <span class="math inline">\(v_n(t)=\frac{R}{2}i_n(t)\)</span>, the average electric power per unit time can be expressed as <span class="math display">\[
+\left&lt;P\right&gt; = \left&lt;R \frac{i_n^2(t)}{4} \right&gt; = \int_0^\infty \frac{R |\tilde{i}_n(\omega)|^2}{4} d\omega.
+\]</span></p>
+<p>The charge flow at each frequency is an independent degree of freedom of the system, such that the energy density within a frequency band <span class="math inline">\(\delta f=d\omega/2\pi\)</span> must satisfy <span class="math display">\[
+|\tilde{i}_n(\omega)|^2 df = \frac{4 k T}{R} df.
+\]</span></p>
+<p>If the calculation is performed for the thermal noise voltage <span class="math inline">\(v_n\)</span>, then <span class="math display">\[
+|\tilde{v}_n(\omega)|^2 df = 4 k T R df.
+\]</span></p>
+<p>Since the square of the RMS current and voltage can be found after the integration of either <span class="math inline">\(|\tilde{i}_n(\omega)|^2 df\)</span> or <span class="math inline">\(|\tilde{i}_n(\omega)|^2 df\)</span> over the signal frequency range <span class="math inline">\(\Delta f\)</span>, and the terms in the RHS of the above expressions are independent of frequency, it is possible to state that the RMS current and voltage due to the noise must satisfy <span class="math inline">\(i_{n,RMS}=\sqrt{\frac{4kT}{R}\Delta f}\)</span> and <span class="math inline">\(v_{n,RMS}=\sqrt{4kTR \Delta f}\)</span>. Which values are typical for these quantities? <span class="math inline">\(k=1.38\cdot10^{-23}\)</span> <span class="math inline">\(J/K\)</span> while at room temperature, <span class="math inline">\(T=300\)</span> K, such that <span class="math inline">\(4kT\approx 0.1\)</span> <span class="math inline">\(eV\)</span>. Therefore, a <span class="math inline">\(1\)</span> k resistor in a circuit whose bandwidth is <span class="math inline">\(\Delta f=10\)</span> kHz has an RMS voltage noise of 400 nV, and a current noise of 400 pA.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1">k <span class="op">=</span> <span class="fl">1.380649E-23</span>  <span class="co"># Boltzmann constant</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">T <span class="op">=</span> <span class="dv">300</span>           <span class="co"># Temperature in Kelvin</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">R <span class="op">=</span> <span class="fl">1E3</span>           <span class="co"># Resistor value</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">BW <span class="op">=</span> <span class="fl">10E3</span>         <span class="co"># Signal bandwidth</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="bu">print</span>(<span class="st">&#39;vn:&#39;</span>, sqrt(<span class="dv">4</span> <span class="op">*</span> k <span class="op">*</span> T <span class="op">*</span> R <span class="op">*</span> BW))</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="bu">print</span>(<span class="st">&#39;in:&#39;</span>, sqrt(<span class="dv">4</span> <span class="op">*</span> k <span class="op">*</span> T<span class="op">/</span>R <span class="op">*</span> BW))</a></code></pre></div>
+<p>This noise is intrinsic to a condutor at a given temperature, and is not a mistake that can be avoided. Notice that the voltage noise increases with temperature, bandwidth and resistance, while the current noise decreases for larger resistances. If we want to see this effect in action, we now know which parameters must be tuned. Suppose that the ambient temperature remains, but the resistor value is increased to <span class="math inline">\(100\)</span> k. Then the voltage noise increases to <span class="math inline">\(4\,\mu\)</span>V and the current noise decreases to <span class="math inline">\(40\)</span> pA. While this voltage may still seem very small, it can affect significantly the performance of high-gain voltage amplifier stages. If a total voltage gain of 1000 is applied, this noise source alone may corresponds to a significant fraction of the signal. In particular, if we consider an oscilloscope whose input resistance is <span class="math inline">\(5\)</span> M<span class="math inline">\(\Omega\)</span> and whose detection bandwidth is <span class="math inline">\(20\)</span> MHz, then <span class="math inline">\(v_{n,RMS}=1\)</span> mV and this noise can be often seen directly on screen.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1">k <span class="op">=</span> <span class="fl">1.380649E-23</span>  <span class="co"># Boltzmann constant</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">T <span class="op">=</span> <span class="dv">300</span>           <span class="co"># Temperature in Kelvin</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">R <span class="op">=</span> <span class="fl">100E3</span>         <span class="co"># Resistor value</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">BW <span class="op">=</span> <span class="fl">100E3</span>        <span class="co"># Signal bandwidth</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="bu">print</span>(<span class="st">&#39;vn:&#39;</span>, sqrt(<span class="dv">4</span> <span class="op">*</span> k <span class="op">*</span> T <span class="op">*</span> R <span class="op">*</span> BW))</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="bu">print</span>(<span class="st">&#39;in:&#39;</span>, sqrt(<span class="dv">4</span> <span class="op">*</span> k <span class="op">*</span> T<span class="op">/</span>R <span class="op">*</span> BW))</a></code></pre></div>
+<p>Let’s put these numbers together to design a circuit that is able make this noise measurable when using a 1 k resistor and a 300 kHz detection bandwidth. We want to measure the voltage noise, or <span class="math inline">\(v_{n,RMS}=2\,\mu\)</span>V. To observe such a small voltage in a typical oscilloscope it is necessary to apply a voltage gain of <span class="math inline">\(10^4\)</span> or more. We also must be sure that other sources of noise are smaller than our noise of interest. In datasheets it is often stated the noise per bandwidth unit (noise density), which in our case would be <span class="math inline">\(v_n = 4\,nV/\sqrt{Hz}\)</span>. For example, if we want to use a jellybean opamp as the TL071 or the LF411, their typical input voltage noise density is <span class="math inline">\(v_n = 18\,nV/\sqrt{Hz}\)</span>, which in principle would limit our measurements to resistors of 20k and up. As a side note, we remark that the opamp LT1024 used in Eur. J. Phys. 31 (2010) 675–679 has a typical input noise voltage of 14 <span class="math inline">\(nV/\sqrt{Hz}\)</span>, and they reported satisfactory measurements with <span class="math inline">\(R\)</span> values as low as 2k. Therefore even though low resistor could pose a problem, we could try to use simple op-amps. Let us consider the upper resistor value as 1M, where the voltage noise becomes <span class="math inline">\(v_{n,RMS}=70\,\mu\)</span>V and <span class="math inline">\(v_n = 130\,nV/\sqrt{Hz}\)</span>. While in the upper limit it seems that measurements should be easier, we must be careful with the bandwidth: the 3dB frequency with an effective 1 pF capacitor already spoils the bandwidth. An effective capacitance of 5 pF does not significantly attenuate the signal for a 100 k resistor, but then the range of <span class="math inline">\(R\)</span> values available for experimenting becomes smaller.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">k <span class="op">=</span> <span class="fl">1.380649E-23</span>  <span class="co"># Boltzmann constant</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">T <span class="op">=</span> <span class="dv">300</span>           <span class="co"># Temperature in Kelvin</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">R <span class="op">=</span> <span class="fl">1E3</span>         <span class="co"># Resistor value</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">BW <span class="op">=</span> <span class="fl">200E3</span>        <span class="co"># Signal bandwidth</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="bu">print</span>(<span class="st">&#39;vn:&#39;</span>, sqrt(<span class="dv">4</span> <span class="op">*</span> k <span class="op">*</span> T <span class="op">*</span> R <span class="op">*</span> BW))</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="bu">print</span>(<span class="st">&#39;vn/sqrt(Hz):&#39;</span>, sqrt(<span class="dv">4</span> <span class="op">*</span> k <span class="op">*</span> T <span class="op">*</span> R))</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="bu">print</span>(<span class="st">&#39;c_in(max):&#39;</span>, <span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span>R<span class="op">*</span>BW))</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="bu">print</span>(<span class="st">&#39;in:&#39;</span>, sqrt(<span class="dv">4</span> <span class="op">*</span> k <span class="op">*</span> T<span class="op">/</span>R <span class="op">*</span> BW))</a></code></pre></div>
+<h1 id="first-attempt">First attempt</h1>
+<p>Since we would like to make the present experiment dirt-cheap, a first attempt will be to use the TL074 quad op amp to provide the necessary gain. We will follow an approach similar to the one discussed in Eur. J. Phys. 31 (2010) 675–679. However, a problem of the TL074 op amps respective to the usage of the LT1024 as in the paper is that the TL074 has a large input offset voltage of 9 mV (worst case), while the LT1024 has just 100 <span class="math inline">\(\mu\)</span>V of offset voltage. The amplification of TL074 offset by a total gain of <span class="math inline">\(10^4\)</span> becomes an unacceptably large error of 90 V. What if we change the gain in each stage such that we do not amplify the offset? That could be performed on a non-inverter amplifier which has a resistor in series with a capacitor in the feedback loop. Each gain stage becomes a buffer at DC while applies a gain of 10 at large frequencies.</p>
+<!--- NOTA: Talvez seria mais interessante uma sequência de estágios de amplificação tipo inversor com acoplamento AC após o primeiro buffer... Em particular se for considerado que o erro e ruído na corrente são menores que na tensão para o TL074... Testar das duas formas --->
+
+            </div>
+
+            <div class="col-lg-4">
+              <!--- Google search (!?) --->
+              <script>
+                (function() {
+                  var cx = '000186217323396905804:ehdmthbtyy0';
+                  var gcse = document.createElement('script');
+                  gcse.type = 'text/javascript';
+                  gcse.async = true;
+                  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                  var s = document.getElementsByTagName('script')[0];
+                  s.parentNode.insertBefore(gcse, s);
+                })();
+              </script>
+              <gcse:search></gcse:search>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+
+    <div class="container">
+
+        <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    Copyright © 2016-2019 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/modern-business.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script> 
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-77641001-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- /.ga -->
+    <!-- /.js -->
+</body>
+
+</html>

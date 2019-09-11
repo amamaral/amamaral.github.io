@@ -175,7 +175,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
                 <h1 id="guia-básico-dos-programas-necessários-para-sensoriamento-e-controle">Guia básico dos programas necessários para Sensoriamento e controle</h1>
 <p>Utilizaremos diversos programas ao longo da disciplina, bem como várias bibliotecas adicionais. Abaixo segue um breve resumo dos passos que você deve adotar para que possa fazer estas atividades em casa ou de pesquisa. As instruções abaixo são para sistemas Windows, mas no caso do Linux a ideia geral é bem parecida.</p>
 <h1 id="arduino-e-suas-bibliotecas">Arduino e suas bibliotecas</h1>
-<p>Antes de mais nada, é fundamental que a IDE do arduino esteja instalada. Acesse &lt;www.arduino.cc&gt; e faça o download e a instalação do programa, seguindo as instruções recomendadas para o seu sistema operacional.</p>
+<p>Antes de mais nada, é fundamental que a IDE do arduino esteja instalada. Acesse <a href="http://www.arduino.cc" class="uri">http://www.arduino.cc</a> e faça o download e a instalação do programa, seguindo as instruções recomendadas para o seu sistema operacional.</p>
 <p><strong>Nota para usuários de sistemas linux</strong>. A instalação da IDE arduino por vezes não permite a comunicação com a placa diretamente. É necessário acessar o terminal e digitar <code>sudo usermod -a -G dialout &lt;username&gt;</code>, onde <code>&lt;username&gt;</code> deverá ser substituído pelo nome da conta de usuário que terá autorização para programar e se comunicar com o arduino. Após a autorização é necessário reiniciar o sistema.</p>
 <p>Faça o teste básico do led piscando <code>Arquivo&gt;Exemplos&gt;01. Basics&gt;Blink</code> para verificar se tudo está funcionando corretamente. O próximo passo é instalar as bibliotecas que precisaremos para controlar alguns sensores e periféricos. Na IDE arduino, acesse o menu <code>Sketch&gt;Incluir bibliotecas&gt;Gerenciar bibliotecas</code>. Busque e instale as bibliotecas abaixo:</p>
 <ul>
@@ -183,13 +183,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>Adafruit Unified Sensor Library</li>
 <li>DHT sensor library</li>
 <li>LiquidCrystal I2C</li>
+<li>IRremote</li>
+<li>RF24</li>
 </ul>
 <h2 id="instalação-do-python-e-bibliotecas-adicionais-no-windows">Instalação do Python e bibliotecas adicionais no Windows</h2>
-<p>Os passos abaixo são recomendados para quem não possui nenhuma versão anterior do Python instalada na máquina. A instalação das bibliotecas abaixo pode ser feita de forma similar em sistemas Linux ao utilizar o terminal.</p>
+<p>Os passos abaixo são recomendados para quem não possui nenhuma versão anterior do Python instalada na máquina. A instalação das bibliotecas abaixo pode ser feita de forma similar em sistemas Linux ao utilizar o terminal. Além de instalar os aplicativos abaixo, recomendo também que leiam o <a href="https://hplgit.github.io/primer.html/doc/pub/half/book.pdf">excelente livro gratuito sobre programação em Python do Hans Petter Langtangen, A Primer on Scientific Programming with Python</a></p>
 <h3 id="anaconda">Anaconda</h3>
 <p>O Anaconda é um pacote de Python que contém não apenas as funcionalidades básicas da linguagem, como diversas bibliotecas acessórias já pré-configuradas.</p>
 <ul>
-<li>Acessar &lt;www.anaconda.com&gt; e efetuar o download da versão mais recente (Python 3, 64 bits)</li>
+<li>Acessar <a href="http://www.anaconda.com" class="uri">http://www.anaconda.com</a> e efetuar o download da versão mais recente (Python 3, 64 bits)</li>
 <li>Durante a instalação, adicione o anaconda ao PATH e escolha como Python padrão do sistema</li>
 </ul>
 <h3 id="pyserial-e-kivy">PySerial e kivy</h3>

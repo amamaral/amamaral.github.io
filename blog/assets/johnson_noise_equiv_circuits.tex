@@ -1,0 +1,29 @@
+\documentclass[crop, convert={outext=.svg,command=\unexpanded{pdf2svg \infile\space\outfile}}]{standalone}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{10pt}
+
+\usepackage{siunitx}
+\usepackage[american]{circuitikz}
+\usepackage{amsmath}
+\begin{document}
+\begin{tikzpicture}
+\draw
+    (0,0) to[I, i=$i_n$] ++(0,2) to ++(2,0) node(n1){}
+    to[R, l=$R$] node[label=below:(a)]{} ++(0,-2) to ++(-2,0)
+    (n1) to[short] ++(2,0) to[R, l=$R$] ++(0,-2) to[short] ++(-2,0)
+
+    (6,0)  to[I, i=$i_n$] ++(0,2) to ++(2,0)
+    to[R, l=$R/2$] ++(0,-2) to ++(-1,0) node[label=below:(b)]{} to ++(-1,0)
+
+    (0,-3.5) to[V, invert, v=$v_n$] ++(0,2) to ++(2,0) node(n2){}
+    to[R, l=$R$] node[label=below:(c)]{} ++(0,-2) to ++(-2,0)
+    (n2) to[short] ++(2,0) to[R, l=$R$] ++(0,-2) to[short] ++(-2,0)
+
+    (6,-3.5) to[V, invert, l=$v_n$] ++(0,2) to ++(2,0)
+    to[R, l=$R/2$] ++(0,-2) to ++(-1,0) node[label=below:(d)]{} to ++(-1,0)
+;
+\end{tikzpicture}
+\end{document}

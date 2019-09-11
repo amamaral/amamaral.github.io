@@ -414,8 +414,10 @@ def process_post(config, contents, filename):
     with codecs.open(post.href, "w", "utf-8") as fh:
         fh.write(page_html)
 
-    posts.append(post)
-    tags_handler.add_tags_from_post(post)
+    if 'status' in config.keys():
+        if config['status'].lower() == 'publish':
+            posts.append(post)
+            tags_handler.add_tags_from_post(post)
 
 
 # Search for *.pmd files in the blog folder, and opens them
@@ -425,14 +427,13 @@ for file in os.listdir('blog'):
         with codecs.open(fullname, "r", "utf-8") as fh:
             contents = fh.read()
 
-            # Get the YAML header at the documento beginning
+            # Get the YAML header at the document beginning
             config = re.search('---\n?(:?.*\n)*?---', contents).group(0)
             contents = contents.replace(config, '').lstrip()
             config = yaml.load(config.strip('---'))
 
-            if 'status' in config.keys():
-                if config['status'].lower() == 'publish':
-                    process_post(config, contents, fullname)
+            process_post(config, contents, fullname)
+
 
 # Reorder posts by post date
 posts = sorted(posts, key=lambda w: datetime.datetime.strptime(w.date, r"%d/%m/%Y"), reverse=True)
