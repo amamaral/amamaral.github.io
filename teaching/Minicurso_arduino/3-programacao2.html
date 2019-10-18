@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Anderson M. Amaral" />
+  <title>Curso rápido de arduino</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Curso rápido de arduino</h1>
+  <p class="subtitle">Programação em linguagem C - Parte 2</p>
+  <p class="author">
+Anderson M. Amaral
+  </p>
+  <p class="date">Agosto - 2017</p>
+</div>
+<div id="voltando-ao-último-exemplo-do-encontro-anterior" class="slide section level1">
+<h1>Voltando ao último exemplo do encontro anterior</h1>
+<ul class="incremental">
+<li>É bastante difícil de se pensar em uma forma para exibir uma mensagem personalizada dada uma posição de um botão.</li>
+<li><p>A &quot;solução&quot; proposta considerando apenas o que foi discutido até agora não é totalmente satisfatória:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> setup() {
+  Serial.begin(<span class="dv">9600</span>); <span class="co">// Inicia o envio de dados via comunicacao serial</span>
+  pinMode(<span class="dv">2</span>, INPUT);  <span class="co">// Configura o pino 2 como entrada</span>
+}
+<span class="dt">void</span> loop() {
+  <span class="dt">int</span> buttonState = DigitalRead(<span class="dv">2</span>);     <span class="co">// Le a tensao no pino 2</span>
+  Serial.print(<span class="st">&quot;O estado do botao e &quot;</span>); <span class="co">//Envia o valor da variavel via serial</span>
+  Serial.println(buttonState);    <span class="co">// Envia o valor do estado do botao</span>
+  delay(<span class="dv">100</span>);
+}</code></pre></div></li>
+</ul>
+</div>
+<div id="o-que-seria-uma-solução-ideal" class="slide section level1">
+<h1>O que seria uma solução ideal?</h1>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">Serial.print(<span class="st">&quot;O estado do botao e &quot;</span>); <span class="co">//Envia o valor da variavel</span></code></pre></div>
+<ul class="incremental">
+<li>Para ficar mais claro o funcionamento do pressionamento do botão, gostaríamos que após o texto acima pudéssemos escrever &quot;pressionado&quot; se o botão estiver acionado, ou caso contrário a resposta seja algo como &quot;não pressionado&quot;. Em outras palavras, <strong>gostaríamos de modificar o comportamento do programa dado o estado do botão</strong>.</li>
+<li><p>Podemos refrasear as ideias acima como (pseudo-código):</p>
+<pre><code>SE o botão estiver pressionado,
+ENTÃO deve-se escrever &quot;pressionado&quot; na serial.
+CASO CONTRÁRIO o botão não estará pressionado,
+ENTÃO deve-se escrever &quot;não pressionado&quot; na serial.</code></pre></li>
+<li><p>Do ponto de vista prático, as ideias acima podem ser implementadas usando <code>if</code> ou <code>if-else</code>.</p></li>
+</ul>
+</div>
+<div id="blocos-de-afirmações-lógicas" class="slide section level1">
+<h1>Blocos de afirmações lógicas</h1>
+<ul class="incremental">
+<li><p>Estrutura geral</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="cf">if</span>(condição){
+  \* então executa este bloco *\
+}</code></pre></div></li>
+<li>Precisamos de uma condição tal que SE a <code>condição</code> for verdadeira o código imediatamente abaixo será executado.</li>
+<li>Outra possibilidade de executar o código é quando condição é <em>qualquer</em> número diferente de <code>0</code>.</li>
+<li><p>Podemos também estar interessados em descrever o que o programa realiza quando a <code>condição</code> não é verdadeira.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="cf">if</span>(condição){
+  \* então executa este bloco *\
+} <span class="cf">else</span> {
+  \* caso contrario, então executa este bloco *\
+}</code></pre></div></li>
+</ul>
+</div>
+<div id="exercício-o-botão-mais-uma-vez" class="slide section level1">
+<h1>Exercício: o botão mais uma vez</h1>
+<ul class="incremental">
+<li>Utilizem o fato que a condição do <code>if</code> pode ser satisfeita quando a condição é um número para retornar o estado do botão quando ele está pressionado ou não . Não utilizem relações lógicas como <code>==</code>.</li>
+<li><p>Lembrando que para imprimir um texto: <code>Serial.print(text);</code></p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> setup() {
+  Serial.begin(<span class="dv">9600</span>); <span class="co">// Inicia o envio de dados via comunicacao serial</span>
+  pinMode(<span class="dv">2</span>, INPUT);  <span class="co">// Configura o pino 2 como entrada</span>
+}
+<span class="dt">void</span> loop() {
+  <span class="dt">int</span> buttonState = DigitalRead(<span class="dv">2</span>);     <span class="co">// Le a tensao no pino 2</span>
+  <span class="co">/* Inserir cod aqui */</span>
+  delay(<span class="dv">100</span>);
+}</code></pre></div></li>
+</ul>
+</div>
+<div id="comparações" class="slide section level1">
+<h1>Comparações</h1>
+<ul class="incremental">
+<li><p>Há alguns tipos de comparação que podem ser realizadas.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>==</code></td>
+<td>é igual a</td>
+</tr>
+<tr class="even">
+<td><code>!=</code></td>
+<td>não é igual a</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;=</code></td>
+<td>menor ou igual</td>
+</tr>
+<tr class="even">
+<td><code>&gt;=</code></td>
+<td>maior ou igual</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;</code></td>
+<td>menor que</td>
+</tr>
+<tr class="even">
+<td><code>&gt;</code></td>
+<td>maior que</td>
+</tr>
+</tbody>
+</table></li>
+<li>Exemplo: <code>1+1==2</code> é <code>true</code>, enquanto <code>-3&gt;5</code> é <code>false</code></li>
+<li><p>Exercício: modifiquem a condição no <code>if</code> do programa anterior para obter o mesmo resultado de antes porém usando uma comparação. <strong>Faça de mais de uma maneira</strong>.</p></li>
+</ul>
+</div>
+<div id="múltiplas-condições" class="slide section level1">
+<h1>Múltiplas condições</h1>
+<ul class="incremental">
+<li>Por vezes queremos executar um procedimento que depende de mais de uma condição.</li>
+<li><p>Exemplo:</p>
+<pre><code>SE tenho sede E tem água,
+ENTÃO beber água.
+SE tenho sede E não tem água,
+ENTÃO comprar água. Beber a água.</code></pre></li>
+<li><p>Note que as ações acima só serão executadas quando <code>tenho sede</code> for <code>true</code>.</p></li>
+</ul>
+</div>
+<div id="tabela-verdade-para-2-afirmações" class="slide section level1">
+<h1>Tabela verdade para 2 afirmações</h1>
+<ul class="incremental">
+<li>Sejam <code>A</code> e <code>B</code> duas afirmações lógicas (ex.: <code>A</code> representa o resultado da expressão <code>x&gt;15</code>), podemos construir condições lógicas para controlar a execução de partes do programa.</li>
+<li>Operadores Booleanos mais simples: negação (<code>!</code>), e (<code>&amp;&amp;</code>), ou (<code>||</code>)</li>
+<li><p>Negação (<code>!A</code>)</p>
+<table>
+<thead>
+<tr class="header">
+<th><code>A</code></th>
+<th><code>!A</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>true</code></td>
+<td><code>false</code></td>
+</tr>
+<tr class="even">
+<td><code>false</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>E (<code>A&amp;&amp;B</code>)</p>
+<table>
+<thead>
+<tr class="header">
+<th><code>A</code></th>
+<th><code>B</code></th>
+<th><code>A&amp;&amp;B</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>false</code></td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+<tr class="even">
+<td><code>true</code></td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+<tr class="odd">
+<td><code>false</code></td>
+<td><code>true</code></td>
+<td><code>false</code></td>
+</tr>
+<tr class="even">
+<td><code>true</code></td>
+<td><code>true</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>OU (<code>A||B</code>)</p>
+<table>
+<thead>
+<tr class="header">
+<th><code>A</code></th>
+<th><code>B</code></th>
+<th><code>A||B</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>false</code></td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+<tr class="even">
+<td><code>true</code></td>
+<td><code>false</code></td>
+<td><code>true</code></td>
+</tr>
+<tr class="odd">
+<td><code>false</code></td>
+<td><code>true</code></td>
+<td><code>true</code></td>
+</tr>
+<tr class="even">
+<td><code>true</code></td>
+<td><code>true</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</div>
+<div id="exercícios" class="slide section level1">
+<h1>Exercícios</h1>
+<ul class="incremental">
+<li>Montar um circuito que lê o estado de acionamento de <strong>dois</strong> botões e acende <strong>um</strong> LED.</li>
+<li>Façam com que um LED acenda apenas quando dois botões estiverem acionados.</li>
+<li>Façam com que um LED acenda apenas quando qualquer um dos dois botões for acionado.</li>
+</ul>
+</div>
+<div id="ambiente-switch-case" class="slide section level1">
+<h1>Ambiente <code>switch-case</code></h1>
+<ul class="incremental">
+<li><p>Uma outra possibilidade de controlar as ações do programa por meio de uma expressão é no ambiente <code>case</code>. No exemplo abaixo, o programa reage diferentemente quando <code>var</code> assume os valores <code>1</code> ou <code>2</code>. Caso <code>var</code> seja outro valor, segue-se para o caso <code>default</code></p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="cf">switch</span> (var) {
+<span class="cf">case</span> <span class="dv">1</span>:
+  <span class="co">//do something when var equals 1</span>
+  <span class="cf">break</span>;
+<span class="cf">case</span> <span class="dv">2</span>:
+  <span class="co">//do something when var equals 2</span>
+  <span class="cf">break</span>;
+<span class="cf">default</span>:
+  <span class="co">// if nothing else matches, do the default</span>
+  <span class="co">// default is optional</span>
+<span class="cf">break</span>;
+}</code></pre></div>
+<ul class="incremental">
+<li>Notem que o estilo da declaração é ligeiramente diferente, cada caso é definido como <code>case X:</code>, e cada caso finaliza quando se chega a linha <code>break;</code></li>
+<li><strong>É uma forma antiga de programar e não recomendada</strong>. Problemas similares ao <code>goto</code></li>
+<li><strong>Nunca</strong> usem <code>goto</code>. Não é necessário e a compreensão do programa pode ficar terrível! Não falarei sobre ele aqui. Para alguns detalhes, ver <a href="http://www.arduino.cc/en/Reference/Goto">arduino.cc/en/Reference/Goto</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="loop-for" class="slide section level1">
+<h1>Loop <code>for</code></h1>
+<ul class="incremental">
+<li>Frequentemente queremos realizar operações em sequência. Por exemplo, para mandar um sinal de SOS em código Morse, devemos mandar 3 sinais curtos (letra S), 3 sinais longos (letra O) e novamente 3 curtos. (... --- ...).</li>
+<li><p>Uma forma de mandar o sinal de controle é montar uma sequência de valores indicando qual a cara do sinal</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> delays[<span class="dv">9</span>] = {<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>};</code></pre></div></li>
+<li>Os números na sequência acima formam um <code>array</code>, ou uma sequência de dados numéricos.</li>
+<li>Cada número acima entre os colchetes pode ser acessado como uma variável. Usamos um índice começado em 0. Ex.: <code>delays[0]==100</code>, <code>delays[2]==100</code>, <code>delays[3]==200</code>.</li>
+<li><p>Podemos acessar sequencialmente os dados acima usando um loop for.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> i;
+<span class="cf">for</span>(i=<span class="dv">0</span>; i&lt;<span class="dv">9</span>; i++){
+  Serial.println(delays[i]);
+}</code></pre></div>
+<ul class="incremental">
+<li>Estrutura do <code>for</code>:</li>
+<li>Condição inicial: <code>i=0</code></li>
+<li>Executar enquanto: <code>i&lt;9</code></li>
+<li>Em cada ciclo realizar que operação: <code>i++</code></li>
+<li><strong>NOTA</strong>: o operador unário <code>i++</code> corresponde ao código <code>i=i+1</code>;</li>
+</ul></li>
+</ul>
+</div>
+<div id="exercício" class="slide section level1">
+<h1>Exercício</h1>
+<ul class="incremental">
+<li>Façam um sistema em que ao apertar um botão o LED do arduino envie uma mensagem de SOS.</li>
+</ul>
+</div>
+<div id="comentário" class="slide section level1">
+<h1>Comentário</h1>
+<ul class="incremental">
+<li>Existem outras formas de se realizar loops pre-determinados por condições lógicas. Entretanto costumam ser menos utilizadas que o <code>for</code> e estão mais suscetíveis a problemas.</li>
+<li><p>Ex.: <code>while</code></p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="cf">while</span>(condição){
+<span class="co">/*Executa código*/</span>
+<span class="co">}</span></code></pre></div></li>
+<li><p>Verifica se a condição é válida no início do loop</p></li>
+<li><p>Ex.: <code>do-while</code></p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="cf">do</span>
+{
+  <span class="co">/*Executa código*/</span>
+<span class="co">} while (condição);</span></code></pre></div></li>
+<li><p>Tais abordagens costumam ser piores por não se ter um conhecimento exato do que está sendo realizado em cada loop. No caso do <code>for</code>, sabe-se exatamente quando o loop inicia e quando termina.</p></li>
+</ul>
+</div>
+<div id="exercício-1" class="slide section level1">
+<h1>Exercício</h1>
+<p>Reimplementem o aviso de SOS usando while e do-while.</p>
+</div>
+</body>
+</html>

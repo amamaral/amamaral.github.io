@@ -327,6 +327,8 @@ coursePages = []
 
 coursePages.append(Courses('Sensoriamento e controle remoto', 'sensoriamento_remoto',
                            'Sensoriamento e controle remoto utilizando a plataforma arduino, python e kivy'))
+coursePages.append(Courses('Escola de Instrumentação Eronides 2019', 'Eronides_2019',
+                           'Atividades realizadas durante a Escola de Instrumentação Eronides 2019'))
 coursePages.append(Courses('Sensoriamento e controle - verão 2019', 'sensoriamento_verao_2019',
                            'Curso de sensoriamento e controle utilizando a plataforma arduino'))
 coursePages.append(Courses('Instrumentação eletrônica para a física', 'instrumentacao_fisica',

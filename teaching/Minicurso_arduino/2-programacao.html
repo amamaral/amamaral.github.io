@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Anderson M. Amaral" />
+  <title>Curso rápido de arduino</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Curso rápido de arduino</h1>
+  <p class="subtitle">Programação em linguagem C - Parte 1</p>
+  <p class="author">
+Anderson M. Amaral
+  </p>
+  <p class="date">Agosto - 2017</p>
+</div>
+<div id="analisando-o-digitalreadserial" class="slide section level1">
+<h1>Analisando o DigitalReadSerial</h1>
+<ul class="incremental">
+<li>No último encontro não analisamos passo a passo o que o programa está realizando. Façamos isto agora.</li>
+<li>Documentação</li>
+<li><p>Declaração da variável <code>pushButton</code></p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// digital pin 2 has a pushbutton attached to it. Give it a name:</span>
+<span class="dt">int</span> pushButton = <span class="dv">2</span>;</code></pre></div></li>
+<li><code>int pushButton</code> indica um espaço na memória que será usado para armazenar um número (tipo <code>int</code>). <strong>A variável deve sempre ser definida antes de ser utilizada!</strong></li>
+<li>Para manipular esta informação na memória podemos nos referir ao nome <code>pushButton</code>.</li>
+<li>Na sequência, o operador atribuição (<code>=</code>) armazena o valor <code>2</code> na posição de memória associada à <code>pushButton</code></li>
+<li>Em outras palavras, se nenhuma modificação for realizada em <code>pushButton</code> e perguntarmos o seu valor posteriormente, obteremos <code>2</code>.</li>
+<li><p><strong>Detalhe:</strong> uma dada variável só pode ser acessada em um dado escopo [parte do código entre colchetes <code>{}</code> (variável local), ou é acessível a todas as funções se estiver fora das funções (variável global)]</p></li>
+</ul>
+</div>
+<div id="tipos-de-variáveis" class="slide section level1">
+<h1>Tipos de variáveis</h1>
+<ul class="incremental">
+<li>Há vários tipos de variáveis que podemos definir, não apenas do tipo <code>int</code>. Ver por exemplo Data Types em <a href="https://www.arduino.cc/en/Reference">arduino.cc/en/Reference</a></li>
+<li>A maior parte dos tipos trabalha com números inteiros e está associada a quantidade de espaço utilizado na memória para armazenar o respectivo número.</li>
+</ul>
+</div>
+<div id="variáveis-para-armazenar-números-inteiros" class="slide section level1">
+<h1>Variáveis para armazenar números inteiros</h1>
+<ul class="incremental">
+<li>Definição: <code>1 byte</code> corresponde a <code>8 bits</code>.</li>
+<li>Alguns números em base 2: <span class="math inline">2<sup>8</sup> = 256</span>, <span class="math inline">2<sup>16</sup> = 65, 536</span>, <span class="math inline">2<sup>32</sup> = 4, 294, 967, 295</span></li>
+<li><p>Os valores abaixo são válidos para o arduino uno (ATmega328), mas podem variar conforme o microcontrolador utilizado.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th align="center">Bits (bytes)</th>
+<th align="center">Mínimo</th>
+<th align="center">Máximo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>int</code></td>
+<td align="center">16(2)</td>
+<td align="center">-32.768</td>
+<td align="center">32.767</td>
+</tr>
+<tr class="even">
+<td><code>unsigned int</code></td>
+<td align="center">16(2)</td>
+<td align="center">0</td>
+<td align="center">65535</td>
+</tr>
+<tr class="odd">
+<td><code>long</code></td>
+<td align="center">32(4)</td>
+<td align="center">-2,147,483,648</td>
+<td align="center">2,147,483,647</td>
+</tr>
+<tr class="even">
+<td><code>unsigned long</code></td>
+<td align="center">32(4)</td>
+<td align="center">0</td>
+<td align="center">4,294,967,295</td>
+</tr>
+<tr class="odd">
+<td><code>short</code></td>
+<td align="center">16(2)</td>
+<td align="center">-32.768</td>
+<td align="center">32.767</td>
+</tr>
+<tr class="even">
+<td><code>word</code></td>
+<td align="center">16(2)</td>
+<td align="center">0</td>
+<td align="center">65535</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Na prática, utilizaremos <code>int</code>'s e <code>long</code>'s, <code>signed</code> ou <code>unsigned</code>.</p></li>
+</ul>
+</div>
+<div id="operações-matemáticas" class="slide section level1">
+<h1>Operações matemáticas</h1>
+<ul class="incremental">
+<li><p>Voltemos à declaração da variável <code>pushButton</code>. Poderíamos ter definido a variável de uma maneira alternativa:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> pushButton; \\Declaração da variável global
+
+<span class="dt">void</span> setup(){
+  pushButton = <span class="dv">2</span>;
+  (...)
+}</code></pre></div></li>
+<li><p>Ou ainda, no lugar de <code>pushButton = 2;</code> poderíamos ter escrito <code>pushButton = 1+1;</code> (Verifiquem!)</p></li>
+</ul>
+</div>
+<div id="analisando-pushbutton-11" class="slide section level1">
+<h1>Analisando <code>pushButton = 1+1;</code></h1>
+<ul class="incremental">
+<li>No início, o programa considerará 2 valores (1 e 1)</li>
+<li>Realizará a operação de soma entre os 2 valores acima (1+1=2)</li>
+<li>O resultado final da soma será armazenado em <code>pushButton</code></li>
+<li>Detalhe: em programação não podemos reescrever a expressão acima como sendo <code>1+1=pushButton;</code></li>
+</ul>
+</div>
+<div id="operações-matemáticas-1" class="slide section level1">
+<h1>Operações matemáticas</h1>
+<ul class="incremental">
+<li>Podemos realizar outras operações matemáticas, como soma(<code>+</code>), subtração('-'), multiplicação('*'), divisão('/'). Podemos também obter o resto da divisão de um inteiro por meio do operador módulo(<code>%</code>). Operações matemáticas podem ser agrupadas utilizando-se parênteses <code>(1+2)/3==1</code></li>
+<li><p>Consideremos o programa abaixo:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> setup() {
+  Serial.begin(<span class="dv">9600</span>); <span class="co">// Inicia o envio de dados via comunicacao serial</span>
+}
+<span class="dt">void</span> loop() {
+  <span class="dt">int</span> var; <span class="co">//Declaracao da variavel local</span>
+  var = <span class="dv">1+1</span>;
+  Serial.println(var); <span class="co">//Envia o valor da variavel via serial</span>
+  delay(<span class="dv">100</span>);
+}</code></pre></div></li>
+</ul>
+</div>
+<div id="exercícios" class="slide section level1">
+<h1>Exercícios</h1>
+<p>Façamos algumas operações matemáticas. Calcular:</p>
+<ol class="incremental" style="list-style-type: decimal">
+<li>1 mais 1</li>
+<li>3 menos 5</li>
+<li>2 vezes -3</li>
+<li>7 dividido por 3</li>
+<li>Resto da divisão de 7 por 3</li>
+</ol>
+</div>
+<div id="nota" class="slide section level1">
+<h1>Nota:</h1>
+<ul class="incremental">
+<li>Lembrando que é bastante rotineiro usar números inteiros, é sempre importante ter cuidado com operações de divisão.</li>
+<li>7 = 3 * 2 + 1</li>
+<li><strong>Resultado</strong> da divisão 7/3: 2</li>
+<li><strong>Resto</strong> da divisão 7/3 (7%3): 1</li>
+<li><p><strong>Comentário</strong>: o resto da divisão costuma ser útil em procedimentos que são periódicos. Ex.:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">0</span>%<span class="dv">3</span>==<span class="dv">0</span>, <span class="dv">1</span>%<span class="dv">3</span>==<span class="dv">1</span>, <span class="dv">2</span>%<span class="dv">3</span>==<span class="dv">2</span>,
+<span class="dv">3</span>%<span class="dv">3</span>==<span class="dv">0</span>, <span class="dv">4</span>%<span class="dv">3</span>==<span class="dv">1</span>, <span class="dv">5</span>%<span class="dv">3</span>==<span class="dv">2</span>,
+<span class="dv">6</span>%<span class="dv">3</span>==<span class="dv">0</span>, <span class="dv">7</span>%<span class="dv">3</span>==<span class="dv">1</span>, <span class="dv">8</span>%<span class="dv">3</span>==<span class="dv">2</span>, (...)</code></pre></div></li>
+<li>Resultados = 0, 1, 2, 0, 1, 2, 0, 1, 2,...</li>
+<li><p>É possível obter <code>7/3=2,33</code>?</p></li>
+</ul>
+</div>
+<div id="variáveis-de-ponto-flutuante" class="slide section level1">
+<h1>Variáveis de ponto flutuante</h1>
+<ul class="incremental">
+<li>Para representar números reais, utilizamos variáveis tipo ponto flutuante.</li>
+<li>tipos principais (linguagem C): <code>float</code> e <code>double</code>.</li>
+<li>declaração: <code>float x = 1.135;</code></li>
+<li>Separador decimal: <code>.</code></li>
+<li>No ATmega, <code>float</code> e <code>double</code> são equivalentes.</li>
+<li>Num programa em C para computador, o <code>double</code> possui o dobro de bits, e pode ser usado para cálculos de maior precisão.</li>
+<li>Em alguns compiladores existem também variáveis tipo <code>quad</code>, com precisão maior que <code>double</code>...</li>
+</ul>
+</div>
+<div id="detalhe-importante-sobre-o-cálculo-com-ponto-flutuante" class="slide section level1">
+<h1>Detalhe importante sobre o cálculo com ponto flutuante</h1>
+<ul class="incremental">
+<li><p>Consideremos o exemplo abaixo (trocar <code>int</code> por <code>float</code> no código anterior):</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> setup() {
+  Serial.begin(<span class="dv">9600</span>); <span class="co">// Inicia o envio de dados via comunicacao serial</span>
+}
+<span class="dt">void</span> loop() {
+  <span class="dt">float</span> var; <span class="co">//Declaracao da variavel local</span>
+  var = <span class="dv">1+1</span>;
+  Serial.println(var); <span class="co">//Envia o valor da variavel via serial</span>
+  delay(<span class="dv">100</span>);
+}</code></pre></div></li>
+<li>Compare a saida no monitor serial</li>
+<li>Pergunta: o que vocês esperam que aconteça se trocarmos <code>var = 1+1;</code> por <code>var = 3/2;</code>? (Não façam no programa ainda!)</li>
+<li><p>Agora vejam o resultado no programa.</p></li>
+</ul>
+</div>
+<div id="detalhe-importante-sobre-o-cálculo-com-ponto-flutuante-1" class="slide section level1">
+<h1>Detalhe importante sobre o cálculo com ponto flutuante</h1>
+<ul class="incremental">
+<li>Ao avaliar expressões numéricas cujo resultado é um ponto flutuante, é importante indicar que os números iniciais são do tipo <code>float</code>. Caso contrário, o compilador interpretará a equação como sendo no domínio dos inteiros!</li>
+<li>Testem agora <code>var = 3./2.;</code></li>
+<li>O número contendo um separador decimal é automaticamente interpretado como <code>float</code>.</li>
+<li>Detalhe final: cálculos envolvendo <code>float</code>'s são bem mais complicados para o processador do que aqueles envolvendo inteiros. Desta forma, se quisermos cálculos mais rápidos devemos evitar usar <code>float</code>.</li>
+</ul>
+</div>
+<div id="variável-booleana" class="slide section level1">
+<h1>Variável Booleana</h1>
+<ul class="incremental">
+<li><code>bool</code> é usado para armazenar informações binárias, tipo <code>true</code> ou <code>false</code>.</li>
+<li>Declaração: <code>bool var = true;</code></li>
+<li>Muito útil para expressões lógicas, cujo resultado é verdadeiro ou falso.</li>
+<li>Em algum encontro mais adiante veremos algumas operações na álgebra de Boole, e como aplicá-la ao arduino.</li>
+</ul>
+</div>
+<div id="exemplo" class="slide section level1">
+<h1>Exemplo</h1>
+<ul class="incremental">
+<li><p>Voltemos à IDE. Vejamos a operação de negação <code>!</code> sobre uma dada variável.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> setup() {
+  Serial.begin(<span class="dv">9600</span>); <span class="co">// Inicia o envio de dados via comunicacao serial</span>
+}
+<span class="dt">bool</span> var = <span class="kw">true</span>;  <span class="co">//Declaracao da variavel global</span>
+<span class="dt">void</span> loop() {
+  var = !var;     <span class="co">//Operação lógica de negação do valor anterior</span>
+  Serial.println(var); <span class="co">//Envia o valor da variavel via serial</span>
+  delay(<span class="dv">100</span>);
+}</code></pre></div></li>
+<li><p>Pergunta: o que acontece se <code>var</code> for declarada localmente no <code>loop()</code>?</p></li>
+</ul>
+</div>
+<div id="exercício" class="slide section level1">
+<h1>Exercício</h1>
+<ul class="incremental">
+<li>Retornem ao exemplo <code>DigitalReadSerial</code>, implementem o circuito conforme o esquema abaixo, mas implementem um software em que o sinal na porta serial seja 1 quando o botão <strong>não</strong> está pressionado.</li>
+</ul>
+<p><img src="img/button_schematic.png" alt="Esquema botão" width="500" /> <img src="img/button_sch.png" alt="Esquema botão" width="300" /></p>
+<ul class="incremental">
+<li>Componentes necessários:</li>
+<li>Botão</li>
+<li>Resistor 10 KOhm</li>
+<li>Fios</li>
+</ul>
+</div>
+<div id="manipulação-de-texto-char" class="slide section level1">
+<h1>Manipulação de texto: <code>char</code></h1>
+<ul class="incremental">
+<li>Até agora vimos apenas como armazenar variáveis numéricas. Mas é muito importante também armazenar e manipular texto.</li>
+<li>Variável tipo <code>char</code>: armazena um único caractere.</li>
+<li>Declaração: <code>char var = 'A';</code></li>
+<li>Usa-se aspas simples (<code>'A'</code>) para representar cada letra.</li>
+<li>Um <code>char</code> ocupa 1 byte de memória (8 bits), e no fundo também é um número.</li>
+<li>Exemplo equivalente ao acima: <code>char var = 65;</code> Codificação ASCII. Podemos mudar o caractere usando expressões matemáticas...</li>
+<li><code>char</code> é <code>signed</code>: varia entre -128 a 127. Existe também o <code>unsigned char</code>, mas para este caso é mais usual usar uma variável tipo <code>byte</code>.</li>
+</ul>
+</div>
+<div id="exemplo-da-tabela-ascii" class="slide section level1">
+<h1>Exemplo da tabela ASCII</h1>
+<div class="figure">
+<img src="img\ascii_table.gif" alt="tabela ascii" width="600" />
+<p class="caption">tabela ascii</p>
+</div>
+</div>
+<div id="sequências-de-caracteres-string" class="slide section level1">
+<h1>Sequências de caracteres: <code>string</code></h1>
+<ul class="incremental">
+<li>Podemos manipular caractere por caractere para exibir um texto, entretanto isto seria uma tarefa bastante trabalhosa.</li>
+<li>A <code>string</code> representa uma sequência (<code>array</code>) de caracteres.</li>
+<li>Declaração básica: <code>char str[10];</code> permite armazenar 10 caracteres em <code>str</code>.</li>
+<li>Declaração simplificada: <code>char str[]=&quot;teste&quot;;</code> o compilador verifica automaticamente que espaço de memória deve ser reservado.</li>
+<li><strong>Importante:</strong> strings são definidas utilizando aspas duplas <code>&quot;</code>.</li>
+<li>Ver mais exemplos em <a href="www.arduino.cc/en/Reference/String">arduino.cc/en/Reference/String</a>.</li>
+</ul>
+</div>
+<div id="voltando-ao-exemplo-de-comunicação-serial" class="slide section level1">
+<h1>Voltando ao exemplo de comunicação serial</h1>
+<ul class="incremental">
+<li><p>Vejamos o exemplo abaixo: (atenção para o comando <code>print</code> utilizado!)</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> setup() {
+  Serial.begin(<span class="dv">9600</span>); <span class="co">// Inicia o envio de dados via comunicacao serial</span>
+}
+<span class="dt">void</span> loop() {
+  Serial.print(<span class="st">&quot;Ola</span><span class="sc">\n</span><span class="st">&quot;</span>); <span class="co">//Envia o valor da variavel via serial</span>
+  delay(<span class="dv">100</span>);
+}</code></pre></div></li>
+<li><p><strong>Nota:</strong> '' equivale a um único caractere que representa o ato de &quot;apertar Enter&quot;. Originalmente o n indica <code>newline</code>, ou nova linha.</p></li>
+</ul>
+</div>
+<div id="exercício-1" class="slide section level1">
+<h1>Exercício</h1>
+<ul class="incremental">
+<li>Modifique o exemplo de leitura do botão para que a mensagem no monitor serial contenha um pequeno texto explicando qual o estado do botão (se está pressionado ou não.)</li>
+</ul>
+</div>
+</body>
+</html>

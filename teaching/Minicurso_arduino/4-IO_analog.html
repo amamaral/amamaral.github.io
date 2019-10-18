@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Anderson M. Amaral" />
+  <title>Curso rápido de arduino</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Curso rápido de arduino</h1>
+  <p class="subtitle">Entrada e saída analógica</p>
+  <p class="author">
+Anderson M. Amaral
+  </p>
+  <p class="date">Agosto - 2017</p>
+</div>
+<div id="introdução" class="slide section level1">
+<h1>Introdução</h1>
+<ul class="incremental">
+<li>Até agora discutimos apenas a eletrônica digital</li>
+<li>Essa discussão simplifica a programação, pois o software opera utilizando números binários</li>
+<li>No entanto, o mundo é analógico e praticamente todos os sinais possuem algum aspecto contínuo. Em outras palavras, o mundo geralmente não é binário (0 ou 1)</li>
+<li>Exemplo de um sinal digital no mundo real:</li>
+<li><img src="img\TTL-20hz.jpg" title="fig:" alt="Sinal TTL (transistor transistor logic)" width="600" /></li>
+</ul>
+</div>
+<div id="o-conversor-analógico-digital-adc" class="slide section level1">
+<h1>O conversor analógico digital (ADC)</h1>
+<ul class="incremental">
+<li>No arduino existe um periférico que consegue converter um sinal analógico em digital, denominado ADC (Analog Digital Converter) no datasheet.</li>
+<li>Este conversor mede uma tensão entre 0 e 5V com uma resolução de 10 bits. Ou seja, o intervalo 0-5V é dividido em <span class="math inline">2<sup>10</sup> = 1024</span> intervalos, e o resultado da medição de tensão é uma aproximação</li>
+<li>Quanto maior a resolução, menor o tamanho dos intervalos e menor o erro</li>
+<li><img src="img\DAC_residue.png" alt="Erro de quantização" width="600" /></li>
+<li>Em geral, ADC's de alta resolução operam a baixas velocidades. O ADC do arduino possui uma precisão razoável, e permite realizar até 10.000 medidas por segundo (10Ksps).</li>
+<li>Tipicamente um osciloscópio digital possui uma resolução de 8-10 bits.</li>
+</ul>
+</div>
+<div id="sinal-analógico-de-um-potenciômetro" class="slide section level1">
+<h1>Sinal analógico de um potenciômetro</h1>
+<ul class="incremental">
+<li>O potenciômetro funciona como um divisor de tensão, onde podemos variar a resistência de ambos os resistores.</li>
+<li><img src="img\potentiometer.gif" alt="Potenciômetro" width="600" /> <img src="img\Potentiometer_as_voltage_divider.png" alt="Divisor de tensão" width="600" /></li>
+<li>Variando a posição do botão, podemos variar a tensão do pino do meio suavemente entre as tensões aplicadas nos pinos externos.</li>
+<li>É muito usado para calibrar partes de circuitos.</li>
+<li>Usaremos um potenciômetro para medir a posição do botão.</li>
+<li><strong>Nota:</strong> um potenciômetro é utilizado para determinar a posição em servo-motores, como o da figura... <img src="img\Servo-Motor.jpg" alt="servo motor" width="600" /></li>
+</ul>
+</div>
+<div id="detecção-de-sinais-analógicos-usando-o-arduino" class="slide section level1">
+<h1>Detecção de sinais analógicos usando o arduino</h1>
+<ul class="incremental">
+<li>Conectaremos o potenciômetro conforme abaixo:</li>
+<li><img src="img\AnalogReadSerial_sch.png" alt="Esquema do circuito" width="600" /></li>
+<li><p>Abram o exemplo em <code>Arquivo/Exemplos/01. Basics/AnalogReadSerial</code>.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> setup() {
+  Serial.begin(<span class="dv">9600</span>); <span class="co">//Inicializa a comunicacao</span>
+}
+<span class="dt">void</span> loop() {
+  <span class="co">// Le sinal analogico no pino 0:</span>
+  <span class="dt">int</span> sensorValue = analogRead(A0);
+  Serial.println(sensorValue);
+}</code></pre></div></li>
+<li><code>int sensorValue = analogRead(A0);</code> lê o sinal na porta analógica <code>A0</code> e armazena na variável <code>sensorValue</code></li>
+<li>Vejam o que acontece com o valor exibido no monitor serial, que corresponde ao valor de <code>sensorValue</code>, quando a posição do potenciômetro muda.</li>
+<li><p>O que acontece quando o potenciômetro está parado?</p></li>
+</ul>
+</div>
+<div id="exercício" class="slide section level1">
+<h1>Exercício</h1>
+<ul class="incremental">
+<li>O sinal mostrado no monitor serial corresponde a um valor inteiro associado à medida de tensão. Sabendo que a resolução da medida é 10 bits (0-1023), e que o valor máximo corresponde a 5V, convertam <code>sensorValue</code> para tensão.</li>
+<li><strong>Nota</strong>: Em geral, quando utilizamos algum sensor, este sensor converte uma grandeza física em tensão. (ex.: <span class="math inline"><em></em><sup><em>O</em></sup><em>C</em>/<em>V</em></span>), enquanto o arduino mede tensões. Desta forma, para usar um sensor precisamos converter o sinal a ser medido para tensão para então saber qual foi o valor da grandeza medida.</li>
+</ul>
+</div>
+<div id="produzindo-um-sinal-analógico" class="slide section level1">
+<h1>Produzindo um sinal analógico</h1>
+<ul class="incremental">
+<li>Na etapa anterior medimos o sinal analógico proveniente de um potenciômetro. O arduino pode ser usado para perceber o que acontece ao seu redor.</li>
+<li>Queremos também que o arduino possa ser usado para controlar o ambiente (operando um motor, acendendo uma lâmpada/led, aquecendo ou esfriando um dispositivo...)</li>
+<li>Se a medida de uma tensão é realizada por um ADC (conversor analógico digital), a produção de uma tensão pelo arduino é realizada por um DAC (<em>Digital Analog Converter</em>).</li>
+</ul>
+</div>
+<div id="modulação-de-largura-de-pulso-pwm" class="slide section level1">
+<h1>Modulação de largura de pulso (PWM)</h1>
+<ul class="incremental">
+<li>Existem vários tipos de DAC. Em especial, o do arduino opera usando um sinal tipo PWM (Pulse-Width Modulation).</li>
+<li><img src="img\PWM-example.png" alt="Esquema de funcionamento do PWM" width="600" /></li>
+<li>O arduino envia um sinal digital com um tempo variável. A forma que o PWM do arduino opera não é exatamente conforme a figura acima, pois não existem pulsos negativos.</li>
+<li><img src="img\pwm_wave.png" alt="PWM arduino" width="600" /></li>
+<li>A média da tensão no tempo é fornece o sinal analógico de saída. O valor médio pode ser controlado facilmente.</li>
+<li>a função <code>analogWrite</code> implementada no arduino permite gerar tensões analógicas com uma resolução de 8 bits (<span class="math inline">2<sup>8</sup> = 256</span> valores de tensão entre 0 e 5V).</li>
+</ul>
+</div>
+<div id="exercício-controle-suave-da-intensidade-de-um-led" class="slide section level1">
+<h1>Exercício: Controle suave da intensidade de um LED</h1>
+<ul class="incremental">
+<li>Em nossos exercícios anteriores o LED sempre esteve ligado no seu máximo, ou então desligado. Usando PWM podemos obter uma intensidade mais agradável.</li>
+<li>Será necessário um LED, um resistor de 220 Ohms, fios e uma protoboard.</li>
+<li><p>Abram o exemplo <code>Exemplos\01.Basics\Fade</code></p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> led = <span class="dv">9</span>;
+<span class="dt">int</span> brightness = <span class="dv">0</span>;
+<span class="dt">int</span> fadeAmount = <span class="dv">5</span>;
+
+<span class="dt">void</span> setup() {
+  pinMode(led, OUTPUT);
+}
+
+<span class="dt">void</span> loop() {
+  analogWrite(led, brightness);
+  brightness = brightness + fadeAmount;
+
+  <span class="cf">if</span> (brightness &lt;= <span class="dv">0</span> || brightness &gt;= <span class="dv">255</span>) {
+    fadeAmount = -fadeAmount;
+  }
+  delay(<span class="dv">30</span>);
+}</code></pre></div></li>
+<li><p>Vejam o que acontece com a intensidade do LED. a função <code>analogWrite</code> varia o brilho do LED a cada iteração do loop. Após modificar o brilho, varia o valor. <code>brightness</code> é mantido sempre entre 0 e 255, já que a resolução do <code>analogWrite</code> é de 8 bits.</p></li>
+</ul>
+</div>
+<div id="exercício-1" class="slide section level1">
+<h1>Exercício</h1>
+<ul class="incremental">
+<li>Façam com que o arduino utilize o potenciômetro para alterar <strong>apenas</strong> o período de tempo entre máximos de intensidade do LED.</li>
+<li>Façam com que o arduino meça a tensão de um potenciômetro controlar o brilho do LED. Obs.: neste caso a intensidade não deve variar no tempo automaticamente...</li>
+</ul>
+</div>
+<div id="o-osciloscópio" class="slide section level1">
+<h1>O osciloscópio</h1>
+<ul class="incremental">
+<li>Um dos aspectos importantes do PWM é a sua resposta temporal. O instrumento recomendado para se medir sinais que variam no tempo é o osciloscópio. Vejamos o que acontece com estes sinais PWM.</li>
+<li>O que acontece se um sinal PWM passa por um filtro RC passa baixa? Por quê?</li>
+</ul>
+</div>
+</body>
+</html>

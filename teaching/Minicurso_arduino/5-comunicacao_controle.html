@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Anderson M. Amaral" />
+  <title>Curso rápido de arduino</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Curso rápido de arduino</h1>
+  <p class="subtitle">Comunicação e controle</p>
+  <p class="author">
+Anderson M. Amaral
+  </p>
+  <p class="date">Agosto - 2017</p>
+</div>
+<div id="introdução" class="slide section level1">
+<h1>Introdução</h1>
+<ul class="incremental">
+<li>Pretendemos construir instrumentos científicos mais adiante.</li>
+<li>Teremos vários instrumentos para controlar simultaneamente</li>
+<li><img src="img\optics_lab.jpg" alt="Ex: laboratório de óptica" width="600" /></li>
+<li>Como coordenar o que cada equipamento está fazendo?</li>
+<li>Podemos usar um computador para controlar e ver o que se passa em cada um deles</li>
+</ul>
+</div>
+<div id="mestre-e-escravo-master-and-slave" class="slide section level1">
+<h1>Mestre e escravo (<em>master</em> and <em>slave</em>)</h1>
+<ul class="incremental">
+<li>Usualmente determinamos um dispositivo (ex.: PC, ou arduino) para controlar os outros instrumentos. (Mestre)</li>
+<li>Os outros dispositivos recebem os comandos e tentam executá-los. (Escravo)</li>
+<li>Os escravos também podem informar ao mestre o que está se passando.</li>
+<li>Ex.: A tensão de uma bateria está baixa. O escravo informa ao mestre para que ele tome a decisão de como proceder.</li>
+<li>Até agora usamos o arduino como escravo ou dispositivo independente.</li>
+</ul>
+</div>
+<div id="comunicação-entre-mestre-e-escravo" class="slide section level1">
+<h1>Comunicação entre mestre e escravo</h1>
+<ul class="incremental">
+<li>Existem várias formas de comunicação entre mestre e escravo.</li>
+<li>Analógica (enviando uma tensão, ou corrente...)</li>
+<li>Digital:</li>
+<li><img src="img\comm_serial_paralelo.gif" alt="Comunicação em série e paralelo" /></li>
+<li>A comunicação em série tem a vantagem de usar menos pinos, mas é mais lenta que a comunicação em paralelo.</li>
+<li><img src="img\comm_serial_conexoes.png" title="fig:" alt="Conexões em série (caso típico)" /></li>
+</ul>
+</div>
+<div id="comunicação-serial-com-o-arduino" class="slide section level1">
+<h1>Comunicação serial com o arduino</h1>
+<ul class="incremental">
+<li>Já usamos a comunicação serial anteriormente (Abrir <code>Exemplos/Basics/DigitalReadSerial</code>):</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">(...)
+<span class="co">// initialize serial communication at 9600 bits per second:</span>
+Serial.begin(<span class="dv">9600</span>);
+(...)
+<span class="co">// print out the state of the button:</span>
+Serial.println(buttonState);</code></pre></div>
+<ul class="incremental">
+<li>Primeiro estabelecemos a comunicação (<code>Serial.begin(9600);</code>)</li>
+<li>Posteriormente, podemos nos comunicar.</li>
+<li>Este tipo de comunicação é baseado no formato RS232</li>
+<li><img src="img\RS232.png" alt="RS232" /></li>
+<li>Cuidado para não conectar diretamente estes pinos a dispositivos RS232 nativos! RS232 opera a 12V e o arduino a 5V!</li>
+</ul>
+</div>
+<div id="detalhamento-de-alguns-comandos" class="slide section level1">
+<h1>Detalhamento de alguns comandos</h1>
+<ul class="incremental">
+<li>Abrir <code>DigitalReadSerial</code></li>
+<li>Ver <a href="https://www.arduino.cc/en/Reference/Serial">referência do arduino</a>.</li>
+<li><code>Serial.print(data)</code>:</li>
+<li>Envia <code>data</code> para o computador, e exibe no Monitor Serial (<code>Ferramentas/Monitor Serial</code>, ou <code>CTRL+SHIFT+M</code>)</li>
+<li>Forma de o escravo (arduino) informar sobre o que está acontecendo</li>
+<li><code>data</code> pode ser uma <code>string</code>, <code>int</code>, <code>long</code>, <code>float</code>...</li>
+</ul>
+</div>
+<div id="detalhamento-de-alguns-comandos-1" class="slide section level1">
+<h1>Detalhamento de alguns comandos</h1>
+<ul class="incremental">
+<li><code>Serial.println(data)</code>:</li>
+<li>Equivalente ao <code>print</code>, porém finaliza a linha usando os caracteres especiais <code>\r\n</code></li>
+<li><code>\r</code>: <em>Carriage return</em> volta para a primeira coluna</li>
+<li><code>\n</code>: <em>new line</em> segue para a próxima linha</li>
+<li>Apenas recordando, existem vários outros caracteres especiais na tabela ASCII da aula 2.</li>
+</ul>
+</div>
+<div id="detalhamento-de-alguns-comandos-2" class="slide section level1">
+<h1>Detalhamento de alguns comandos</h1>
+<ul class="incremental">
+<li><code>Serial.begin(speed)</code>:</li>
+<li>Inicializa o periférico de comunicação serial no arduino, indicando a quantidade de bits por segundo que serão comunicados. Min: 300, Máx: 115200</li>
+<li><code>Serial.end()</code>:</li>
+<li>As vezes pode ser interessante desativar o periférico. Esta função desativa a comunicação serial.</li>
+</ul>
+</div>
+<div id="detalhamento-de-alguns-comandos-3" class="slide section level1">
+<h1>Detalhamento de alguns comandos</h1>
+<ul class="incremental">
+<li><code>Serial.available()</code></li>
+<li><p>Indica se existem informações a processar</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// Aguarda ate que um novo caractere seja recebido pela serial</span>
+<span class="dt">void</span> esperaSerial(){
+  <span class="dt">int</span> buffer = <span class="dv">0</span>;
+  <span class="cf">while</span>((Serial.available()&lt;=<span class="dv">0</span>)&amp;&amp;(buffer&lt;<span class="dv">20000</span>)){
+    buffer++;
+  }
+}</code></pre></div></li>
+<li><p>Importante para comunicação assíncrona (otimiza a capacidade de processamento).</p></li>
+</ul>
+</div>
+<div id="detalhamento-de-alguns-comandos-4" class="slide section level1">
+<h1>Detalhamento de alguns comandos</h1>
+<ul class="incremental">
+<li><code>Serial.write(int), Serial.write(str), Serial.write(buf, len)</code></li>
+<li>Envia pela serial uma sequência de bytes.</li>
+<li>Pode enviar um byte com código ASCII bem conhecido</li>
+<li>É possível enviar também uma <code>string</code>, ou um <code>array</code> buf, de comprimento <code>len</code>.</li>
+<li><p>Que informação é exibida no monitor serial pelo programa abaixo?</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> setup(){
+  Serial.begin(<span class="dv">9600</span>);
+}
+<span class="dt">void</span> loop(){
+  Serial.write(<span class="dv">100</span>);
+}</code></pre></div></li>
+</ul>
+</div>
+<div id="detalhamento-de-alguns-comandos-5" class="slide section level1">
+<h1>Detalhamento de alguns comandos</h1>
+<ul class="incremental">
+<li><code>Serial.read()</code></li>
+<li>Verifica se o arduino recebeu alguma informação nova do computador. Interpreta como <code>int</code>. Se não houver novas informações, retorna <code>-1</code>.</li>
+<li>Podemos usar para enviar comandos do PC para o arduino</li>
+<li>Por agora, podemos comunicar usando o Monitor Serial</li>
+<li><strong>Importante</strong>: a leitura só deve ocorrer caso o comando tenha sido enviado! É importante usar o <code>available()</code></li>
+<li><strong>Importante</strong>: Nós sabemos qual é o tipo de informação enviada, mas o arduino recebe sequências de 0's e 1's. É preciso informar qual o tipo de informação está chegando para que ele compreenda corretamente.</li>
+</ul>
+</div>
+<div id="dimmer" class="slide section level1">
+<h1>Dimmer</h1>
+<ul class="incremental">
+<li>Abrir o exemplo <code>04.Communication/Dimmer</code></li>
+<li>Veja o que acontece quando é enviado um comando pelo Monitor Serial.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="at">const</span> <span class="dt">int</span> ledPin = <span class="dv">9</span>;
+
+<span class="dt">void</span> setup() {
+  Serial.begin(<span class="dv">9600</span>);
+  pinMode(ledPin, OUTPUT);
+}
+
+<span class="dt">void</span> loop() {
+  byte brightness;
+
+  <span class="co">// check if data has been sent from the computer:</span>
+  <span class="cf">if</span> (Serial.available()) {
+    <span class="co">// read the most recent byte (which will be from 0 to 255):</span>
+    brightness = Serial.read();
+    <span class="co">// set the brightness of the LED:</span>
+    analogWrite(ledPin, brightness);
+  }
+}</code></pre></div>
+</div>
+<div id="comentário-sobre-o-programa-anterior" class="slide section level1">
+<h1>Comentário sobre o programa anterior</h1>
+<ul class="incremental">
+<li>O <code>Serial.read()</code> interpreta cada caractere enviado como um número.</li>
+<li>Quando o computador envia <code>120</code> pela serial, o arduino recebe 3 bytes (<code>0b</code> indica um número binário):</li>
+<li>Caractere <code>1</code> -&gt; <code>0b110001</code>, ou 49 em decimal.</li>
+<li>Caractere <code>2</code> -&gt; <code>0b110010</code>, ou 50 em decimal.</li>
+<li>Caractere <code>0</code> -&gt; <code>0b110000</code>, ou 48 em decimal.</li>
+<li>Como enviar o número <code>130</code> para o arduino? Pode-se enviar um caractere equivalente a 130 diretamente (<code>0b10000010=='x'</code>), ou produzir uma função que traduz os bytes de cada caractere em um número.</li>
+<li><strong>Nota</strong>: Perceba que enviar o número diretamente como valor binário é mais eficiente, no entanto pode ser mais confuso.</li>
+</ul>
+</div>
+<div id="interpretação-de-um-número-enviado-explicitamente-na-serial" class="slide section level1">
+<h1>Interpretação de um número enviado explicitamente na serial</h1>
+<ul class="incremental">
+<li><code>Serial.parseInt()</code></li>
+<li>Interpreta os caracteres enviados pela serial como um número inteiro, e <em>despreza</em> outros caracteres enviados.</li>
+<li>Substituiam <code>Serial.read()</code> por <code>Serial.parseInt()</code> no exemplo <code>04.Communication/Dimmer</code>. Vejam o que acontece ao enviar um número pelo monitor serial.</li>
+</ul>
+</div>
+<div id="exercício" class="slide section level1">
+<h1>Exercício</h1>
+<ul class="incremental">
+<li>A função <code>Serial.parseFloat()</code> é idêntica à <code>parseInt()</code>, com a distinção que esta interpreta pontos flutuantes. Façam um programa que receba números flutuantes pela porta serial e atribua <code>0</code> como menor brilho no LED, e <code>1</code> o máximo de brilho.</li>
+</ul>
+</div>
+<div id="comunicação-com-o-usuário" class="slide section level1">
+<h1>Comunicação com o usuário</h1>
+<ul class="incremental">
+<li>Considerando o que vimos até aqui, é possível que um computador controle o equipamento. No entanto, usualmente queremos que uma pessoa que interaja com um equipamento possa mexer em todas as suas funções sem auxílio externo.</li>
+<li>Ex.: <img src="img\smartphone.jpg" alt="Smartphone" height="250" /> <img src="img\voltmeter.jpg" alt="Voltímetro" height="250" /></li>
+</ul>
+</div>
+<div id="comandos-do-usuário" class="slide section level1">
+<h1>Comandos do usuário</h1>
+<ul class="incremental">
+<li>O usuário pode controlar um dado instrumento por exemplo apertando botões (sinais digitais) e ajustando potenciômetros (sinais analógicos)</li>
+<li>Já sabemos como identificar que um usuário apertou um botão (<code>digitalRead(pin)</code>), ou qual a posição de um potenciômetro (<code>analogRead(pin)</code>).</li>
+<li>Podemos usar o programa para interpretar estas informações e controlar as ações do instrumento.</li>
+</ul>
+</div>
+<div id="exercício-1" class="slide section level1">
+<h1>Exercício</h1>
+<ul class="incremental">
+<li>Usando <code>1</code> botão e <code>1</code> potenciômetro, controle o brilho de 2 leds de forma independente.</li>
+<li>Dica: faça um programa que funcione primeiro para controlar o brilho de <code>1</code> led apenas, e veja como é possível usar o botão para controlar o brilho dos leds.</li>
+<li>Desafio: Faça com que o clique do botão alterne qual o botão cujo brilho é ajustado pelo potenciometro</li>
+</ul>
+</div>
+<div id="feedback-para-o-usuário" class="slide section level1">
+<h1>Feedback para o usuário</h1>
+<ul class="incremental">
+<li>Temos usado o Monitor Serial para receber informações do arduino. Ex.: valor da tensão num potenciômetro.</li>
+<li>No entanto, gostaríamos que o arduino pudesse ser operado independentemente do computador.</li>
+<li>Precisamos passar estas informações para uma tela</li>
+<li><img src="img\display-lcd.jpg" alt="LCD" height="200" /> <img src="img\oled.jpg" alt="OLED" height="200" /></li>
+</ul>
+</div>
+<div id="display-lcd" class="slide section level1">
+<h1>Display LCD</h1>
+<ul class="incremental">
+<li>Inicialmente consideraremos o display de LCD 16x2, com driver HD44780U</li>
+</ul>
+<div class="figure">
+<img src="img\HD44780U.png" alt="Driver do display LCD" width="700" />
+<p class="caption">Driver do display LCD</p>
+</div>
+</div>
+<div id="exemplo" class="slide section level1">
+<h1>Exemplo</h1>
+<ul class="incremental">
+<li>Mais uma vez, caso fôssemos implementar do zero, teriamos bastante trabalho para controlar o comportamento do display. Entretanto, já existe uma biblioteca no Arduino que pode nos ajudar.</li>
+<li>Vejam o exemplo <code>LiquidCrystal/Hello World</code></li>
+<li><code>#include &lt;LiquidCrystal.h&gt;</code> -&gt; Biblioteca que cuida dos detalhes de baixo nível da comunicação entre o arduino e o módulo HD44780U</li>
+<li><code>LiquidCrystal lcd(rs, enable, d4, d5, d6, d7);</code> (implementação básica)</li>
+<li><code>rs</code>: (Register Status) Indica o status do LCD (se ele aceita novas informações ou está processando o pedido anterior).</li>
+<li><code>enable</code>: Indica quando existe um caractere disponível para enviar</li>
+<li><code>d4-d7</code>: Pinos utilizados para enviar os dados em paralelo. É possível usar 8 pinos ao invés de 4, mas isto é pouco frequente. (Por que?)</li>
+<li><code>lcd.begin(16, 2);</code> Indica o número de colunas (caracteres) e linhas do display usado</li>
+<li><code>lcd.print(&quot;hello, world!&quot;);</code> Envia uma determinada <code>string</code> para o módulo do display</li>
+</ul>
+</div>
+<div id="conexão-do-lcd" class="slide section level1">
+<h1>Conexão do LCD</h1>
+<ul class="incremental">
+<li>Pinos do display: <code>VSS</code>-&gt; 0V (Terra), <code>VDD</code> -&gt; 5V, <code>R/W</code>-&gt; Leitura(1) ou Escrita(0), <code>LED+-</code> (Tensões para ligar a iluminação), <code>V0</code> -&gt; Controle do brilho do LED interno. <img src="img\LCD_Base_bb_Schem.png" alt="Esquema do circuito" height="600" /> <img src="img\Pinagem_LCD_16x2.png" alt="Pinagem" height="600" /></li>
+</ul>
+</div>
+<div id="exercício-2" class="slide section level1">
+<h1>Exercício</h1>
+<ol class="incremental" style="list-style-type: decimal">
+<li>Fazer o exemplo funcionar no display.</li>
+<li>Fazer com que o display mostre a tensão de um potenciômetro.</li>
+<li>Fazer com que a tela exiba uma mensagem quando a tensão do potenciômetro for menor que <code>1</code> V</li>
+</ol>
+</div>
+</body>
+</html>
