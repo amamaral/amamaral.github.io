@@ -26,6 +26,7 @@ Nesta página serão colocados todos os informativos relativos à disciplina, sl
 - Unidade 1A: [Sensores e alguns instrumentos](https://www.dropbox.com/s/os9harp7s4wrqei/Unidade_1A.pdf?dl=0)
 - Unidade 1B: [Conceitos e funções básicas do arduino](https://www.dropbox.com/s/c2oqbwql5ygpro6/Unidade_1B.pdf?dl=0)
 - Unidade 2: [Comunicação sem fio a curtas distâncias](https://www.dropbox.com/s/8jqk752q26dwf24/Unidade_2.pdf?dl=0)
+- Unidade 3: [Comunicação, controle remoto e interfaces gráficas](https://www.dropbox.com/s/188lrpllcjwmvhm/Unidade_3.pdf?dl=0)
 
 ## Aulas
 
