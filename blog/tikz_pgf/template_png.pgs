@@ -1,0 +1,16 @@
+\documentclass[crop, convert={ghostscript, outext=.png, gsexe=gswin64c.exe, density=700}]{standalone}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{10pt}
+
+\usepackage{tikz}
+\usepackage{siunitx}
+\usepackage[american]{circuitikz}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+
+\begin{document}
+$body$
+\end{document}

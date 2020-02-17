@@ -1,0 +1,13 @@
+\documentclass[crop, convert={outext=.svg,command=\unexpanded{pdf2svg \infile\space\outfile}}]{standalone}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{10pt}
+
+\usepackage{siunitx}
+\usepackage[american]{circuitikz}
+\usepackage{amsmath}
+\begin{document}
+$body$
+\end{document}
