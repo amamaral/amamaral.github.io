@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800"
+   height="600"
+   viewBox="0 0 211.66666 158.75"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="Camadas_resolucao_problemas.svg">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker4704"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path4702"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#0000ff;stroke-width:1pt;stroke-opacity:1;fill:#0000ff;fill-opacity:1"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker3812"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#0000ff;stroke-width:1pt;stroke-opacity:1;fill:#0000ff;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path3810" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mstart"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path974"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#0000ff;stroke-width:1pt;stroke-opacity:1;fill:#0000ff;fill-opacity:1"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path968"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker1872"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path1870"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#0000ff;stroke-width:1pt;stroke-opacity:1;fill:#0000ff;fill-opacity:1"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker1254"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#0000ff;stroke-width:1pt;stroke-opacity:1;fill:#0000ff;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path1252" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path977"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#0000ff;stroke-width:1pt;stroke-opacity:1;fill:#0000ff;fill-opacity:1"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="407.55812"
+     inkscape:cy="330.62411"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g931"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-138.24998)">
+    <g
+       id="g944"
+       transform="translate(16.83798,-4.543582)">
+      <rect
+         style="fill:#ffccaa;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect915"
+         width="49.851521"
+         height="50.246658"
+         x="73.221199"
+         y="164.96883"
+         rx="10.000007"
+         ry="10.000007" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.74314737px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.23929781"
+         x="76.883354"
+         y="174.2943"
+         id="text821"><tspan
+           sodipodi:role="line"
+           id="tspan819"
+           x="76.883354"
+           y="174.2943"
+           style="font-weight:bold;font-size:7.01940298px;stroke-width:0.23929781">Arduino</tspan><tspan
+           id="tspan845"
+           sodipodi:role="line"
+           x="76.883354"
+           y="181.93936"
+           style="font-size:5.74314737px;stroke-width:0.23929781">- GPIO</tspan><tspan
+           id="tspan851"
+           sodipodi:role="line"
+           x="76.883354"
+           y="189.1183"
+           style="font-size:5.74314737px;stroke-width:0.23929781">- PWM/Timer</tspan><tspan
+           id="tspan849"
+           sodipodi:role="line"
+           x="76.883354"
+           y="196.29723"
+           style="font-size:5.74314737px;stroke-width:0.23929781">- Interrupções</tspan><tspan
+           id="tspan855"
+           sodipodi:role="line"
+           x="76.883354"
+           y="203.47617"
+           style="font-size:5.74314737px;stroke-width:0.23929781">- Registradores</tspan><tspan
+           id="tspan857"
+           sodipodi:role="line"
+           x="76.883354"
+           y="210.65511"
+           style="font-weight:bold;font-size:5.74314737px;stroke-width:0.23929781">...</tspan><tspan
+           id="tspan853"
+           sodipodi:role="line"
+           x="76.883354"
+           y="217.83403"
+           style="font-size:5.74314737px;stroke-width:0.23929781" /><tspan
+           id="tspan847"
+           sodipodi:role="line"
+           x="76.883354"
+           y="225.01297"
+           style="font-size:5.74314737px;stroke-width:0.23929781" /><tspan
+           id="tspan843"
+           sodipodi:role="line"
+           x="76.883354"
+           y="232.19191"
+           style="font-size:5.74314737px;stroke-width:0.23929781" /></text>
+    </g>
+    <g
+       id="g964"
+       transform="translate(2.4054257,-3.4745039)">
+      <rect
+         ry="10.000007"
+         rx="10.000007"
+         y="164.96883"
+         x="1.0690781"
+         height="50.246666"
+         width="69.222809"
+         id="rect913"
+         style="fill:#ffccaa;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text817"
+         y="174.57535"
+         x="6.1812768"
+         style="font-style:normal;font-weight:normal;font-size:7.01940298px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.23929781"
+         xml:space="preserve"><tspan
+           style="font-weight:bold;font-size:7.01940298px;stroke-width:0.23929781"
+           y="174.57535"
+           x="6.1812768"
+           id="tspan815"
+           sodipodi:role="line">Eletrônica</tspan><tspan
+           id="tspan835"
+           style="font-size:5.74314737px;stroke-width:0.23929781"
+           y="183.34959"
+           x="6.1812768"
+           sodipodi:role="line">- RLC</tspan><tspan
+           id="tspan837"
+           style="font-size:5.74314737px;stroke-width:0.23929781"
+           y="192.12386"
+           x="6.1812768"
+           sodipodi:role="line">- Semicondutores</tspan><tspan
+           id="tspan839"
+           style="font-size:5.74314737px;stroke-width:0.23929781"
+           y="200.8981"
+           x="6.1812768"
+           sodipodi:role="line">- Circuitos integrados</tspan><tspan
+           id="tspan841"
+           style="font-weight:bold;font-size:5.74314737px;stroke-width:0.23929781"
+           y="209.67236"
+           x="6.1812768"
+           sodipodi:role="line">...</tspan></text>
+    </g>
+    <g
+       id="g955"
+       transform="translate(5.078121,6.9490077)">
+      <rect
+         ry="10.000007"
+         rx="10.000007"
+         y="216.56258"
+         x="16.335781"
+         height="68.578506"
+         width="93.88575"
+         id="rect917"
+         style="fill:#ffccaa;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text825"
+         y="226.26566"
+         x="19.698677"
+         style="font-style:normal;font-weight:normal;font-size:7.01940298px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.23929781"
+         xml:space="preserve"><tspan
+           style="font-weight:bold;font-size:7.01940298px;stroke-width:0.23929781"
+           y="226.26566"
+           x="19.698677"
+           id="tspan823"
+           sodipodi:role="line">Comunicação (dados)</tspan><tspan
+           id="tspan859"
+           style="font-size:5.74314737px;stroke-width:0.23929781"
+           y="235.0399"
+           x="19.698677"
+           sodipodi:role="line">- Cabeada (virtual COM/USB)</tspan><tspan
+           id="tspan919"
+           style="font-size:5.74314737px;stroke-width:0.23929781"
+           y="243.81416"
+           x="19.698677"
+           sodipodi:role="line">- Buffers (Entrada e saída)</tspan><tspan
+           id="tspan861"
+           style="font-size:5.74314737px;stroke-width:0.23929781"
+           y="252.58841"
+           x="19.698677"
+           sodipodi:role="line">- Controle remoto</tspan><tspan
+           id="tspan863"
+           style="font-size:5.74314737px;stroke-width:0.23929781"
+           y="261.36267"
+           x="19.698677"
+           sodipodi:role="line">- Rádio</tspan><tspan
+           id="tspan865"
+           style="font-size:5.74314737px;stroke-width:0.23929781"
+           y="270.13693"
+           x="19.698677"
+           sodipodi:role="line">- Bluetooth</tspan><tspan
+           id="tspan867"
+           style="font-weight:bold;font-size:5.74314737px;stroke-width:0.23929781"
+           y="278.91116"
+           x="19.698677"
+           sodipodi:role="line">...</tspan></text>
+    </g>
+    <g
+       id="g931"
+       transform="translate(0.55242548,24.525291)">
+      <rect
+         style="fill:#ffccaa;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect921"
+         width="85.948242"
+         height="76.705009"
+         x="125.19299"
+         y="192.56108"
+         rx="10.000007"
+         ry="10.000007" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:7.01940298px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.23929781"
+         x="129.90012"
+         y="203.30157"
+         id="text829"><tspan
+           sodipodi:role="line"
+           id="tspan827"
+           x="129.90012"
+           y="203.30157"
+           style="font-weight:bold;font-size:7.01940298px;stroke-width:0.23929781">Computador</tspan><tspan
+           id="tspan869"
+           sodipodi:role="line"
+           x="129.90012"
+           y="212.07582"
+           style="font-weight:normal;font-size:5.74314737px;stroke-width:0.23929781">- Programação (ex.: Python)</tspan><tspan
+           id="tspan903"
+           sodipodi:role="line"
+           x="129.90012"
+           y="220.85008"
+           style="font-weight:normal;font-size:5.74314737px;stroke-width:0.23929781">- Comunicação, registro e</tspan><tspan
+           id="tspan905"
+           sodipodi:role="line"
+           x="129.90012"
+           y="229.62433"
+           style="font-weight:normal;font-size:5.74314737px;stroke-width:0.23929781">análise de dados</tspan><tspan
+           id="tspan907"
+           sodipodi:role="line"
+           x="129.90012"
+           y="238.39859"
+           style="font-weight:normal;font-size:5.74314737px;stroke-width:0.23929781">- Interfaces gráficas [Kivy,</tspan><tspan
+           sodipodi:role="line"
+           x="129.90012"
+           y="247.17284"
+           style="font-weight:normal;font-size:5.74314737px;stroke-width:0.23929781"
+           id="tspan4951">(Py)Qt, WxWidgets, GTK,</tspan><tspan
+           sodipodi:role="line"
+           x="129.90012"
+           y="255.9471"
+           style="font-weight:normal;font-size:5.74314737px;stroke-width:0.23929781"
+           id="tspan4953">Tkinter, jQuery UI...]</tspan><tspan
+           id="tspan909"
+           sodipodi:role="line"
+           x="129.90012"
+           y="264.72134"
+           style="font-weight:bold;font-size:5.74314737px;stroke-width:0.23929781">...</tspan></text>
+    </g>
+    <text
+       id="text833"
+       y="152.40717"
+       x="17.10524"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-weight:bold;font-size:8.46666622px;stroke-width:0.26458332"
+         y="152.40717"
+         x="17.10524"
+         id="tspan831"
+         sodipodi:role="line">As diversas camadas de um problema</tspan></text>
+    <path
+       style="fill:#0000ff;stroke:#0000ff;stroke-width:0.69999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker3812);marker-end:url(#Arrow1Mend)"
+       d="m 56.923519,168.87178 34.400443,-1.13393"
+       id="path966"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path1250"
+       d="M 91.534906,171.65087 69.005032,224.89409"
+       style="fill:#0000ff;stroke:#0000ff;stroke-width:0.69999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker4704);marker-end:url(#marker1254)"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       style="fill:#0000ff;stroke:#0000ff;stroke-width:0.7;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#marker1872)"
+       d="m 113.70706,231.66892 13.6729,-5.16132"
+       id="path1868"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.89999998;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="145.8988"
+       y="168.67706"
+       id="text4930"><tspan
+         sodipodi:role="line"
+         id="tspan4928"
+         x="145.8988"
+         y="168.67706"
+         style="font-size:7.76111126px;line-height:0.89999998;stroke-width:0.26458332"
+         dy="0">Os exemplos</tspan><tspan
+         sodipodi:role="line"
+         x="145.8988"
+         y="178.20206"
+         style="font-size:7.76111126px;line-height:0.89999998;stroke-width:0.26458332"
+         id="tspan4932">facilitam a sua</tspan><tspan
+         sodipodi:role="line"
+         x="145.8988"
+         y="187.72707"
+         style="font-size:7.76111126px;line-height:0.89999998;stroke-width:0.26458332"
+         id="tspan4934">navegação num</tspan><tspan
+         sodipodi:role="line"
+         x="145.8988"
+         y="197.25206"
+         style="font-size:7.76111126px;line-height:0.89999998;stroke-width:0.26458332;font-weight:bold"
+         id="tspan4938">oceano de</tspan><tspan
+         sodipodi:role="line"
+         x="145.8988"
+         y="206.77705"
+         style="font-weight:bold;font-size:7.76111126px;line-height:0.89999998;stroke-width:0.26458332"
+         id="tspan4936">complexidade</tspan></text>
+    <g
+       id="g4949"
+       transform="matrix(0.86054195,0,0,0.86054195,10.574362,65.926347)">
+      <rect
+         ry="4.4412155"
+         rx="5"
+         y="156.58183"
+         x="6.9925594"
+         height="8.882431"
+         width="62.947662"
+         id="rect4944"
+         style="fill:#ffffff;fill-opacity:1;stroke:#ff6600;stroke-width:0.69999999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text4942"
+         y="163.44749"
+         x="9.15804"
+         style="font-style:normal;font-weight:normal;font-size:6.17187262px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.1542968"
+         xml:space="preserve"><tspan
+           style="font-weight:bold;fill:#ff0000;stroke-width:0.1542968"
+           y="163.44749"
+           x="9.15804"
+           id="tspan4940"
+           sodipodi:role="line">Instr. Eletrônica!</tspan></text>
+    </g>
+  </g>
+</svg>

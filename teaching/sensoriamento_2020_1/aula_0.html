@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Anderson M. Amaral">
+  <title>Sensoreamento e controle básico</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Sensoreamento e controle básico</h1>
+  <p class="author">Anderson M. Amaral</p>
+  <p class="date">Apresentação</p>
+</section>
+
+<section id="objetivos" class="slide level1">
+<h1>Objetivos</h1>
+<ul>
+<li class="fragment">Introdução ao uso de microcontroladores</li>
+<li class="fragment">Leitura e tratamento de dados de sensores</li>
+<li class="fragment">Controle mecânico com motores</li>
+</ul>
+</section>
+<section id="em-linhas-gerais" class="slide level1">
+<h1>Em linhas gerais…</h1>
+<ul>
+<li class="fragment"><strong>A física é uma ciência experimental!</strong></li>
+<li class="fragment">Instrumentação permite que você construa seus próprios experimentos. <strong>Empoderamento</strong></li>
+<li class="fragment">Instrumentação analógica: interface com sensores (luz, som, campos magnéticos, …)</li>
+<li class="fragment">Instrumentação digital: controle e medição sistemática (Mover espelho, aumentar temperatura,…)</li>
+<li class="fragment">Instrumentação virtual: controle de <strong>múltiplos</strong> instrumentos via PC</li>
+</ul>
+</section>
+<section id="pré-requisitos" class="slide level1">
+<h1>Pré-requisitos</h1>
+<ul>
+<li class="fragment">Interesse no aprendizado e participação nas atividades da disciplina.</li>
+<li class="fragment">Importante: sensor. e controle básico <strong>não é pre-requisito</strong> para sens. e controle remoto!</li>
+</ul>
+</section>
+<section id="conteúdo-abordado-na-disciplina" class="slide level1">
+<h1>Conteúdo abordado na disciplina</h1>
+<ul>
+<li>Introdução ao uso de microcontroladores
+<ul>
+<li>Conceitos básicos de programação em linguagem C</li>
+<li>Programação e controle das entradas e saídas de microcontroladores</li>
+</ul></li>
+<li>Leitura e tratamento de dados dos sensores
+<ul>
+<li>Introdução ao uso de diversos sensores, como de distância, presença, passagem e temperatura.</li>
+</ul></li>
+<li>Controle mecânico com motores
+<ul>
+<li>Uso de transistores e relés em aplicações de potência.</li>
+<li>Controle de motores contínuos e de passo.</li>
+</ul></li>
+</ul>
+<p><strong>Todas as informações da disciplina estarão disponíveis na página</strong> <a href="http://amamaral.github.io/teaching/sens_basico_2020" class="uri">http://amamaral.github.io/teaching/sens_basico_2020</a></p>
+</section>
+<section id="funcionamento-da-disciplina" class="slide level1">
+<h1>Funcionamento da disciplina</h1>
+<ul>
+<li class="fragment">Disciplina <strong>leve</strong> e completamente prática (2h/dia, sem atividades fora deste horário)</li>
+<li class="fragment">Trabalho realizado <strong>individualmente</strong></li>
+<li class="fragment"><strong>Matricular no SIG@ como eletiva !</strong></li>
+</ul>
+</section>
+<section id="arduino-eletrônica" class="slide level1">
+<h1>Arduino + eletrônica</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Rapida curva de aprendizagem</li>
+<li class="fragment">Versátil e robusto</li>
+<li class="fragment"><strong>Vasta quantidade de bibliotecas e suporte online</strong></li>
+<li class="fragment">Multiplataforma (Windows, Linux, Mac, Android…)</li>
+<li class="fragment">Hardware livre</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="Aulas_U1\arduino_uno.jpg" /></p>
+</div>
+</div>
+</section>
+<section id="python-kivy" class="slide level1">
+<h1>Python + kivy</h1>
+<ul>
+<li class="fragment"><strong>Python</strong> tem sido cada vez mais adotado pela comunidade científica.</li>
+<li class="fragment">Importante para controlar experimentos via PC</li>
+<li class="fragment"><strong>Kivy</strong> permite produzir interfaces gráficas de forma simples
+<ul>
+<li class="fragment">Multiplataforma (Win, Linux, Mac, <strong>Mobile</strong>)</li>
+</ul></li>
+<li class="fragment">Software livre</li>
+<li class="fragment"><strong>Conteúdo da disciplina Sensoriamento e controle remoto (2º semestre), mas os roteiros já estão disponíveis online na minha página.</strong></li>
+</ul>
+<p><img data-src="Aulas_U1\python-logo-generic.svg" height="100" /> <img data-src="Aulas_U1\kivy.svg" height="100" /></p>
+</section>
+<section id="avaliação" class="slide level1">
+<h1>Avaliação</h1>
+<ul>
+<li class="fragment">Curso dividido em 3 unidades, cada uma consistindo de diversas atividades relacionadas</li>
+<li class="fragment">A nota de cada unidade corresponde ao desempenho obtido na realização das atividades</li>
+<li class="fragment">Aprovação por média aqueles que tiverem nota maior ou igual a 7</li>
+<li class="fragment">Reprovação no caso de nota menor ou igual a 3</li>
+<li class="fragment">Média entre 3 e 7 irão para a final, que consistirá de uma prova teórica e prática envolvendo todo o assunto do curso.</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Aula</th>
+<th style="text-align: center;">Tópico</th>
+<th style="text-align: center;">Unidade</th>
+<th style="text-align: center;">C.H. acumulada (h)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Apresentação inicial</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Conceitos e funções básicas</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Conceitos e funções básicas</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">Conceitos e funções básicas</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">Conceitos e funções básicas</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">Conceitos e funções básicas</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">Sensores</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">Sensores</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">Sensores</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">Sensores</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">Motores</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">Motores</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">Motores</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">Motores</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">Motores</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">30</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="a-plataforma-arduino" class="slide level1">
+<h1>A plataforma arduino</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="fragment" data-fragment-index="1">Utilizar um computador aumenta a quantidade de medições e a qualidade dos resultados.</span></li>
+<li><span class="fragment" data-fragment-index="2">Em especial, o fator humano é reduzido no experimento e a reprodutibilidade aumenta.</span></li>
+<li><span class="fragment" data-fragment-index="3">Neste curso, utilizaremos a plataforma arduino</span>
+<ul>
+<li><span class="fragment" data-fragment-index="4">Microcontrolador</span></li>
+<li><span class="fragment" data-fragment-index="5">Computador + periféricos</span></li>
+</ul></li>
+</ul>
+</div><div class="column fragment" data-fragment-index="3" style="width:40%;">
+<p><img data-src="Aulas_U1\arduino_uno.jpg" /></p>
+</div>
+</div>
+</section>
+<section id="sensoreamento-e-controle" class="slide level1">
+<h1>Sensoreamento e controle</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="fragment" data-fragment-index="1">Podemos construir instrumentos de medida, mas também para controlar parâmetros experimentais.</span></li>
+<li><span class="fragment" data-fragment-index="2">Permite a automação do experimento (menos suscetível a erros humanos).</span></li>
+<li><span class="fragment" data-fragment-index="3">Ex.: Guindaste</span></li>
+<li><span class="fragment" data-fragment-index="4">Ex.: aparato de Fizeau</span></li>
+</ul>
+</div><div class="column" style="position:relative;margin:0 auto;" style="width:50%;">
+<p><img data-src="Aulas_U1\Feedback.png" class="fragment current-visible" data-fragment-index="3" /> <img data-src="Aulas_U1\330px-Fizeau.JPG" class="fragment" style="position:absolute;top:0;left:0;" data-fragment-index="4" /></p>
+</div>
+</div>
+</section>
+<section id="visão-geral-de-um-experimento" class="slide level1">
+<h1>Visão geral de um experimento</h1>
+<p><img data-src="Aulas_U1\Visao_geral_experimento.svg" style="width:80.0%" /></p>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
