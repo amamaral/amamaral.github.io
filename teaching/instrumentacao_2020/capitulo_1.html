@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="FI577 - Instrumentação eletrônica para a física">
+  <title>Instrumentação e elementos DC</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Instrumentação e elementos DC</h1>
+  <p class="author">FI577 - Instrumentação eletrônica para a física</p>
+  <p class="date">Leitura recomendada: Blackburn Cap. 2</p>
+</section>
+
+<section id="o-método-científico" class="slide level1">
+<h1><a href="https://en.wikipedia.org/wiki/Scientific_method">O método científico</a></h1>
+<p><img data-src="C1/The_Scientific_Method_as_an_Ongoing_Process.svg" style="width:70.0%" /></p>
+</section>
+<section id="alguns-tipos-de-medidores" class="slide level1">
+<h1>Alguns tipos de medidores</h1>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><span class="fragment" data-fragment-index="1">Comprimento: régua, paquímetro</span></li>
+<li><span class="fragment" data-fragment-index="2">Massa: balança (mecânica, eletrônica)</span></li>
+<li><span class="fragment" data-fragment-index="3">Tempo: ampulheta, relógio</span></li>
+<li><span class="fragment" data-fragment-index="4">Campo magnético: bússola, sonda Hall</span></li>
+</ul>
+</div><div class="column" style="position:relative;margin:0 auto;" style="width:50%;">
+<p><img data-src="C1\314px-Soft_ruler.jpg" class="fragment current-visible" data-fragment-index="1" /> <img data-src="C1\320px-Weighing_scale_BW_2012-01-14_16-27-08_12_18.jpg" class="fragment current-visible" data-fragment-index="2" style="position:absolute;top:0;left:0;" /> <img data-src="C1\320px-Pocket_watch_with_chain.jpg" class="fragment current-visible" data-fragment-index="3" style="position:absolute;top:0;left:0;" /> <img data-src="C1\320px-Stanley_compass_1.jpg" class="fragment" data-fragment-index="4" style="position:absolute;top:0;left:0;" /></p>
+</div>
+</div>
+<ul>
+<li class="fragment">Em experimentos contemporâneos, é altamente desejável que o medidor represente a grandeza de interesse como um <strong>sinal elétrico</strong> pois:
+<ul>
+<li class="fragment">Pode ser processado em um circuito</li>
+<li class="fragment">Pode ser registrado e/ou analisado em um computador</li>
+</ul></li>
+</ul>
+</section>
+<section id="visão-simplificada-desta-disciplina" class="slide level1">
+<h1>Visão simplificada desta disciplina</h1>
+<ul>
+<li class="fragment">O foco principal desta disciplina é a <strong>eletrônica analógica</strong></li>
+<li class="fragment">Veremos um pouco da física dos circuitos e dispositivos eletrônicos</li>
+<li class="fragment">Técnicas de análise de circuitos analógicos</li>
+<li class="fragment">Aspectos teóricos e práticos no projeto de circuitos analógicos</li>
+<li class="fragment">Um pouco de eletrônica digital e arduino em aplicações analógicas.</li>
+</ul>
+</section>
+<section id="programação-tentativa" class="slide level1">
+<h1>Programação tentativa</h1>
+<ol type="1">
+<li class="fragment">Tensões, correntes e resistores</li>
+<li class="fragment">Associação de resistores</li>
+<li class="fragment">Equivalentes de Thévenin e Norton</li>
+<li class="fragment">Transistores</li>
+<li class="fragment">Arduino para aplicações analógicas</li>
+<li class="fragment">Amplificadores operacionais</li>
+<li class="fragment">Sinais analógicos, ruído e filtros</li>
+<li class="fragment">Semicondutores sob sinais AC</li>
+<li class="fragment">Oscilador e defasador</li>
+<li class="fragment">Multivibradores</li>
+<li class="fragment">Portas lógicas e eletrônica digital</li>
+</ol>
+</section>
+<section id="avaliação-e-presença-em-sala-de-aula" class="slide level1">
+<h1>Avaliação e presença em sala de aula</h1>
+<ol type="1">
+<li class="fragment">8 práticas (x 2 partes) e 2 unidades.</li>
+<li class="fragment">As práticas serão realizadas em grupos (2 ou 3) participantes.</li>
+<li class="fragment">Relatório com respostas aos roteiros deve ser entregue até o final da prática subsequente.</li>
+<li class="fragment">Tendo em vista a tolerância de 25% de faltas, as 25% menores notas em cada unidade <strong>(1 prática)</strong> serão desconsideradas.</li>
+<li class="fragment"><strong>Aulas de reposição?</strong></li>
+</ol>
+</section>
+<section id="aquisição-de-dados---multímetro" class="slide level1">
+<h1>Aquisição de dados - Multímetro</h1>
+<ul>
+<li>Qual é mais fácil para <strong>estimar</strong> uma medida? <span class="fragment"><strong>Analógico</strong>, varia continuamente</span></li>
+<li>Qual é mais fácil para <strong>registrar</strong> uma medida? <span class="fragment"><strong>Digital</strong>, exibe dígitos</span></li>
+</ul>
+<p><img data-src="C1\analog-vs-digital-multimeter.jpg" style="width:90.0%" /></p>
+</section>
+<section id="como-utilizar-o-multímetro" class="slide level1">
+<h1>Como utilizar o multímetro?</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Para medir correntes, a corrente deve passar pelo instrumento
+<ul>
+<li class="fragment"><strong>Amperímetros são sempre conectados em série</strong>! (Muito cuidado!)</li>
+</ul></li>
+<li class="fragment">Para medir tensões, as pontas de prova são conectadas em <strong>paralelo</strong>
+<ul>
+<li class="fragment">O que se mede são sempre diferenças de potencial</li>
+</ul></li>
+<li class="fragment">Podemos usar uma protoboard para auxiliar a montagem do circuito</li>
+<li class="fragment"><img data-src="C1\protoboard.jpg" alt="Protoboard" class="fragment" data-fragment-index="5" /></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C1\Amperimetro_CE.png" /> <img data-src="C1\Voltimetro_CE.png" /></p>
+</div>
+</div>
+</section>
+<section id="resistores" class="slide level1">
+<h1>Resistores</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Um resistor possui uma relação bem determinada entre a tensão e a corrente <strong>instantâneas</strong> entre seus terminais.</li>
+<li class="fragment">Resistor linear: <span class="math inline">\(V(t) = I(t) R(t)\)</span></li>
+<li class="fragment">Resistor linear e temporalmente invariante (LTI): <span class="math inline">\(V(t) = R I(t)\)</span> (Ohm)</li>
+<li class="fragment">Resistor não linear: <span class="math inline">\(V(t) = K I(t)^3\)</span></li>
+<li class="fragment">Potência dissipada: <span class="math inline">\(P = V I\)</span>.</li>
+<li class="fragment"><strong>R LTI:</strong> <span class="math inline">\(P = \frac{V^2}{R} = RI^2\)</span>.</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C1\resistor.png" /></p>
+</div>
+</div>
+</section>
+<section id="leis-de-kirchhoff" class="slide level1">
+<h1>Leis de Kirchhoff</h1>
+<ul>
+<li class="fragment">Simplificações algébricas das Eqs. de Maxwell</li>
+<li class="fragment"><strong>Lei das correntes</strong>: A soma das correntes que entram em um nó é igual a soma das correntes que saem. A soma das correntes por um nó deve ser nula.</li>
+<li class="fragment"><strong>Lei das tensões</strong>: A soma algébrica das tensões dos ramos através de qualquer caminho fechado (laço) em uma rede deve ser nula. A tensão entre dois nós independe do caminho.</li>
+<li class="fragment">Procedimento de aplicabilidade geral:
+<ol type="1">
+<li class="fragment">Definir as correntes e tensões em cada ramo de forma consistente. Ex.: definindo uma tensão <span class="math inline">\(V_i\)</span> para cada nó, e uma corrente <span class="math inline">\(I_j\)</span> para cada ramo.</li>
+<li class="fragment">Considerar as relações constitutivas entre d.d.p. e corrente para cada elemento. Ex.: <span class="math inline">\(V_a-V_b=R\, I_{ab}\)</span></li>
+<li class="fragment">Aplicar leis de Kirchhoff</li>
+<li class="fragment">Resolver o sistema de equações resultante</li>
+</ol></li>
+</ul>
+</section>
+<section id="divisor-de-tensão" class="slide level1">
+<h1>Divisor de tensão</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Um dos tipos de circuitos mais recorrentes é o divisor de tensão</li>
+<li class="fragment">Temos uma fonte de tensão <span class="math inline">\(V\)</span>, <span class="math inline">\(v_1=R_1i_1\)</span> e <span class="math inline">\(v_2=R_2i_2\)</span></li>
+<li class="fragment">Kirchhoff:
+<ul>
+<li class="fragment">Correntes: <span class="math inline">\(i_0=i_1=i_2\)</span></li>
+<li class="fragment">Tensões: <span class="math inline">\(v_0+v_1+v_2=0\)</span></li>
+</ul></li>
+<li class="fragment">Sol.: <span class="math display">\[i_0=i_1=i_2=\frac{1}{R_1+R_2} V,\]</span> e <span class="math display">\[v_1=\frac{R_1}{R_1+R_2} V,\]</span> <span class="math display">\[v_2=\frac{R_2}{R_1+R_2} V\]</span></li>
+<li class="fragment">Note que <span class="math inline">\(v_2\)</span> é uma fração de <span class="math inline">\(V\)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="C1\divisor_tensao.png" /></p>
+</div>
+</div>
+</section>
+<section id="abstração-de-elementos-de-circuitos" class="slide level1">
+<h1>Abstração de elementos de circuitos</h1>
+<ul>
+<li>O que tem dentro da caixa? <span class="fragment"><em>Em uma primeira análise</em>, não nos importa.</span> <span class="fragment"><strong>É importante verificar se o modelo simplificado é válido!</strong></span></li>
+</ul>
+<p><img data-src="C1\blackbox_devices.png" style="width:75.0%" /></p>
+</section>
+<section id="exemplo" class="slide level1">
+<h1>Exemplo</h1>
+<p><img data-src="C1\circuito_lampada.png" /></p>
+<ul>
+<li class="fragment">A bateria possui uma diferença de potencial entre seus terminais. Fios conectam a bateria à lâmpada.
+<ul>
+<li class="fragment"><strong>Aspectos essenciais</strong>: tensão da bateria e resistência a passagem de corrente pela lâmpada.</li>
+<li class="fragment"><strong>Aspectos não essenciais</strong>: química da bateria, material e dimensões do filamento utilizado, conexões elétricas, posição dos componentes…</li>
+</ul></li>
+<li class="fragment">Podemos criar um elemento ideal para representar as propriedades elétricas essenciais da lâmpada</li>
+<li class="fragment">Resistência da lâmpada: <span class="math inline">\(R = V/I\)</span>. <span class="fragment"><strong>mas <span class="math inline">\(R\)</span> varia com temperatura!</strong></span></li>
+</ul>
+</section>
+<section id="regime-de-parâmetros-concentrados" class="slide level1">
+<h1>Regime de parâmetros concentrados</h1>
+<ul>
+<li class="fragment">Elemento de 2 terminais: <img data-src="C1\lumped_element.png" /></li>
+<li class="fragment">Características determinadas apenas pela relação entre tensão e corrente</li>
+<li class="fragment">Em particular, <strong>qual a corrente I quando a tensão V é aplicada?</strong></li>
+<li class="fragment">Quando podemos considerar um circuito como composto apenas por elementos de parâmetros concentrados?</li>
+<li class="fragment"><strong>Análise exclui</strong> variações do fluxo magnético, acúmulo de cargas livres e frequências muito altas. Ver p. ex. Agarwal &amp; Lang, Cap. 1.</li>
+</ul>
+</section>
+<section id="baterias" class="slide level1">
+<h1>Baterias</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Especificações mais importantes: tensão nominal, energia armazenada e resistência interna.</li>
+<li class="fragment">Potência fornecida: <span class="math inline">\(P = VI\)</span>
+<ul>
+<li class="fragment">Ocorre quando <span class="math inline">\(I\)</span> sai pelo terminal positivos</li>
+</ul></li>
+<li class="fragment">Energia fornecida num tempo <span class="math inline">\(T\)</span>: <span class="math inline">\(E=PT\)</span>
+<ul>
+<li class="fragment">Energia armazenada costuma ser representada em Ampére-hora ou Watt-hora.</li>
+</ul></li>
+<li class="fragment">Quem possui mais energia armazenada, uma bateria de Níquel-Cádmio de 6V e 950 mA-hora, ou uma de <span class="fragment highlight-red">íons de lítio</span> de 7,2 V e 900 mA-hora?</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C1\bateria.png" /></p>
+</div>
+</div>
+</section>
+<section id="alguns-componentes-de-2-terminais-ideais" class="slide level1">
+<h1>Alguns componentes de 2 terminais ideais</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Fio ideal (curto circuito): <span class="math inline">\(R=0\)</span>, ou <span class="math inline">\(v=0\)</span></li>
+<li class="fragment">Circuito aberto: <span class="math inline">\(R=\infty\)</span>, ou <span class="math inline">\(i=0\)</span></li>
+<li class="fragment">Fonte de tensão ideal: <span class="math inline">\(v=V\)</span>
+<ul>
+<li class="fragment">Mais adiante veremos qual a diferença entre uma fonte de tensão ideal de uma fonte real.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C1\fonte_tensao.png" /></p>
+</div>
+</div>
+</section>
+<section id="fontes-de-corrente-ideais" class="slide level1">
+<h1>Fontes de corrente ideais</h1>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Da mesma forma que podemos definir um componente de 2 terminais que fixa uma tensão entre seus terminais, pode-se especificar um componente que fixa uma corrente.</li>
+<li class="fragment">Neste caso, <span class="math display">\[i=I\]</span>.
+<ul>
+<li class="fragment">Elemento dual à fonte de tensão.</li>
+<li class="fragment">Poucos componentes se comportam naturalmente como fontes de corrente (ex.: fotodiodos)</li>
+<li class="fragment">Podem ser confeccionadas (faremos mais adiante!)</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="C1\fonte_corrente.png" /></p>
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
