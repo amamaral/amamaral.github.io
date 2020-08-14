@@ -4,6 +4,8 @@ Este breve guia mostra algumas das funcionalidades básicas do AVA, em particula
 
 Os slides usados na apresentação estão disponíveis [clicando aqui](Guia_basico_AVA\apresentacao.html).
 
+**A gravação da apresentação realizada em 14/08 pode ser vista [clicando aqui](https://drive.google.com/open?id=1pvf9ACS3FGbKIFUpJ_5O_F7Mh3hVh7p4)**
+
 Mais abaixo existem também algumas sugestões sobre a operação do curso. Em particular sobre a mensagem inicial para os ainda não matriculados e como recorrigir questões.
 
 Vídeos gravados com o [OBS studio](https://obsproject.com/pt-br/download) (software livre)
