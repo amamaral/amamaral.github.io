@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Image conversion from cartesian to cylindrical coordinates </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="/css/modern-business.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/academicons/css/academicons.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+                <a class="navbar-brand" href="/index.html"> Anderson M. Amaral</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/about.html">Personal Info</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-flask pull-left"></i> Science<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/science_papers.html">Papers</a>
+                            </li>
+                            <li><a href="/conference_papers.html">Conference papers</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Science links</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gears"></i> Technical work<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/blog.html" data-toggle="tooltip" title="Technical articles in my blog">Articles</a>
+                            </li>
+                            <li><a href="http://www.github.com/amamaral" data-toggle="tooltip" title="Github software repositories">Software</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
+                            </li>
+                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Electronics links</a>
+                            </li>
+                        </ul>
+                    </li>
+		    <li><a href="/teaching.html"><i class="fa fa-book"></i> Teaching (Ensino)</a>
+		    </li>
+                    <li><a href="/blog.html" data-toggle="tooltip" title="Educational and technical blog">Blog</a>
+                    </li>
+		    <li><a href="/useful.html"><i class="fa fa-user"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    
+
+<style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; }
+pre.numberSource a.sourceLine:empty
+{ position: absolute; }
+pre.numberSource a.sourceLine::before
+{ content: attr(data-line-number);
+  position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+  border: none; pointer-events: all;
+  -webkit-touch-callout: none; -webkit-user-select: none;
+  -khtml-user-select: none; -moz-user-select: none;
+  -ms-user-select: none; user-select: none;
+  padding: 0 4px; width: 4em;
+  color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+{ background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li>Image conversion from cartesian to cylindrical coordinates</li>
+                </ol>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-8">
+
+                <!-- the actual blog post: title/author/date/content -->
+                <h2 class="page-header"> Image conversion from cartesian to cylindrical coordinates </h2><i class="fa fa-clock-o"></i> Posted on 25/06/2020
+                
+                <hr>
+                <img src="\blog\assets\xy_rphi_initialproblem.png" class="img-responsive">
+                
+                <hr>
+                <h1 id="introduction">Introduction</h1>
+<p>Suppose that one has some picture of a cylindrical structure, as for example a Gaussian light beam or Laguerre-Gauss laser modes. How to convert the image from <span class="math inline">\(xy\)</span> cartesian coordinates to <span class="math inline">\(r\theta\)</span> cylindrical coordinates? This is particularly important if the pattern does not have azimuthal symmetry and rotates. How to determine the rotation angle?</p>
+<p>Consider the light beam below, produced which can be understood as the interference between two LG modes. How to perform the coordinate transformation in a numerically efficient way using Python?</p>
+<figure>
+<img class="img-responsive" src="assets\xy_rphi_initialproblem.png" alt="Problem definition" /><figcaption>Problem definition</figcaption>
+</figure>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="op">%</span>pylab inline</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">xx <span class="op">=</span> linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>, <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">yy <span class="op">=</span> linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>, <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">x, y <span class="op">=</span> meshgrid(xx,yy)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">v <span class="op">=</span> x <span class="op">+</span><span class="ot"> 1j</span> <span class="op">*</span> y</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">r <span class="op">=</span> <span class="bu">abs</span>(v)</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">phi <span class="op">=</span> angle(v)</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">offset <span class="op">=</span> deg2rad(<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">m <span class="op">=</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">nbins <span class="op">=</span> <span class="dv">200</span> <span class="co"># If this is too large, some distortion in the angle due to pixelation</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">profile <span class="op">=</span>  r<span class="op">**</span>m <span class="op">*</span> cos(m<span class="op">*</span>(theta<span class="op">+</span>phi)) <span class="op">*</span> exp(<span class="op">-</span>r<span class="op">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">rr <span class="op">=</span> linspace(<span class="dv">0</span>,<span class="dv">5</span>,nbins)</a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">pphi <span class="op">=</span> linspace(<span class="op">-</span>pi,pi,nbins)</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">Phi, R <span class="op">=</span> meshgrid(pphi, rr)</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">profile_r_phi <span class="op">=</span> R<span class="op">**</span>m <span class="op">*</span> cos(m<span class="op">*</span>(Phi<span class="op">+</span>offset)) <span class="op">*</span> exp(<span class="op">-</span>R<span class="op">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">subplot(<span class="dv">121</span>)</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">title(<span class="vs">r&#39;$I(x,y)$&#39;</span>)</a>
+<a class="sourceLine" id="cb1-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">dx <span class="op">=</span> (xx[<span class="dv">1</span>]<span class="op">-</span>xx[<span class="dv">0</span>])<span class="op">/</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">dy <span class="op">=</span> (yy[<span class="dv">1</span>]<span class="op">-</span>yy[<span class="dv">0</span>])<span class="op">/</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">extent_xy<span class="op">=</span>[xx[<span class="dv">0</span>]<span class="op">-</span>dx, xx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>dx, yy[<span class="dv">0</span>]<span class="op">-</span>dy, yy[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>dy]</a>
+<a class="sourceLine" id="cb1-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb1-28" data-line-number="28">imshow(absolute(profile)<span class="op">**</span><span class="dv">2</span>, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>, extent<span class="op">=</span>extent_xy)</a>
+<a class="sourceLine" id="cb1-29" data-line-number="29">subplot(<span class="dv">122</span>)</a>
+<a class="sourceLine" id="cb1-30" data-line-number="30"><span class="co">#im = imshow(angle(profile), cmap=cm.gray)</span></a>
+<a class="sourceLine" id="cb1-31" data-line-number="31"><span class="co">#colorbar(im)</span></a>
+<a class="sourceLine" id="cb1-32" data-line-number="32">title(<span class="vs">r&#39;$I(r,\phi)$&#39;</span>)</a>
+<a class="sourceLine" id="cb1-33" data-line-number="33"></a>
+<a class="sourceLine" id="cb1-34" data-line-number="34">imshow(absolute(profile_r_phi)<span class="op">**</span><span class="dv">2</span>, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>)</a>
+<a class="sourceLine" id="cb1-35" data-line-number="35">xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</a>
+<a class="sourceLine" id="cb1-36" data-line-number="36">ylabel(<span class="st">&quot;r&quot;</span>)</a>
+<a class="sourceLine" id="cb1-37" data-line-number="37"></a>
+<a class="sourceLine" id="cb1-38" data-line-number="38">savefig(<span class="vs">r&quot;assets\xy_rphi_initialproblem.png&quot;</span>)</a></code></pre></div>
+<h1 id="radial-dependence">Radial dependence</h1>
+<p>Suppose we want to find <span class="math inline">\(I(r)\)</span>. How do we do this, given that we know <span class="math inline">\(I(x,y)\)</span>? We can build a map that indicates the coordinate of each pixel in the coordinate system of interest, as performed above for <code>x,y,r,phi</code>. We can use histograms to verify how frequent each value of <code>r,phi</code> appears in the image. Below we have the histogram of <code>r</code> in an array whose size is the same as <code>profile</code>. Notice that the growth is linear with <code>r</code> until the corners of the array are reached at <span class="math inline">\(r=5\)</span>. Resembles, at least slightly, the Jacobian of the coordinate transformation. Suppose now that the histogram of <span class="math inline">\(r\)</span> is weighted by the intensity profile, could this be equivalent to the coordinate transformation?</p>
+<figure>
+<img class="img-responsive" src="assets\xy_rphi_radial_histogram.png" alt="Using histograms for coordinate transformation" /><figcaption>Using histograms for coordinate transformation</figcaption>
+</figure>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1">h <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">hx <span class="op">=</span> h[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">hy <span class="op">=</span> h[<span class="dv">0</span>]</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">h2 <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">subplot(<span class="dv">211</span>)</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">title(<span class="st">&#39;num of array elems with given r values&#39;</span>)</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">plot(hx, h2[<span class="dv">0</span>], <span class="st">&#39;k.&#39;</span>)</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co"># Notice that the frequency of r[i] is proportional to r. Jacobian?</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co"># It is necessary to normalize by h2!</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">subplot(<span class="dv">212</span>)</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">title(<span class="st">&#39;intensity vs radius?&#39;</span>)</a>
+<a class="sourceLine" id="cb2-16" data-line-number="16">plot(hx, hy, <span class="st">&#39;k.&#39;</span>)</a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18">tight_layout()</a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20">savefig(<span class="vs">r&quot;assets\xy_rphi_radial_histogram.png&quot;</span>)</a></code></pre></div>
+<p>It’s very close indeed, however it is necessary to normalize by the number of pixels whose radius is <code>r</code>. Below this correction is performed and the theory and numerical conversion are compared. Notice the perfect matching, which indicates the present procedure is adequate.</p>
+<figure>
+<img class="img-responsive" src="assets\xy_rphi_radial_histogram_2.png" alt="Radial expression for the intensity using histograms" /><figcaption>Radial expression for the intensity using histograms</figcaption>
+</figure>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">title(<span class="st">&#39;avg intensity vs radius&#39;</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">h1 <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">h2 <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">hx <span class="op">=</span> h1[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">hy <span class="op">=</span> h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>]</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">factor <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> m<span class="op">==</span><span class="dv">0</span> <span class="cf">else</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">plot(hx, hy, <span class="st">&#39;k.&#39;</span>, label<span class="op">=</span><span class="st">&#39;histogram transformation&#39;</span>)</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">plot(hx, hx<span class="op">**</span>(<span class="dv">2</span><span class="op">*</span>m) <span class="op">*</span> exp(<span class="op">-</span><span class="dv">2</span><span class="op">*</span>hx<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>factor, label<span class="op">=</span><span class="st">&#39;theory&#39;</span>)</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">legend(loc<span class="op">=</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">savefig(<span class="vs">r&quot;assets\xy_rphi_radial_histogram_2.png&quot;</span>)</a></code></pre></div>
+<h1 id="angular-dependence">Angular dependence</h1>
+<p>To obtain the angular dependence is similar, however some extra care must be taken. Consider the histogram of <code>phi</code>, weighted by <code>1</code> or the intensity profiles. Notice that while the radial distortion is due to pixels close to the image borders, in the azimuthal direction there are more pixels along certain directions (diagonals). This is important to notice because the contribution due to some angles can be disproportionate. Also, close to <span class="math inline">\(r=0\)</span>, some angles may be unavailable due to pixelation.</p>
+<figure>
+<img class="img-responsive" src="assets\xy_rphi_angular_histogram.png" alt="Obtaining I(\theta)" /><figcaption>Obtaining <span class="math inline">\(I(\theta)\)</span></figcaption>
+</figure>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1">h <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">hx <span class="op">=</span> h[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span><span class="dv">180</span><span class="op">/</span>pi</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">hy <span class="op">=</span> h[<span class="dv">0</span>]</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">h2 <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">subplot(<span class="dv">211</span>)</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">plot(hx, h2[<span class="dv">0</span>], <span class="st">&#39;k.&#39;</span>)</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co"># Notice the distortion at the most frequent phi values</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co"># The most frequent phi values are at the diagonals</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">subplot(<span class="dv">212</span>)</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">title(<span class="st">&#39;intensity vs angle?&#39;</span>)</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">plot(hx, hy, <span class="st">&#39;k.&#39;</span>)</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">tight_layout()</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">savefig(<span class="vs">r&quot;assets\xy_rphi_angular_histogram.png&quot;</span>)</a></code></pre></div>
+<p>If the histogram is normalized as before, there will be some distortion due to the diagonals. To avoid this, we filter the image radially and obtain the following result is obtained. Notice how the numerical transformation nicely matches the theoretically expected result.</p>
+<p><img class="img-responsive" src="assets\xy_rphi_angular_histogram_2.png" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1">title(<span class="st">&#39;intensity vs angle at given radius&#39;</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">rad <span class="op">=</span> sqrt(<span class="dv">1</span><span class="op">+</span>m)<span class="op">/</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">width <span class="op">=</span> <span class="fl">0.3</span> <span class="co"># If this is too large, some distortion appear due to the frame edges and pixelation</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">mask <span class="op">=</span> <span class="fl">1.0</span> <span class="op">*</span> (r<span class="op">&gt;</span> rad<span class="op">-</span>width<span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> (r <span class="op">&lt;</span> rad<span class="op">+</span>width<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">h1 <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> mask)</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">h2 <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins, weights<span class="op">=</span>mask)</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">hx <span class="op">=</span> h1[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span><span class="dv">180</span><span class="op">/</span>pi</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">hy <span class="op">=</span> h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>]</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">plot(hx, hy, <span class="st">&#39;k.&#39;</span>, label<span class="op">=</span><span class="st">&#39;Numerical transformation&#39;</span>)</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">ampl <span class="op">=</span> rad<span class="op">**</span>(<span class="dv">2</span><span class="op">*</span>m) <span class="op">*</span> exp(<span class="op">-</span><span class="dv">2</span><span class="op">*</span>rad<span class="op">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">plot(hx, ampl<span class="op">*</span>cos(m <span class="op">*</span> (pi<span class="op">*</span>hx<span class="op">/</span><span class="dv">180</span> <span class="op">+</span> offset))<span class="op">**</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">&#39;Theory&#39;</span>)</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17">legend(loc<span class="op">=</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">savefig(<span class="vs">r&quot;assets\xy_rphi_angular_histogram_2.png&quot;</span>)</a></code></pre></div>
+<h1 id="radial-and-angular-dependence">Radial and angular dependence</h1>
+<p>Since the above considerations allowed to obtain the intensity vs radius or intensity vs angle, would it be possible to obtain intensity as a function of radius and angle? We can use 2d histograms to obtain this transformation, analogously to the previous cases. Some distinctions are important here. <code>histogram2d()</code> does not accept <code>r, phi</code> and <code>profile</code> as 2d arrays, such <code>ravel()</code> is used to convert these matrices to 1D ndarrays. Also, close to <code>r=0</code> there will be several angles which cannot be found, such the normalization will be undefined. In such cases it could be possible to interpolate the data between well defined values. Notice that this is not a limitation of the present procedure, but an unavoidable issue in such transformation. Some pairs of <code>r, phi</code> do not exist, and therefore the method cannot infer these values automatically. Numpy assigns <code>nan</code> to these values and <code>imshow</code> exhibits these pixels in white. It is also important to notice that here it is important to limit the extent of <span class="math inline">\(r\)</span> values, otherwise the corners will be included and artifacts introduced in the <span class="math inline">\(r\theta\)</span> representation.</p>
+<figure>
+<img class="img-responsive" src="assets\xy_rphi_transform.png" alt="Output of the 2D transformation" /><figcaption>Output of the 2D transformation</figcaption>
+</figure>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" data-line-number="1">title(<span class="vs">r&#39;$I(r,\theta)$&#39;</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">data_range <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">5</span>], [<span class="op">-</span>pi,pi]]</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">h1 <span class="op">=</span> histogram2d(r.ravel(), phi.ravel(), bins<span class="op">=</span>nbins, <span class="bu">range</span><span class="op">=</span>data_range, weights<span class="op">=</span>(absolute(profile)<span class="op">**</span><span class="dv">2</span>).ravel())</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">h2 <span class="op">=</span> histogram2d(r.ravel(), phi.ravel(), bins<span class="op">=</span>nbins, <span class="bu">range</span><span class="op">=</span>data_range)</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">im <span class="op">=</span> imshow(h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>], origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>)</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">colorbar(im)</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">theta$&quot;</span>)</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">ylabel(<span class="st">&quot;r&quot;</span>)</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co"># The present approach has errors close to r=0, since there will not be pixels with some values of theta</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co"># Interpolation is necessary to fill out the gaps where h2[0]==0 close to r=0.</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co"># The number of gaps reduces with the number of bins</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">savefig(<span class="vs">r&quot;assets\xy_rphi_transform.png&quot;</span>)</a></code></pre></div>
+<p>We can also put the theoretically expected profile and the result of the numerical transformation side by side to see that the transformation is meaningful. Both patterns are very similar.</p>
+<figure>
+<img class="img-responsive" src="assets\xy_rphi_side_by_side.png" alt="Theoretical and numerically transformed patterns are identical" /><figcaption>Theoretical and numerically transformed patterns are identical</figcaption>
+</figure>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" data-line-number="1">subplot(<span class="dv">121</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">title(<span class="st">&#39;Theoretical&#39;</span>)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">im <span class="op">=</span> imshow(absolute(profile_r_phi)<span class="op">**</span><span class="dv">2</span>, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>, cmap<span class="op">=</span>im.cmap)</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">ylabel(<span class="st">&quot;r&quot;</span>)</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">subplot(<span class="dv">122</span>)</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">title(<span class="st">&#39;Transf. result&#39;</span>)</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">imshow(h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>], origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>, cmap<span class="op">=</span>im.cmap)</a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">ylabel(<span class="st">&quot;r&quot;</span>)</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14">savefig(<span class="vs">r&quot;assets\xy_rphi_side_by_side.png&quot;</span>)</a></code></pre></div>
+<p>The difference between both patterns above is also very small, as it can be seen from the image below.</p>
+<p><img class="img-responsive" src="assets\xy_rphi_difference.png" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" data-line-number="1">title(<span class="st">&#39;Difference (Th-Tr)&#39;</span>)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">delta <span class="op">=</span> absolute(absolute(profile_r_phi)<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">im <span class="op">=</span> imshow(delta, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>)</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">colorbar(im)</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">ylabel(<span class="st">&quot;r&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">savefig(<span class="vs">r&quot;assets\xy_rphi_difference.png&quot;</span>)</a></code></pre></div>
+
+            </div>
+
+            <div class="col-lg-4">
+              <!--- Google search (!?) --->
+              <script>
+                (function() {
+                  var cx = '000186217323396905804:ehdmthbtyy0';
+                  var gcse = document.createElement('script');
+                  gcse.type = 'text/javascript';
+                  gcse.async = true;
+                  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                  var s = document.getElementsByTagName('script')[0];
+                  s.parentNode.insertBefore(gcse, s);
+                })();
+              </script>
+              <gcse:search></gcse:search>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+
+    <div class="container">
+
+        <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    Copyright © 2016-2019 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/modern-business.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script> 
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-77641001-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- /.ga -->
+    <!-- /.js -->
+</body>
+
+</html>

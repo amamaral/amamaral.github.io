@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Anderson Amaral - DF - UFPE">
+  <title>Guia básico do AVA</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({  TeX: {equationNumbers: { autoNumber: "all" } }});</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Guia básico do AVA</h1>
+  <p class="author">Anderson Amaral - DF - UFPE</p>
+  <p class="date">14/08/2020</p>
+</section>
+
+<section id="introdução" class="slide level1">
+<h1>Introdução</h1>
+<ul>
+<li class="fragment">Proposta de um curso breve, focando nos aspectos principais</li>
+<li class="fragment">Como configurar um curso?</li>
+<li class="fragment">Como elaborar atividades valendo nota? (Exames Escolares)</li>
+<li class="fragment">Que tipo de questões podemos utilizar? Como inserir na plataforma?</li>
+<li class="fragment">Como obter as notas do AVA e inserir no SIG@?</li>
+<li class="fragment"><strong>Série de vídeos disponibilizada para todos.</strong></li>
+</ul>
+</section>
+<section id="ambiente-virtual-de-aprendizagem-ava" class="slide level1">
+<h1>Ambiente virtual de aprendizagem (AVA)</h1>
+<ul>
+<li class="fragment">Ambiente virtual institucional (Moodle)</li>
+<li class="fragment">Possui integração direta com o SIG@</li>
+<li class="fragment">Testes com aplicação e correção automatizada</li>
+<li class="fragment">Pode-se gerar questões dinamicamente</li>
+</ul>
+<p><img data-src="graficos\AVA-UFPE.png" style="width:100.0%" /></p>
+</section>
+<section id="ava-permite" class="slide level1">
+<h1>AVA permite</h1>
+<ul>
+<li class="fragment"><strong>Colaboração intertemporal</strong>: testes e avaliações podem se tornar um banco de dados que será enriquecido ao longo do tempo.</li>
+<li class="fragment"><img data-src="graficos\sisyphus.jpg" style="width:50.0%" /></li>
+</ul>
+</section>
+<section id="acompanhamento-detalhado" class="slide level1">
+<h1>Acompanhamento detalhado</h1>
+<p><img data-src="graficos\presenca_desempenho.svg" style="width:90.0%" /></p>
+</section>
+<section id="configurações-básicas-do-curso" class="slide level1">
+<h1>Configurações básicas do curso</h1>
+<ul>
+<li class="fragment">Considerarei um curso com 2 exercícios escolares e 1 lista de exercícios</li>
+<li class="fragment">Página da disciplina contém algumas informações básicas, como link para o informe inicial</li>
+<li class="fragment">Visão geral de um curso já em operação (Backup de Física Geral 1)
+<ul>
+<li class="fragment">Mensagem de boas vindas</li>
+<li class="fragment">Página inicial</li>
+<li class="fragment">Agendando atividades (EE’s, listas de exercício)</li>
+</ul></li>
+<li class="fragment"><strong>Uma única configuração para todas as turmas de uma dada disciplinas</strong></li>
+</ul>
+</section>
+<section id="visão-geral-de-um-curso-já-configurado" class="slide level1">
+<h1>Visão geral de um curso já configurado</h1>
+<ul>
+<li class="fragment">Página inicial</li>
+<li class="fragment">Organização das informações em abas</li>
+<li class="fragment">Upload de arquivos, links, atividades em geral, informações para a equipe</li>
+<li class="fragment"><strong>Informações/atividades podem ser ocultadas dos estudantes</strong></li>
+<li class="fragment"><strong>É possível ver como estudantes visualizam a página “mudando o papel”</strong></li>
+</ul>
+</section>
+<section id="configurações-básicas" class="slide level1">
+<h1>Configurações básicas</h1>
+<ul>
+<li class="fragment">Mensagem de boas vindas para não cadastrados</li>
+<li class="fragment">Informações iniciais</li>
+<li class="fragment">Gerando 2 EE’s e 1 lista de exercício.
+<ul>
+<li class="fragment">2x questionários</li>
+<li class="fragment">1x tarefa</li>
+</ul></li>
+</ul>
+</section>
+<section id="gerando-questões-para-avaliações" class="slide level1">
+<h1>Gerando questões para avaliações</h1>
+<ul>
+<li class="fragment">Banco de questões e categorias</li>
+<li class="fragment">Tipos de questões principais
+<ul>
+<li class="fragment">Dissertação</li>
+<li class="fragment">Múltipla escolha</li>
+<li class="fragment">Múltiplo verdadeiro falso</li>
+<li class="fragment">Calculado</li>
+<li class="fragment">Respostas embutidas (cloze)</li>
+</ul></li>
+</ul>
+</section>
+<section id="inserindo-questões-na-avaliação" class="slide level1">
+<h1>Inserindo questões na avaliação</h1>
+</section>
+<section id="correção-de-atividades" class="slide level1">
+<h1>Correção de atividades</h1>
+<ul>
+<li class="fragment">Questões dissertativas devem ser corrigidas manualmente</li>
+<li class="fragment">Todas as outras são corrigidas automaticamente
+<ul>
+<li class="fragment">Caso haja algum problema na correção, é possível mudar a questão e reavaliar todas as notas atribuídas</li>
+</ul></li>
+</ul>
+</section>
+<section id="extraindo-as-notas-do-ava" class="slide level1">
+<h1>Extraindo as notas do AVA</h1>
+<ul>
+<li class="fragment">O AVA permite exportar as notas para o Excel, numa lista idêntica à do SIG@.</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+
+    <style type="text/css">
+    /* 1. Style header/footer <div> so they are positioned as desired. */
+    #header-left {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+    }
+    #header-right {
+        position: absolute;
+        top: 0%;
+        right: 0%;
+    }
+    #footer-left {
+        position: absolute;
+        bottom: 0%;
+        left: 0%;
+    }
+</style>
+
+<!-- 2. Create hidden header/footer <div> -->
+<div id="hidden" style="display:none;">
+    <div id="header">
+        <div id="header-left">HEADER-LEFT</div>
+        <div id="header-right">HEADER-RIGHT</div>
+        <div id="footer-left">FOOTER-LEFT</div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+    var header = $('#header').html();
+    if ( window.location.search.match( /print-pdf/gi ) ) {
+        Reveal.addEventListener( 'ready', function( event ) {
+            $('.slide-background').append(header);
+        });
+    }
+    else {
+        $('div.reveal').append(header);
+   }
+</script>
+</html>
