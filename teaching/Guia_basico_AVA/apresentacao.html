@@ -45,7 +45,7 @@
 <ul>
 <li class="fragment">Proposta de um curso breve, focando nos aspectos principais</li>
 <li class="fragment">Como configurar um curso?</li>
-<li class="fragment">Como elaborar atividades valendo nota? (Exames Escolares)</li>
+<li class="fragment">Como elaborar atividades valendo nota? (Exercícios Escolares)</li>
 <li class="fragment">Que tipo de questões podemos utilizar? Como inserir na plataforma?</li>
 <li class="fragment">Como obter as notas do AVA e inserir no SIG@?</li>
 <li class="fragment"><strong>Série de vídeos disponibilizada para todos.</strong></li>
@@ -122,23 +122,36 @@
 </ul></li>
 </ul>
 </section>
-<section id="inserindo-questões-na-avaliação" class="slide level1">
-<h1>Inserindo questões na avaliação</h1>
-</section>
-<section id="correção-de-atividades" class="slide level1">
-<h1>Correção de atividades</h1>
+<section id="elaboração-de-atividades-e-correção" class="slide level1">
+<h1>Elaboração de atividades e correção</h1>
 <ul>
+<li class="fragment">Pode-se escolher 1 questão dentro de um conjunto</li>
 <li class="fragment">Questões dissertativas devem ser corrigidas manualmente</li>
 <li class="fragment">Todas as outras são corrigidas automaticamente
 <ul>
 <li class="fragment">Caso haja algum problema na correção, é possível mudar a questão e reavaliar todas as notas atribuídas</li>
 </ul></li>
+<li class="fragment">Há a possibilidade de correção de expressões algébricas
+<ul>
+<li class="fragment">Precisa ser solicitado ao pessoal técnico por ao menos 1 docente</li>
+</ul></li>
 </ul>
 </section>
-<section id="extraindo-as-notas-do-ava" class="slide level1">
-<h1>Extraindo as notas do AVA</h1>
+<section id="obtendo-as-notas-do-ava" class="slide level1">
+<h1>Obtendo as notas do AVA</h1>
 <ul>
 <li class="fragment">O AVA permite exportar as notas para o Excel, numa lista idêntica à do SIG@.</li>
+<li class="fragment">As notas podem ser separadas por turma (<strong>grupos</strong>)</li>
+</ul>
+</section>
+<section id="sumário" class="slide level1">
+<h1>Sumário</h1>
+<ul>
+<li class="fragment">A configuração básica pode ser bastante simples e incrementada ao longo do tempo</li>
+<li class="fragment">Atividades são elaboradas em 2 etapas: planejamento e conteúdo</li>
+<li class="fragment">Há uma grande flexibilidade na elaboração de questões</li>
+<li class="fragment">Notas podem ser exportadas para uma planilha Excel, compatível com o SIG@</li>
+<li class="fragment"><strong>Dúvidas e questionamentos?</strong></li>
 </ul>
 </section>
     </div>
@@ -184,47 +197,46 @@
         ]
       });
     </script>
-    </body>
-
     <style type="text/css">
-    /* 1. Style header/footer <div> so they are positioned as desired. */
-    #header-left {
-        position: absolute;
-        top: 0%;
-        left: 0%;
-    }
-    #header-right {
-        position: absolute;
-        top: 0%;
-        right: 0%;
-    }
-    #footer-left {
-        position: absolute;
-        bottom: 0%;
-        left: 0%;
-    }
-</style>
-
-<!-- 2. Create hidden header/footer <div> -->
-<div id="hidden" style="display:none;">
-    <div id="header">
-        <div id="header-left">HEADER-LEFT</div>
-        <div id="header-right">HEADER-RIGHT</div>
-        <div id="footer-left">FOOTER-LEFT</div>
-    </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript">
-    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
-    var header = $('#header').html();
-    if ( window.location.search.match( /print-pdf/gi ) ) {
-        Reveal.addEventListener( 'ready', function( event ) {
-            $('.slide-background').append(header);
-        });
-    }
-    else {
-        $('div.reveal').append(header);
-   }
-</script>
+  /* 1. Style header/footer <div> so they are positioned as desired. */
+  #header-left {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+  }
+  #header-right {
+      position: absolute;
+      top: 0%;
+      right: 0%;
+  }
+  #footer-left {
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+  }
+  </style>
+  
+  <!-- 2. Create hidden header/footer <div> -->
+  <div id="hidden" style="display:none;">
+  <div id="header">
+      <div id="header-left"></div>
+      <div id="header-right"></div>
+      <div id="footer-left">Guia detalhado disponível em: <a href="http://amamaral.github.io/teaching/Guia_basico_AVA">amamaral.github.io/teaching/Guia_basico_AVA</a></div>
+  </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript">
+  // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+  var header = $('#header').html();
+  if ( window.location.search.match( /print-pdf/gi ) ) {
+      Reveal.addEventListener( 'ready', function( event ) {
+          $('.slide-background').append(header);
+      });
+  }
+  else {
+      $('div.reveal').append(header);
+  }
+  </script>
+    </body>
 </html>
