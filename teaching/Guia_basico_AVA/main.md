@@ -13,7 +13,7 @@ Vídeos gravados com o [OBS studio](https://obsproject.com/pt-br/download) (soft
 ## Conteúdo
 
 1. [Introdução geral e visão geral do AVA de um curso pronto](https://www.dropbox.com/s/ydstto11nx9msyb/Parte%201%20-%20Introducao%20geral%20e%20Visao%20geral%20de%20um%20curso%20pronto%20%28Fisica%20Geral%201%29.mp4?dl=0)
-2. [Configurações gerais](https://www.dropbox.com/s/ydstto11nx9msyb/Parte%201%20-%20Introducao%20geral%20e%20Visao%20geral%20de%20um%20curso%20pronto%20%28Fisica%20Geral%201%29.mp4?dl=0)
+2. [Configurações gerais](https://www.dropbox.com/s/47afl7dgikw3k00/Parte%202%20-%20Configuracoes%20gerais.mp4?dl=0) (link corrigido)
 3. [Categorias e tipos de questões](https://www.dropbox.com/s/t44kh7e7ypwvgk7/Parte%203%20-%20Categorias%20e%20tipos%20de%20quest%C3%B5es.mp4?dl=0)
     1. [Questão tipo dissertação](https://www.dropbox.com/s/tsp4o9oz0g2ue30/Parte%203.1%20-%20Questao%20tipo%20dissertacao.mp4?dl=0)
     2. [Questão tipo múltipla escolha](https://www.dropbox.com/s/f3y9ktdko8g7cj3/Parte%203.2%20-%20Multipla%20escolha.mp4?dl=0)
