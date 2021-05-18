@@ -174,42 +174,42 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
                 <hr>
                 <p>Ativar/desativar resistores por meio das saídas digitais, alterando o estado de impedância + o estado da saída. Seria equivalente a uma escada R-2R, porém que pode ser usada para também para controlar o ganho de amplificadores externos, e outros ajustes. Lembra também o uso do pino digital no exemplo de carga/descarga do capacitor.</p>
 <p>Ideia extremamente útil para produzir um conversor de sinal PWM -&gt; onda triangular -&gt; onda quase-senoidal, visto que será necessário ajustar o integrador e/ou a amplitude da onda na saída.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># The code below states the available PWM frequencies given</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># a set of pre-scalers</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="op">%</span>pylab inline</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">OCRA <span class="op">=</span> arange(<span class="dv">0</span>, <span class="dv">256</span>)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">prescaler_values <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">64</span>, <span class="dv">256</span>, <span class="dv">1024</span>]</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">clock <span class="op">=</span> <span class="fl">16E6</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">ftot <span class="op">=</span> []</a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="cf">for</span> p <span class="kw">in</span> prescaler_values:</a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">  freqs <span class="op">=</span> clock<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>OCRA))</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">  ftot.append(freqs.data)</a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">  semilogy(OCRA, freqs, <span class="st">&#39;.&#39;</span>, label<span class="op">=</span>p)</a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14">xlabel(<span class="st">&#39;OCRA&#39;</span>)</a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">ylabel(<span class="st">&#39;PWM frequency&#39;</span>)</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16">legend()</a>
-<a class="sourceLine" id="cb1-17" data-line-number="17">grid()</a>
-<a class="sourceLine" id="cb1-18" data-line-number="18">tight_layout()</a>
-<a class="sourceLine" id="cb1-19" data-line-number="19">savefig(<span class="vs">r&#39;assets\arduino_digipot_available_frequencies.svg&#39;</span>)</a>
-<a class="sourceLine" id="cb1-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb1-21" data-line-number="21">ftot <span class="op">=</span> asarray(ftot).ravel()</a>
-<a class="sourceLine" id="cb1-22" data-line-number="22">log_bins <span class="op">=</span> logspace(<span class="dv">1</span>,<span class="dv">7</span>,(<span class="dv">7-1</span>)<span class="op">*</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb1-23" data-line-number="23">plt.hist(ftot, bins<span class="op">=</span>log_bins)<span class="op">;</span></a>
-<a class="sourceLine" id="cb1-24" data-line-number="24">plt.xscale(<span class="st">&#39;log&#39;</span>)</a>
-<a class="sourceLine" id="cb1-25" data-line-number="25">plt.xlabel(<span class="st">&#39;Frequency&#39;</span>)</a>
-<a class="sourceLine" id="cb1-26" data-line-number="26">plt.ylabel(<span class="st">&#39;Available frequency setpoints&#39;</span>)</a>
-<a class="sourceLine" id="cb1-27" data-line-number="27">plt.grid()</a>
-<a class="sourceLine" id="cb1-28" data-line-number="28">savefig(<span class="vs">r&#39;assets\arduino_digipot_available_frequencies_hist.svg&#39;</span>)</a>
-<a class="sourceLine" id="cb1-29" data-line-number="29"><span class="co">#plt.hlines(5, log_bins.min(), log_bins.max(), linestyle=&#39;dashed&#39;)</span></a>
-<a class="sourceLine" id="cb1-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb1-31" data-line-number="31">p<span class="op">=</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1-32" data-line-number="32">LO_freq <span class="op">=</span> clock<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>OCRA[<span class="op">-</span><span class="dv">1</span>]))</a>
-<a class="sourceLine" id="cb1-33" data-line-number="33"><span class="bu">print</span>(LO_freq)</a>
-<a class="sourceLine" id="cb1-34" data-line-number="34">delta_f <span class="op">=</span> clock<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>OCRA))<span class="op">-</span>LO_freq</a>
-<a class="sourceLine" id="cb1-35" data-line-number="35">semilogy(OCRA, <span class="bu">abs</span>(delta_f), <span class="st">&#39;.&#39;</span>)</a>
-<a class="sourceLine" id="cb1-36" data-line-number="36">hlines(LO_freq, OCRA[<span class="dv">0</span>],OCRA[<span class="op">-</span><span class="dv">1</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># The code below states the available PWM frequencies given</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># a set of pre-scalers</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="op">%</span>pylab inline</span>
+<span id="cb1-4"><a href="#cb1-4"></a>OCRA <span class="op">=</span> arange(<span class="dv">0</span>, <span class="dv">256</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>prescaler_values <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">64</span>, <span class="dv">256</span>, <span class="dv">1024</span>]</span>
+<span id="cb1-6"><a href="#cb1-6"></a>clock <span class="op">=</span> <span class="fl">16E6</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a>ftot <span class="op">=</span> []</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="cf">for</span> p <span class="kw">in</span> prescaler_values:</span>
+<span id="cb1-10"><a href="#cb1-10"></a>  freqs <span class="op">=</span> clock<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>OCRA))</span>
+<span id="cb1-11"><a href="#cb1-11"></a>  ftot.append(freqs.data)</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  semilogy(OCRA, freqs, <span class="st">&#39;.&#39;</span>, label<span class="op">=</span>p)</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>xlabel(<span class="st">&#39;OCRA&#39;</span>)</span>
+<span id="cb1-15"><a href="#cb1-15"></a>ylabel(<span class="st">&#39;PWM frequency&#39;</span>)</span>
+<span id="cb1-16"><a href="#cb1-16"></a>legend()</span>
+<span id="cb1-17"><a href="#cb1-17"></a>grid()</span>
+<span id="cb1-18"><a href="#cb1-18"></a>tight_layout()</span>
+<span id="cb1-19"><a href="#cb1-19"></a>savefig(<span class="vs">r&#39;assets\arduino_digipot_available_frequencies.svg&#39;</span>)</span>
+<span id="cb1-20"><a href="#cb1-20"></a></span>
+<span id="cb1-21"><a href="#cb1-21"></a>ftot <span class="op">=</span> asarray(ftot).ravel()</span>
+<span id="cb1-22"><a href="#cb1-22"></a>log_bins <span class="op">=</span> logspace(<span class="dv">1</span>,<span class="dv">7</span>,(<span class="dv">7-1</span>)<span class="op">*</span><span class="dv">10</span>)</span>
+<span id="cb1-23"><a href="#cb1-23"></a>plt.hist(ftot, bins<span class="op">=</span>log_bins)<span class="op">;</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>plt.xscale(<span class="st">&#39;log&#39;</span>)</span>
+<span id="cb1-25"><a href="#cb1-25"></a>plt.xlabel(<span class="st">&#39;Frequency&#39;</span>)</span>
+<span id="cb1-26"><a href="#cb1-26"></a>plt.ylabel(<span class="st">&#39;Available frequency setpoints&#39;</span>)</span>
+<span id="cb1-27"><a href="#cb1-27"></a>plt.grid()</span>
+<span id="cb1-28"><a href="#cb1-28"></a>savefig(<span class="vs">r&#39;assets\arduino_digipot_available_frequencies_hist.svg&#39;</span>)</span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co">#plt.hlines(5, log_bins.min(), log_bins.max(), linestyle=&#39;dashed&#39;)</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a>p<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>LO_freq <span class="op">=</span> clock<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>OCRA[<span class="op">-</span><span class="dv">1</span>]))</span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="bu">print</span>(LO_freq)</span>
+<span id="cb1-34"><a href="#cb1-34"></a>delta_f <span class="op">=</span> clock<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>OCRA))<span class="op">-</span>LO_freq</span>
+<span id="cb1-35"><a href="#cb1-35"></a>semilogy(OCRA, <span class="bu">abs</span>(delta_f), <span class="st">&#39;.&#39;</span>)</span>
+<span id="cb1-36"><a href="#cb1-36"></a>hlines(LO_freq, OCRA[<span class="dv">0</span>],OCRA[<span class="op">-</span><span class="dv">1</span>])</span></code></pre></div>
 
             </div>
 
@@ -241,7 +241,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    Copyright © 2016-2019 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                    Copyright © 2016-2021 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
                 </div>
             </div>
         </footer>

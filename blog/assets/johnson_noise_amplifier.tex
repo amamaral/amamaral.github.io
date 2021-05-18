@@ -1,0 +1,42 @@
+\documentclass[crop, convert={outext=.svg,command=\unexpanded{pdf2svg \infile\space\outfile}}]{standalone}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{10pt}
+
+\usepackage{siunitx}
+\usepackage[american]{circuitikz}
+\usepackage{amsmath}
+\begin{document}
+\begin{tikzpicture}
+\draw
+    (0,0) node[op amp, yscale=-1](o1){}
+    (o1.+) to ++(-2,0) to [R, a=$R_{test}$] ++(0,-2) node[ground]{}
+    (o1.out) to[R, l=100k,*-*] ++(0,-2) node(o1f_common){}
+    (o1.-) to ++(-0.25,0) to ++(0,-1.5) to[short] (o1f_common)
+    (o1f_common) to[R,l=11k] ++(0,-2) to[C,l=220nF] ++(0,-2) node[ground]{}
+
+    (o1.out) to[open] ++(2,0) node[op amp, yscale=-1, anchor = west](o2){}
+    (o2.+) to[short] ++(-2,0) to[short] ++(0,-0.5)
+    (o2.out) to[R, l=100k,*-*] ++(0,-2) node(o2f_common){}
+    (o2.-) to ++(-0.25,0) to ++(0,-1.5) to[short] (o2f_common)
+    (o2f_common) to[R,l=11k] ++(0,-2) to[C,l=220nF] ++(0,-2) node[ground]{}
+
+    (o2.out) to[open] ++(2,0) node[op amp, yscale=-1, anchor = west](o3){}
+    (o3.+) to[short] ++(-2,0) to[short] ++(0,-0.5)
+    (o3.out) to[R, l=100k,*-*] ++(0,-2) node(o3f_common){}
+    (o3.-) to ++(-0.25,0) to ++(0,-1.5) to[short] (o3f_common)
+    (o3f_common) to[R,l=11k] ++(0,-2) to[C,l=220nF] ++(0,-2) node[ground]{}
+
+    (o3.out) to[open] ++(2,0) node[op amp, yscale=-1, anchor = west](o4){}
+    (o4.+) to[short] ++(-2,0) to[short] ++(0,-0.5)
+    (o4.out) to[R, l=100k,*-*] ++(0,-2) node(o4f_common){}
+    (o4.-) to ++(-0.25,0) to ++(0,-1.5) to[short] (o4f_common)
+    (o4f_common) to[R,l=11k] ++(0,-2) to[C,l=220nF] ++(0,-2) node[ground]{}
+
+    (o4.out) to[short] ++(0,0.5) to[short,-*] ++(1,0) node[label=right:out]{}
+
+;
+\end{tikzpicture}
+\end{document}

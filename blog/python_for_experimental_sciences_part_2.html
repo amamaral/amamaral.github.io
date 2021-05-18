@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Python for experimental sciences - part II </title>
+    <title> Python for experimental sciences - chapter II </title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -158,7 +158,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
                 <ol class="breadcrumb">
                     <li><a href="/index.html">Home</a></li>
                     <li><a href="/blog.html">Blog</a></li>
-                    <li>Python for experimental sciences - part II</li>
+                    <li>Python for experimental sciences - chapter II</li>
                 </ol>
             </div>
 
@@ -169,45 +169,1262 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <div class="col-lg-8">
 
                 <!-- the actual blog post: title/author/date/content -->
-                <h2 class="page-header"> Python for experimental sciences - part II </h2><i class="fa fa-clock-o"></i> Posted on 15/05/2018
+                <h2 class="page-header"> Python for experimental sciences - chapter II </h2><i class="fa fa-clock-o"></i> Posted on 10/04/2021
                 
                 <hr>
-                <h1 id="data-reading-and-analysis">Data reading and analysis</h1>
-<h2 id="storing-data-in-lists-and-arrays">Storing data in lists and arrays</h2>
-<p>As seen in the <a href="python_for_experimental_sciences_part_1.html">part I</a>, we may store ordered data in a list or a numpy array. Here we will discuss a bit more on how to manipulate this data. Let’s create an artificial dataset due to a function <span class="math inline">\(y=\sqrt{x+1}\)</span>. The array <code>y</code> contains the exact function, while <code>ydata</code> simulates experimental data, by adding a noise contribution. Measurements always have some noise, which we will add artificially with the <code>randn</code> function. Noise typically follows a <a href="https://en.wikipedia.org/wiki/Normal_distribution">Gaussian distribution</a>, and <code>randn</code> produces such distribution with mean <code>0</code> and width <code>1</code>. To adjust the noise amplitude we multiply <code>randn</code> by <code>0.1</code>. If <code>randn</code> is called without arguments, it returns a single random number. We want to add an artificial noise to each <code>x</code> value, we have to inform <code>randn</code> how many normally distributed random numbers it must generate. This can be achieved with the help of <code>len(x)</code>, which indicates how many entries there are in the <code>x</code> array. <strong>It is a good practice to not use static numbers (as the <code>num=10</code> argument given in <code>linspace</code>) directly</strong>, but some dynamic approach as using <code>len(x)</code> or <code>x.shape[0]</code> (which also indicates how many elements there are along the array’s first dimension). <strong>The program will result in an error with a static approach whenever the length of the dataset changes</strong> (ex.: we have instead that <code>x = linspace(0, 6, 20)</code>). Try to change <code>len(x)==10</code> in the code below to <code>10</code> or a different number to see the error message. To represent experimental data in a plot we often represent each measurement with a point, and the <code>ydata</code> plot format string <code>'k.'</code> indicates that this dataset should be represented by black (<code>k</code>) points (<code>.</code>).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="op">%</span>pylab inline</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">x <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">y <span class="op">=</span> sqrt(x<span class="op">+</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">ydata <span class="op">=</span> sqrt(x<span class="op">+</span><span class="dv">1</span>) <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> randn(<span class="bu">len</span>(x))</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">plot(x, y)</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">plot(x, ydata, <span class="st">&#39;k.&#39;</span>)</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">savefig(<span class="vs">r&#39;assets\pes_artificial_dataset.png&#39;</span>)</a></code></pre></div>
-<p><img class="img-responsive" src="assets\pes_artificial_dataset.png" /></p>
-<h2 id="iterables-and-loops">Iterables and loops</h2>
-<p>Now that the good practice on calculating functions with python arrays has been established, we can talk about some bad python practices<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> to calculate function values. While for pure function evaluation these techniques are bad in python, they increase the flexibility and can be useful to perform more general operations during the calculation.</p>
-<h3 id="lists-and-tuples">Lists and tuples</h3>
-<h3 id="numpy-arrays">Numpy arrays</h3>
-<h3 id="dicts-and-ordered-dicts">Dicts and ordered dicts</h3>
-<h2 id="reading-experimental-data-from-files">Reading experimental data from files</h2>
-<h3 id="csvdattxt-files">CSV/dat/txt files</h3>
+                <h1 id="data-analysis-and-reports">Data analysis and reports</h1>
+<p>The previous chapter gave an overview of Python and Numpy, which allowed us to learn the language, manipulate data, evaluate and plot functions. In this chapter we will see how to represent data tables in Python, how to save and load data from files and also how to fit the data to theoretical models. Besides Numpy (numeric manipulation) and Matplotlib (plots), we will use other Python libraries as Pandas (tables) and Scipy (data fitting). Later on it will be shown how to use Jupyter notebook to write reports. There is a short description on how to use the Markdown syntax to compose a document and an later there is an overview of  syntax to write mathematical expressions.</p>
+<h2 id="data-tables-in-pandas">Data tables in Pandas</h2>
+<p>Suppose that the position and velocity of a particle are measured as a function of time. The measured data is represented below and we want to represent this table in Python.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">time</th>
+<th style="text-align: center;">position</th>
+<th style="text-align: center;">velocity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">10</td>
+</tr>
+</tbody>
+</table>
+<p>The first column indicates the corresponding line number of the table. Python starts counting from 0 by default.This data can be represented using the code below. Explaining line by line, first we ensure that the <code>%pylab inline</code> magic is called. We also import the Pandas library to handle tables. Pandas is imported with the nickname <code>pd</code> to simplify some expressions that will be used later. The table data itself is stored in what Pandas calls a DataFrame which we will call <code>df</code>. After a clean dataframe <code>df</code> is created, we may generate it’s columns with the definition of a column label and the data directly. The data itself in our case is a Python list, which as previously stated is an ordered set of values between <code>[]</code> and separated by commas <code>,</code>. The spaces are optional and can be used to make easier to see the data being written, but remember that the decimal separator is always a period <code>.</code>. Also, the first element in each column list correspond to the first table line (first measurement). For example, the third measurement (third line) corresponds to the time <code>3</code>, position <code>9</code> and velocity <code>6</code>. After setting the table contents, we may show the dataframe contents as a table using <code>df</code> in the last line.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>pylab inline</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb1-5"><a href="#cb1-5"></a>df[<span class="st">&#39;time&#39;</span>]     <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,  <span class="dv">4</span>,  <span class="dv">5</span>]</span>
+<span id="cb1-6"><a href="#cb1-6"></a>df[<span class="st">&#39;position&#39;</span>] <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>]</span>
+<span id="cb1-7"><a href="#cb1-7"></a>df[<span class="st">&#39;velocity&#39;</span>] <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>,  <span class="dv">8</span>, <span class="dv">10</span>]</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>df</span></code></pre></div>
+<p>If we want to plot the position as a function of time, it is possible to use simply the code below. <code>df.plot</code> uses the column labels to identify the data points horizontal and vertical coordinates. It is often a good practice to represent experimental data as a <code>scatter</code> plot, where each measurement is represented by an isolated point. Also, while <code>df.plot</code> accepts several specific arguments (see the documentation pressing <code>SHIFT+TAB</code> keys or the <a href="https://pandas.pydata.org/pandas-docs/version/0.14.0/generated/pandas.DataFrame.plot.html">documentation</a>), the matplotlib commands to adjust plot properties as the title and label axis described in the last chapter still can be used. <strong>Always remember to place adequate axis labels (containing the relevant units) and an explanatory title.</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df.plot(<span class="st">&#39;time&#39;</span>, <span class="st">&#39;position&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>title(<span class="st">&#39;Position vs time&#39;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>xlabel(<span class="st">&#39;Time (s)&#39;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>ylabel(<span class="st">&#39;Position (m)&#39;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>savefig(<span class="vs">r&#39;assets\pes_pos_scatter_plot.png&#39;</span>)</span></code></pre></div>
+<p><img class="img-responsive" src="assets\pes_pos_scatter_plot.png" /></p>
+<p>It is quite simple to perform calculations over <code>DataFrame</code> columns. Whenever we call a column as <code>df['time']</code>, we may consider that we are performing mathematical operation simultaneously over each element. For example, to create a new column containing <span class="math inline">\(\sqrt{t} + 1\)</span> we can use simply that</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df[<span class="st">&#39;sqrt(t) + 1&#39;</span>] <span class="op">=</span> sqrt(df[<span class="st">&#39;time&#39;</span>]) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>df</span></code></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">time</th>
+<th style="text-align: center;">position</th>
+<th style="text-align: center;">velocity</th>
+<th style="text-align: center;">sqrt(t) + 1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2.414214</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">2.732051</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">3.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">3.236068</td>
+</tr>
+</tbody>
+</table>
+<p>The operations performed with <code>df['column']</code> are performed for each element in the column, such we can use a single line to calculate over several numbers. If we want to select a given line, we may use <code>df.iloc[i]</code>, where <code>i</code> is the corresponding line number. Also notice that we can add columns whenever we want. If there is some <code>column</code> that we want to remove completely we may apply the instruction line <code>del df['column']</code>. Raising the column to a power of 0.5, as in <code>df['time']**0.5</code>, is an alternative to use <code>sqrt</code>. Also, the basic operations (<code>+-*/</code>) are supported. The <code>%pylab inline</code> magic also allows us to use several mathematical functions as <code>sin, cos, tan</code>, their inverses, <code>arcsin, arccos, arctan</code>, exponentials and natural logarithms as <code>exp, log</code>. For example, we can use the code below to evaluate <span class="math inline">\(\sin x\)</span> at 10 equally spaced points along <code>x</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df <span class="op">=</span> pd.DataFrame() <span class="co"># Clears df</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># x contains 101 equally spaced values from 0 to 15</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>df[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">101</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>df[<span class="st">&#39;sin x&#39;</span>] <span class="op">=</span> sin(df[<span class="st">&#39;x&#39;</span>])</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a>df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;sin x&#39;</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>savefig(<span class="vs">r&#39;assets\pes_sine_plot.png&#39;</span>)</span></code></pre></div>
+<p><img class="img-responsive" src="assets\pes_sine_plot.png" /></p>
+<p>The graphical representation (and the dataframe itself) can be used to find (or approximate) roots of transcendental equations. For instance, suppose that we want to find the solutions of <span class="math inline">\(A x = \sin x\)</span>. The previous problem can be expressed as finding the zeros of <span class="math inline">\(\sin x - A x\)</span>. Suppose that we want to evaluate the solutions for both <span class="math inline">\(A=0.2\)</span>, we may use Pandas to evaluate that</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df[<span class="st">&#39;A=0.2&#39;</span>] <span class="op">=</span> sin(df[<span class="st">&#39;x&#39;</span>]) <span class="op">-</span> <span class="fl">0.2</span> <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]</span>
+<span id="cb5-2"><a href="#cb5-2"></a>df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;A=0.2&#39;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>savefig(<span class="vs">r&#39;assets\pes_transcendental_sol_plot.png&#39;</span>)</span></code></pre></div>
+<p><img class="img-responsive" src="assets\pes_transcendental_sol_plot.png" /></p>
+<p>We can see that there is a trivial solution at <code>x=0</code> but there also should be a solution around <code>x=2</code>, where the function becomes zero again. How to find the best value? We can directly look out for the values in <code>df['A=0.2']</code>, but there are just too many values. A simpler way however is to ask Pandas to filter the <code>DataFrame</code> and consider only values which are sufficiently close to 0. This way we have to look only in a smaller subset of the data. The condition <code>abs(df['A=0.2']) &lt; 0.1</code> asks Pandas to filter the table rows where the <code>abs</code>olute value of <code>df['A=0.2']</code> is smaller than <code>0.1</code>, and shows only these values.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df[<span class="bu">abs</span>(df[<span class="st">&#39;A=0.2&#39;</span>]) <span class="op">&lt;</span> <span class="fl">0.1</span>]</span></code></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">x</th>
+<th style="text-align: center;">sin x</th>
+<th style="text-align: center;">A=0.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">0.000000</td>
+<td style="text-align: center;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">2.55</td>
+<td style="text-align: center;">0.557684</td>
+<td style="text-align: center;">0.047684</td>
+</tr>
+</tbody>
+</table>
+<p>The table above implies that <span class="math inline">\(x=2.55\)</span> has <span class="math inline">\(\sin x - 0.2 x = 0.05\)</span> which, although not being an exact solution, is a reasonable approximation. The quality of the approximation improves if the spacing between <code>x</code> values becomes smaller, which can be achieved by reducing the range of <code>x</code> values or increasing the number of points. There are more accurate methods to find roots which will be discussed later.</p>
+<p>Let’s now consider a new <code>DataFrame</code> where we will see some plotting capabilities. We will create a column <code>x</code> which contains numbers from 1 to 10 using a Numpy’s <code>arange</code> and then create some powers of <code>x</code> as</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df <span class="op">=</span> pd.DataFrame() <span class="co"># Clears df</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a>df[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> arange(<span class="dv">1</span>, <span class="dv">11</span>) <span class="co">#Array of integers from 1 to 10=11-1</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>df[<span class="st">&#39;x**2&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>df[<span class="st">&#39;x**3&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>df[<span class="st">&#39;x**0.5&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="fl">0.5</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8"></a>df</span></code></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">x</th>
+<th style="text-align: center;">x**2</th>
+<th style="text-align: center;">x**3</th>
+<th style="text-align: center;">x**0.5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1.414214</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">1.732051</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">2.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">125</td>
+<td style="text-align: center;">2.236068</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">216</td>
+<td style="text-align: center;">2.449490</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">343</td>
+<td style="text-align: center;">2.645751</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">512</td>
+<td style="text-align: center;">2.828427</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">81</td>
+<td style="text-align: center;">729</td>
+<td style="text-align: center;">3.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">1000</td>
+<td style="text-align: center;">3.162278</td>
+</tr>
+</tbody>
+</table>
+<p>Now we want to plot the columns involving <span class="math inline">\(x^2\)</span> and <span class="math inline">\(\sqrt{x}\)</span> in the same plot. We can use the following instructions.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**2&#39;</span>  , color<span class="op">=</span><span class="st">&#39;red&#39;</span> , kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>ax2 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**0.5&#39;</span>, color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
+<span id="cb8-3"><a href="#cb8-3"></a>              ax<span class="op">=</span>ax1)</span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a>savefig(<span class="vs">r&#39;assets\multiple_scatter_plot.png&#39;</span>)</span></code></pre></div>
+<p><img class="img-responsive" src="assets\multiple_scatter_plot.png" /></p>
+<p>In the above plot we have set the colors for each scatter plot. <a href="https://matplotlib.org/stable/gallery/color/named_colors.html">several named colors are available</a>, with common names in English being available. To ensure that they are in the same figure it is necessary to be explicit by defining that both share their plot axes through <code>ax=ax1</code>. If this instruction is removed, we will obtain two separate plots.</p>
+<p>Notice that in the previous combined plot it is not possible to see how <span class="math inline">\(\sqrt{x}\)</span> varies. When the data varies by orders of magnitude it is often interesting to use logarithmic scales. Below we repeat the previous plot, but now ensuring that both axes are logarithmic by setting <code>logx=True</code> and <code>logy=True</code>. Notice that the log scaling in each axis is set separately.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**2&#39;</span>  , color<span class="op">=</span><span class="st">&#39;red&#39;</span> , kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
+<span id="cb9-2"><a href="#cb9-2"></a>              logx<span class="op">=</span><span class="va">True</span>, logy<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>ax2 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**0.5&#39;</span>, color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
+<span id="cb9-4"><a href="#cb9-4"></a>              ax<span class="op">=</span>ax1)</span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a>savefig(<span class="vs">r&#39;assets\multiple_scatter_plot_logxy.png&#39;</span>)</span></code></pre></div>
+<p><img class="img-responsive" src="assets\multiple_scatter_plot_logxy.png" /></p>
+<p>Whenever we see a linear curve with logarithmic axes the data must be described by a curve like <span class="math inline">\(y = a x^n\)</span>, since the relation between <span class="math inline">\(\log x\)</span> and <span class="math inline">\(\log y\)</span> in <span class="math inline">\(\log y = \log a + n \log x\)</span> is equivalent to that of a straight line with intercept at <span class="math inline">\(\log a\)</span> and slope <span class="math inline">\(n\)</span>. Suppose that we want to find a model that closely describes our data. The straight line in the log-log plot indicates the general relation, <span class="math inline">\(y=ax^n\)</span>, but we still have to determine the values of <span class="math inline">\(a\)</span> and <span class="math inline">\(n\)</span>. We will perform this in the next section</p>
+<h2 id="data-fitting">Data fitting</h2>
+<p>To fit experimental data to a proposed model, we will use another library. Scipy provides several numerical methods useful in scientific computing. In particular, <a href="https://docs.scipy.org/doc/scipy/reference/optimize.html">it has several optimization methods</a> to minimize, find roots and curve fitting. To add such capabilities to our program, we have to import Scipy’s <code>optimize</code> in our program as follows.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">%</span>pylab inline</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="im">from</span> scipy <span class="im">import</span> optimize</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a>df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a>df[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> arange(<span class="dv">1</span>, <span class="dv">11</span>) <span class="co">#Array of integers from 1 to 10=11-1</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>df[<span class="st">&#39;x**2&#39;</span>] <span class="op">=</span> <span class="fl">0.3</span> <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>df[<span class="st">&#39;x**3&#39;</span>] <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>df[<span class="st">&#39;x**0.5&#39;</span>] <span class="op">=</span> pi <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="fl">0.5</span></span></code></pre></div>
+<p>The data generated above behaves as a power law, <span class="math inline">\(y= A x^n\)</span>. To use Scipy’s <code>curve_fit</code>, we have to define a power law function as is given below. Notice that both the independent variable <code>x</code> and the parameters <code>A</code> and <code>n</code> are given as function input parameters, and the function returns the value associated with <code>A * x **n</code>. It’s remarked that <code>curve_fit</code> requires that the parameters to be fit (<code>A</code>, <code>n</code>) must be given after the independent variable <code>x</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> power_law(x, A, n):</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="cf">return</span> A <span class="op">*</span> x <span class="op">**</span> n</span></code></pre></div>
+<p>Now we can fit the data present in the dataframe <code>df</code>. <code>optimize</code> gives two outputs. The first, <code>popt</code>, gives the optimal parameter values. <code>popt[0]</code> gives the best estimate for the first parameter of <code>power_law</code> (<code>A</code>), while <code>popt[1]</code> is associated with the value of <code>n</code>. <code>pcov</code> gives the covariance matrix between the fitting parameters, and is particularly relevant when the parameters are correlated. The error associated with the statistical uncertainty of the data can be obtained from <code>pcov</code> by taking the square root of its diagonal. As given below, <code>error[0]</code> is related to the uncertainty in <code>A</code> while <code>error[1]</code> corresponds to <code>n</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(power_law, df[<span class="st">&#39;x&#39;</span>], df[<span class="st">&#39;x**0.5&#39;</span>])</span>
+<span id="cb12-2"><a href="#cb12-2"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
+<span id="cb12-3"><a href="#cb12-3"></a>popt, error</span></code></pre></div>
+<pre><code>(array([3.14159265 0.5       ]), array([3.05923019e-16 5.08058315e-17]))</code></pre>
+<p>From the example above is it possible to state that <span class="math inline">\(A = 3.14159265 \pm 3.05923019 \cdot 10 ^ {-16}\)</span> and <span class="math inline">\(n = 0.5 \pm 5.08058315\cdot 10^{-17}\)</span>? These small uncertainty levels are limited to the machine accuracy, such they are meaningless in the real world. Statistical errors are often reported with at most 1 or 2 significant digits. Do not report all of the numbers shown from the fitting procedure above when considering real world data. You must round the uncertainty to 1 or 2 significant digits and then see how many significant digits there are in your mean value. Round the reported mean values from the adjusted error. For example, the uncertainty in <code>A</code> should be rounded to <span class="math inline">\(3 \cdot 10 ^ {-16}\)</span>, which indicates that we could report the value of <span class="math inline">\(A\)</span> up to <span class="math inline">\(10 ^ {-16}\)</span>. Since the mean value for <code>A</code> shows only the significant digits up to <span class="math inline">\(10^{-8}\)</span>, we can state that <span class="math inline">\(A=3.14159265\)</span> with no significant uncertainty. Application of the same reasoning to <span class="math inline">\(n\)</span> implies that <span class="math inline">\(n=0.5\)</span>. Therefore, the data set above corresponds to <span class="math inline">\(y = 3.14159265 x^{0.5}\)</span>, as it should be. Change the code above to fit the other columns, <code>x**2</code> and <code>x**3</code> and see that you obtain the correct values for <span class="math inline">\(A\)</span> and <span class="math inline">\(n\)</span>.</p>
+<p>We may represent the original data and the fitted curve in the same plot to visually inspect the quality of the fitting procedure and the model suitability. The procedure is similar to the one showed in the end of the previous section, but here we will create another <code>DataFrame</code> to show the proposed model at a higher resolution than the original data. Also notice that we added an option to remove the plot legend of <code>df2</code>, which is on by default.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co"># x contains 101 equally spaced points from 1 to 10</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">101</span>)</span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># Remember that popt[0] corresponds to A and popt[1] to n</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> power_law(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**0.5&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
+<span id="cb14-9"><a href="#cb14-9"></a>              logx<span class="op">=</span><span class="va">True</span>, logy<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-10"><a href="#cb14-10"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb14-11"><a href="#cb14-11"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_data.png&#39;</span>)</span></code></pre></div>
+<p><img class="img-responsive" src="assets\scatter_plot_fitting_data.png" /></p>
+<p>Let’s now work on a more challenging fit. Consider the hypothetical data set below associated with the measurements of the signal normalized amplitude versus frequency (in rad/s) for a resonating circuit. The table is transposed (<code>df.T</code>) for a better visualization.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb15-2"><a href="#cb15-2"></a>df[<span class="st">&#39;Frequency&#39;</span>] <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">500</span>, <span class="dv">600</span>, <span class="dv">700</span>, <span class="dv">800</span>, <span class="dv">900</span>, <span class="dv">1000</span>]</span>
+<span id="cb15-3"><a href="#cb15-3"></a>df[<span class="st">&#39;Amplitude&#39;</span>] <span class="op">=</span> [<span class="fl">0.11</span>, <span class="fl">0.32</span>, <span class="fl">0.96</span>, <span class="fl">0.54</span>, <span class="fl">0.31</span>, <span class="fl">0.22</span>, <span class="fl">0.18</span>, <span class="fl">0.15</span>, <span class="fl">0.12</span>, <span class="fl">0.11</span>]</span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a>df.T</span></code></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+<th style="text-align: center;">9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Frequency</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">300</td>
+<td style="text-align: center;">400</td>
+<td style="text-align: center;">500</td>
+<td style="text-align: center;">600</td>
+<td style="text-align: center;">700</td>
+<td style="text-align: center;">800</td>
+<td style="text-align: center;">900</td>
+<td style="text-align: center;">1000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Amplitude</td>
+<td style="text-align: center;">0.11</td>
+<td style="text-align: center;">0.32</td>
+<td style="text-align: center;">0.96</td>
+<td style="text-align: center;">0.54</td>
+<td style="text-align: center;">0.31</td>
+<td style="text-align: center;">0.22</td>
+<td style="text-align: center;">0.18</td>
+<td style="text-align: center;">0.15</td>
+<td style="text-align: center;">0.12</td>
+<td style="text-align: center;">0.11</td>
+</tr>
+</tbody>
+</table>
+<p>The model for the resonating circuit amplitude response is given by <span class="math display">\[y =  \frac{1}{\sqrt{1 + A \left(\frac{x}{w_r} - \frac{w_r}{x}\right)^2}},\]</span> which has two parameters, <span class="math inline">\(A\)</span> and <span class="math inline">\(w_r\)</span>. Let’s try to repeat the previous procedure to fit this data. We have to define the fitting function model, <code>ressonant</code>, and use <code>optimize.curve_fit</code> to find the best values of <span class="math inline">\(A\)</span> and <span class="math inline">\(w_r\)</span>. Later we try to represent both the original dataset and the model in the same plot. Everything is done at one in the block of code below.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">def</span> ressonant(x, A, wr):</span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> sqrt( <span class="dv">1</span> <span class="op">+</span> A <span class="op">*</span> (x<span class="op">/</span>wr <span class="op">-</span> wr<span class="op">/</span>x)<span class="op">**</span><span class="dv">2</span> )</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(ressonant,</span>
+<span id="cb16-5"><a href="#cb16-5"></a>                df[<span class="st">&#39;Frequency&#39;</span>], df[<span class="st">&#39;Amplitude&#39;</span>])</span>
+<span id="cb16-6"><a href="#cb16-6"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="bu">print</span>(popt, error)</span>
+<span id="cb16-8"><a href="#cb16-8"></a></span>
+<span id="cb16-9"><a href="#cb16-9"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb16-10"><a href="#cb16-10"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">101</span>)</span>
+<span id="cb16-11"><a href="#cb16-11"></a>df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
+<span id="cb16-12"><a href="#cb16-12"></a></span>
+<span id="cb16-13"><a href="#cb16-13"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;Frequency&#39;</span>, <span class="st">&#39;Amplitude&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
+<span id="cb16-14"><a href="#cb16-14"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-15"><a href="#cb16-15"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_resonant_data_attempt1.png&#39;</span>)</span></code></pre></div>
+<p><img class="img-responsive" src="assets\scatter_plot_fitting_resonant_data_attempt1.png" /></p>
+<p>The fit fails miserably. What has gone wrong? The fitting procedure indeed has found a solution which goes through the middle of the data, but it could not adjust the peaking behavior close to 300. Numerically this is a very unstable problem and we must give an initial guess to <code>optimize.curve_fit</code>. To that purpose, we must understand the meaning of the initial parameters and try to inform an initial estimate for <span class="math inline">\(A\)</span> and <span class="math inline">\(w_r\)</span>. Notice that the present model for the resonant circuit amplitude has <span class="math inline">\(y=1\)</span> when <span class="math inline">\(x=w_r\)</span>, such that <span class="math inline">\(w_r\)</span> is associated with the position where the data becomes maximum. As an initial guess, we can try to use <span class="math inline">\(w_r = 300\)</span>. The parameter <span class="math inline">\(A\)</span> is related with the width of the peak, such that we may consider an initial estimate of <span class="math inline">\(A=100\)</span>. To inform this initial guess to <code>optimize.curve_fit</code> we add these guesses to <code>initial_guess</code> and inform this as <code>p0</code> to <code>curve_fit</code>. The remaining of the code is essentially identical.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>initial_guess <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">300</span>]</span>
+<span id="cb17-2"><a href="#cb17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(ressonant,</span>
+<span id="cb17-4"><a href="#cb17-4"></a>                df[<span class="st">&#39;Frequency&#39;</span>], df[<span class="st">&#39;Amplitude&#39;</span>], p0<span class="op">=</span>initial_guess)</span>
+<span id="cb17-5"><a href="#cb17-5"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="bu">print</span>(popt, error)</span>
+<span id="cb17-7"><a href="#cb17-7"></a></span>
+<span id="cb17-8"><a href="#cb17-8"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb17-9"><a href="#cb17-9"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">101</span>)</span>
+<span id="cb17-10"><a href="#cb17-10"></a>df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
+<span id="cb17-11"><a href="#cb17-11"></a></span>
+<span id="cb17-12"><a href="#cb17-12"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;Frequency&#39;</span>, <span class="st">&#39;Amplitude&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
+<span id="cb17-13"><a href="#cb17-13"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb17-14"><a href="#cb17-14"></a>title(<span class="st">&quot;Signal amplitude after a resonant circuit&quot;</span>)</span>
+<span id="cb17-15"><a href="#cb17-15"></a>xlabel(<span class="st">&quot;Frequency (rad/s)&quot;</span>)</span>
+<span id="cb17-16"><a href="#cb17-16"></a>ylabel(<span class="st">&quot;Amplitude (normalized)&quot;</span>)</span>
+<span id="cb17-17"><a href="#cb17-17"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_resonant_data_attempt2.png&#39;</span>)</span></code></pre></div>
+<p><code>[ 10.06551017 313.950265  ] [0.10765985 0.44215353]</code></p>
+<p><img class="img-responsive" src="assets\scatter_plot_fitting_resonant_data_attempt2.png" /></p>
+<p>Now it is clear that the best fit parameters closely follow the initial data. Some instructions were added to set the plot title and axis labels. From the values of <code>popt</code> and <code>error</code>, the best values now are <span class="math inline">\(A=10.1 \pm 0.1\)</span>, while <span class="math inline">\(w_r=313.9 \pm 0.4\)</span> rad/s. Notice that even though our fist estimate for <span class="math inline">\(A\)</span> was wrong by an order of magnitude, the fitting procedure was successful. Therefore, sometimes we have to try several values for <code>initial_guess</code>. Instead of guessing blindly, we can try to compare the initial guess with the experimental data by replacing the parameters in <code>df2['y']</code> to use the initial guess. After we are sufficiently satisfied with our initial guess we replace to the previous code. An example of how to achieve this is given below. When <code>plotInitialGuess = True</code>, the plot will ignore the fitted data. Then you may tune the values within <code>initial_guess</code> until you see a curve that somewhat follows the data. Then you may set <code>plotInitialGuess = False</code> and the code will automatically show the final plot result. Curve fitting needs some trial and error, so you may need to tune the parameters a few times.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>plotInitialGuess <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="cf">if</span> plotInitialGuess:</span>
+<span id="cb18-3"><a href="#cb18-3"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], initial_guess[<span class="dv">0</span>], initial_guess[<span class="dv">1</span>])</span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="cf">else</span>:</span>
+<span id="cb18-5"><a href="#cb18-5"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span></code></pre></div>
+<p>The full code for fitting the curve is given below for convenience. Notice that it is visible how the curve width is too small with the initial guess for <span class="math inline">\(A\)</span>. With the code below you can tune <code>initial_guess</code> until the curve given by <code>model</code> has a pattern similar to the data. Then you should set <code>plotInitialGuess = False</code> and see if the best fit model seems to describe the data correctly. If the fit is satisfactory, extract the fit parameters. Otherwise you should set <code>plotInitialGuess = True</code> again and try to use a different <code>initial_guess</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># model(x, parameters separated by commas)</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="kw">def</span> model(x, A, wr):</span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="co"># return y(x) expressed in terms of the fitting parameters</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> sqrt( <span class="dv">1</span> <span class="op">+</span> A <span class="op">*</span> (x<span class="op">/</span>wr <span class="op">-</span> wr<span class="op">/</span>x)<span class="op">**</span><span class="dv">2</span> )</span>
+<span id="cb19-5"><a href="#cb19-5"></a></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="co"># Initial guess for the parameter values (ordered as in the model)</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a>initial_guess <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">300</span>]</span>
+<span id="cb19-8"><a href="#cb19-8"></a></span>
+<span id="cb19-9"><a href="#cb19-9"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(model,</span>
+<span id="cb19-10"><a href="#cb19-10"></a>                df[<span class="st">&#39;Frequency&#39;</span>], df[<span class="st">&#39;Amplitude&#39;</span>], p0<span class="op">=</span>initial_guess)</span>
+<span id="cb19-11"><a href="#cb19-11"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
+<span id="cb19-12"><a href="#cb19-12"></a></span>
+<span id="cb19-13"><a href="#cb19-13"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb19-14"><a href="#cb19-14"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">101</span>)</span>
+<span id="cb19-15"><a href="#cb19-15"></a></span>
+<span id="cb19-16"><a href="#cb19-16"></a>plotInitialGuess <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb19-17"><a href="#cb19-17"></a><span class="cf">if</span> plotInitialGuess:</span>
+<span id="cb19-18"><a href="#cb19-18"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> model(df2[<span class="st">&#39;x&#39;</span>], initial_guess[<span class="dv">0</span>], initial_guess[<span class="dv">1</span>])</span>
+<span id="cb19-19"><a href="#cb19-19"></a><span class="cf">else</span>:</span>
+<span id="cb19-20"><a href="#cb19-20"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> model(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
+<span id="cb19-21"><a href="#cb19-21"></a>  <span class="co"># Outputs the best fit params and associated errors</span></span>
+<span id="cb19-22"><a href="#cb19-22"></a>  <span class="bu">print</span>(<span class="st">&quot;Fit parameters&quot;</span>)</span>
+<span id="cb19-23"><a href="#cb19-23"></a>  <span class="cf">for</span> i, (p, e) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(popt, error)):</span>
+<span id="cb19-24"><a href="#cb19-24"></a>    <span class="bu">print</span>(<span class="st">&#39;p[</span><span class="sc">%d</span><span class="st">] =&#39;</span> <span class="op">%</span> i, p, <span class="st">&#39; +- &#39;</span>, e)</span>
+<span id="cb19-25"><a href="#cb19-25"></a></span>
+<span id="cb19-26"><a href="#cb19-26"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;Frequency&#39;</span>, <span class="st">&#39;Amplitude&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
+<span id="cb19-27"><a href="#cb19-27"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb19-28"><a href="#cb19-28"></a>title(<span class="st">&quot;Output signal amplitude&quot;</span>)</span>
+<span id="cb19-29"><a href="#cb19-29"></a>xlabel(<span class="st">&quot;Frequency (rad/s)&quot;</span>)</span>
+<span id="cb19-30"><a href="#cb19-30"></a>ylabel(<span class="st">&quot;Amplitude (normalized)&quot;</span>)</span>
+<span id="cb19-31"><a href="#cb19-31"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_resonant_data_final.png&#39;</span>)</span></code></pre></div>
+<p><img class="img-responsive" src="assets\scatter_plot_fitting_resonant_data_final.png" /></p>
+<!---
+An alternative to the implementation above would be to set two subplots, one with the initial guess, the other one with the fitted curve.
+
+The idea below maybe could be used as an exercise. Put the data available online and set as an exercise.
+## Fitting experimental data
+
+## Examples with real data
+### Diode current-voltage curve
+### RLC circuit frequency response
+### Harmonic distortion in a sinusoid (?)
+--->
+<!---
+## Reading and writing data from files
+
+### CSV/dat/txt files
+
+- Reading text files
+- Caveat: `.` or `,`?
+
+### Excel/ODT spreadsheets
+
+### Text and string manipulations
+
+## Statistical error propagation in some simple datasets (?)
+
+Maybe add this to the first data analysis section. This is important since given the dataset it becomes easier to perform calculations over a large dataset.
+--->
+<h2 id="using-the-jupyter-notebook-for-scientific-writing">Using the Jupyter notebook for scientific writing</h2>
+<p>With our previous discussion it is possible to analyze data. But how to write a report? It is possible to use common tools as a word processor, but we also can use our Jupyter notebook to produce reports in PDF format, slideshows and HTML webpages. While the standard PDF output is somewhat limited, it is possible to export to other formats (as LaTex) and edit the result to achieve professional looking documents. This is interesting because the data analysis and its analysis are condensed in the same file, making it easier to correct mistakes during the work. Also, the  compatibility means that the document can be exported to a document format commonly used in the publication of scientific documents.</p>
+<p>The Jupyter notebook is separated in cells. The default cells are for code, such we can execute portions of code separately and perform exploratory studies. We can add more cells (using the <code>+</code> button close to the save button in the snapshot below), split or join cells (see the Edit menu). However, the Jupyter screenshot below shows a menu where the type of the current cell can be chosen. The Markdown mode is adequate to type descriptive texts and can be placed anywhere within the notebook, such it is possible to mix explanations and the code necessary to achieve the results reported.</p>
+<p><img class="img-responsive" src="assets/jupyter_select_markdown.png" /></p>
+<p><a href="https://daringfireball.net/projects/markdown/">Markdown</a> is a simple syntax developed to express document formatting in plain text. It is aimed at being simple and readable, such that it can be learned much more quickly than LaTex for example. Also, an interesting characteristic is that it allows the writer to focus on content instead of text formatting. This document is written using Markdown, and this syntax is recognized by several web tools. For example, to put emphasis in a text block we can write it between single asterisks <code>*text*</code> to obtain the <em>text</em> in italics. Writing between double asterisks around <code>**some text**</code> gives <strong>some text</strong> in bold. The table below shows some examples of what can be done.</p>
+<!---
+~~~{.python}
+from collections import OrderedDict
+# Generates Markdown tables with example commands
+
+commands = OrderedDict()
+commands['Italics'] = '*italics*'
+commands['Bold'] = '**bold**'
+# commands['Strike through'] = '~corrected text~' #does not work in pandoc, just jupyter notebook...
+commands['Inline code'] = ' `some code` '
+commands['Math'] = '$x = \sin\pi/2$'
+commands['Link'] = '[link label](https://commonmark.org)'
+commands['Image'] = '![Image](assets/markdown-mark.png){width=40px}'
+
+print("| To obtain | type | to get |")
+print("|:----------|:----:|:------:|")
+for key, value in commands.items():
+  print("| %s | ``%s`` | %s |"%(key, value, value))
+~~~
+--->
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">To obtain</th>
+<th style="text-align: center;">type</th>
+<th style="text-align: center;">to get</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Italics</td>
+<td style="text-align: center;"><code>*italics*</code></td>
+<td style="text-align: center;"><em>italics</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bold</td>
+<td style="text-align: center;"><code>**bold**</code></td>
+<td style="text-align: center;"><strong>bold</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inline code</td>
+<td style="text-align: center;"><code>`some code`</code></td>
+<td style="text-align: center;"><code>some code</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Math</td>
+<td style="text-align: center;"><code>$x = \sin\pi/2$</code></td>
+<td style="text-align: center;"><span class="math inline">\(x = \sin\pi/2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Link</td>
+<td style="text-align: center;"><code>[link label](https://commonmark.org)</code></td>
+<td style="text-align: center;"><a href="https://commonmark.org">link label</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Image</td>
+<td style="text-align: center;"><code>![Image](assets/markdown-mark.png){width=40px}</code></td>
+<td style="text-align: center;"><img class="img-responsive" src="assets/markdown-mark.png" width="40" alt="Image" /></td>
+</tr>
+</tbody>
+</table>
+<p>The typing of hypertext becomes reasonably simple using the above syntax, and it can be memorized without too much effort. After you execute the cell, Jupyter notebook will automatically exhibit the formatted output. To use images in your computer as above, remember that it must be sent together with your notebook to be seen by someone else. Images from the web can be shown by using the adequate url. Some  will be given later to help in writing mathematical expressions.</p>
+<p>Another set of Markdown instructions is to handle sections and blocks of text. Notice that <strong>to separate between distinct blocks must be separated by blank lines.</strong> Your document can be divided in sections with the syntax below. Up to 6 levels can be used, and using this is interesting because it makes easier to navigate through the PDF and  outputs.</p>
+<pre><code># Section
+
+## Subsection
+
+### Subsubsection</code></pre>
+<p>To add a quote, use</p>
+<pre><code>&gt; quote text</code></pre>
+<p>to achieve</p>
+<blockquote>
+<p>quote text</p>
+</blockquote>
+<p>A bullet list can also be written simply by writing the first character of each line as a <code>*</code> or <code>-</code>, as in</p>
+<pre><code>* item 1
+* item 2
+* item 3</code></pre>
+<p>to achieve</p>
 <ul>
-<li>Reading text files</li>
-<li>Caveat: <code>.</code> or <code>,</code>?</li>
+<li>item 1</li>
+<li>item 2</li>
+<li>item 3</li>
 </ul>
-<h3 id="excelodt-spreadsheets">Excel/ODT spreadsheets</h3>
-<h2 id="data-modelling">Data modelling</h2>
-<h2 id="fitting-experimental-data">Fitting experimental data</h2>
-<h2 id="examples-with-real-data">Examples with real data</h2>
-<h3 id="diode-current-voltage-curve">Diode current-voltage curve</h3>
-<h3 id="rlc-circuit-frequency-response">RLC circuit frequency response</h3>
-<h3 id="harmonic-distortion-in-a-sinusoid">Harmonic distortion in a sinusoid (?)</h3>
-<section class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p>Actually the calculation approaches given below are the standard way to compute in other languages, as C/C++/Fortran. However, the increased flexibility of python with respect to those other languages leads to a slower execution of these “standard” routines. Numpy implements calculations like those below under the hood.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<p>A numbered list can be achieved by starting the line with a number followed by a point. The numbering will start from the first number and the subsequent will be set automatically, such you don’t have to worry with the exact numbers written.</p>
+<pre><code>1. item 1
+1. item 2
+42. item 3</code></pre>
+<p>gives</p>
+<ol type="1">
+<li>item 1</li>
+<li>item 2</li>
+<li>item 3</li>
 </ol>
-</section>
+<p>An horizontal rule can be obtained by starting a line with <code>---</code> or more dashes, achieving</p>
+
+<hr />
+<p>To add comments that will not appear in the output, use <code>&lt;!--- hidden ---&gt;</code>. The comments may also span several lines, as in</p>
+<pre><code>&lt;!---
+this entire block will not be shown in the output
+
+so anything can be written here
+---&gt;</code></pre>
+<p>A code section (or <code>verbatim</code>, unformatted and monospaced text) can be set inside some paragraph using the syntax above, but for longer sections it is possible to use the notation below</p>
+<pre><code>```
+This is a section of text
+which is useful to put some code
+```</code></pre>
+<p>which results in</p>
+<pre><code>This is a section of text
+which is useful to put some code</code></pre>
+<p>Finally, while mathematical expressions can be placed inside the paragraph by placing the mathematical expression between single dollar signs, as in <code>$x=2$</code> to obtain <span class="math inline">\(x=2\)</span>. However, to highlight some expression it is possible to write the expression between <code>$$x=2$$</code> to separate it from the paragraph and make it centered, as in <span class="math display">\[x=2\]</span> The next subsection explains how to write some sophisticate mathematical expressions.</p>
+<h3 id="writing-mathematical-expressions">Writing  mathematical expressions</h3>
+<p> is a very robust language used to produce documents, being actively developed since 1984. Throughout the years lots of add-ons there were developed to handle difficult aspects of document formatting, as advanced typography and taking care of references.  is particularly powerful to typeset math expressions and has lots of features, and it’s notation became an important standard to write math using computers. Jupyter notebook does not carry the whole power of , since it is constrained to the features provided by <a href="https://www.mathjax.org/">MathJax</a>. However, several general features are available and this subsection will start with an overview of mathematical symbols. For instance, the table below shows how to write greek letters.</p>
+<!---
+~~~{.python}
+# Greek letter markdown table generator
+# Following https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
+
+letters = [['alpha'], ['beta'], ['gamma', 'Gamma'],
+           ['delta', 'Delta'], ['epsilon', 'varepsilon'],
+           ['zeta'], ['eta'], ['theta', 'Theta'],
+           ['iota'], ['kappa', 'varkappa'],
+           ['lambda', 'Lambda'], ['mu'], ['nu'],
+           ['xi', 'Xi'], ['circle'], ['pi', 'Pi', 'varpi'],
+           ['rho', 'varrho'], ['sigma', 'Sigma', 'varsigma'],
+           ['tau'], ['upsilon', 'Upsilon'], ['phi','Phi','varphi'],
+           ['chi'], ['psi', 'Psi'], ['omega', 'Omega']]
+
+l1 = letters[0:8]
+l2 = letters[8:16]
+l3 = letters[16:24]
+
+print("| Symbol | Latex | Symbol | Latex | Symbol | Latex |")
+print("|:------:|:-----:|:------:|:-----:|:------:|:-----:|")
+for i,j,k in zip(l1, l2, l3):
+  out = ''
+  for o in [i, j, k]:
+    stro = ''
+    for a in o:
+      stro+=', \\' + a
+    stro = stro[2:]
+
+    out += '| $' + stro + '$ | `' + stro + '`'
+  out += '|'
+
+  print(out)
+~~~
+--->
+<table class="table">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 15%" />
+<col style="width: 17%" />
+<col style="width: 15%" />
+<col style="width: 17%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Latex</th>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Latex</th>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Latex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\alpha\)</span></td>
+<td style="text-align: center;"><code>\alpha</code></td>
+<td style="text-align: center;"><span class="math inline">\(\iota\)</span></td>
+<td style="text-align: center;"><code>\iota</code></td>
+<td style="text-align: center;"><span class="math inline">\(\rho, \varrho\)</span></td>
+<td style="text-align: center;"><code>\rho, \varrho</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\beta\)</span></td>
+<td style="text-align: center;"><code>\beta</code></td>
+<td style="text-align: center;"><span class="math inline">\(\kappa, \varkappa\)</span></td>
+<td style="text-align: center;"><code>\kappa, \varkappa</code></td>
+<td style="text-align: center;"><span class="math inline">\(\sigma, \Sigma, \varsigma\)</span></td>
+<td style="text-align: center;"><code>\sigma, \Sigma, \varsigma</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\gamma, \Gamma\)</span></td>
+<td style="text-align: center;"><code>\gamma, \Gamma</code></td>
+<td style="text-align: center;"><span class="math inline">\(\lambda, \Lambda\)</span></td>
+<td style="text-align: center;"><code>\lambda, \Lambda</code></td>
+<td style="text-align: center;"><span class="math inline">\(\tau\)</span></td>
+<td style="text-align: center;"><code>\tau</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\delta, \Delta\)</span></td>
+<td style="text-align: center;"><code>\delta, \Delta</code></td>
+<td style="text-align: center;"><span class="math inline">\(\mu\)</span></td>
+<td style="text-align: center;"><code>\mu</code></td>
+<td style="text-align: center;"><span class="math inline">\(\upsilon, \Upsilon\)</span></td>
+<td style="text-align: center;"><code>\upsilon, \Upsilon</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\epsilon, \varepsilon\)</span></td>
+<td style="text-align: center;"><code>\epsilon, \varepsilon</code></td>
+<td style="text-align: center;"><span class="math inline">\(\nu\)</span></td>
+<td style="text-align: center;"><code>\nu</code></td>
+<td style="text-align: center;"><span class="math inline">\(\phi, \Phi, \varphi\)</span></td>
+<td style="text-align: center;"><code>\phi, \Phi, \varphi</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\zeta\)</span></td>
+<td style="text-align: center;"><code>\zeta</code></td>
+<td style="text-align: center;"><span class="math inline">\(\xi, \Xi\)</span></td>
+<td style="text-align: center;"><code>\xi, \Xi</code></td>
+<td style="text-align: center;"><span class="math inline">\(\chi\)</span></td>
+<td style="text-align: center;"><code>\chi</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\eta\)</span></td>
+<td style="text-align: center;"><code>\eta</code></td>
+<td style="text-align: center;"><span class="math inline">\(\,\)</span></td>
+<td style="text-align: center;"><code></code></td>
+<td style="text-align: center;"><span class="math inline">\(\psi, \Psi\)</span></td>
+<td style="text-align: center;"><code>\psi, \Psi</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\theta, \Theta\)</span></td>
+<td style="text-align: center;"><code>\theta, \Theta</code></td>
+<td style="text-align: center;"><span class="math inline">\(\pi, \Pi, \varpi\)</span></td>
+<td style="text-align: center;"><code>\pi, \Pi, \varpi</code></td>
+<td style="text-align: center;"><span class="math inline">\(\omega, \Omega\)</span></td>
+<td style="text-align: center;"><code>\omega, \Omega</code></td>
+</tr>
+</tbody>
+</table>
+<p>Notice that omicron is the only greek letter that is not explicitly supported since it is indistinguishable from the latin letter o. Regarding notation, superscripts and subscripts are written respectively as <code>^</code> and <code>_</code>, such <code>$2^3$</code> and <code>$a_n$</code> become <span class="math inline">\(2^3\)</span> and <span class="math inline">\(a_n\)</span>, respectively. Quite often the latex expressions must have long sub- or super-scripts, such it is necessary to indicate with curly braces <code>{}</code> where the sub-(super-)script starts and ends. The next table also shows some common symbols and expressions in .</p>
+<!---
+~~~{.python}
+# Greek letter markdown table generator
+# Following https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
+
+expressions = ['^\circ C', 'e^{-x}', '\Gamma_i^j', '\\frac{a}{x}', '\\vec{E}', '\hat{a}^\dagger',
+               '\\dot{x} \\ddot{x}', '\\int_a^b', '\\sum_{i}^{N}', '\\cdot\\,\\times', '\\gg \\geq',
+               '\\ll \\leq', '\\approx', '\\equiv', '\\propto', '\\neq', '\\pm \\mp',
+               '\\hbar', '\\ell', '\\Re \\Im', '\\partial \\nabla', '\\square', '\\infty']
+
+print(len(expressions))
+
+l1 = expressions[0:6]
+l2 = expressions[6:12]
+l3 = expressions[12:18]
+l4 = expressions[18:24]
+
+out = ''
+out += "| Expr | Latex | Expr | Latex | Expr | Latex | Expr | Latex |\n"
+out += "|:----:|:-----:|:----:|:-----:|:----:|:-----:|:----:|:-----:|\n"
+
+for i,j,k, l in zip(l1, l2, l3, l4):
+    for o in [i, j, k, l]:
+        out += '| $' + o + '$ | `' + o + '`'
+    out += '|\n'
+
+#from IPython import display
+#display.display(display.Markdown(out))
+print(out)
+~~~
+--->
+<table class="table">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(^\circ C\)</span></td>
+<td style="text-align: center;"><code>^\circ C</code></td>
+<td style="text-align: center;"><span class="math inline">\(\dot{x} \ddot{x}\)</span></td>
+<td style="text-align: center;"><code>\dot{x} \ddot{x}</code></td>
+<td style="text-align: center;"><span class="math inline">\(\approx\)</span></td>
+<td style="text-align: center;"><code>\approx</code></td>
+<td style="text-align: center;"><span class="math inline">\(\ell\)</span></td>
+<td style="text-align: center;"><code>\ell</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(e^{-x}\)</span></td>
+<td style="text-align: center;"><code>e^{-x}</code></td>
+<td style="text-align: center;"><span class="math inline">\(\int_a^b\)</span></td>
+<td style="text-align: center;"><code>\int_a^b</code></td>
+<td style="text-align: center;"><span class="math inline">\(\equiv\)</span></td>
+<td style="text-align: center;"><code>\equiv</code></td>
+<td style="text-align: center;"><span class="math inline">\(\Re \Im\)</span></td>
+<td style="text-align: center;"><code>\Re \Im</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\Gamma_i^j\)</span></td>
+<td style="text-align: center;"><code>\Gamma_i^j</code></td>
+<td style="text-align: center;"><span class="math inline">\(\sum_{i}^{N}\)</span></td>
+<td style="text-align: center;"><code>\sum_{i}^{N}</code></td>
+<td style="text-align: center;"><span class="math inline">\(\propto\)</span></td>
+<td style="text-align: center;"><code>\propto</code></td>
+<td style="text-align: center;"><span class="math inline">\(\partial \nabla\)</span></td>
+<td style="text-align: center;"><code>\partial \nabla</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\frac{a}{x}\)</span></td>
+<td style="text-align: center;"><code>\frac{a}{x}</code></td>
+<td style="text-align: center;"><span class="math inline">\(\cdot\,\times\)</span></td>
+<td style="text-align: center;"><code>\cdot\,\times</code></td>
+<td style="text-align: center;"><span class="math inline">\(\neq\)</span></td>
+<td style="text-align: center;"><code>\neq</code></td>
+<td style="text-align: center;"><span class="math inline">\(\square\)</span></td>
+<td style="text-align: center;"><code>\square</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\vec{E}\)</span></td>
+<td style="text-align: center;"><code>\vec{E}</code></td>
+<td style="text-align: center;"><span class="math inline">\(\gg \geq\)</span></td>
+<td style="text-align: center;"><code>\gg \geq</code></td>
+<td style="text-align: center;"><span class="math inline">\(\pm \mp\)</span></td>
+<td style="text-align: center;"><code>\pm \mp</code></td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+<td style="text-align: center;"><code>\infty</code></td>
+</tr>
+</tbody>
+</table>
+<p>More comprehensive lists of symbols and operators can be found in the internet, as in <a href="https://en.wikipedia.org/wiki/Wikipedia:LaTeX_symbols">Wikipedia</a> for example. The following table contains the instructions for several standard functions and a few more symbols.</p>
+<!---
+~~~{.python}
+expressions = ['\\sin', '\\cos', '\\tan', '\\sinh', '\\cosh', '\\tanh',
+               '\\exp', '\\log', '\\ln', '\\sec', '\\csc', '\\cot',
+               '\\det', '\\lim', '\\min', '\\max', '\\arg', '\\sqrt{x}',
+               '\sqrt[n]{a}','\\prod_i^N', '\\oint', '\\iint', '\\iiint', '\iiiint']
+
+#print(len(expressions))
+
+l1 = expressions[0:6]
+l2 = expressions[6:12]
+l3 = expressions[12:18]
+l4 = expressions[18:24]
+
+out = ''
+out += "| Expr | Latex | Expr | Latex | Expr | Latex | Expr | Latex |\n"
+out += "|:----:|:-----:|:----:|:-----:|:----:|:-----:|:----:|:-----:|\n"
+
+for i,j,k, l in zip(l1, l2, l3, l4):
+    for o in [i, j, k, l]:
+        out += '| $' + o + '$ | `' + o + '`'
+    out += '|\n'
+
+#from IPython import display
+#display.display(display.Markdown(out))
+print(out)
+~~~
+--->
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\sin\)</span></td>
+<td style="text-align: center;"><code>\sin</code></td>
+<td style="text-align: center;"><span class="math inline">\(\exp\)</span></td>
+<td style="text-align: center;"><code>\exp</code></td>
+<td style="text-align: center;"><span class="math inline">\(\det\)</span></td>
+<td style="text-align: center;"><code>\det</code></td>
+<td style="text-align: center;"><span class="math inline">\(\sqrt[n]{a}\)</span></td>
+<td style="text-align: center;"><code>\sqrt[n]{a}</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\cos\)</span></td>
+<td style="text-align: center;"><code>\cos</code></td>
+<td style="text-align: center;"><span class="math inline">\(\log\)</span></td>
+<td style="text-align: center;"><code>\log</code></td>
+<td style="text-align: center;"><span class="math inline">\(\lim\)</span></td>
+<td style="text-align: center;"><code>\lim</code></td>
+<td style="text-align: center;"><span class="math inline">\(\prod_i^N\)</span></td>
+<td style="text-align: center;"><code>\prod_i^N</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\tan\)</span></td>
+<td style="text-align: center;"><code>\tan</code></td>
+<td style="text-align: center;"><span class="math inline">\(\ln\)</span></td>
+<td style="text-align: center;"><code>\ln</code></td>
+<td style="text-align: center;"><span class="math inline">\(\min\)</span></td>
+<td style="text-align: center;"><code>\min</code></td>
+<td style="text-align: center;"><span class="math inline">\(\oint\)</span></td>
+<td style="text-align: center;"><code>\oint</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\sinh\)</span></td>
+<td style="text-align: center;"><code>\sinh</code></td>
+<td style="text-align: center;"><span class="math inline">\(\sec\)</span></td>
+<td style="text-align: center;"><code>\sec</code></td>
+<td style="text-align: center;"><span class="math inline">\(\max\)</span></td>
+<td style="text-align: center;"><code>\max</code></td>
+<td style="text-align: center;"><span class="math inline">\(\iint\)</span></td>
+<td style="text-align: center;"><code>\iint</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\cosh\)</span></td>
+<td style="text-align: center;"><code>\cosh</code></td>
+<td style="text-align: center;"><span class="math inline">\(\csc\)</span></td>
+<td style="text-align: center;"><code>\csc</code></td>
+<td style="text-align: center;"><span class="math inline">\(\arg\)</span></td>
+<td style="text-align: center;"><code>\arg</code></td>
+<td style="text-align: center;"><span class="math inline">\(\iiint\)</span></td>
+<td style="text-align: center;"><code>\iiint</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\tanh\)</span></td>
+<td style="text-align: center;"><code>\tanh</code></td>
+<td style="text-align: center;"><span class="math inline">\(\cot\)</span></td>
+<td style="text-align: center;"><code>\cot</code></td>
+<td style="text-align: center;"><span class="math inline">\(\sqrt{x}\)</span></td>
+<td style="text-align: center;"><code>\sqrt{x}</code></td>
+<td style="text-align: center;"><span class="math inline">\(\iiiint\)</span></td>
+<td style="text-align: center;"><code>\iiiint</code></td>
+</tr>
+</tbody>
+</table>
+<p>In Portuguese the sine function should be written as sen, and this is not included by default. So, it is possible to express it in  notation using <code>\operatorname{sen} x</code>, which results in <span class="math inline">\(\operatorname{sen} x\)</span>. To finish this long list of available symbols, it’s useful to mention that  has symbols which correspond to arrows and for brackets to group mathematical expressions. There are also instructions to control the spacing between symbols.</p>
+<!---
+~~~{.python}
+expressions = ['\\leftarrow', '\\Leftarrow', '\\rightarrow', '\\Rightarrow', '\\leftrightarrow', '\\Leftrightarrow',
+               '\\uparrow', '\\Uparrow', '\\downarrow', '\\Downarrow', '\\updownarrow', '\\Updownarrow',
+               '()', '[]', '\\{\\}', '\\vert', '\\Vert', '\\langle \\rangle',
+               'a \\! a', 'a a', 'a \\, a', 'a \\: a', 'a \\; a', 'a \\quad a']
+
+print(len(expressions))
+
+l1 = expressions[0:6]
+l2 = expressions[6:12]
+l3 = expressions[12:18]
+l4 = expressions[18:24]
+
+out = ''
+out += "| Expr | Latex | Expr | Latex | Expr | Latex | Expr | Latex |\n"
+out += "|:----:|:-----:|:----:|:-----:|:----:|:-----:|:----:|:-----:|\n"
+
+for i in zip(l1, l2, l3, l4):
+    for o in i:
+        out += '| $' + o + '$ | `' + o + '`'
+    out += '|\n'
+
+#from IPython import display
+#display.display(display.Markdown(out))
+print(out)
+~~~
+--->
+<table class="table">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+<th style="text-align: center;">Expr</th>
+<th style="text-align: center;">Latex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\leftarrow\)</span></td>
+<td style="text-align: center;"><code>\leftarrow</code></td>
+<td style="text-align: center;"><span class="math inline">\(\uparrow\)</span></td>
+<td style="text-align: center;"><code>\uparrow</code></td>
+<td style="text-align: center;"><span class="math inline">\(()\)</span></td>
+<td style="text-align: center;"><code>()</code></td>
+<td style="text-align: center;"><span class="math inline">\(a \! a\)</span></td>
+<td style="text-align: center;"><code>a \! a</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\Leftarrow\)</span></td>
+<td style="text-align: center;"><code>\Leftarrow</code></td>
+<td style="text-align: center;"><span class="math inline">\(\Uparrow\)</span></td>
+<td style="text-align: center;"><code>\Uparrow</code></td>
+<td style="text-align: center;"><span class="math inline">\([]\)</span></td>
+<td style="text-align: center;"><code>[]</code></td>
+<td style="text-align: center;"><span class="math inline">\(a a\)</span></td>
+<td style="text-align: center;"><code>a a</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: center;"><code>\rightarrow</code></td>
+<td style="text-align: center;"><span class="math inline">\(\downarrow\)</span></td>
+<td style="text-align: center;"><code>\downarrow</code></td>
+<td style="text-align: center;"><span class="math inline">\(\{\}\)</span></td>
+<td style="text-align: center;"><code>\{\}</code></td>
+<td style="text-align: center;"><span class="math inline">\(a \, a\)</span></td>
+<td style="text-align: center;"><code>a \, a</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\Rightarrow\)</span></td>
+<td style="text-align: center;"><code>\Rightarrow</code></td>
+<td style="text-align: center;"><span class="math inline">\(\Downarrow\)</span></td>
+<td style="text-align: center;"><code>\Downarrow</code></td>
+<td style="text-align: center;"><span class="math inline">\(\vert\)</span></td>
+<td style="text-align: center;"><code>\vert</code></td>
+<td style="text-align: center;"><span class="math inline">\(a \: a\)</span></td>
+<td style="text-align: center;"><code>a \: a</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\leftrightarrow\)</span></td>
+<td style="text-align: center;"><code>\leftrightarrow</code></td>
+<td style="text-align: center;"><span class="math inline">\(\updownarrow\)</span></td>
+<td style="text-align: center;"><code>\updownarrow</code></td>
+<td style="text-align: center;"><span class="math inline">\(\Vert\)</span></td>
+<td style="text-align: center;"><code>\Vert</code></td>
+<td style="text-align: center;"><span class="math inline">\(a \; a\)</span></td>
+<td style="text-align: center;"><code>a \; a</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\Leftrightarrow\)</span></td>
+<td style="text-align: center;"><code>\Leftrightarrow</code></td>
+<td style="text-align: center;"><span class="math inline">\(\Updownarrow\)</span></td>
+<td style="text-align: center;"><code>\Updownarrow</code></td>
+<td style="text-align: center;"><span class="math inline">\(\langle \rangle\)</span></td>
+<td style="text-align: center;"><code>\langle \rangle</code></td>
+<td style="text-align: center;"><span class="math inline">\(a \quad a\)</span></td>
+<td style="text-align: center;"><code>a \quad a</code></td>
+</tr>
+</tbody>
+</table>
+<p>Notice that the curly brackets must be preceded by <code>\</code>, since otherwise they would be confused with the arguments of  functions. Normally the brackets have a fixed size, but it is possible to allow them to change their sizes depending on what they enclose. For example, the parenthesis in <code>$(\frac{\int a}{b})$</code> will not match the height of what it encloses (try it). However, adding the instructions <code>\left</code> and <code>\right</code> to indicate what’s between the parenthesis it can adjust its size. This correction implies in writing <code>\left(\frac{\int a}{b}\right)</code> (see how the behavior changes). Finally, notice that the last column in the above table contains commands to change the spacing between symbols, ranging from a negative distance <code>\!</code> to quad spacing. There’s also <code>\qquad</code> which is even larger than <code>\quad</code>.</p>
+<!---
+~~~{.python}
+expressions = [r'A = \left(15.02 \pm 0.02\right) 10^{-2}\text{ m}',
+               r'\hbar = \frac{h}{2\pi} = 1.054 \cdot 10^{-34}\text{ J/s}',
+               r'y(x) = \int_0^1 t\, dt = \left.\frac{t^2}{2}\right|_{t=0}^1',
+               r'\sinh x= \frac{e^x - e^{-x}}{2}',
+               r'e^x = \sum_{i=0}^\infty \frac{x^i}{i!} = \lim_{n \rightarrow \infty} \left( 1 + \frac{x}{n}  \right)^n',
+               r'f(a) = \frac{1}{2\pi i} \oint \frac{f(z)}{z-a} dz',
+               r'\vec\nabla\times\vec{H} = \mu_0\epsilon_0\frac{\partial\vec{E}}{\partial t}',
+               r'\ddot{x} + \gamma \dot{x} + \omega^2 x = 0',
+               r'w(z) = w_0 \sqrt{1 + \left(\frac{z}{z_R}\right)^2}']
+
+out=''
+for i in expressions:
+    out += '`' + i + '`  $$' + i + '$$\n'
+
+#from IPython import display
+#display.display(display.Markdown(out))
+print(out)
+~~~
+--->
+<p>After showing so many possibilities, it is useful to show some examples on how to compose these symbols to write mathematical expressions. Below there are several examples where you can see how to express in  a given formula.</p>
+<p><code>A = \left(15.02 \pm 0.02\right) 10^{-2}\text{ m}</code> <span class="math display">\[A = \left(15.02 \pm 0.02\right) 10^{-2}\text{ m}\]</span> <code>\hbar = \frac{h}{2\pi} = 1.054 \cdot 10^{-34}\text{ J/s}</code> <span class="math display">\[\hbar = \frac{h}{2\pi} = 1.054 \cdot 10^{-34}\text{ J/s}\]</span> <code>y(x) = \int_0^1 t\, dt = \left.\frac{t^2}{2}\right|_{t=0}^1</code> <span class="math display">\[y(x) = \int_0^1 t\, dt = \left.\frac{t^2}{2}\right|_{t=0}^1\]</span> <code>\sinh x= \frac{e^x - e^{-x}}{2}</code> <span class="math display">\[\sinh x= \frac{e^x - e^{-x}}{2}\]</span> <code>e^x = \sum_{i=0}^\infty \frac{x^i}{i!} = \lim_{n \rightarrow \infty} \left( 1 + \frac{x}{n}  \right)^n</code> <span class="math display">\[e^x = \sum_{i=0}^\infty \frac{x^i}{i!} = \lim_{n \rightarrow \infty} \left( 1 + \frac{x}{n}  \right)^n\]</span> <code>f(a) = \frac{1}{2\pi i} \oint \frac{f(z)}{z-a} dz</code> <span class="math display">\[f(a) = \frac{1}{2\pi i} \oint \frac{f(z)}{z-a} dz\]</span> <code>\vec\nabla\times\vec{H} = \mu_0\epsilon_0\frac{\partial\vec{E}}{\partial t}</code> <span class="math display">\[\vec\nabla\times\vec{H} = \mu_0\epsilon_0\frac{\partial\vec{E}}{\partial t}\]</span> <code>\ddot{x} + \gamma \dot{x} + \omega^2 x = 0</code> <span class="math display">\[\ddot{x} + \gamma \dot{x} + \omega^2 x = 0\]</span> <code>w(z) = w_0 \sqrt{1 + \left(\frac{z}{z_R}\right)^2}</code> <span class="math display">\[w(z) = w_0 \sqrt{1 + \left(\frac{z}{z_R}\right)^2}\]</span></p>
+<p>Notice that the equations between pairs of <code>$$</code> above are centered and separated from the text paragraph. For long documents it’s important to number and reference equations. Jupyter can handle this automatically, even though there are some rough edges when editting the notebook. <strong>Create and execute</strong> a code cell (preferably right when the document begins) containing only the instructions below to instruct MathJax to number <code>ams</code> equation environments. Another option is to use <code>all</code> instead of <code>ams</code>, such that equations between pairs of <code>$$</code> will also be numbered.</p>
+<pre><code>%%javascript
+MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: &quot;ams&quot; } }
+});</code></pre>
+<!--- Use here to achieve the same effect --->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "ams" } }
+});
+</script>
+<p>The <code>ams</code> equation environments support more advanced modes to display equations. In summary, each  environment is declared as <code>\begin{env} your equation \end{env}</code>, where <code>env</code> must be replaced by the environment of interest. Below there are some examples of some  environments. Use the examples below within markdown cells.</p>
+<!---
+~~~{.python}
+expressions = []
+expressions.append(r"""\begin{equation}
+y(x) = a x^2 + b x + c. \label{eq:quadratic_formula}
+\end{equation}""")
+expressions.append(r"""\begin{multline}
+y(x) = a x^2 \\
++ b x \\
++ c.
+\end{multline}""")
+expressions.append(r"""\begin{align}
+y &= 2 + 3, \nonumber \\
+  &= 5. \label{eq:sum_result}
+\end{align}""")
+expressions.append(r"""\begin{align}
+a &= 1, & b &= 2,\\
+c &= 3, & d &= 4.
+\end{align}""")
+
+out=''
+for i in expressions:
+    out += '```\n' + i + '\n```\n\n' + i + '\n\n'
+
+#from IPython import display
+#display.display(display.Markdown(out))
+print(out)
+~~~
+--->
+<pre><code>\begin{equation}
+y(x) = a x^2 + b x + c. \label{eq:quadratic_formula}
+\end{equation}</code></pre>
+<p><span class="math display">\[\begin{equation}
+y(x) = a x^2 + b x + c. \label{eq:quadratic_formula}
+\end{equation}\]</span></p>
+<pre><code>\begin{multline}
+y(x) = a x^2 \\
++ b x \\
++ c.
+\end{multline}</code></pre>
+<p><span class="math display">\[\begin{multline}
+y(x) = a x^2 \\
++ b x \\
++ c.
+\end{multline}\]</span></p>
+<pre><code>\begin{align}
+y &amp;= 2 + 3, \nonumber \\
+  &amp;= 5. \label{eq:sum_result}
+\end{align}</code></pre>
+<p><span class="math display">\[\begin{align}
+y &amp;= 2 + 3, \nonumber \\
+  &amp;= 5. \label{eq:sum_result}
+\end{align}\]</span></p>
+<pre><code>\begin{align}
+a &amp;= 1, &amp; b &amp;= 2,\\
+c &amp;= 3, &amp; d &amp;= 4.
+\end{align}</code></pre>
+<p><span class="math display">\[\begin{align*}
+a &amp;= 1, &amp; b &amp;= 2,\\
+c &amp;= 3, &amp; d &amp;= 4.
+\end{align*}\]</span></p>
+<p>You may notice that the equation numbering in edit mode is always referred to the equations contained in a single cell. If you put several equations in a single markdown cell they will be numbered sequentially, but the moment you start another cell the counting resets. This is a bug which is not verified when you export the notebook as a pdf or as an HTML file. Equations may contain labels as <code>\label{eq:sum_result}</code> at the end of a line which help to automatically refer to these equations in the text. For instance, the quadratic formula is <span class="math inline">\(\eqref{eq:quadratic_formula}\)</span>, which can be referred to using <code>$\eqref{eq:quadratic_formula}$</code>. The result of <span class="math inline">\(2+3\)</span> is shown in Eq. <span class="math inline">\(\eqref{eq:sum_result}\)</span> and can be dynamically referred in the text using <code>$\eqref{eq:sum_result}$</code>. This is very powerful, since it’s not necessary to keep track of these numbers when changing the document. Quite often there are some equations that we don’t want to number. The  environments above lose their numbering by adding an asterisk after the environment name, as in <code>\begin{env*} your equation \end{env*}</code>. We can also remove the numbering of specific equations using <code>\nonumber</code>.</p>
+<p>Each equation environment above is more adequate for specific types of equations. <code>equation</code> is adequate for single mathematical expressions that may fit a single line. Sometimes there are single expressions that are too long, such they can be split along several lines using <code>multline</code> for better visualization. Two bars <code>\\</code> are used to indicate where the line must break. The <code>align</code> environment is useful to exhibit several equations together. The expressions are aligned by <code>&amp;</code> symbols and the lines end at <code>\\</code>.</p>
+<p>The syntax to write down matrices and vectors is similar to that used in <code>align</code>. Columns are divided by <code>&amp;</code> and the lines end at <code>\\</code>. The matrix is defined within it’s own environment inside an equation environment. See the example below.</p>
+<pre><code>\begin{equation}
+  M =
+  \begin{bmatrix}
+  a &amp; b \\
+  c &amp; d
+  \end{bmatrix}
+\end{equation}</code></pre>
+<p><span class="math display">\[\begin{equation}
+  M =
+  \begin{bmatrix}
+  a &amp; b \\
+  c &amp; d
+  \end{bmatrix}
+\end{equation}\]</span></p>
+<p>There are several variations of the <code>matrix</code> environment, which are associated with the symbols used to enclose the matrix elements. The table below shows some examples.</p>
+<!---
+~~~{.python}
+out = "| Matrix type | Result |\n"
+out+= "|:-----------:|:------:|\n"
+
+for i in ['matrix', 'pmatrix', 'bmatrix', 'Bmatrix']:
+    mtrx_str = '''\\begin{%s} a & b \\\\ c & d \\end{%s}''' % (i, i)
+    out += "| `%s` | $%s$ |\n" % (i, mtrx_str)
+
+#from IPython import display
+#display.display(display.Markdown(out))
+print(out)
+~~~
+--->
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Matrix type</th>
+<th style="text-align: center;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>matrix</code></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{matrix} a &amp; b \\ c &amp; d \end{matrix}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>pmatrix</code></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>bmatrix</code></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>Bmatrix</code></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{Bmatrix} a &amp; b \\ c &amp; d \end{Bmatrix}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The <code>matrix</code> is useful to express conditional equations, as</p>
+<pre><code>\begin{equation}
+\Theta(x) =
+\left\{
+  \begin{matrix}
+  0\text{, if } x&lt;0 \\
+  1\text{, if } x&gt;0
+  \end{matrix}
+\right.
+\end{equation}</code></pre>
+<p><span class="math display">\[\begin{equation}
+\Theta(x) =
+\left\{
+  \begin{matrix}
+  0\text{, if } x&lt;0 \\
+  1\text{, if } x&gt;0
+  \end{matrix}
+\right.
+\end{equation}\]</span></p>
+<p>It can also be used to express vectors, as in</p>
+<pre><code>\begin{equation}
+    \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    \vdots \\
+    a_n
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    c_{11} &amp; c_{12} &amp; \dots &amp; c_{1n} \\
+    c_{21} &amp; c_{22} &amp; \dots &amp; c_{1n} \\
+    \vdots &amp; \ddots &amp;       &amp; \vdots \\
+    c_{n1} &amp; c_{n2} &amp; \dots &amp; c_{nn} \\
+    \end{pmatrix}
+    \begin{pmatrix}
+    b_1 \\
+    b_2 \\
+    \vdots \\
+    b_n
+    \end{pmatrix}    
+\end{equation}</code></pre>
+<p><span class="math display">\[\begin{equation}
+    \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    \vdots \\
+    a_n
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    c_{11} &amp; c_{12} &amp; \dots &amp; c_{1n} \\
+    c_{21} &amp; c_{22} &amp; \dots &amp; c_{1n} \\
+    \vdots &amp; \ddots &amp;       &amp; \vdots \\
+    c_{n1} &amp; c_{n2} &amp; \dots &amp; c_{nn} \\
+    \end{pmatrix}
+    \begin{pmatrix}
+    b_1 \\
+    b_2 \\
+    \vdots \\
+    b_n
+    \end{pmatrix}    
+\end{equation}\]</span></p>
+<h3 id="citations-and-internal-references">Citations and internal references</h3>
+<p>Jupyter notebook currently does not natively support references to sections and figures, such that it is not practical to write complex documents in it without extensions. Below there are some suggestions on what can be done.</p>
+<ul>
+<li>For simple documents, the citations and references can be handled manually</li>
+<li>The <a href="https://github.com/takluyver/cite2c">cite2c extension</a> allows to use Zotero references to perform literature citations. This is a solution for documents that does not require complex internal references to figures, tables and etc.</li>
+<li>The notebook can be used to compose the skeleton of the final document and later be exported to a <code>.tex</code> file. This export procedure will handle figure exports and mathematical expressions. Therefore, the document still must go through a final stage using a  distribution such as MiKTeX.</li>
+<li><a href="pandoc.org">Pandoc</a> is a document converter that support several formats, it’s native syntax being a markdown flavor. It is possible to use the notebook in a <a href="https://stackoverflow.com/questions/30061902/how-to-handle-citations-in-ipython-notebook">Pandoc based workflow</a>. For example, it’s possible to use python to automate the conversion, or export the notebook to later perform the final adjustments directly using Pandoc.</li>
+</ul>
+<p>As a final remark, the Jupyter notebook has an internal tool called <code>nbconvert</code> which is used to convert the notebook file to several formats. <code>nbconvert</code> supports templating, such once you can tune the conversion process to make your workflow easier.</p>
+<!---
+
+Adicionar workflow para usar o pandoc? Acho que o anaconda instala o pandoc automaticamente... WinPython também!! Vale a pena fazer isso para customizar a saída do template
+
+--->
 
             </div>
 
@@ -239,7 +1456,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    Copyright © 2016-2019 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                    Copyright © 2016-2021 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
                 </div>
             </div>
         </footer>
