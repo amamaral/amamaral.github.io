@@ -291,7 +291,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>(array([ 0. ,  0.5,  1. ,  1.5,  2. ,  2.5,  3. ,  3.5,  4. ,  4.5,  5. ]),
  array([  2.  ,   8.25,  12.  ,  13.25,  12.  ,   8.25,   2.  ,  -6.75,
         -18.  , -31.75, -48.  ]))</code></pre>
-<p>Notice that <code>y</code> is a <code>lambda</code> function that has a generic argument <code>t</code>, instead of <code>x</code> directly. An advantage of the function definition above is that now it is possible to evaluate the function <code>y(t)</code> over distinct Numpy arrays, and we don’t have to rewrite everything. For example, suppose that somewhere else we want to evaluate <code>y</code> over a larger domain and at a higher resolution using</p>
+<p>Notice that <code>y</code> is a <code>lambda</code> function that has a generic argument <code>t</code>, instead of <code>x</code> directly. An advantage of the function definition above is that now it is possible to evaluate the function <code>y(t)</code> over distinct Numpy arrays, and we don’t have to rewrite everything. For example, suppose that somewhere else we want to evaluate <code>y</code> over a larger domain <code>z</code> and at a higher resolution. We may use simply</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>z<span class="op">=</span>linspace(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
 <span id="cb32-2"><a href="#cb32-2"></a>z, y(z)</span></code></pre></div>
 <h2 id="basic-curve-plotting">Basic curve plotting</h2>
@@ -368,6 +368,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <!---
 
 NOTA: Acho que vale a pena colocar a parte de iteráveis (list, tuple e dict) bem como algumas instruções gerais sobre loops aqui. Assim esse capítulo dá uma visão geral sobre a programação em python e sua sintaxe. Essa parte de storing data in lists anda array acho que pode ser suprimida tendo em vista o novo material sobre o uso do pandas no próximo capítulo.
+
+NOTA2: Outra limitação importante desse texto resumido é que ele não ensina como lidar com erros e problemas de sintaxe... No caso do livro seria muito importante adicionar esses conceitos.
 
 ## Storing data in lists and arrays
 
