@@ -45,10 +45,10 @@
                             </li>
                             <li><a href="/conference_papers.html">Conference papers</a>
                             </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
+                            <!---<li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
                             </li>
                             <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Science links</a>
-                            </li>
+                            </li> --->
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -58,10 +58,10 @@
                             </li>
                             <li><a href="http://www.github.com/amamaral" data-toggle="tooltip" title="Github software repositories">Software</a>
                             </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
+                            <!---<li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
                             </li>
                             <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Electronics links</a>
-                            </li>
+                            </li>--->
                         </ul>
                     </li>
 		    <li><a href="/teaching.html"><i class="fa fa-book"></i> Teaching (Ensino)</a>
@@ -179,179 +179,179 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Suppose that one has some picture of a cylindrical structure, as for example a Gaussian light beam or Laguerre-Gauss laser modes. How to convert the image from <span class="math inline">\(xy\)</span> cartesian coordinates to <span class="math inline">\(r\theta\)</span> cylindrical coordinates? This is particularly important if the pattern does not have azimuthal symmetry and rotates. How to determine the rotation angle?</p>
 <p>Consider the light beam below, produced which can be understood as the interference between two LG modes. How to perform the coordinate transformation in a numerically efficient way using Python?</p>
 <figure>
-<img class="img-responsive" src="assets\xy_rphi_initialproblem.png" alt="" /><figcaption>Problem definition</figcaption>
+<img class="img-responsive" src="assets\xy_rphi_initialproblem.png" alt="Problem definition" /><figcaption aria-hidden="true">Problem definition</figcaption>
 </figure>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>pylab inline</span>
-<span id="cb1-2"><a href="#cb1-2"></a>xx <span class="op">=</span> linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>, <span class="dv">1000</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>yy <span class="op">=</span> linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>, <span class="dv">1000</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>x, y <span class="op">=</span> meshgrid(xx,yy)</span>
-<span id="cb1-6"><a href="#cb1-6"></a>v <span class="op">=</span> x <span class="op">+</span><span class="ot"> 1j</span> <span class="op">*</span> y</span>
-<span id="cb1-7"><a href="#cb1-7"></a>r <span class="op">=</span> <span class="bu">abs</span>(v)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>phi <span class="op">=</span> angle(v)</span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a>offset <span class="op">=</span> deg2rad(<span class="dv">0</span>)</span>
-<span id="cb1-11"><a href="#cb1-11"></a>m <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>nbins <span class="op">=</span> <span class="dv">200</span> <span class="co"># If this is too large, some distortion in the angle due to pixelation</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a>profile <span class="op">=</span>  r<span class="op">**</span>m <span class="op">*</span> cos(m<span class="op">*</span>(theta<span class="op">+</span>phi)) <span class="op">*</span> exp(<span class="op">-</span>r<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a>rr <span class="op">=</span> linspace(<span class="dv">0</span>,<span class="dv">5</span>,nbins)</span>
-<span id="cb1-17"><a href="#cb1-17"></a>pphi <span class="op">=</span> linspace(<span class="op">-</span>pi,pi,nbins)</span>
-<span id="cb1-18"><a href="#cb1-18"></a>Phi, R <span class="op">=</span> meshgrid(pphi, rr)</span>
-<span id="cb1-19"><a href="#cb1-19"></a>profile_r_phi <span class="op">=</span> R<span class="op">**</span>m <span class="op">*</span> cos(m<span class="op">*</span>(Phi<span class="op">+</span>offset)) <span class="op">*</span> exp(<span class="op">-</span>R<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb1-20"><a href="#cb1-20"></a></span>
-<span id="cb1-21"><a href="#cb1-21"></a>subplot(<span class="dv">121</span>)</span>
-<span id="cb1-22"><a href="#cb1-22"></a>title(<span class="vs">r&#39;$I(x,y)$&#39;</span>)</span>
-<span id="cb1-23"><a href="#cb1-23"></a></span>
-<span id="cb1-24"><a href="#cb1-24"></a>dx <span class="op">=</span> (xx[<span class="dv">1</span>]<span class="op">-</span>xx[<span class="dv">0</span>])<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a>dy <span class="op">=</span> (yy[<span class="dv">1</span>]<span class="op">-</span>yy[<span class="dv">0</span>])<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a>extent_xy<span class="op">=</span>[xx[<span class="dv">0</span>]<span class="op">-</span>dx, xx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>dx, yy[<span class="dv">0</span>]<span class="op">-</span>dy, yy[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>dy]</span>
-<span id="cb1-27"><a href="#cb1-27"></a></span>
-<span id="cb1-28"><a href="#cb1-28"></a>imshow(absolute(profile)<span class="op">**</span><span class="dv">2</span>, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>, extent<span class="op">=</span>extent_xy)</span>
-<span id="cb1-29"><a href="#cb1-29"></a>subplot(<span class="dv">122</span>)</span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="co">#im = imshow(angle(profile), cmap=cm.gray)</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="co">#colorbar(im)</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a>title(<span class="vs">r&#39;$I(r,\phi)$&#39;</span>)</span>
-<span id="cb1-33"><a href="#cb1-33"></a></span>
-<span id="cb1-34"><a href="#cb1-34"></a>imshow(absolute(profile_r_phi)<span class="op">**</span><span class="dv">2</span>, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>)</span>
-<span id="cb1-35"><a href="#cb1-35"></a>xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</span>
-<span id="cb1-36"><a href="#cb1-36"></a>ylabel(<span class="st">&quot;r&quot;</span>)</span>
-<span id="cb1-37"><a href="#cb1-37"></a></span>
-<span id="cb1-38"><a href="#cb1-38"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_initialproblem.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pylab inline</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>xx <span class="op">=</span> linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>, <span class="dv">1000</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>yy <span class="op">=</span> linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>, <span class="dv">1000</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> meshgrid(xx,yy)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> x <span class="op">+</span> <span class="ot">1j</span> <span class="op">*</span> y</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="bu">abs</span>(v)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>phi <span class="op">=</span> angle(v)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> deg2rad(<span class="dv">0</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>nbins <span class="op">=</span> <span class="dv">200</span> <span class="co"># If this is too large, some distortion in the angle due to pixelation</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span>  r<span class="op">**</span>m <span class="op">*</span> cos(m<span class="op">*</span>(theta<span class="op">+</span>phi)) <span class="op">*</span> exp(<span class="op">-</span>r<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>rr <span class="op">=</span> linspace(<span class="dv">0</span>,<span class="dv">5</span>,nbins)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>pphi <span class="op">=</span> linspace(<span class="op">-</span>pi,pi,nbins)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Phi, R <span class="op">=</span> meshgrid(pphi, rr)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>profile_r_phi <span class="op">=</span> R<span class="op">**</span>m <span class="op">*</span> cos(m<span class="op">*</span>(Phi<span class="op">+</span>offset)) <span class="op">*</span> exp(<span class="op">-</span>R<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>subplot(<span class="dv">121</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>title(<span class="vs">r&#39;$I(x,y)$&#39;</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> (xx[<span class="dv">1</span>]<span class="op">-</span>xx[<span class="dv">0</span>])<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>dy <span class="op">=</span> (yy[<span class="dv">1</span>]<span class="op">-</span>yy[<span class="dv">0</span>])<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>extent_xy<span class="op">=</span>[xx[<span class="dv">0</span>]<span class="op">-</span>dx, xx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>dx, yy[<span class="dv">0</span>]<span class="op">-</span>dy, yy[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>dy]</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>imshow(absolute(profile)<span class="op">**</span><span class="dv">2</span>, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>, extent<span class="op">=</span>extent_xy)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>subplot(<span class="dv">122</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">#im = imshow(angle(profile), cmap=cm.gray)</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">#colorbar(im)</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>title(<span class="vs">r&#39;$I(r,\phi)$&#39;</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>imshow(absolute(profile_r_phi)<span class="op">**</span><span class="dv">2</span>, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>ylabel(<span class="st">&quot;r&quot;</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_initialproblem.png&quot;</span>)</span></code></pre></div>
 <h1 id="radial-dependence">Radial dependence</h1>
 <p>Suppose we want to find <span class="math inline">\(I(r)\)</span>. How do we do this, given that we know <span class="math inline">\(I(x,y)\)</span>? We can build a map that indicates the coordinate of each pixel in the coordinate system of interest, as performed above for <code>x,y,r,phi</code>. We can use histograms to verify how frequent each value of <code>r,phi</code> appears in the image. Below we have the histogram of <code>r</code> in an array whose size is the same as <code>profile</code>. Notice that the growth is linear with <code>r</code> until the corners of the array are reached at <span class="math inline">\(r=5\)</span>. Resembles, at least slightly, the Jacobian of the coordinate transformation. Suppose now that the histogram of <span class="math inline">\(r\)</span> is weighted by the intensity profile, could this be equivalent to the coordinate transformation?</p>
 <figure>
-<img class="img-responsive" src="assets\xy_rphi_radial_histogram.png" alt="" /><figcaption>Using histograms for coordinate transformation</figcaption>
+<img class="img-responsive" src="assets\xy_rphi_radial_histogram.png" alt="Using histograms for coordinate transformation" /><figcaption aria-hidden="true">Using histograms for coordinate transformation</figcaption>
 </figure>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>h <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>hx <span class="op">=</span> h[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb2-3"><a href="#cb2-3"></a>hy <span class="op">=</span> h[<span class="dv">0</span>]</span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a>h2 <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins)</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>subplot(<span class="dv">211</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a>title(<span class="st">&#39;num of array elems with given r values&#39;</span>)</span>
-<span id="cb2-9"><a href="#cb2-9"></a>plot(hx, h2[<span class="dv">0</span>], <span class="st">&#39;k.&#39;</span>)</span>
-<span id="cb2-10"><a href="#cb2-10"></a></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># Notice that the frequency of r[i] is proportional to r. Jacobian?</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="co"># It is necessary to normalize by h2!</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a></span>
-<span id="cb2-14"><a href="#cb2-14"></a>subplot(<span class="dv">212</span>)</span>
-<span id="cb2-15"><a href="#cb2-15"></a>title(<span class="st">&#39;intensity vs radius?&#39;</span>)</span>
-<span id="cb2-16"><a href="#cb2-16"></a>plot(hx, hy, <span class="st">&#39;k.&#39;</span>)</span>
-<span id="cb2-17"><a href="#cb2-17"></a></span>
-<span id="cb2-18"><a href="#cb2-18"></a>tight_layout()</span>
-<span id="cb2-19"><a href="#cb2-19"></a></span>
-<span id="cb2-20"><a href="#cb2-20"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_radial_histogram.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>hx <span class="op">=</span> h[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>hy <span class="op">=</span> h[<span class="dv">0</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>subplot(<span class="dv">211</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>title(<span class="st">&#39;num of array elems with given r values&#39;</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plot(hx, h2[<span class="dv">0</span>], <span class="st">&#39;k.&#39;</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice that the frequency of r[i] is proportional to r. Jacobian?</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># It is necessary to normalize by h2!</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>subplot(<span class="dv">212</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>title(<span class="st">&#39;intensity vs radius?&#39;</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>plot(hx, hy, <span class="st">&#39;k.&#39;</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>tight_layout()</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_radial_histogram.png&quot;</span>)</span></code></pre></div>
 <p>It’s very close indeed, however it is necessary to normalize by the number of pixels whose radius is <code>r</code>. Below this correction is performed and the theory and numerical conversion are compared. Notice the perfect matching, which indicates the present procedure is adequate.</p>
 <figure>
-<img class="img-responsive" src="assets\xy_rphi_radial_histogram_2.png" alt="" /><figcaption>Radial expression for the intensity using histograms</figcaption>
+<img class="img-responsive" src="assets\xy_rphi_radial_histogram_2.png" alt="Radial expression for the intensity using histograms" /><figcaption aria-hidden="true">Radial expression for the intensity using histograms</figcaption>
 </figure>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>title(<span class="st">&#39;avg intensity vs radius&#39;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a>h1 <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb3-4"><a href="#cb3-4"></a>h2 <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins)</span>
-<span id="cb3-5"><a href="#cb3-5"></a></span>
-<span id="cb3-6"><a href="#cb3-6"></a>hx <span class="op">=</span> h1[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb3-7"><a href="#cb3-7"></a>hy <span class="op">=</span> h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>]</span>
-<span id="cb3-8"><a href="#cb3-8"></a></span>
-<span id="cb3-9"><a href="#cb3-9"></a>factor <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> m<span class="op">==</span><span class="dv">0</span> <span class="cf">else</span> <span class="dv">2</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a></span>
-<span id="cb3-11"><a href="#cb3-11"></a>plot(hx, hy, <span class="st">&#39;k.&#39;</span>, label<span class="op">=</span><span class="st">&#39;histogram transformation&#39;</span>)</span>
-<span id="cb3-12"><a href="#cb3-12"></a>plot(hx, hx<span class="op">**</span>(<span class="dv">2</span><span class="op">*</span>m) <span class="op">*</span> exp(<span class="op">-</span><span class="dv">2</span><span class="op">*</span>hx<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>factor, label<span class="op">=</span><span class="st">&#39;theory&#39;</span>)</span>
-<span id="cb3-13"><a href="#cb3-13"></a>legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb3-14"><a href="#cb3-14"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_radial_histogram_2.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>title(<span class="st">&#39;avg intensity vs radius&#39;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> histogram(r, bins<span class="op">=</span>nbins)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>hx <span class="op">=</span> h1[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>hy <span class="op">=</span> h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>factor <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> m<span class="op">==</span><span class="dv">0</span> <span class="cf">else</span> <span class="dv">2</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plot(hx, hy, <span class="st">&#39;k.&#39;</span>, label<span class="op">=</span><span class="st">&#39;histogram transformation&#39;</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plot(hx, hx<span class="op">**</span>(<span class="dv">2</span><span class="op">*</span>m) <span class="op">*</span> exp(<span class="op">-</span><span class="dv">2</span><span class="op">*</span>hx<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>factor, label<span class="op">=</span><span class="st">&#39;theory&#39;</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_radial_histogram_2.png&quot;</span>)</span></code></pre></div>
 <h1 id="angular-dependence">Angular dependence</h1>
 <p>To obtain the angular dependence is similar, however some extra care must be taken. Consider the histogram of <code>phi</code>, weighted by <code>1</code> or the intensity profiles. Notice that while the radial distortion is due to pixels close to the image borders, in the azimuthal direction there are more pixels along certain directions (diagonals). This is important to notice because the contribution due to some angles can be disproportionate. Also, close to <span class="math inline">\(r=0\)</span>, some angles may be unavailable due to pixelation.</p>
 <figure>
-<img class="img-responsive" src="assets\xy_rphi_angular_histogram.png" alt="" /><figcaption>Obtaining <span class="math inline">\(I(\theta)\)</span></figcaption>
+<img class="img-responsive" src="assets\xy_rphi_angular_histogram.png" alt="Obtaining I(\theta)" /><figcaption aria-hidden="true">Obtaining <span class="math inline">\(I(\theta)\)</span></figcaption>
 </figure>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>h <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>hx <span class="op">=</span> h[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span><span class="dv">180</span><span class="op">/</span>pi</span>
-<span id="cb4-3"><a href="#cb4-3"></a>hy <span class="op">=</span> h[<span class="dv">0</span>]</span>
-<span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a>h2 <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins)</span>
-<span id="cb4-6"><a href="#cb4-6"></a></span>
-<span id="cb4-7"><a href="#cb4-7"></a>subplot(<span class="dv">211</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>plot(hx, h2[<span class="dv">0</span>], <span class="st">&#39;k.&#39;</span>)</span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co"># Notice the distortion at the most frequent phi values</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co"># The most frequent phi values are at the diagonals</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a></span>
-<span id="cb4-12"><a href="#cb4-12"></a>subplot(<span class="dv">212</span>)</span>
-<span id="cb4-13"><a href="#cb4-13"></a>title(<span class="st">&#39;intensity vs angle?&#39;</span>)</span>
-<span id="cb4-14"><a href="#cb4-14"></a>plot(hx, hy, <span class="st">&#39;k.&#39;</span>)</span>
-<span id="cb4-15"><a href="#cb4-15"></a></span>
-<span id="cb4-16"><a href="#cb4-16"></a>tight_layout()</span>
-<span id="cb4-17"><a href="#cb4-17"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_angular_histogram.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>hx <span class="op">=</span> h[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span><span class="dv">180</span><span class="op">/</span>pi</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>hy <span class="op">=</span> h[<span class="dv">0</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>subplot(<span class="dv">211</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plot(hx, h2[<span class="dv">0</span>], <span class="st">&#39;k.&#39;</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice the distortion at the most frequent phi values</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># The most frequent phi values are at the diagonals</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>subplot(<span class="dv">212</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>title(<span class="st">&#39;intensity vs angle?&#39;</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plot(hx, hy, <span class="st">&#39;k.&#39;</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>tight_layout()</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_angular_histogram.png&quot;</span>)</span></code></pre></div>
 <p>If the histogram is normalized as before, there will be some distortion due to the diagonals. To avoid this, we filter the image radially and obtain the following result is obtained. Notice how the numerical transformation nicely matches the theoretically expected result.</p>
 <p><img class="img-responsive" src="assets\xy_rphi_angular_histogram_2.png" /></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>title(<span class="st">&#39;intensity vs angle at given radius&#39;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a>rad <span class="op">=</span> sqrt(<span class="dv">1</span><span class="op">+</span>m)<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>width <span class="op">=</span> <span class="fl">0.3</span> <span class="co"># If this is too large, some distortion appear due to the frame edges and pixelation</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>mask <span class="op">=</span> <span class="fl">1.0</span> <span class="op">*</span> (r<span class="op">&gt;</span> rad<span class="op">-</span>width<span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> (r <span class="op">&lt;</span> rad<span class="op">+</span>width<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a>h1 <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> mask)</span>
-<span id="cb5-8"><a href="#cb5-8"></a>h2 <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins, weights<span class="op">=</span>mask)</span>
-<span id="cb5-9"><a href="#cb5-9"></a>hx <span class="op">=</span> h1[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span><span class="dv">180</span><span class="op">/</span>pi</span>
-<span id="cb5-10"><a href="#cb5-10"></a>hy <span class="op">=</span> h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>]</span>
-<span id="cb5-11"><a href="#cb5-11"></a></span>
-<span id="cb5-12"><a href="#cb5-12"></a>plot(hx, hy, <span class="st">&#39;k.&#39;</span>, label<span class="op">=</span><span class="st">&#39;Numerical transformation&#39;</span>)</span>
-<span id="cb5-13"><a href="#cb5-13"></a></span>
-<span id="cb5-14"><a href="#cb5-14"></a>ampl <span class="op">=</span> rad<span class="op">**</span>(<span class="dv">2</span><span class="op">*</span>m) <span class="op">*</span> exp(<span class="op">-</span><span class="dv">2</span><span class="op">*</span>rad<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb5-15"><a href="#cb5-15"></a>plot(hx, ampl<span class="op">*</span>cos(m <span class="op">*</span> (pi<span class="op">*</span>hx<span class="op">/</span><span class="dv">180</span> <span class="op">+</span> offset))<span class="op">**</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">&#39;Theory&#39;</span>)</span>
-<span id="cb5-16"><a href="#cb5-16"></a></span>
-<span id="cb5-17"><a href="#cb5-17"></a>legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb5-18"><a href="#cb5-18"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_angular_histogram_2.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>title(<span class="st">&#39;intensity vs angle at given radius&#39;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>rad <span class="op">=</span> sqrt(<span class="dv">1</span><span class="op">+</span>m)<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="fl">0.3</span> <span class="co"># If this is too large, some distortion appear due to the frame edges and pixelation</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> <span class="fl">1.0</span> <span class="op">*</span> (r<span class="op">&gt;</span> rad<span class="op">-</span>width<span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> (r <span class="op">&lt;</span> rad<span class="op">+</span>width<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins, weights<span class="op">=</span>absolute(profile)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> mask)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> histogram(phi, bins<span class="op">=</span>nbins, weights<span class="op">=</span>mask)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>hx <span class="op">=</span> h1[<span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span><span class="dv">180</span><span class="op">/</span>pi</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>hy <span class="op">=</span> h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>]</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plot(hx, hy, <span class="st">&#39;k.&#39;</span>, label<span class="op">=</span><span class="st">&#39;Numerical transformation&#39;</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>ampl <span class="op">=</span> rad<span class="op">**</span>(<span class="dv">2</span><span class="op">*</span>m) <span class="op">*</span> exp(<span class="op">-</span><span class="dv">2</span><span class="op">*</span>rad<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plot(hx, ampl<span class="op">*</span>cos(m <span class="op">*</span> (pi<span class="op">*</span>hx<span class="op">/</span><span class="dv">180</span> <span class="op">+</span> offset))<span class="op">**</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">&#39;Theory&#39;</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_angular_histogram_2.png&quot;</span>)</span></code></pre></div>
 <h1 id="radial-and-angular-dependence">Radial and angular dependence</h1>
 <p>Since the above considerations allowed to obtain the intensity vs radius or intensity vs angle, would it be possible to obtain intensity as a function of radius and angle? We can use 2d histograms to obtain this transformation, analogously to the previous cases. Some distinctions are important here. <code>histogram2d()</code> does not accept <code>r, phi</code> and <code>profile</code> as 2d arrays, such <code>ravel()</code> is used to convert these matrices to 1D ndarrays. Also, close to <code>r=0</code> there will be several angles which cannot be found, such the normalization will be undefined. In such cases it could be possible to interpolate the data between well defined values. Notice that this is not a limitation of the present procedure, but an unavoidable issue in such transformation. Some pairs of <code>r, phi</code> do not exist, and therefore the method cannot infer these values automatically. Numpy assigns <code>nan</code> to these values and <code>imshow</code> exhibits these pixels in white. It is also important to notice that here it is important to limit the extent of <span class="math inline">\(r\)</span> values, otherwise the corners will be included and artifacts introduced in the <span class="math inline">\(r\theta\)</span> representation.</p>
 <figure>
-<img class="img-responsive" src="assets\xy_rphi_transform.png" alt="" /><figcaption>Output of the 2D transformation</figcaption>
+<img class="img-responsive" src="assets\xy_rphi_transform.png" alt="Output of the 2D transformation" /><figcaption aria-hidden="true">Output of the 2D transformation</figcaption>
 </figure>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>title(<span class="vs">r&#39;$I(r,\theta)$&#39;</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>data_range <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">5</span>], [<span class="op">-</span>pi,pi]]</span>
-<span id="cb6-3"><a href="#cb6-3"></a>h1 <span class="op">=</span> histogram2d(r.ravel(), phi.ravel(), bins<span class="op">=</span>nbins, <span class="bu">range</span><span class="op">=</span>data_range, weights<span class="op">=</span>(absolute(profile)<span class="op">**</span><span class="dv">2</span>).ravel())</span>
-<span id="cb6-4"><a href="#cb6-4"></a>h2 <span class="op">=</span> histogram2d(r.ravel(), phi.ravel(), bins<span class="op">=</span>nbins, <span class="bu">range</span><span class="op">=</span>data_range)</span>
-<span id="cb6-5"><a href="#cb6-5"></a></span>
-<span id="cb6-6"><a href="#cb6-6"></a>im <span class="op">=</span> imshow(h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>], origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>)</span>
-<span id="cb6-7"><a href="#cb6-7"></a>colorbar(im)</span>
-<span id="cb6-8"><a href="#cb6-8"></a></span>
-<span id="cb6-9"><a href="#cb6-9"></a>xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">theta$&quot;</span>)</span>
-<span id="cb6-10"><a href="#cb6-10"></a>ylabel(<span class="st">&quot;r&quot;</span>)</span>
-<span id="cb6-11"><a href="#cb6-11"></a></span>
-<span id="cb6-12"><a href="#cb6-12"></a><span class="co"># The present approach has errors close to r=0, since there will not be pixels with some values of theta</span></span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="co"># Interpolation is necessary to fill out the gaps where h2[0]==0 close to r=0.</span></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="co"># The number of gaps reduces with the number of bins</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a></span>
-<span id="cb6-16"><a href="#cb6-16"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_transform.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>title(<span class="vs">r&#39;$I(r,\theta)$&#39;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data_range <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">5</span>], [<span class="op">-</span>pi,pi]]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> histogram2d(r.ravel(), phi.ravel(), bins<span class="op">=</span>nbins, <span class="bu">range</span><span class="op">=</span>data_range, weights<span class="op">=</span>(absolute(profile)<span class="op">**</span><span class="dv">2</span>).ravel())</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> histogram2d(r.ravel(), phi.ravel(), bins<span class="op">=</span>nbins, <span class="bu">range</span><span class="op">=</span>data_range)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> imshow(h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>], origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>colorbar(im)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">theta$&quot;</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ylabel(<span class="st">&quot;r&quot;</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The present approach has errors close to r=0, since there will not be pixels with some values of theta</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Interpolation is necessary to fill out the gaps where h2[0]==0 close to r=0.</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># The number of gaps reduces with the number of bins</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_transform.png&quot;</span>)</span></code></pre></div>
 <p>We can also put the theoretically expected profile and the result of the numerical transformation side by side to see that the transformation is meaningful. Both patterns are very similar.</p>
 <figure>
-<img class="img-responsive" src="assets\xy_rphi_side_by_side.png" alt="" /><figcaption>Theoretical and numerically transformed patterns are identical</figcaption>
+<img class="img-responsive" src="assets\xy_rphi_side_by_side.png" alt="Theoretical and numerically transformed patterns are identical" /><figcaption aria-hidden="true">Theoretical and numerically transformed patterns are identical</figcaption>
 </figure>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>subplot(<span class="dv">121</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>title(<span class="st">&#39;Theoretical&#39;</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>im <span class="op">=</span> imshow(absolute(profile_r_phi)<span class="op">**</span><span class="dv">2</span>, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>, cmap<span class="op">=</span>im.cmap)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>ylabel(<span class="st">&quot;r&quot;</span>)</span>
-<span id="cb7-6"><a href="#cb7-6"></a></span>
-<span id="cb7-7"><a href="#cb7-7"></a>subplot(<span class="dv">122</span>)</span>
-<span id="cb7-8"><a href="#cb7-8"></a>title(<span class="st">&#39;Transf. result&#39;</span>)</span>
-<span id="cb7-9"><a href="#cb7-9"></a></span>
-<span id="cb7-10"><a href="#cb7-10"></a>imshow(h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>], origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>, cmap<span class="op">=</span>im.cmap)</span>
-<span id="cb7-11"><a href="#cb7-11"></a>xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</span>
-<span id="cb7-12"><a href="#cb7-12"></a>ylabel(<span class="st">&quot;r&quot;</span>)</span>
-<span id="cb7-13"><a href="#cb7-13"></a></span>
-<span id="cb7-14"><a href="#cb7-14"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_side_by_side.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>subplot(<span class="dv">121</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>title(<span class="st">&#39;Theoretical&#39;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> imshow(absolute(profile_r_phi)<span class="op">**</span><span class="dv">2</span>, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>, cmap<span class="op">=</span>im.cmap)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ylabel(<span class="st">&quot;r&quot;</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>subplot(<span class="dv">122</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>title(<span class="st">&#39;Transf. result&#39;</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>imshow(h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>], origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>, cmap<span class="op">=</span>im.cmap)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>ylabel(<span class="st">&quot;r&quot;</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_side_by_side.png&quot;</span>)</span></code></pre></div>
 <p>The difference between both patterns above is also very small, as it can be seen from the image below.</p>
 <p><img class="img-responsive" src="assets\xy_rphi_difference.png" /></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>title(<span class="st">&#39;Difference (Th-Tr)&#39;</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>delta <span class="op">=</span> absolute(absolute(profile_r_phi)<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>])</span>
-<span id="cb8-3"><a href="#cb8-3"></a>im <span class="op">=</span> imshow(delta, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>)</span>
-<span id="cb8-4"><a href="#cb8-4"></a>colorbar(im)</span>
-<span id="cb8-5"><a href="#cb8-5"></a>xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</span>
-<span id="cb8-6"><a href="#cb8-6"></a>ylabel(<span class="st">&quot;r&quot;</span>)<span class="op">;</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_difference.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>title(<span class="st">&#39;Difference (Th-Tr)&#39;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>delta <span class="op">=</span> absolute(absolute(profile_r_phi)<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> h1[<span class="dv">0</span>]<span class="op">/</span>h2[<span class="dv">0</span>])</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> imshow(delta, origin<span class="op">=</span><span class="st">&#39;lower&#39;</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>colorbar(im)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">phi$&quot;</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>ylabel(<span class="st">&quot;r&quot;</span>)<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&quot;assets\xy_rphi_difference.png&quot;</span>)</span></code></pre></div>
 
             </div>
 
@@ -383,7 +383,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    Copyright © 2016-2021 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                    Copyright © 2016-2023 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
                 </div>
             </div>
         </footer>

@@ -45,10 +45,10 @@
                             </li>
                             <li><a href="/conference_papers.html">Conference papers</a>
                             </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
+                            <!---<li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
                             </li>
                             <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Science links</a>
-                            </li>
+                            </li> --->
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -58,10 +58,10 @@
                             </li>
                             <li><a href="http://www.github.com/amamaral" data-toggle="tooltip" title="Github software repositories">Software</a>
                             </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
+                            <!---<li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
                             </li>
                             <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Electronics links</a>
-                            </li>
+                            </li>--->
                         </ul>
                     </li>
 		    <li><a href="/teaching.html"><i class="fa fa-book"></i> Teaching (Ensino)</a>
@@ -196,32 +196,32 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Often we are not directly interested in the number of photons/s, given that it’s difficult to work in the quantum optics regime. It’s more usual to be interested in the relation between the optical power to the generated current. The energy per photon is <span class="math inline">\(E=\frac{hc}{\lambda}=\frac{1240\text{ eV.nm}}{\lambda}\)</span>, and <span class="math inline">\(N\)</span> photons/s impinge the photodiode. Thus, the relation between current and power can be expressed through the <strong>Responsivity</strong> <span class="math display">\[\text{Resp}(\lambda) = \eta \frac{\lambda}{1240\text{ nm}} \text{ A/W}\]</span></p>
 <p>Thus for a monochromatic source, one has that <span class="math inline">\(I_{rev}= R P\)</span>. If the light source has a known power spectrum <span class="math inline">\(P(\lambda)\)</span> and <span class="math inline">\(\text{Resp}(\lambda)\)</span> is also known, then <span class="math inline">\(I_{rev}= \int P(\lambda) \left|\frac{d\text{Resp}(\lambda)}{d\lambda}\right| d\lambda\)</span>.</p>
 <p>The responsivity does not grow indefinitely with <span class="math inline">\(\lambda\)</span>. Indeed, light can efficiently excite single carriers only at wavelengths larger than the material’s bandgap. For silicon at ambient temperature, that means wavelengths around <span class="math inline">\(1100\text{ nm}\)</span>. Thus, the typical responsivity is a curve like the one below. Notice that photodiodes as the FDS100 or BPW34 can reach responsivities quite close to the ideal case (<span class="math inline">\(\eta=1\)</span>) in the near infrared, while the overall quantum efficiency reduces at smaller wavelengths.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>pylab inline</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Represent the ideal photodiode response</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>wavelengths <span class="op">=</span> linspace(<span class="dv">350</span>, <span class="dv">1150</span>, <span class="dv">100</span>) <span class="co"># UV to near IR</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>bandgap <span class="op">=</span> <span class="dv">1100</span> <span class="co"># Silicon bandgap at room temperature</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>responsivity <span class="op">=</span> wavelengths<span class="op">/</span><span class="dv">1240</span> <span class="co"># Ideal case responsivity</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>responsivity[wavelengths<span class="op">&gt;</span>bandgap] <span class="op">=</span> zeros(wavelengths.shape)[wavelengths<span class="op">&gt;</span>bandgap]</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Consider the data for Thorlabs&#39;s FDS100 and BPW34 as a comparison</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>fds100 <span class="op">=</span> loadtxt(<span class="vs">r&#39;assets\TIA_FDS100_Responsivity_data.csv&#39;</span>, skiprows<span class="op">=</span><span class="dv">1</span>, unpack<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-11"><a href="#cb1-11"></a></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co"># Data retrieved directly from the datasheet using the getdata graph digitizer</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a>bpw34 <span class="op">=</span> loadtxt(<span class="vs">r&#39;assets\TIA_bpw34_spectral_response.csv&#39;</span>, unpack<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-14"><a href="#cb1-14"></a>i <span class="op">=</span> absolute(bpw34[<span class="dv">0</span>]<span class="op">-</span><span class="dv">950</span>).argmin() <span class="co"># Which index corresponds to 950 nm?</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a>bpw34[<span class="dv">1</span>] <span class="op">=</span> bpw34[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">0.66</span> <span class="op">/</span> bpw34[<span class="dv">1</span>,i] <span class="co"># Adjust the normalized response by the responsivity</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a>plot(wavelengths,responsivity, label<span class="op">=</span><span class="st">&quot;Ideal case&quot;</span>)</span>
-<span id="cb1-18"><a href="#cb1-18"></a>plot(fds100[<span class="dv">0</span>], fds100[<span class="dv">1</span>], label<span class="op">=</span><span class="st">&quot;FDS100&quot;</span>)</span>
-<span id="cb1-19"><a href="#cb1-19"></a>plot(bpw34[<span class="dv">0</span>], bpw34[<span class="dv">1</span>], label<span class="op">=</span><span class="st">&quot;BPW34&quot;</span>)</span>
-<span id="cb1-20"><a href="#cb1-20"></a></span>
-<span id="cb1-21"><a href="#cb1-21"></a>grid()</span>
-<span id="cb1-22"><a href="#cb1-22"></a>xlabel(<span class="vs">r&quot;Wavelength (nm)&quot;</span>)</span>
-<span id="cb1-23"><a href="#cb1-23"></a>ylabel(<span class="vs">r&quot;Responsivity (A/W)&quot;</span>)</span>
-<span id="cb1-24"><a href="#cb1-24"></a>title(<span class="vs">r&quot;Responsitivity vs Wavelength&quot;</span>)</span>
-<span id="cb1-25"><a href="#cb1-25"></a>legend()</span>
-<span id="cb1-26"><a href="#cb1-26"></a>savefig(<span class="vs">r&#39;assets\TIA_ideal_responsivity.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pylab inline</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Represent the ideal photodiode response</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>wavelengths <span class="op">=</span> linspace(<span class="dv">350</span>, <span class="dv">1150</span>, <span class="dv">100</span>) <span class="co"># UV to near IR</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>bandgap <span class="op">=</span> <span class="dv">1100</span> <span class="co"># Silicon bandgap at room temperature</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>responsivity <span class="op">=</span> wavelengths<span class="op">/</span><span class="dv">1240</span> <span class="co"># Ideal case responsivity</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>responsivity[wavelengths<span class="op">&gt;</span>bandgap] <span class="op">=</span> zeros(wavelengths.shape)[wavelengths<span class="op">&gt;</span>bandgap]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Consider the data for Thorlabs&#39;s FDS100 and BPW34 as a comparison</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>fds100 <span class="op">=</span> loadtxt(<span class="vs">r&#39;assets\TIA_FDS100_Responsivity_data.csv&#39;</span>, skiprows<span class="op">=</span><span class="dv">1</span>, unpack<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Data retrieved directly from the datasheet using the getdata graph digitizer</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>bpw34 <span class="op">=</span> loadtxt(<span class="vs">r&#39;assets\TIA_bpw34_spectral_response.csv&#39;</span>, unpack<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> absolute(bpw34[<span class="dv">0</span>]<span class="op">-</span><span class="dv">950</span>).argmin() <span class="co"># Which index corresponds to 950 nm?</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>bpw34[<span class="dv">1</span>] <span class="op">=</span> bpw34[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">0.66</span> <span class="op">/</span> bpw34[<span class="dv">1</span>,i] <span class="co"># Adjust the normalized response by the responsivity</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>plot(wavelengths,responsivity, label<span class="op">=</span><span class="st">&quot;Ideal case&quot;</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>plot(fds100[<span class="dv">0</span>], fds100[<span class="dv">1</span>], label<span class="op">=</span><span class="st">&quot;FDS100&quot;</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>plot(bpw34[<span class="dv">0</span>], bpw34[<span class="dv">1</span>], label<span class="op">=</span><span class="st">&quot;BPW34&quot;</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>grid()</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="vs">r&quot;Wavelength (nm)&quot;</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>ylabel(<span class="vs">r&quot;Responsivity (A/W)&quot;</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>title(<span class="vs">r&quot;Responsitivity vs Wavelength&quot;</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>legend()</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\TIA_ideal_responsivity.png&#39;</span>)</span></code></pre></div>
 <p><img class="img-responsive" src="assets\TIA_ideal_responsivity.png" /></p>
 <p>As a final note, we are considering here ordinary photodiodes, where each impinging photon generates a single electron. There is another kind of detector where the carriers lye in a very unstable state, such that a photon may produce an avalanche of carriers, the so-called avalanche photodiode (APD). The physics and electronics behind APD’s is completely different from the case studied here.</p>
 <h3 id="photodiode-norton-equivalent">Photodiode Norton equivalent</h3>
@@ -261,40 +261,40 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>Internal capacitance: 70 pF (@ 0V Reverse bias)</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Conversion of BPW34 datasheet parameters to responsivity @ 950 nm</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>I_revCurrent <span class="op">=</span> <span class="fl">50e-6</span> <span class="co"># A</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>irradiance <span class="op">=</span> <span class="dv">1</span> <span class="op">*</span> <span class="fl">1e-3</span><span class="op">/</span>(<span class="fl">1e-2</span>)<span class="op">**</span><span class="dv">2</span> <span class="co"># W/m^2</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>area <span class="op">=</span> <span class="fl">7.5</span> <span class="op">*</span> (<span class="fl">1e-3</span>)<span class="op">**</span><span class="dv">2</span> <span class="co"># m^2</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>R <span class="op">=</span> I_revCurrent <span class="op">/</span> (irradiance <span class="op">*</span> area)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conversion of BPW34 datasheet parameters to responsivity @ 950 nm</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>I_revCurrent <span class="op">=</span> <span class="fl">50e-6</span> <span class="co"># A</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>irradiance <span class="op">=</span> <span class="dv">1</span> <span class="op">*</span> <span class="fl">1e-3</span><span class="op">/</span>(<span class="fl">1e-2</span>)<span class="op">**</span><span class="dv">2</span> <span class="co"># W/m^2</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>area <span class="op">=</span> <span class="fl">7.5</span> <span class="op">*</span> (<span class="fl">1e-3</span>)<span class="op">**</span><span class="dv">2</span> <span class="co"># m^2</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> I_revCurrent <span class="op">/</span> (irradiance <span class="op">*</span> area)</span></code></pre></div>
 <h2 id="direct-signal-measurement">Direct signal measurement</h2>
 <p>We may now use the simplified model to consider what we will measure by connecting a photodiode directly to a voltmeter or an oscilloscope. The circuit is essentially a resistor <span class="math inline">\(R\)</span> across the diode terminals, and a voltmeter that measures <span class="math inline">\(V_D\)</span>. Instead of <span class="math inline">\(C_J\)</span> only, we may also consider that the measurement instrument also contains some effective capacitance across it’s input terminals, <span class="math inline">\(C_{in}\)</span>, and the total capacitance is <span class="math inline">\(C = C_J + C_{in}\)</span>.</p>
 <h3 id="dc-analysis">DC analysis</h3>
 <p>Let us consider that the light source has a constant optical power <span class="math inline">\(P\)</span>. Given that a current <span class="math inline">\(I\)</span> flows across the photodiode, <span class="math display">\[V_D= -R I = R I_{rev} - R I_D \left(e^{V_D/V_T}-1\right).\]</span></p>
 <p>The previous expression is transcendental in <span class="math inline">\(V_D\)</span>, such that we’re not able to express <span class="math inline">\(V_D\)</span> in terms of <span class="math inline">\(I_{rev}\)</span> using elementary functions. However, we may gain understanding with a graphical solution. Let’s consider what happens for the BPW34 photodiode when connected across a 1 M<span class="math inline">\(\Omega\)</span> resistor (typical value for oscilloscopes). Using the dark current given above, <span class="math inline">\(R I_D = 2\,\text{mV}\)</span>. Also, for improved clarity, let’s consider <span class="math inline">\(V_{rev}=R I_{rev}\)</span> as the voltage contribution to <span class="math inline">\(V_D\)</span> due to light only. Ideally, we would be interested in having <span class="math inline">\(V_D=V_{rev}\)</span>. However, the increase in <span class="math inline">\(V_D\)</span> leads to a nonlinear relation between <span class="math inline">\(V_{D}\)</span> and <span class="math inline">\(V_{rev}\)</span>. When does the deviation from the linear behavior becomes significant? The figure below shows the measured voltage <span class="math inline">\(V_D\)</span> versus the voltage due to photodetection only, <span class="math inline">\(V_{rev}\)</span>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">%</span>pylab inline</span>
-<span id="cb3-2"><a href="#cb3-2"></a>V_D <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">100</span>) <span class="co"># Voltage across diode, in mV</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a>R <span class="op">=</span> <span class="fl">1e6</span>     <span class="co"># 1MOhm resistor</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>I_D <span class="op">=</span> <span class="fl">2e-9</span>  <span class="co"># Dark current (in A)</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>V_T <span class="op">=</span> <span class="dv">25</span>    <span class="co"># Carrier thermal energy at room temperature (in mV)</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a>v_rev_0nA <span class="op">=</span> V_D</span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># the 1e3 factor below converts the voltage to mV</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>v_rev_2nA <span class="op">=</span> V_D <span class="op">+</span> (R <span class="op">*</span> I_D <span class="op">*</span> <span class="fl">1e3</span>) <span class="op">*</span> (exp(V_D<span class="op">/</span>V_T)<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb3-11"><a href="#cb3-11"></a></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co"># Approximate a mean linear relation between V_D and v_rev</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a>i <span class="op">=</span> <span class="bu">abs</span>(V_D<span class="dv">-60</span>).argmin() <span class="co"># Which V_D index is closer to V_D==60 mV?</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a>V_mean_slope <span class="op">=</span> (v_rev_2nA[i]<span class="op">-</span>v_rev_2nA[<span class="dv">0</span>])<span class="op">/</span>(V_D[i]<span class="op">-</span>V_D[<span class="dv">0</span>])</span>
-<span id="cb3-15"><a href="#cb3-15"></a>v_linearized <span class="op">=</span> V_mean_slope <span class="op">*</span> V_D</span>
-<span id="cb3-16"><a href="#cb3-16"></a></span>
-<span id="cb3-17"><a href="#cb3-17"></a>plot(v_rev_0nA, V_D, label<span class="op">=</span><span class="vs">r&#39;$I_D=0$&#39;</span>)</span>
-<span id="cb3-18"><a href="#cb3-18"></a>plot(v_rev_2nA, V_D, label<span class="op">=</span><span class="vs">r&#39;$I_D=2$ nA&#39;</span>)</span>
-<span id="cb3-19"><a href="#cb3-19"></a>plot(v_linearized, V_D, label<span class="op">=</span><span class="vs">r&#39;Linearized relation&#39;</span>)</span>
-<span id="cb3-20"><a href="#cb3-20"></a>legend()</span>
-<span id="cb3-21"><a href="#cb3-21"></a>ylabel(<span class="vs">r&#39;$V_D$ (mV)&#39;</span>)</span>
-<span id="cb3-22"><a href="#cb3-22"></a>xlabel(<span class="vs">r&#39;$V_</span><span class="sc">{rev}</span><span class="vs">=V_D + R I_D \left(e^{V_D/V_T}-1\right)$ (mV)&#39;</span>)</span>
-<span id="cb3-23"><a href="#cb3-23"></a>grid()</span>
-<span id="cb3-24"><a href="#cb3-24"></a>savefig(<span class="vs">r&#39;assets\TIA_diode_saturation.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pylab inline</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>V_D <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">100</span>) <span class="co"># Voltage across diode, in mV</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">1e6</span>     <span class="co"># 1MOhm resistor</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>I_D <span class="op">=</span> <span class="fl">2e-9</span>  <span class="co"># Dark current (in A)</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>V_T <span class="op">=</span> <span class="dv">25</span>    <span class="co"># Carrier thermal energy at room temperature (in mV)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>v_rev_0nA <span class="op">=</span> V_D</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the 1e3 factor below converts the voltage to mV</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>v_rev_2nA <span class="op">=</span> V_D <span class="op">+</span> (R <span class="op">*</span> I_D <span class="op">*</span> <span class="fl">1e3</span>) <span class="op">*</span> (exp(V_D<span class="op">/</span>V_T)<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Approximate a mean linear relation between V_D and v_rev</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="bu">abs</span>(V_D<span class="op">-</span><span class="dv">60</span>).argmin() <span class="co"># Which V_D index is closer to V_D==60 mV?</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>V_mean_slope <span class="op">=</span> (v_rev_2nA[i]<span class="op">-</span>v_rev_2nA[<span class="dv">0</span>])<span class="op">/</span>(V_D[i]<span class="op">-</span>V_D[<span class="dv">0</span>])</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>v_linearized <span class="op">=</span> V_mean_slope <span class="op">*</span> V_D</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plot(v_rev_0nA, V_D, label<span class="op">=</span><span class="vs">r&#39;$I_D=0$&#39;</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plot(v_rev_2nA, V_D, label<span class="op">=</span><span class="vs">r&#39;$I_D=2$ nA&#39;</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plot(v_linearized, V_D, label<span class="op">=</span><span class="vs">r&#39;Linearized relation&#39;</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>legend()</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>ylabel(<span class="vs">r&#39;$V_D$ (mV)&#39;</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="vs">r&#39;$V_</span><span class="sc">{rev}</span><span class="vs">=V_D + R I_D \left(e^{V_D/V_T}-1\right)$ (mV)&#39;</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>grid()</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\TIA_diode_saturation.png&#39;</span>)</span></code></pre></div>
 <p><img class="img-responsive" src="assets\TIA_diode_saturation.png" /></p>
 <p>Notice that the dark current is very important to the photodiode linearity. The deviation grows exponentially with an increase in the <span class="math inline">\(V_D/V_T\)</span> ratio, what indicates that the upper voltage limit to a linear detector using this circuit is some small multiple of <span class="math inline">\(V_T\)</span>. However, if we consider only small <span class="math inline">\(V_D\)</span> voltages, its possible to obtain an approximate linear relation. Assuming that one calibrates the photodiode voltage at <span class="math inline">\(V_D=60\,\text{mV}\)</span>, the deviation between the linearized relation and the actual relation between <span class="math inline">\(V_D\)</span> and <span class="math inline">\(V_{rev}\)</span> is relatively small for <span class="math inline">\(0 \leq V_D \leq 60\,\text{mV}\)</span>. This is an important limitation when using photodiodes directly, given that such small voltages are difficult to measure using oscilloscopes (small signals may be easily lost when the photodiode operates in this linearized range). Another remark is that the photodiode response can be brought to the linear regime with the reduction of the load resistor <span class="math inline">\(R\)</span>, at the cost of reduced sensitivity.</p>
 <p>To sum up the discussion, there are a few worthy comments. Supposing that we’re in the linearized representation of the PD, we may state that <span class="math inline">\(V_{rev}=\alpha V_{D}\)</span>. Also, the typical currents necessary to maintain the diode in the linearized region occur for <span class="math inline">\(V_D\approx 50\,\text{mV}\)</span>, or when <span class="math inline">\(I_{rev}\approx 50\,\text{nA}\)</span> (Assuming <span class="math inline">\(R=1\,\text{M}\Omega\)</span>).</p>
@@ -320,14 +320,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h3 id="dc-analysis-1">DC analysis</h3>
 <p>We will consider the ideal case where the photodiode is connected with to the inverting input and the ground, and a single resistor <span class="math inline">\(R_F\)</span> is connected in the feedback path. We will consider an ideal opamp, where no current flows through the input terminals.</p>
 <figure>
-<img class="img-responsive" src="" alt="" /><figcaption>Circuit schematic figure</figcaption>
+<img class="img-responsive" src="" alt="Circuit schematic figure" /><figcaption aria-hidden="true">Circuit schematic figure</figcaption>
 </figure>
 <p>For an opamp under ordinary working circumstances, the output voltage <span class="math inline">\(V\)</span> is related to the inverting and non-inverting input voltages <span class="math inline">\(v_-\)</span>, <span class="math inline">\(v_+\)</span> is</p>
 <p><span class="math display">\[V = A (v_+ - v_-)\]</span></p>
 <p>The open loop gain <span class="math inline">\(A\)</span> often has very large values (<span class="math inline">\(10^{10}-10^{12}\)</span>), such that <span class="math inline">\(v_+ - v_- = V/A \approx 0\)</span>. The condition <span class="math inline">\(v_+ - v_-\)</span> is also called the <em>virtual short constraint</em>. Given that <span class="math inline">\(v_+\)</span> is grounded, <span class="math inline">\(v_-=v_+=v=0\)</span>. A nice feature of this configuration is that the voltage across the diode is <span class="math inline">\(0\,\text{V}\)</span>. Then, the dark current contribution becomes negligible and only <span class="math inline">\(I_{rev}\)</span> contributes to the current through the diode. Given that <span class="math inline">\(I_{rev}\)</span> must also flow through <span class="math inline">\(R_F\)</span>, <span class="math display">\[V=R_F I_{rev}.\]</span></p>
 <p>Notice that we the photodiode was biased <span class="math inline">\((v_+=v\neq0)\)</span>, the dark current would add to <span class="math inline">\(I_{rev}\)</span>, such that <span class="math inline">\(I_D \left(e^{-v/V_T}-1\right)\approx-I_D\)</span>. When considering the reverse bias voltage below, we assume the simplifying assumption that either the bias voltage is zero, such that the dark current is negligible <span class="math inline">\((I_D=0)\)</span>, or that the reverse bias is large enough (<span class="math inline">\(v \gg V_T\)</span>) that the full dark current is a constant factor (<span class="math inline">\(I_D \left(e^{-v/V_T}-1\right)\approx-I_D\)</span>). Also, the real opamp draws some bias current <span class="math inline">\(I_B\)</span> at its inputs, and there is some offset voltage between <span class="math inline">\(v_+\)</span> and <span class="math inline">\(v_-\)</span>, <span class="math inline">\(v_{os}=v_+ - v_-\neq 0\)</span>. Typical figures for opamps with BJT input transistors are <span class="math inline">\(I_B~100\,\text{nA}\)</span>, while FET or CMOS at the opamp input stage lowers to <span class="math inline">\(I_B&lt;100\,\text{pA}\)</span>. The input offset voltage is often around a few mV or less, and can be trimmed to zero by following the opamp manufacturer suggestions. These are the most important opamp features at DC for the present application, and we will consider these effects below.</p>
 <figure>
-<img class="img-responsive" src="" alt="" /><figcaption>Circuit schematic - opamp errors figure</figcaption>
+<img class="img-responsive" src="" alt="Circuit schematic - opamp errors figure" /><figcaption aria-hidden="true">Circuit schematic - opamp errors figure</figcaption>
 </figure>
 <p>Consideration of the currents at the opamp inverting input gives</p>
 <p><span class="math display">\[I_{rev} + I_{D} = \frac{V-(v-v_{os})}{R_F} - I_B,\]</span></p>
@@ -356,36 +356,36 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[-\lambda^2 +j\lambda \frac{1}{R_FC} +\frac{\omega_{GBP}}{R_FC} = 0\]</span></p>
 <p><span class="math display">\[\lambda = \frac{1}{2R_FC}\left(j \pm \sqrt{4\omega_{GBP}R_FC - 1}\right)\]</span></p>
 <p>Thus, if <span class="math inline">\(4 \omega_{GBP}R_FC &lt; 1\)</span>, then <span class="math inline">\(\lambda\)</span> will be purely imaginary and <span class="math inline">\(V\)</span> always decays exponentially. The oscillations are overdamped. The oscillations are called as critically damped when <span class="math inline">\(4 \omega_{GBP}R_FC=1\)</span>, and underdamped when <span class="math inline">\(4 \omega_{GBP}R_FC&gt;1\)</span>. In the underdamped regime, <span class="math inline">\(V_0\)</span> can oscillate several times before settling to its final value. This can be a problem specially when using pulsed lasers, where the optical pulse is much shorter than the circuit response times. If we consider the BPW34 typical figures given in the DC analysis, when using a 1 MHz GBP opamp, we have <span class="math inline">\(4 \omega_{GBP}R_FC=176\gg1\)</span>. Notice that we cannot modify <span class="math inline">\(C\)</span>, which is an intrinsic feature of our detection. To remove oscillations from the circuit above either we must decrease the opamp bandwidth or decrease the transimpedance gain through <span class="math inline">\(R_F\)</span>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>C <span class="op">=</span> <span class="fl">70e-12</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>R_F <span class="op">=</span> <span class="fl">1e5</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>GBP <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> pi <span class="op">*</span> <span class="fl">1e6</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="dv">4</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C <span class="co"># 175.92918860102841</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">70e-12</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>R_F <span class="op">=</span> <span class="fl">1e5</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>GBP <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> pi <span class="op">*</span> <span class="fl">1e6</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C <span class="co"># 175.92918860102841</span></span></code></pre></div>
 <p>What can be done to remove this misbehavior? The critical condition for the onset of oscillations is <span class="math inline">\(\omega_{GBP}R_FC=1\)</span>. If we want to maintain our transimpedance gain, we have to modify the loop bandwidth somehow. The cause of these oscillations is that <span class="math inline">\(v_-\propto\frac{dV}{dt}\)</span>, specially at higher frequencies. If we modify the feedback loop such that it becomes a follower at higher frequencies, the oscillations are not possible anymore. To decrease the loop impedance at higher frequencies, we may add a capacitor <span class="math inline">\(C_F\)</span> in parallel to <span class="math inline">\(R_F\)</span>. The loop impedance becomes <span class="math inline">\(Z_L = \frac{R_F}{1+j\omega R_F C_F}\)</span>. We can apply this impedance to the equation for <span class="math inline">\(V\)</span> in frequency representation and look for purely imaginary eigensolutions for <span class="math inline">\(\omega\)</span>, which therefore will not include oscillations.</p>
 <p>After some algebra, it can be verified that as long as <span class="math inline">\(1 - 2 C_F R_F \omega_{GBP} - 4 C R_F \omega_{GBP} + C_F^2 R_F^2 \omega_{GBP}^2&gt;0\)</span>, the solution will not oscillate. Solving for <span class="math inline">\(C_F\)</span>, it is obtained that given</p>
 <p><span class="math display">\[C_F &gt; \frac{1 + 2 \sqrt{\omega_{GBP} R_F C}}{\omega_{GBP} R_F}\]</span></p>
 <p>the opamp output voltage will not oscillate. The solution above is slightly different than those proposed in <a href="https://www.maximintegrated.com/en/app-notes/index.mvp/id/5129">Maxim Application Note 5129</a> or <a href="http://www.ti.com/tool/tipd176">Texas Instruments Reference Design 176</a>, but the numerical results are quite close. Indeed, the present equation is slightly more conservative. This is interesting, because the value found for <span class="math inline">\(C_F\)</span> depend strongly on the opamp bandwidth <span class="math inline">\(\omega_{GBP}\)</span>, but this is another parameter which can vary significantly (<span class="math inline">\(\pm40\%\)</span> according to Maxim’s AN), since it’s not a trimmed parameter. Thus, the present equation can be used without having to underestimate <span class="math inline">\(\omega_{GBP}\)</span>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>C <span class="op">=</span> <span class="fl">100e-12</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>GBP <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span> <span class="fl">1.0e6</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a>R_F <span class="op">=</span> logspace(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">100</span>)</span>
-<span id="cb5-5"><a href="#cb5-5"></a>our_eq   <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span>sqrt(   <span class="dv">4</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>  (GBP <span class="op">*</span> R_F)</span>
-<span id="cb5-6"><a href="#cb5-6"></a>maxim_eq <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span>sqrt(<span class="dv">1</span><span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>GBP <span class="op">*</span> R_F)</span>
-<span id="cb5-7"><a href="#cb5-7"></a>ti_eq    <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span>sqrt(<span class="dv">1</span><span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>GBP <span class="op">*</span> R_F)</span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
-<span id="cb5-9"><a href="#cb5-9"></a>semilogx(R_F,   our_eq<span class="op">*</span><span class="fl">1e12</span>, label<span class="op">=</span><span class="st">&#39;This&#39;</span>)</span>
-<span id="cb5-10"><a href="#cb5-10"></a>semilogx(R_F, maxim_eq<span class="op">*</span><span class="fl">1e12</span>, label<span class="op">=</span><span class="st">&#39;Maxim AN 5129&#39;</span>)</span>
-<span id="cb5-11"><a href="#cb5-11"></a>semilogx(R_F,    ti_eq<span class="op">*</span><span class="fl">1e12</span>, label<span class="op">=</span><span class="st">&#39;TI RD 176&#39;</span>)</span>
-<span id="cb5-12"><a href="#cb5-12"></a>grid()<span class="op">;</span> legend()<span class="op">;</span> xlabel(<span class="st">&#39;$R_F$ ($\Omega$)&#39;</span>)<span class="op">;</span> ylabel(<span class="st">&#39;$C_F$ (pF)&#39;</span>)</span>
-<span id="cb5-13"><a href="#cb5-13"></a>title(<span class="vs">r&#39;Feedback capacitor selection - $C=100$ pF, $f_</span><span class="sc">{GBP}</span><span class="vs">=1$ MHz&#39;</span>)</span>
-<span id="cb5-14"><a href="#cb5-14"></a>savefig(<span class="vs">r&#39;assets\TIA_feedback_capacitor_selection.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">100e-12</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>GBP <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span> <span class="fl">1.0e6</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>R_F <span class="op">=</span> logspace(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">100</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>our_eq   <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span>sqrt(   <span class="dv">4</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>  (GBP <span class="op">*</span> R_F)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>maxim_eq <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span>sqrt(<span class="dv">1</span><span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>GBP <span class="op">*</span> R_F)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ti_eq    <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span>sqrt(<span class="dv">1</span><span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>GBP <span class="op">*</span> R_F)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>semilogx(R_F,   our_eq<span class="op">*</span><span class="fl">1e12</span>, label<span class="op">=</span><span class="st">&#39;This&#39;</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>semilogx(R_F, maxim_eq<span class="op">*</span><span class="fl">1e12</span>, label<span class="op">=</span><span class="st">&#39;Maxim AN 5129&#39;</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>semilogx(R_F,    ti_eq<span class="op">*</span><span class="fl">1e12</span>, label<span class="op">=</span><span class="st">&#39;TI RD 176&#39;</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>grid()<span class="op">;</span> legend()<span class="op">;</span> xlabel(<span class="st">&#39;$R_F$ ($\Omega$)&#39;</span>)<span class="op">;</span> ylabel(<span class="st">&#39;$C_F$ (pF)&#39;</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>title(<span class="vs">r&#39;Feedback capacitor selection - $C=100$ pF, $f_</span><span class="sc">{GBP}</span><span class="vs">=1$ MHz&#39;</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\TIA_feedback_capacitor_selection.png&#39;</span>)</span></code></pre></div>
 <p><img class="img-responsive" src="assets\TIA_feedback_capacitor_selection.png" /></p>
 <p>Therefore, if we return to our BPW34 design attempt, the feedback loop capacitor must have at least <span class="math inline">\(C_F=23\,\text{pF}\)</span> for a <span class="math inline">\(100\,\text{k}\Omega\)</span> feedback resistor, and <span class="math inline">\(\omega_{GBP}=2\pi\cdot 1.0\,\text{MHz}\)</span>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>C <span class="op">=</span> <span class="fl">70e-12</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>R_F <span class="op">=</span> <span class="fl">1e5</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>GBP <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span> <span class="fl">1.0e6</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a>C_F <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span><span class="dv">2</span><span class="op">*</span>sqrt(GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>(GBP <span class="op">*</span> R_F) <span class="co"># 23 pF</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>C_F</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">70e-12</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>R_F <span class="op">=</span> <span class="fl">1e5</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>GBP <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span> <span class="fl">1.0e6</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>C_F <span class="op">=</span> (<span class="dv">1</span><span class="op">+</span><span class="dv">2</span><span class="op">*</span>sqrt(GBP <span class="op">*</span> R_F <span class="op">*</span> C))<span class="op">/</span>(GBP <span class="op">*</span> R_F) <span class="co"># 23 pF</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>C_F</span></code></pre></div>
 <h2 id="transimpedance-amplifier-design-summary">Transimpedance amplifier design summary</h2>
 <h2 id="some-opamp-specs">Some opamp specs</h2>
 <p>Below are shown some specs for some ordinary opamps.</p>
@@ -482,7 +482,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    Copyright © 2016-2021 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                    Copyright © 2016-2023 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
                 </div>
             </div>
         </footer>

@@ -45,10 +45,10 @@
                             </li>
                             <li><a href="/conference_papers.html">Conference papers</a>
                             </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
+                            <!---<li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
                             </li>
                             <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Science links</a>
-                            </li>
+                            </li> --->
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -58,10 +58,10 @@
                             </li>
                             <li><a href="http://www.github.com/amamaral" data-toggle="tooltip" title="Github software repositories">Software</a>
                             </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
+                            <!---<li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
                             </li>
                             <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Electronics links</a>
-                            </li>
+                            </li>--->
                         </ul>
                     </li>
 		    <li><a href="/teaching.html"><i class="fa fa-book"></i> Teaching (Ensino)</a>
@@ -226,26 +226,26 @@ Outra coisa importante disto é respeitar o separation of concerns dos arquivos.
 </tbody>
 </table>
 <p>The first column indicates the corresponding line number of the table. Python starts counting from 0 by default.This data can be represented using the code below. Explaining line by line, first we ensure that the <code>%pylab inline</code> magic is called. We also import the Pandas library to handle tables. Pandas is imported with the nickname <code>pd</code> to simplify some expressions that will be used later. The table data itself is stored in what Pandas calls a DataFrame which we will call <code>df</code>. After a clean dataframe <code>df</code> is created, we may generate it’s columns with the definition of a column label and the data directly. The data itself in our case is a Python list, which as previously stated is an ordered set of values between <code>[]</code> and separated by commas <code>,</code>. The spaces are optional and can be used to make easier to see the data being written, but remember that the decimal separator is always a period <code>.</code>. Also, the first element in each column list correspond to the first table line (first measurement). For example, the third measurement (third line) corresponds to the time <code>3</code>, position <code>9</code> and velocity <code>6</code>. After setting the table contents, we may show the dataframe contents as a table using <code>df</code> in the last line.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>pylab inline</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a>df <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb1-5"><a href="#cb1-5"></a>df[<span class="st">&#39;time&#39;</span>]     <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,  <span class="dv">4</span>,  <span class="dv">5</span>]</span>
-<span id="cb1-6"><a href="#cb1-6"></a>df[<span class="st">&#39;position&#39;</span>] <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>]</span>
-<span id="cb1-7"><a href="#cb1-7"></a>df[<span class="st">&#39;velocity&#39;</span>] <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>,  <span class="dv">8</span>, <span class="dv">10</span>]</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pylab inline</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;time&#39;</span>]     <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,  <span class="dv">4</span>,  <span class="dv">5</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;position&#39;</span>] <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;velocity&#39;</span>] <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>,  <span class="dv">8</span>, <span class="dv">10</span>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <p>If we want to plot the position as a function of time, it is possible to use simply the code below. <code>df.plot</code> uses the column labels to identify the data points horizontal and vertical coordinates. It is often a good practice to represent experimental data as a <code>scatter</code> plot, where each measurement is represented by an isolated point. Also, while <code>df.plot</code> accepts several specific arguments (see the documentation pressing <code>SHIFT+TAB</code> keys or the <a href="https://pandas.pydata.org/pandas-docs/version/0.14.0/generated/pandas.DataFrame.plot.html">documentation</a>), the matplotlib commands to adjust plot properties as the title and label axis described in the last chapter still can be used. <strong>Always remember to place adequate axis labels (containing the relevant units) and an explanatory title.</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df.plot(<span class="st">&#39;time&#39;</span>, <span class="st">&#39;position&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>title(<span class="st">&#39;Position vs time&#39;</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>xlabel(<span class="st">&#39;Time (s)&#39;</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>ylabel(<span class="st">&#39;Position (m)&#39;</span>)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>savefig(<span class="vs">r&#39;assets\pes_pos_scatter_plot.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.plot(<span class="st">&#39;time&#39;</span>, <span class="st">&#39;position&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>title(<span class="st">&#39;Position vs time&#39;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="st">&#39;Time (s)&#39;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ylabel(<span class="st">&#39;Position (m)&#39;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\pes_pos_scatter_plot.png&#39;</span>)</span></code></pre></div>
 <p><img class="img-responsive" src="assets\pes_pos_scatter_plot.png" /></p>
 <p>It is quite simple to perform calculations over <code>DataFrame</code> columns. Whenever we call a column as <code>df['time']</code>, we may consider that we are performing mathematical operation simultaneously over each element. For example, to create a new column containing <span class="math inline">\(\sqrt{t} + 1\)</span> we can use simply that</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df[<span class="st">&#39;sqrt(t) + 1&#39;</span>] <span class="op">=</span> sqrt(df[<span class="st">&#39;time&#39;</span>]) <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;sqrt(t) + 1&#39;</span>] <span class="op">=</span> sqrt(df[<span class="st">&#39;time&#39;</span>]) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <table class="table">
 <thead>
 <tr class="header">
@@ -295,22 +295,22 @@ Outra coisa importante disto é respeitar o separation of concerns dos arquivos.
 </tbody>
 </table>
 <p>The operations performed with <code>df['column']</code> are performed for each element in the column, such we can use a single line to calculate over several numbers. If we want to select a given line, we may use <code>df.iloc[i]</code>, where <code>i</code> is the corresponding line number. Also notice that we can add columns whenever we want. If there is some <code>column</code> that we want to remove completely we may apply the instruction line <code>del df['column']</code>. Raising the column to a power of 0.5, as in <code>df['time']**0.5</code>, is an alternative to use <code>sqrt</code>. Also, the basic operations (<code>+-*/</code>) are supported. The <code>%pylab inline</code> magic also allows us to use several mathematical functions as <code>sin, cos, tan</code>, their inverses, <code>arcsin, arccos, arctan</code>, exponentials and natural logarithms as <code>exp, log</code>. For example, we can use the code below to evaluate <span class="math inline">\(\sin x\)</span> at 10 equally spaced points along <code>x</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df <span class="op">=</span> pd.DataFrame() <span class="co"># Clears df</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># x contains 101 equally spaced values from 0 to 15</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>df[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">101</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>df[<span class="st">&#39;sin x&#39;</span>] <span class="op">=</span> sin(df[<span class="st">&#39;x&#39;</span>])</span>
-<span id="cb4-6"><a href="#cb4-6"></a></span>
-<span id="cb4-7"><a href="#cb4-7"></a>df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;sin x&#39;</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>savefig(<span class="vs">r&#39;assets\pes_sine_plot.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame() <span class="co"># Clears df</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x contains 101 equally spaced values from 0 to 15</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">101</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;sin x&#39;</span>] <span class="op">=</span> sin(df[<span class="st">&#39;x&#39;</span>])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;sin x&#39;</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\pes_sine_plot.png&#39;</span>)</span></code></pre></div>
 <p><img class="img-responsive" src="assets\pes_sine_plot.png" /></p>
 <p>The graphical representation (and the dataframe itself) can be used to find (or approximate) roots of transcendental equations. For instance, suppose that we want to find the solutions of <span class="math inline">\(A x = \sin x\)</span>. The previous problem can be expressed as finding the zeros of <span class="math inline">\(\sin x - A x\)</span>. Suppose that we want to evaluate the solutions for both <span class="math inline">\(A=0.2\)</span>, we may use Pandas to evaluate that</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df[<span class="st">&#39;A=0.2&#39;</span>] <span class="op">=</span> sin(df[<span class="st">&#39;x&#39;</span>]) <span class="op">-</span> <span class="fl">0.2</span> <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]</span>
-<span id="cb5-2"><a href="#cb5-2"></a>df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;A=0.2&#39;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>savefig(<span class="vs">r&#39;assets\pes_transcendental_sol_plot.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;A=0.2&#39;</span>] <span class="op">=</span> sin(df[<span class="st">&#39;x&#39;</span>]) <span class="op">-</span> <span class="fl">0.2</span> <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;A=0.2&#39;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\pes_transcendental_sol_plot.png&#39;</span>)</span></code></pre></div>
 <p><img class="img-responsive" src="assets\pes_transcendental_sol_plot.png" /></p>
 <p>We can see that there is a trivial solution at <code>x=0</code> but there also should be a solution around <code>x=2</code>, where the function becomes zero again. How to find the best value? We can directly look out for the values in <code>df['A=0.2']</code>, but there are just too many values. A simpler way however is to ask Pandas to filter the <code>DataFrame</code> and consider only values which are sufficiently close to 0. This way we have to look only in a smaller subset of the data. The condition <code>abs(df['A=0.2']) &lt; 0.1</code> asks Pandas to filter the table rows where the <code>abs</code>olute value of <code>df['A=0.2']</code> is smaller than <code>0.1</code>, and shows only these values.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df[<span class="bu">abs</span>(df[<span class="st">&#39;A=0.2&#39;</span>]) <span class="op">&lt;</span> <span class="fl">0.1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df[<span class="bu">abs</span>(df[<span class="st">&#39;A=0.2&#39;</span>]) <span class="op">&lt;</span> <span class="fl">0.1</span>]</span></code></pre></div>
 <table class="table">
 <thead>
 <tr class="header">
@@ -337,14 +337,14 @@ Outra coisa importante disto é respeitar o separation of concerns dos arquivos.
 </table>
 <p>The table above implies that <span class="math inline">\(x=2.55\)</span> has <span class="math inline">\(\sin x - 0.2 x = 0.05\)</span> which, although not being an exact solution, is a reasonable approximation. The quality of the approximation improves if the spacing between <code>x</code> values becomes smaller, which can be achieved by reducing the range of <code>x</code> values or increasing the number of points. There are more accurate methods to find roots which will be discussed later.</p>
 <p>Let’s now consider a new <code>DataFrame</code> where we will see some plotting capabilities. We will create a column <code>x</code> which contains numbers from 1 to 10 using a Numpy’s <code>arange</code> and then create some powers of <code>x</code> as</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df <span class="op">=</span> pd.DataFrame() <span class="co"># Clears df</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a></span>
-<span id="cb7-3"><a href="#cb7-3"></a>df[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> arange(<span class="dv">1</span>, <span class="dv">11</span>) <span class="co">#Array of integers from 1 to 10=11-1</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>df[<span class="st">&#39;x**2&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>df[<span class="st">&#39;x**3&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>df[<span class="st">&#39;x**0.5&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="fl">0.5</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a></span>
-<span id="cb7-8"><a href="#cb7-8"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame() <span class="co"># Clears df</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> arange(<span class="dv">1</span>, <span class="dv">11</span>) <span class="co">#Array of integers from 1 to 10=11-1</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;x**2&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;x**3&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;x**0.5&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="fl">0.5</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <table class="table">
 <thead>
 <tr class="header">
@@ -429,62 +429,62 @@ Outra coisa importante disto é respeitar o separation of concerns dos arquivos.
 </tbody>
 </table>
 <p>Now we want to plot the columns involving <span class="math inline">\(x^2\)</span> and <span class="math inline">\(\sqrt{x}\)</span> in the same plot. We can use the following instructions.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**2&#39;</span>  , color<span class="op">=</span><span class="st">&#39;red&#39;</span> , kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>ax2 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**0.5&#39;</span>, color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>              ax<span class="op">=</span>ax1)</span>
-<span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-5"><a href="#cb8-5"></a>savefig(<span class="vs">r&#39;assets\multiple_scatter_plot.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**2&#39;</span>  , color<span class="op">=</span><span class="st">&#39;red&#39;</span> , kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**0.5&#39;</span>, color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>              ax<span class="op">=</span>ax1)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\multiple_scatter_plot.png&#39;</span>)</span></code></pre></div>
 <p><img class="img-responsive" src="assets\multiple_scatter_plot.png" /></p>
 <p>In the above plot we have set the colors for each scatter plot. <a href="https://matplotlib.org/stable/gallery/color/named_colors.html">several named colors are available</a>, with common names in English being available. To ensure that they are in the same figure it is necessary to be explicit by defining that both share their plot axes through <code>ax=ax1</code>. If this instruction is removed, we will obtain two separate plots.</p>
 <p>Notice that in the previous combined plot it is not possible to see how <span class="math inline">\(\sqrt{x}\)</span> varies. When the data varies by orders of magnitude it is often interesting to use logarithmic scales. Below we repeat the previous plot, but now ensuring that both axes are logarithmic by setting <code>logx=True</code> and <code>logy=True</code>. Notice that the log scaling in each axis is set separately.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**2&#39;</span>  , color<span class="op">=</span><span class="st">&#39;red&#39;</span> , kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
-<span id="cb9-2"><a href="#cb9-2"></a>              logx<span class="op">=</span><span class="va">True</span>, logy<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb9-3"><a href="#cb9-3"></a>ax2 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**0.5&#39;</span>, color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
-<span id="cb9-4"><a href="#cb9-4"></a>              ax<span class="op">=</span>ax1)</span>
-<span id="cb9-5"><a href="#cb9-5"></a></span>
-<span id="cb9-6"><a href="#cb9-6"></a>savefig(<span class="vs">r&#39;assets\multiple_scatter_plot_logxy.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**2&#39;</span>  , color<span class="op">=</span><span class="st">&#39;red&#39;</span> , kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>              logx<span class="op">=</span><span class="va">True</span>, logy<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**0.5&#39;</span>, color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>              ax<span class="op">=</span>ax1)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\multiple_scatter_plot_logxy.png&#39;</span>)</span></code></pre></div>
 <p><img class="img-responsive" src="assets\multiple_scatter_plot_logxy.png" /></p>
 <p>Whenever we see a linear curve with logarithmic axes the data must be described by a curve like <span class="math inline">\(y = a x^n\)</span>, since the relation between <span class="math inline">\(\log x\)</span> and <span class="math inline">\(\log y\)</span> in <span class="math inline">\(\log y = \log a + n \log x\)</span> is equivalent to that of a straight line with intercept at <span class="math inline">\(\log a\)</span> and slope <span class="math inline">\(n\)</span>. Suppose that we want to find a model that closely describes our data. The straight line in the log-log plot indicates the general relation, <span class="math inline">\(y=ax^n\)</span>, but we still have to determine the values of <span class="math inline">\(a\)</span> and <span class="math inline">\(n\)</span>. We will perform this in the next section</p>
 <h2 id="data-fitting">Data fitting</h2>
 <p>To fit experimental data to a proposed model, we will use another library. Scipy provides several numerical methods useful in scientific computing. In particular, <a href="https://docs.scipy.org/doc/scipy/reference/optimize.html">it has several optimization methods</a> to minimize, find roots and curve fitting. To add such capabilities to our program, we have to import Scipy’s <code>optimize</code> in our program as follows.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">%</span>pylab inline</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="im">from</span> scipy <span class="im">import</span> optimize</span>
-<span id="cb10-4"><a href="#cb10-4"></a></span>
-<span id="cb10-5"><a href="#cb10-5"></a>df <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb10-6"><a href="#cb10-6"></a></span>
-<span id="cb10-7"><a href="#cb10-7"></a>df[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> arange(<span class="dv">1</span>, <span class="dv">11</span>) <span class="co">#Array of integers from 1 to 10=11-1</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a>df[<span class="st">&#39;x**2&#39;</span>] <span class="op">=</span> <span class="fl">0.3</span> <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>df[<span class="st">&#39;x**3&#39;</span>] <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a>df[<span class="st">&#39;x**0.5&#39;</span>] <span class="op">=</span> pi <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="fl">0.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pylab inline</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> optimize</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> arange(<span class="dv">1</span>, <span class="dv">11</span>) <span class="co">#Array of integers from 1 to 10=11-1</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;x**2&#39;</span>] <span class="op">=</span> <span class="fl">0.3</span> <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;x**3&#39;</span>] <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;x**0.5&#39;</span>] <span class="op">=</span> pi <span class="op">*</span> df[<span class="st">&#39;x&#39;</span>]<span class="op">**</span><span class="fl">0.5</span></span></code></pre></div>
 <p>The data generated above behaves as a power law, <span class="math inline">\(y= A x^n\)</span>. To use Scipy’s <code>curve_fit</code>, we have to define a power law function as is given below. Notice that both the independent variable <code>x</code> and the parameters <code>A</code> and <code>n</code> are given as function input parameters, and the function returns the value associated with <code>A * x **n</code>. It’s remarked that <code>curve_fit</code> requires that the parameters to be fit (<code>A</code>, <code>n</code>) must be given after the independent variable <code>x</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> power_law(x, A, n):</span>
-<span id="cb11-2"><a href="#cb11-2"></a>  <span class="cf">return</span> A <span class="op">*</span> x <span class="op">**</span> n</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> power_law(x, A, n):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> A <span class="op">*</span> x <span class="op">**</span> n</span></code></pre></div>
 <p>Now we can fit the data present in the dataframe <code>df</code>. <code>optimize</code> gives two outputs. The first, <code>popt</code>, gives the optimal parameter values. <code>popt[0]</code> gives the best estimate for the first parameter of <code>power_law</code> (<code>A</code>), while <code>popt[1]</code> is associated with the value of <code>n</code>. <code>pcov</code> gives the covariance matrix between the fitting parameters, and is particularly relevant when the parameters are correlated. The error associated with the statistical uncertainty of the data can be obtained from <code>pcov</code> by taking the square root of its diagonal. As given below, <code>error[0]</code> is related to the uncertainty in <code>A</code> while <code>error[1]</code> corresponds to <code>n</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(power_law, df[<span class="st">&#39;x&#39;</span>], df[<span class="st">&#39;x**0.5&#39;</span>])</span>
-<span id="cb12-2"><a href="#cb12-2"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
-<span id="cb12-3"><a href="#cb12-3"></a>popt, error</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(power_law, df[<span class="st">&#39;x&#39;</span>], df[<span class="st">&#39;x**0.5&#39;</span>])</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>popt, error</span></code></pre></div>
 <pre><code>(array([3.14159265 0.5       ]), array([3.05923019e-16 5.08058315e-17]))</code></pre>
 <p>From the example above is it possible to state that <span class="math inline">\(A = 3.14159265 \pm 3.05923019 \cdot 10 ^ {-16}\)</span> and <span class="math inline">\(n = 0.5 \pm 5.08058315\cdot 10^{-17}\)</span>? These small uncertainty levels are limited to the machine accuracy, such they are meaningless in the real world. Statistical errors are often reported with at most 1 or 2 significant digits. Do not report all of the numbers shown from the fitting procedure above when considering real world data. You must round the uncertainty to 1 or 2 significant digits and then see how many significant digits there are in your mean value. Round the reported mean values from the adjusted error. For example, the uncertainty in <code>A</code> should be rounded to <span class="math inline">\(3 \cdot 10 ^ {-16}\)</span>, which indicates that we could report the value of <span class="math inline">\(A\)</span> up to <span class="math inline">\(10 ^ {-16}\)</span>. Since the mean value for <code>A</code> shows only the significant digits up to <span class="math inline">\(10^{-8}\)</span>, we can state that <span class="math inline">\(A=3.14159265\)</span> with no significant uncertainty. Application of the same reasoning to <span class="math inline">\(n\)</span> implies that <span class="math inline">\(n=0.5\)</span>. Therefore, the data set above corresponds to <span class="math inline">\(y = 3.14159265 x^{0.5}\)</span>, as it should be. Change the code above to fit the other columns, <code>x**2</code> and <code>x**3</code> and see that you obtain the correct values for <span class="math inline">\(A\)</span> and <span class="math inline">\(n\)</span>.</p>
 <p>We may represent the original data and the fitted curve in the same plot to visually inspect the quality of the fitting procedure and the model suitability. The procedure is similar to the one showed in the end of the previous section, but here we will create another <code>DataFrame</code> to show the proposed model at a higher resolution than the original data. Also notice that we added an option to remove the plot legend of <code>df2</code>, which is on by default.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co"># x contains 101 equally spaced points from 1 to 10</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">101</span>)</span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># Remember that popt[0] corresponds to A and popt[1] to n</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> power_law(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
-<span id="cb14-7"><a href="#cb14-7"></a></span>
-<span id="cb14-8"><a href="#cb14-8"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**0.5&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
-<span id="cb14-9"><a href="#cb14-9"></a>              logx<span class="op">=</span><span class="va">True</span>, logy<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb14-10"><a href="#cb14-10"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb14-11"><a href="#cb14-11"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_data.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x contains 101 equally spaced points from 1 to 10</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">101</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember that popt[0] corresponds to A and popt[1] to n</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> power_law(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;x**0.5&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>              logx<span class="op">=</span><span class="va">True</span>, logy<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_data.png&#39;</span>)</span></code></pre></div>
 <p><img class="img-responsive" src="assets\scatter_plot_fitting_data.png" /></p>
 <p>Let’s now work on a more challenging fit. Consider the hypothetical data set below associated with the measurements of the signal normalized amplitude versus frequency (in rad/s) for a resonating circuit. The table is transposed (<code>df.T</code>) for a better visualization.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb15-2"><a href="#cb15-2"></a>df[<span class="st">&#39;Frequency&#39;</span>] <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">500</span>, <span class="dv">600</span>, <span class="dv">700</span>, <span class="dv">800</span>, <span class="dv">900</span>, <span class="dv">1000</span>]</span>
-<span id="cb15-3"><a href="#cb15-3"></a>df[<span class="st">&#39;Amplitude&#39;</span>] <span class="op">=</span> [<span class="fl">0.11</span>, <span class="fl">0.32</span>, <span class="fl">0.96</span>, <span class="fl">0.54</span>, <span class="fl">0.31</span>, <span class="fl">0.22</span>, <span class="fl">0.18</span>, <span class="fl">0.15</span>, <span class="fl">0.12</span>, <span class="fl">0.11</span>]</span>
-<span id="cb15-4"><a href="#cb15-4"></a></span>
-<span id="cb15-5"><a href="#cb15-5"></a>df.T</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;Frequency&#39;</span>] <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">500</span>, <span class="dv">600</span>, <span class="dv">700</span>, <span class="dv">800</span>, <span class="dv">900</span>, <span class="dv">1000</span>]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;Amplitude&#39;</span>] <span class="op">=</span> [<span class="fl">0.11</span>, <span class="fl">0.32</span>, <span class="fl">0.96</span>, <span class="fl">0.54</span>, <span class="fl">0.31</span>, <span class="fl">0.22</span>, <span class="fl">0.18</span>, <span class="fl">0.15</span>, <span class="fl">0.12</span>, <span class="fl">0.11</span>]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>df.T</span></code></pre></div>
 <table class="table">
 <thead>
 <tr class="header">
@@ -531,80 +531,80 @@ Outra coisa importante disto é respeitar o separation of concerns dos arquivos.
 </tbody>
 </table>
 <p>The model for the resonating circuit amplitude response is given by <span class="math display">\[y =  \frac{1}{\sqrt{1 + A \left(\frac{x}{w_r} - \frac{w_r}{x}\right)^2}},\]</span> which has two parameters, <span class="math inline">\(A\)</span> and <span class="math inline">\(w_r\)</span>. Let’s try to repeat the previous procedure to fit this data. We have to define the fitting function model, <code>ressonant</code>, and use <code>optimize.curve_fit</code> to find the best values of <span class="math inline">\(A\)</span> and <span class="math inline">\(w_r\)</span>. Later we try to represent both the original dataset and the model in the same plot. Everything is done at one in the block of code below.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">def</span> ressonant(x, A, wr):</span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> sqrt( <span class="dv">1</span> <span class="op">+</span> A <span class="op">*</span> (x<span class="op">/</span>wr <span class="op">-</span> wr<span class="op">/</span>x)<span class="op">**</span><span class="dv">2</span> )</span>
-<span id="cb16-3"><a href="#cb16-3"></a></span>
-<span id="cb16-4"><a href="#cb16-4"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(ressonant,</span>
-<span id="cb16-5"><a href="#cb16-5"></a>                df[<span class="st">&#39;Frequency&#39;</span>], df[<span class="st">&#39;Amplitude&#39;</span>])</span>
-<span id="cb16-6"><a href="#cb16-6"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
-<span id="cb16-7"><a href="#cb16-7"></a><span class="bu">print</span>(popt, error)</span>
-<span id="cb16-8"><a href="#cb16-8"></a></span>
-<span id="cb16-9"><a href="#cb16-9"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb16-10"><a href="#cb16-10"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">101</span>)</span>
-<span id="cb16-11"><a href="#cb16-11"></a>df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
-<span id="cb16-12"><a href="#cb16-12"></a></span>
-<span id="cb16-13"><a href="#cb16-13"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;Frequency&#39;</span>, <span class="st">&#39;Amplitude&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
-<span id="cb16-14"><a href="#cb16-14"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb16-15"><a href="#cb16-15"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_resonant_data_attempt1.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ressonant(x, A, wr):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> sqrt( <span class="dv">1</span> <span class="op">+</span> A <span class="op">*</span> (x<span class="op">/</span>wr <span class="op">-</span> wr<span class="op">/</span>x)<span class="op">**</span><span class="dv">2</span> )</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(ressonant,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                df[<span class="st">&#39;Frequency&#39;</span>], df[<span class="st">&#39;Amplitude&#39;</span>])</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(popt, error)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">101</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;Frequency&#39;</span>, <span class="st">&#39;Amplitude&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_resonant_data_attempt1.png&#39;</span>)</span></code></pre></div>
 <p><img class="img-responsive" src="assets\scatter_plot_fitting_resonant_data_attempt1.png" /></p>
 <p>The fit fails miserably. What has gone wrong? The fitting procedure indeed has found a solution which goes through the middle of the data, but it could not adjust the peaking behavior close to 300. Numerically this is a very unstable problem and we must give an initial guess to <code>optimize.curve_fit</code>. To that purpose, we must understand the meaning of the initial parameters and try to inform an initial estimate for <span class="math inline">\(A\)</span> and <span class="math inline">\(w_r\)</span>. Notice that the present model for the resonant circuit amplitude has <span class="math inline">\(y=1\)</span> when <span class="math inline">\(x=w_r\)</span>, such that <span class="math inline">\(w_r\)</span> is associated with the position where the data becomes maximum. As an initial guess, we can try to use <span class="math inline">\(w_r = 300\)</span>. The parameter <span class="math inline">\(A\)</span> is related with the width of the peak, such that we may consider an initial estimate of <span class="math inline">\(A=100\)</span>. To inform this initial guess to <code>optimize.curve_fit</code> we add these guesses to <code>initial_guess</code> and inform this as <code>p0</code> to <code>curve_fit</code>. The remaining of the code is essentially identical.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>initial_guess <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">300</span>]</span>
-<span id="cb17-2"><a href="#cb17-2"></a></span>
-<span id="cb17-3"><a href="#cb17-3"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(ressonant,</span>
-<span id="cb17-4"><a href="#cb17-4"></a>                df[<span class="st">&#39;Frequency&#39;</span>], df[<span class="st">&#39;Amplitude&#39;</span>], p0<span class="op">=</span>initial_guess)</span>
-<span id="cb17-5"><a href="#cb17-5"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="bu">print</span>(popt, error)</span>
-<span id="cb17-7"><a href="#cb17-7"></a></span>
-<span id="cb17-8"><a href="#cb17-8"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb17-9"><a href="#cb17-9"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">101</span>)</span>
-<span id="cb17-10"><a href="#cb17-10"></a>df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
-<span id="cb17-11"><a href="#cb17-11"></a></span>
-<span id="cb17-12"><a href="#cb17-12"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;Frequency&#39;</span>, <span class="st">&#39;Amplitude&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
-<span id="cb17-13"><a href="#cb17-13"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb17-14"><a href="#cb17-14"></a>title(<span class="st">&quot;Signal amplitude after a resonant circuit&quot;</span>)</span>
-<span id="cb17-15"><a href="#cb17-15"></a>xlabel(<span class="st">&quot;Frequency (rad/s)&quot;</span>)</span>
-<span id="cb17-16"><a href="#cb17-16"></a>ylabel(<span class="st">&quot;Amplitude (normalized)&quot;</span>)</span>
-<span id="cb17-17"><a href="#cb17-17"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_resonant_data_attempt2.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">300</span>]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(ressonant,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                df[<span class="st">&#39;Frequency&#39;</span>], df[<span class="st">&#39;Amplitude&#39;</span>], p0<span class="op">=</span>initial_guess)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(popt, error)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">101</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;Frequency&#39;</span>, <span class="st">&#39;Amplitude&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>title(<span class="st">&quot;Signal amplitude after a resonant circuit&quot;</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="st">&quot;Frequency (rad/s)&quot;</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>ylabel(<span class="st">&quot;Amplitude (normalized)&quot;</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_resonant_data_attempt2.png&#39;</span>)</span></code></pre></div>
 <p><code>[ 10.06551017 313.950265  ] [0.10765985 0.44215353]</code></p>
 <p><img class="img-responsive" src="assets\scatter_plot_fitting_resonant_data_attempt2.png" /></p>
 <p>Now it is clear that the best fit parameters closely follow the initial data. Some instructions were added to set the plot title and axis labels. From the values of <code>popt</code> and <code>error</code>, the best values now are <span class="math inline">\(A=10.1 \pm 0.1\)</span>, while <span class="math inline">\(w_r=313.9 \pm 0.4\)</span> rad/s. Notice that even though our fist estimate for <span class="math inline">\(A\)</span> was wrong by an order of magnitude, the fitting procedure was successful. Therefore, sometimes we have to try several values for <code>initial_guess</code>. Instead of guessing blindly, we can try to compare the initial guess with the experimental data by replacing the parameters in <code>df2['y']</code> to use the initial guess. After we are sufficiently satisfied with our initial guess we replace to the previous code. An example of how to achieve this is given below. When <code>plotInitialGuess = True</code>, the plot will ignore the fitted data. Then you may tune the values within <code>initial_guess</code> until you see a curve that somewhat follows the data. Then you may set <code>plotInitialGuess = False</code> and the code will automatically show the final plot result. Curve fitting needs some trial and error, so you may need to tune the parameters a few times.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>plotInitialGuess <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="cf">if</span> plotInitialGuess:</span>
-<span id="cb18-3"><a href="#cb18-3"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], initial_guess[<span class="dv">0</span>], initial_guess[<span class="dv">1</span>])</span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="cf">else</span>:</span>
-<span id="cb18-5"><a href="#cb18-5"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plotInitialGuess <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> plotInitialGuess:</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], initial_guess[<span class="dv">0</span>], initial_guess[<span class="dv">1</span>])</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> ressonant(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span></code></pre></div>
 <p>The full code for fitting the curve is given below for convenience. Notice that it is visible how the curve width is too small with the initial guess for <span class="math inline">\(A\)</span>. With the code below you can tune <code>initial_guess</code> until the curve given by <code>model</code> has a pattern similar to the data. Then you should set <code>plotInitialGuess = False</code> and see if the best fit model seems to describe the data correctly. If the fit is satisfactory, extract the fit parameters. Otherwise you should set <code>plotInitialGuess = True</code> again and try to use a different <code>initial_guess</code>.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># model(x, parameters separated by commas)</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="kw">def</span> model(x, A, wr):</span>
-<span id="cb19-3"><a href="#cb19-3"></a>  <span class="co"># return y(x) expressed in terms of the fitting parameters</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a>  <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> sqrt( <span class="dv">1</span> <span class="op">+</span> A <span class="op">*</span> (x<span class="op">/</span>wr <span class="op">-</span> wr<span class="op">/</span>x)<span class="op">**</span><span class="dv">2</span> )</span>
-<span id="cb19-5"><a href="#cb19-5"></a></span>
-<span id="cb19-6"><a href="#cb19-6"></a><span class="co"># Initial guess for the parameter values (ordered as in the model)</span></span>
-<span id="cb19-7"><a href="#cb19-7"></a>initial_guess <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">300</span>]</span>
-<span id="cb19-8"><a href="#cb19-8"></a></span>
-<span id="cb19-9"><a href="#cb19-9"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(model,</span>
-<span id="cb19-10"><a href="#cb19-10"></a>                df[<span class="st">&#39;Frequency&#39;</span>], df[<span class="st">&#39;Amplitude&#39;</span>], p0<span class="op">=</span>initial_guess)</span>
-<span id="cb19-11"><a href="#cb19-11"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
-<span id="cb19-12"><a href="#cb19-12"></a></span>
-<span id="cb19-13"><a href="#cb19-13"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb19-14"><a href="#cb19-14"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">101</span>)</span>
-<span id="cb19-15"><a href="#cb19-15"></a></span>
-<span id="cb19-16"><a href="#cb19-16"></a>plotInitialGuess <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb19-17"><a href="#cb19-17"></a><span class="cf">if</span> plotInitialGuess:</span>
-<span id="cb19-18"><a href="#cb19-18"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> model(df2[<span class="st">&#39;x&#39;</span>], initial_guess[<span class="dv">0</span>], initial_guess[<span class="dv">1</span>])</span>
-<span id="cb19-19"><a href="#cb19-19"></a><span class="cf">else</span>:</span>
-<span id="cb19-20"><a href="#cb19-20"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> model(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
-<span id="cb19-21"><a href="#cb19-21"></a>  <span class="co"># Outputs the best fit params and associated errors</span></span>
-<span id="cb19-22"><a href="#cb19-22"></a>  <span class="bu">print</span>(<span class="st">&quot;Fit parameters&quot;</span>)</span>
-<span id="cb19-23"><a href="#cb19-23"></a>  <span class="cf">for</span> i, (p, e) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(popt, error)):</span>
-<span id="cb19-24"><a href="#cb19-24"></a>    <span class="bu">print</span>(<span class="st">&#39;p[</span><span class="sc">%d</span><span class="st">] =&#39;</span> <span class="op">%</span> i, p, <span class="st">&#39; +- &#39;</span>, e)</span>
-<span id="cb19-25"><a href="#cb19-25"></a></span>
-<span id="cb19-26"><a href="#cb19-26"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;Frequency&#39;</span>, <span class="st">&#39;Amplitude&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
-<span id="cb19-27"><a href="#cb19-27"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb19-28"><a href="#cb19-28"></a>title(<span class="st">&quot;Output signal amplitude&quot;</span>)</span>
-<span id="cb19-29"><a href="#cb19-29"></a>xlabel(<span class="st">&quot;Frequency (rad/s)&quot;</span>)</span>
-<span id="cb19-30"><a href="#cb19-30"></a>ylabel(<span class="st">&quot;Amplitude (normalized)&quot;</span>)</span>
-<span id="cb19-31"><a href="#cb19-31"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_resonant_data_final.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model(x, parameters separated by commas)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> model(x, A, wr):</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># return y(x) expressed in terms of the fitting parameters</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> sqrt( <span class="dv">1</span> <span class="op">+</span> A <span class="op">*</span> (x<span class="op">/</span>wr <span class="op">-</span> wr<span class="op">/</span>x)<span class="op">**</span><span class="dv">2</span> )</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial guess for the parameter values (ordered as in the model)</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">300</span>]</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>popt, pcov <span class="op">=</span> optimize.curve_fit(model,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                df[<span class="st">&#39;Frequency&#39;</span>], df[<span class="st">&#39;Amplitude&#39;</span>], p0<span class="op">=</span>initial_guess)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>error <span class="op">=</span> sqrt(pcov.diagonal())</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">&#39;x&#39;</span>] <span class="op">=</span> linspace(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">101</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>plotInitialGuess <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> plotInitialGuess:</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> model(df2[<span class="st">&#39;x&#39;</span>], initial_guess[<span class="dv">0</span>], initial_guess[<span class="dv">1</span>])</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  df2[<span class="st">&#39;y&#39;</span>] <span class="op">=</span> model(df2[<span class="st">&#39;x&#39;</span>], popt[<span class="dv">0</span>], popt[<span class="dv">1</span>])</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Outputs the best fit params and associated errors</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;Fit parameters&quot;</span>)</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i, (p, e) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(popt, error)):</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;p[</span><span class="sc">%d</span><span class="st">] =&#39;</span> <span class="op">%</span> i, p, <span class="st">&#39; +- &#39;</span>, e)</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> df.plot(<span class="st">&#39;Frequency&#39;</span>, <span class="st">&#39;Amplitude&#39;</span>, kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>)</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> df2.plot(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, ax<span class="op">=</span>ax1, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>title(<span class="st">&quot;Output signal amplitude&quot;</span>)</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="st">&quot;Frequency (rad/s)&quot;</span>)</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>ylabel(<span class="st">&quot;Amplitude (normalized)&quot;</span>)</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\scatter_plot_fitting_resonant_data_final.png&#39;</span>)</span></code></pre></div>
 <p><img class="img-responsive" src="assets\scatter_plot_fitting_resonant_data_final.png" /></p>
 <!---
 An alternative to the implementation above would be to set two subplots, one with the initial guess, the other one with the fitted curve.
@@ -733,7 +733,6 @@ for key, value in commands.items():
 <li>item 3</li>
 </ol>
 <p>An horizontal rule can be obtained by starting a line with <code>---</code> or more dashes, achieving</p>
-
 <hr />
 <p>To add comments that will not appear in the output, use <code>&lt;!--- hidden ---&gt;</code>. The comments may also span several lines, as in</p>
 <pre><code>&lt;!---
@@ -1463,7 +1462,7 @@ Adicionar workflow para usar o pandoc? Acho que o anaconda instala o pandoc auto
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    Copyright © 2016-2021 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                    Copyright © 2016-2023 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
                 </div>
             </div>
         </footer>

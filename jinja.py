@@ -439,7 +439,7 @@ for file in os.listdir('blog'):
             # Get the YAML header at the document beginning
             config = re.search('---\n?(:?.*\n)*?---', contents).group(0)
             contents = contents.replace(config, '').lstrip()
-            config = yaml.load(config.strip('---'))
+            config = yaml.load(config.strip('---'), Loader=yaml.Loader)
 
             process_post(config, contents, fullname)
 

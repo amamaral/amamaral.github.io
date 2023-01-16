@@ -45,10 +45,10 @@
                             </li>
                             <li><a href="/conference_papers.html">Conference papers</a>
                             </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
+                            <!---<li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Oral talks</a>
                             </li>
                             <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Science links</a>
-                            </li>
+                            </li> --->
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -58,10 +58,10 @@
                             </li>
                             <li><a href="http://www.github.com/amamaral" data-toggle="tooltip" title="Github software repositories">Software</a>
                             </li>
-                            <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
+                            <!---<li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Programming links</a>
                             </li>
                             <li><a href="/under_construction.html" data-toggle="tooltip" title="Under construction">Electronics links</a>
-                            </li>
+                            </li>--->
                         </ul>
                     </li>
 		    <li><a href="/teaching.html"><i class="fa fa-book"></i> Teaching (Ensino)</a>
@@ -181,7 +181,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>For simplicity we will consider a first-order RC filter (1 Resistor, 1 Capacitor). Given that the signal has a higher frequency than the noise, it seems more interesting to use a <a href="https://en.wikipedia.org/wiki/High-pass_filter" title="See more in wikipedia">high-pass filter</a>, which transmits better signals at higher frequencies. A schematic of such filter is shown below:</p>
 <figure>
-<img class="img-responsive" src="assets\rc-high-pass.svg" alt="" /><figcaption>A first-order high-pass RC filter</figcaption>
+<img class="img-responsive" src="assets\rc-high-pass.svg" alt="A first-order high-pass RC filter" /><figcaption aria-hidden="true">A first-order high-pass RC filter</figcaption>
 </figure>
 <p>The signal comes in as <span class="math inline">\(V_i\)</span>, and <span class="math inline">\(V_o\)</span> is the filter output.</p>
 <h2 id="high-pass-filter-analysis">High-pass filter analysis</h2>
@@ -190,54 +190,54 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Now we know the fraction of the signal and noise which are allowed to pass through the filter. Let us consider which value of <span class="math inline">\(f_c\)</span> must be chosen. If <span class="math inline">\(f_c\)</span> is too small, then both signal and noise have a “high frequency” and are allowed to pass. On the other hand, if <span class="math inline">\(f_c\)</span> becomes too large, then both signal and noise have a “low frequency” and thus the filter removes the information of interest. There must be some optimal value for <span class="math inline">\(f_c\)</span> under some appropriate constraints.</p>
 <p>In the plot below there are considered the relative amounts of signal at 1 kHz (blue) and noise at 100 Hz (orange) after the filter, as a function of the filter cutoff frequency <span class="math inline">\(f_c\)</span>. The high-pass filter is useful only between <span class="math inline">\(10^1 \leq f_c \leq 10^5\)</span>. For frequencies outside this range, the filter does not discriminate signal and noise from each other.</p>
 <figure>
-<img class="img-responsive" src="assets\sn_ratio_hpf.svg" alt="" /><figcaption>Transfer curves for signal (blue) and noise (orange). Signal to noise transfer ratio (green)</figcaption>
+<img class="img-responsive" src="assets\sn_ratio_hpf.svg" alt="Transfer curves for signal (blue) and noise (orange). Signal to noise transfer ratio (green)" /><figcaption aria-hidden="true">Transfer curves for signal (blue) and noise (orange). Signal to noise transfer ratio (green)</figcaption>
 </figure>
 <p>We want that the output does not affect the signal by much, while it attenuates the noise. To achieve this we may consider a figure-of-merit <span class="math inline">\(S/N\)</span> which is proportional to the signal transfer and inversely proportional to the noise transfer. More signal and less noise should increase this figure. A simple calculation shows that <span class="math display">\[S/N = \frac{|T(f_s,f_c)|}{|T(f_n,f_c)|} = \frac{f_s}{f_n} \frac{\sqrt{f_n^2+f_c^2}}{\sqrt{f_s^2+f_c^2}}\]</span></p>
 <p><span class="math inline">\(S/N\)</span> is shown in the plot above as the green curve. Notice that if <span class="math inline">\(f_c\approx f_s\)</span> then the signal attenuation is relatively small, but the <span class="math inline">\(S/N\)</span> ratio is appreciable. Indeed this makes sense, given that to get rid of low frequency noise it’s necessary to have a filter with the highest available cutoff. Meanwhile, the highest cutoff which does not affect the signal by much is precisely when <span class="math inline">\(f_c=f_s\)</span>.</p>
 <h2 id="figure-of-merit-edit">Figure-of-merit (Edit)</h2>
 <p>Another approach to characterize the effectiveness of the filter is through the definition of a figure of merit, that increases when the signal increases at the output, while it also increases for an enhanced <span class="math inline">\(S/N\)</span> ratio. This quantity would be <span class="math inline">\(FOM=(S/N) |T(S)| = \frac{|T(f_s,f_c)|^2}{|T(f_n,f_c)|}\)</span>. Below we show how the FOM depends on frequency for the above filter. The proposed FOM makes it clearer that the filter must be at the signal frequency.</p>
 <figure>
-<img class="img-responsive" src="assets\sn_ratio_fom.svg" alt="" /><figcaption>Figure-of-merit(FOM) of a high-pass filter</figcaption>
+<img class="img-responsive" src="assets\sn_ratio_fom.svg" alt="Figure-of-merit(FOM) of a high-pass filter" /><figcaption aria-hidden="true">Figure-of-merit(FOM) of a high-pass filter</figcaption>
 </figure>
 <h2 id="summary">Summary</h2>
 <p>The above analysis is simplified but valid under various circumstances. When selecting the cutoff frequency of a given filter one must first consider to put this frequency as close as possible from the signal frequency, but not larger. However, if the total noise signal becomes negligible at smaller <span class="math inline">\(f_c\)</span> values, then such values are preferred given that less signal will be lost. Also, a higher order filter can do a much better job at filtering than this simple RC filter. Finally, it is quite straightforward to achieve a similar conclusion for a low-pass RC filter to select a signal which has a frequency smaller than that of the relevant noise source.</p>
 <p>Python code to produce the above plot:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>pylab inline</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>f <span class="op">=</span> logspace(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">100</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a>fn <span class="op">=</span> <span class="dv">100</span>   <span class="co"># Noise freq.</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>fs <span class="op">=</span> <span class="dv">1000</span>  <span class="co"># Signal freq.</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>signal_transfer <span class="op">=</span> fs<span class="op">/</span>sqrt((fs<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb1-7"><a href="#cb1-7"></a>noise_transfer  <span class="op">=</span> fn<span class="op">/</span>sqrt((fn<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb1-8"><a href="#cb1-8"></a>sn_ratio <span class="op">=</span> sqrt((fn<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(fs<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb1-9"><a href="#cb1-9"></a>psig <span class="op">=</span> semilogx(f, signal_transfer, label<span class="op">=</span><span class="vs">r&quot;$|T_</span><span class="sc">{Signal}</span><span class="vs">(f_c)|$&quot;</span>)</span>
-<span id="cb1-10"><a href="#cb1-10"></a>pnoi <span class="op">=</span> semilogx(f, noise_transfer , label<span class="op">=</span><span class="vs">r&quot;$|T_</span><span class="sc">{Noise}</span><span class="vs">(f_c)|$&quot;</span>)</span>
-<span id="cb1-11"><a href="#cb1-11"></a>psnr <span class="op">=</span> semilogx(f, sn_ratio       , label<span class="op">=</span><span class="vs">r&quot;(S/N ratio)$\cdot\frac</span><span class="sc">{f_n}{f_s}</span><span class="vs">$&quot;</span>)</span>
-<span id="cb1-12"><a href="#cb1-12"></a>vlines(fs, <span class="dv">0</span>, <span class="fl">1.0</span>, color<span class="op">=</span><span class="bu">vars</span>(psig[<span class="dv">0</span>])[<span class="st">&#39;_color&#39;</span>], linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>, label<span class="op">=</span><span class="vs">r&quot;$f_s=</span><span class="sc">%d</span><span class="vs">$ Hz&quot;</span><span class="op">%</span>fs)</span>
-<span id="cb1-13"><a href="#cb1-13"></a>vlines(fn, <span class="dv">0</span>, <span class="fl">1.0</span>, color<span class="op">=</span><span class="bu">vars</span>(pnoi[<span class="dv">0</span>])[<span class="st">&#39;_color&#39;</span>], linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>, label<span class="op">=</span><span class="vs">r&quot;$f_n=</span><span class="sc">%d</span><span class="vs">$ Hz&quot;</span><span class="op">%</span>fn)</span>
-<span id="cb1-14"><a href="#cb1-14"></a>legend()</span>
-<span id="cb1-15"><a href="#cb1-15"></a>xlabel(<span class="st">&#39;$f_c$ (Hz)&#39;</span>)</span>
-<span id="cb1-16"><a href="#cb1-16"></a>grid()</span>
-<span id="cb1-17"><a href="#cb1-17"></a>tight_layout()</span>
-<span id="cb1-18"><a href="#cb1-18"></a>savefig(<span class="vs">r&#39;assets\sn_ratio_hpf.svg&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">%</span>pylab inline</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>f <span class="op">=</span> logspace(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">100</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>fn <span class="op">=</span> <span class="dv">100</span>   <span class="co"># Noise freq.</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>fs <span class="op">=</span> <span class="dv">1000</span>  <span class="co"># Signal freq.</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>signal_transfer <span class="op">=</span> fs<span class="op">/</span>sqrt((fs<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb2-7"><a href="#cb2-7"></a>noise_transfer  <span class="op">=</span> fn<span class="op">/</span>sqrt((fn<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb2-8"><a href="#cb2-8"></a>sn_ratio <span class="op">=</span> sqrt((fn<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(fs<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb2-9"><a href="#cb2-9"></a>psig <span class="op">=</span> semilogx(f, signal_transfer, label<span class="op">=</span><span class="vs">r&quot;$|T_</span><span class="sc">{Signal}</span><span class="vs">(f_c)|$&quot;</span>)</span>
-<span id="cb2-10"><a href="#cb2-10"></a>pnoi <span class="op">=</span> semilogx(f, noise_transfer , label<span class="op">=</span><span class="vs">r&quot;$|T_</span><span class="sc">{Noise}</span><span class="vs">(f_c)|$&quot;</span>)</span>
-<span id="cb2-11"><a href="#cb2-11"></a>FOM <span class="op">=</span> semilogx(f, sn_ratio <span class="op">*</span> signal_transfer    , label<span class="op">=</span><span class="vs">r&quot;FOM&quot;</span>)</span>
-<span id="cb2-12"><a href="#cb2-12"></a>vlines(fs, <span class="dv">0</span>, <span class="fl">1.0</span>, color<span class="op">=</span><span class="bu">vars</span>(psig[<span class="dv">0</span>])[<span class="st">&#39;_color&#39;</span>], linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>, label<span class="op">=</span><span class="vs">r&quot;$f_s=</span><span class="sc">%d</span><span class="vs">$ Hz&quot;</span><span class="op">%</span>fs)</span>
-<span id="cb2-13"><a href="#cb2-13"></a>vlines(fn, <span class="dv">0</span>, <span class="fl">1.0</span>, color<span class="op">=</span><span class="bu">vars</span>(pnoi[<span class="dv">0</span>])[<span class="st">&#39;_color&#39;</span>], linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>, label<span class="op">=</span><span class="vs">r&quot;$f_n=</span><span class="sc">%d</span><span class="vs">$ Hz&quot;</span><span class="op">%</span>fn)</span>
-<span id="cb2-14"><a href="#cb2-14"></a>legend()</span>
-<span id="cb2-15"><a href="#cb2-15"></a>xlabel(<span class="st">&#39;$f_c$ (Hz)&#39;</span>)</span>
-<span id="cb2-16"><a href="#cb2-16"></a>grid()</span>
-<span id="cb2-17"><a href="#cb2-17"></a>tight_layout()</span>
-<span id="cb2-18"><a href="#cb2-18"></a>savefig(<span class="vs">r&#39;assets\sn_ratio_fom.svg&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pylab inline</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> logspace(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">100</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>fn <span class="op">=</span> <span class="dv">100</span>   <span class="co"># Noise freq.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> <span class="dv">1000</span>  <span class="co"># Signal freq.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>signal_transfer <span class="op">=</span> fs<span class="op">/</span>sqrt((fs<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>noise_transfer  <span class="op">=</span> fn<span class="op">/</span>sqrt((fn<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>sn_ratio <span class="op">=</span> sqrt((fn<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(fs<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>psig <span class="op">=</span> semilogx(f, signal_transfer, label<span class="op">=</span><span class="vs">r&quot;$|T_</span><span class="sc">{Signal}</span><span class="vs">(f_c)|$&quot;</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>pnoi <span class="op">=</span> semilogx(f, noise_transfer , label<span class="op">=</span><span class="vs">r&quot;$|T_</span><span class="sc">{Noise}</span><span class="vs">(f_c)|$&quot;</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>psnr <span class="op">=</span> semilogx(f, sn_ratio       , label<span class="op">=</span><span class="vs">r&quot;(S/N ratio)$\cdot\frac</span><span class="sc">{f_n}{f_s}</span><span class="vs">$&quot;</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>vlines(fs, <span class="dv">0</span>, <span class="fl">1.0</span>, color<span class="op">=</span><span class="bu">vars</span>(psig[<span class="dv">0</span>])[<span class="st">&#39;_color&#39;</span>], linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>, label<span class="op">=</span><span class="vs">r&quot;$f_s=</span><span class="sc">%d</span><span class="vs">$ Hz&quot;</span><span class="op">%</span>fs)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>vlines(fn, <span class="dv">0</span>, <span class="fl">1.0</span>, color<span class="op">=</span><span class="bu">vars</span>(pnoi[<span class="dv">0</span>])[<span class="st">&#39;_color&#39;</span>], linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>, label<span class="op">=</span><span class="vs">r&quot;$f_n=</span><span class="sc">%d</span><span class="vs">$ Hz&quot;</span><span class="op">%</span>fn)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>legend()</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="st">&#39;$f_c$ (Hz)&#39;</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>grid()</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>tight_layout()</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\sn_ratio_hpf.svg&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pylab inline</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> logspace(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">100</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>fn <span class="op">=</span> <span class="dv">100</span>   <span class="co"># Noise freq.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> <span class="dv">1000</span>  <span class="co"># Signal freq.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>signal_transfer <span class="op">=</span> fs<span class="op">/</span>sqrt((fs<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>noise_transfer  <span class="op">=</span> fn<span class="op">/</span>sqrt((fn<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>sn_ratio <span class="op">=</span> sqrt((fn<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(fs<span class="op">**</span><span class="dv">2</span><span class="op">+</span>f<span class="op">**</span><span class="dv">2</span>))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>psig <span class="op">=</span> semilogx(f, signal_transfer, label<span class="op">=</span><span class="vs">r&quot;$|T_</span><span class="sc">{Signal}</span><span class="vs">(f_c)|$&quot;</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>pnoi <span class="op">=</span> semilogx(f, noise_transfer , label<span class="op">=</span><span class="vs">r&quot;$|T_</span><span class="sc">{Noise}</span><span class="vs">(f_c)|$&quot;</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>FOM <span class="op">=</span> semilogx(f, sn_ratio <span class="op">*</span> signal_transfer    , label<span class="op">=</span><span class="vs">r&quot;FOM&quot;</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>vlines(fs, <span class="dv">0</span>, <span class="fl">1.0</span>, color<span class="op">=</span><span class="bu">vars</span>(psig[<span class="dv">0</span>])[<span class="st">&#39;_color&#39;</span>], linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>, label<span class="op">=</span><span class="vs">r&quot;$f_s=</span><span class="sc">%d</span><span class="vs">$ Hz&quot;</span><span class="op">%</span>fs)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>vlines(fn, <span class="dv">0</span>, <span class="fl">1.0</span>, color<span class="op">=</span><span class="bu">vars</span>(pnoi[<span class="dv">0</span>])[<span class="st">&#39;_color&#39;</span>], linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>, label<span class="op">=</span><span class="vs">r&quot;$f_n=</span><span class="sc">%d</span><span class="vs">$ Hz&quot;</span><span class="op">%</span>fn)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>legend()</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="st">&#39;$f_c$ (Hz)&#39;</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>grid()</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>tight_layout()</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>savefig(<span class="vs">r&#39;assets\sn_ratio_fom.svg&#39;</span>)</span></code></pre></div>
 
             </div>
 
@@ -269,7 +269,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    Copyright © 2016-2021 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
+                    Copyright © 2016-2023 Anderson M. Amaral - Modern Business template by <a href="http://startbootstrap.com">startbootstrap.com</a> - Powered by <a href='http://jinja.pocoo.org/'>Jinja 2</a>
                 </div>
             </div>
         </footer>
